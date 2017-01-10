@@ -1,0 +1,31 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url 'http://repo.spring.io/plugins-release/' }
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+    dependencies {
+//        classpath 'cn.bestwu.gradle:apidoc-plugin:1.0'
+    }
+}
+
+
+apply plugin: 'java'
+//apply plugin: 'cn.bestwu.apidoc'
+
+//apidoc {
+//    input  file('_t')
+//    output  file(project.buildDir.name + '/doc')
+//    apiHost 'http://127.0.0.1'
+//}
+
+
+sourceCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}

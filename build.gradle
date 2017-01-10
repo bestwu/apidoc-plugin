@@ -1,0 +1,4 @@
+subprojects {
+    group 'cn.bestwu.gradle'
+    version '1.0'
+}
