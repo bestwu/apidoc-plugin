@@ -1,0 +1,80 @@
+[
+  {
+    "children": [
+      {
+        "leaf": true,
+        "text": "检查版本号"
+      }
+    ],
+    "expanded": true,
+    "text": "基本"
+  },
+  {
+    "children": [
+      {
+        "leaf": true,
+        "text": "登录"
+      },
+      {
+        "leaf": true,
+        "text": "登出"
+      },
+      {
+        "leaf": true,
+        "text": "查看个人信息"
+      },
+      {
+        "leaf": true,
+        "text": "修改个人信息"
+      },
+      {
+        "leaf": true,
+        "text": "修改密码"
+      }
+    ],
+    "expanded": true,
+    "text": "用户"
+  },
+  {
+    "children": [
+      {
+        "leaf": true,
+        "text": "当前运单"
+      },
+      {
+        "leaf": true,
+        "text": "历史运单"
+      },
+      {
+        "leaf": true,
+        "text": "运单详情"
+      },
+      {
+        "leaf": true,
+        "text": "运单状态"
+      },
+      {
+        "leaf": true,
+        "text": "运单号查单"
+      },
+      {
+        "leaf": true,
+        "text": "运单号查位置"
+      },
+      {
+        "leaf": true,
+        "text": "运单接单"
+      },
+      {
+        "leaf": true,
+        "text": "到货处理"
+      },
+      {
+        "leaf": true,
+        "text": "更新运单路由"
+      }
+    ],
+    "expanded": true,
+    "text": "运单"
+  }
+]

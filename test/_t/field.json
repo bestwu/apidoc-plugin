@@ -1,0 +1,442 @@
+{
+  "note": {
+    "desc": "运单备注",
+    "name": "note",
+    "optional": true,
+    "type": "string",
+    "value": ""
+  },
+  "oldWaybillSysNo": {
+    "desc": "原始运单号",
+    "name": "oldWaybillSysNo",
+    "optional": true,
+    "type": "string",
+    "value": ""
+  },
+  "newWaybillSysNo": {
+    "desc": "新系统运单号",
+    "name": "newWaybillSysNo",
+    "optional": true,
+    "type": "string",
+    "value": ""
+  },
+  "area": {
+    "desc": "仓储区域",
+    "name": "area",
+    "optional": true,
+    "type": "string",
+    "value": ""
+  },
+  "billCopy": {
+    "desc": "底单图片地址",
+    "name": "billCopy",
+    "optional": true,
+    "type": "string",
+    "value": ""
+  },
+  "weight": {
+    "desc": "重量单位g",
+    "name": "weight",
+    "optional": true,
+    "type": "int",
+    "value": ""
+  },
+  "address": {
+    "desc": "地址",
+    "name": "address",
+    "optional": true,
+    "type": "string",
+    "value": ""
+  },
+  "accessTokenType": {
+    "desc": "授权码",
+    "name": "accessToken",
+    "optional": false,
+    "type": "object",
+    "value": ""
+  },
+  "goodsNum": {
+    "desc": "货物数量",
+    "name": "goodsNum",
+    "optional": false,
+    "type": "int",
+    "value": ""
+  },
+  "goodsName": {
+    "desc": "货物名称",
+    "name": "goodsName",
+    "optional": false,
+    "type": "string",
+    "value": ""
+  },
+  "categoryName": {
+    "desc": "货物分类名称",
+    "name": "categoryName",
+    "optional": false,
+    "type": "string",
+    "value": ""
+  },
+  "goodses": {
+    "desc": "货物",
+    "name": "goodses",
+    "optional": false,
+    "type": "array",
+    "value": ""
+  },
+  "downloadLink": {
+    "desc": "下载链接",
+    "name": "downloadLink",
+    "optional": false,
+    "type": "string",
+    "value": ""
+  },
+  "idCard": {
+    "desc": "身份证号",
+    "name": "idCard",
+    "optional": false,
+    "type": "string",
+    "value": ""
+  },
+  "versionCode": {
+    "desc": "版本号",
+    "name": "versionCode",
+    "optional": false,
+    "type": "int",
+    "value": ""
+  },
+  "versionName": {
+    "desc": "版本名称",
+    "name": "versionName",
+    "optional": false,
+    "type": "string",
+    "value": ""
+  },
+  "time": {
+    "desc": "更新时间（毫秒数）",
+    "name": "time",
+    "optional": false,
+    "type": "long",
+    "value": ""
+  },
+  "isForce": {
+    "desc": "是否强制更新",
+    "name": "isForce",
+    "optional": false,
+    "type": "boolen",
+    "value": ""
+  },
+  "versiontext": {
+    "desc": "版本更新说明",
+    "name": "text",
+    "optional": false,
+    "type": "string",
+    "value": ""
+  },
+  "oldPassword": {
+    "desc": "旧密码（加密后）",
+    "name": "oldPassword",
+    "optional": false,
+    "type": "string",
+    "value": ""
+  },
+  "lastLoginIp": {
+    "desc": "最后登录IP地址",
+    "name": "lastLoginIp",
+    "optional": false,
+    "type": "string",
+    "value": ""
+  },
+  "lastLoginDate": {
+    "desc": "最后登录日期（毫秒数）",
+    "name": "lastLoginDate",
+    "optional": false,
+    "type": "long",
+    "value": ""
+  },
+  "lastModifiedDate": {
+    "desc": "上次修改时间（毫秒数）",
+    "name": "lastModifiedDate",
+    "optional": false,
+    "type": "long",
+    "value": ""
+  },
+  "name": {
+    "desc": "姓名",
+    "name": "name",
+    "optional": false,
+    "type": "string",
+    "value": "123"
+  },
+  "tel": {
+    "desc": "手机号码",
+    "name": "tel",
+    "optional": false,
+    "type": "string",
+    "value": "123"
+  },
+  "expiresIn": {
+    "desc": "多少秒后过期",
+    "name": "expiresIn",
+    "optional": true,
+    "type": "int",
+    "value": "1"
+  },
+  "id": {
+    "desc": "主键ID",
+    "name": "id",
+    "optional": false,
+    "type": "long",
+    "value": "1"
+  },
+  "needAddInfo": {
+    "desc": "是否需要补充资料",
+    "name": "needAddInfo",
+    "optional": true,
+    "type": "boolean",
+    "value": "false"
+  },
+  "page": {
+    "desc": "页码，从1开始，默认1",
+    "name": "page",
+    "optional": true,
+    "type": "int",
+    "value": "1"
+  },
+  "size": {
+    "desc": "每页最大数量，默认20",
+    "name": "size",
+    "optional": true,
+    "type": "int",
+    "value": "20"
+  },
+  "pageSize": {
+    "desc": "当前页的数量",
+    "name": "size",
+    "optional": true,
+    "type": "int",
+    "value": "20"
+  },
+  "total": {
+    "desc": "总记录数",
+    "name": "total",
+    "optional": true,
+    "type": "long",
+    "value": ""
+  },
+  "pages": {
+    "desc": "总页数",
+    "name": "pages",
+    "optional": true,
+    "type": "int",
+    "value": ""
+  },
+  "list": {
+    "desc": "内容",
+    "name": "list",
+    "optional": true,
+    "type": "array",
+    "value": ""
+  },
+  "sysNo": {
+    "desc": "系统运单号",
+    "name": "sysNo",
+    "optional": true,
+    "type": "string",
+    "value": ""
+  },
+  "distributionName": {
+    "desc": "配送人员姓名",
+    "name": "distributionName",
+    "optional": true,
+    "type": "string",
+    "value": ""
+  },
+  "consignorName": {
+    "desc": "发货人姓名",
+    "name": "consignorName",
+    "optional": true,
+    "type": "string",
+    "value": ""
+  },
+  "consignorTel": {
+    "desc": "发货人电话",
+    "name": "consignorTel",
+    "optional": true,
+    "type": "string",
+    "value": ""
+  },
+  "consignorAddress": {
+    "desc": "发货人地址",
+    "name": "consignorAddress",
+    "optional": true,
+    "type": "string",
+    "value": ""
+  },
+  "lat": {
+    "name": "lat",
+    "optional": true,
+    "type": "double",
+    "value": "30.6635",
+    "desc": "纬度"
+  },
+  "lng": {
+    "name": "lng",
+    "optional": true,
+    "type": "double",
+    "value": "104.072",
+    "desc": "经度"
+  },
+  "text": {
+    "desc": "文字说明",
+    "name": "text",
+    "optional": true,
+    "type": "string",
+    "value": ""
+  },
+  "status": {
+    "desc": "运单状态",
+    "name": "status",
+    "optional": true,
+    "type": "int",
+    "value": ""
+  },
+  "arriveStatus": {
+    "desc": "状态",
+    "name": "status",
+    "optional": false,
+    "type": "enum",
+    "value": "",
+    "store": [
+      "3",
+      "4",
+      "5",
+      "6"
+    ]
+  },
+  "finished": {
+    "desc": "是否完成",
+    "name": "finished",
+    "optional": true,
+    "type": "int",
+    "value": ""
+  },
+  "distributionTel": {
+    "desc": "配送人员联系电话",
+    "name": "distributionTel",
+    "optional": true,
+    "type": "string",
+    "value": ""
+  },
+  "eta": {
+    "desc": "预计到达时间（毫秒数）",
+    "name": "eta",
+    "optional": true,
+    "type": "long",
+    "value": ""
+  },
+  "finishTime": {
+    "desc": "完成时间（毫秒数）",
+    "name": "finishTime",
+    "optional": true,
+    "type": "long",
+    "value": ""
+  },
+  "createdDate": {
+    "desc": "创建时间（毫秒数）",
+    "name": "createdDate",
+    "optional": true,
+    "type": "long",
+    "value": ""
+  },
+  "distributionDate": {
+    "desc": "开始配送时间（毫秒数）",
+    "name": "distributionDate",
+    "optional": true,
+    "type": "long",
+    "value": ""
+  },
+  "goodsNo": {
+    "desc": "货物运单号",
+    "name": "goodsNo",
+    "optional": false,
+    "type": "string",
+    "value": "YT201612161601573815"
+  },
+  "consigneeName": {
+    "desc": "收货人姓名",
+    "name": "consigneeName",
+    "optional": true,
+    "type": "string",
+    "value": ""
+  },
+  "consigneeTel": {
+    "desc": "收货人电话",
+    "name": "consigneeTel",
+    "optional": true,
+    "type": "string",
+    "value": ""
+  },
+  "consigneeAddress": {
+    "desc": "收货人的地址",
+    "name": "consigneeAddress",
+    "optional": true,
+    "type": "string",
+    "value": ""
+  },
+  "sysUserTel": {
+    "desc": "操作员电话",
+    "name": "sysUserTel",
+    "optional": false,
+    "type": "string",
+    "value": ""
+  },
+  "notes": {
+    "desc": "备注",
+    "name": "notes",
+    "optional": false,
+    "type": "array",
+    "value": ""
+  },
+  "sysUserName": {
+    "desc": "操作员姓名",
+    "name": "sysUserName",
+    "optional": false,
+    "type": "string",
+    "value": ""
+  },
+  "sysUserJobNumber": {
+    "desc": "操作员工号",
+    "name": "sysUserJobNumber",
+    "optional": false,
+    "type": "string",
+    "value": "KD001"
+  },
+  "jobNumber": {
+    "desc": "工号",
+    "name": "jobNumber",
+    "optional": false,
+    "type": "string",
+    "value": "KD001"
+  },
+  "password": {
+    "desc": "密码，MD5（明文密码+工号）",
+    "name": "password",
+    "optional": false,
+    "type": "string",
+    "value": ""
+  },
+  "accessToken": {
+    "desc": "授权码，客户端保存时不限制长度",
+    "name": "accessToken",
+    "optional": false,
+    "type": "string",
+    "value": ""
+  },
+  "expiration": {
+    "desc": "过期时间，毫秒数",
+    "name": "expiration",
+    "optional": false,
+    "type": "long",
+    "value": ""
+  }
+}
