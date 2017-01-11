@@ -1,6 +1,7 @@
 package cn.bestwu.gradle.apidoc
 
-import cn.bestwu.gradle.apidoc.tasks.ApidocTask
+import cn.bestwu.gradle.apidoc.tasks.HtmlTask
+import cn.bestwu.gradle.apidoc.tasks.MDTask
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
@@ -14,6 +15,23 @@ class ApidocPlugin implements Plugin<Project> {
 
     @Override
     void apply(Project project) {
-        project.task('apidoc', type: ApidocTask, group: 'app', description: '') {}
+        project.configure(project) {
+            project.extensions.create('apidoc', ApidocExtension)
+            afterEvaluate {
+                project.task('mddoc', type: MDTask, group: 'app', description: '') {
+                    input project.file(project.apidoc.input)
+                    output project.file(project.apidoc.output + '/md')
+                    apiHost project.apidoc.apiHost
+                    encoding project.apidoc.encoding
+                }
+                project.task('htmldoc', type: HtmlTask, group: 'app', description: '') {
+                    input project.file(project.apidoc.output + '/md')
+                    output project.file(project.apidoc.output + '/html')
+                    encoding project.apidoc.encoding
+                }
+                project.task('apidoc', dependsOn: [project.mddoc, project.htmldoc], group: 'app', description: '') {}
+                project.htmldoc.mustRunAfter project.mddoc
+            }
+        }
     }
 }

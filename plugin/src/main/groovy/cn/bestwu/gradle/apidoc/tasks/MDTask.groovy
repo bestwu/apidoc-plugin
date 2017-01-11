@@ -6,15 +6,13 @@ import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
-import org.pegdown.Extensions
-import org.pegdown.PegDownProcessor
 
 /**
  * 生成接口文档
  *
  * @author Peter Wu
  */
-class ApidocTask extends DefaultTask {
+class MDTask extends DefaultTask {
 
     @Input
     String encoding = 'UTF-8'
@@ -27,21 +25,16 @@ class ApidocTask extends DefaultTask {
 
     @TaskAction
     run() {
-        def mdOutput = new File(output, 'md')
+        def mdOutput = output
         if (!mdOutput.exists()) {
             mdOutput.mkdirs()
-        }
-        def htmlOutput = new File(output, 'html')
-        if (!htmlOutput.exists()) {
-            htmlOutput.mkdirs()
         }
         def slurper = new JsonSlurper()
 
         def trees = slurper.parseText(jsonFilter(new File(input, 'tree.json')))
         def apis = slurper.parseText(jsonFilter(new File(input, "api.json")))
         def fields = slurper.parseText(jsonFilter(new File(input, "field.json")))
-        def apidoc = new File(mdOutput, "index.md")
-        apidoc.withPrintWriter(encoding) { out ->
+        new File(mdOutput, "index.md").withPrintWriter(encoding) { out ->
             trees.eachWithIndex() {
                 tree, i ->
                     i++
@@ -56,13 +49,11 @@ class ApidocTask extends DefaultTask {
                     }
             }
         }
-        markdown2html(apidoc, new File(htmlOutput, "index.html"))
         trees.eachWithIndex() {
             tree, i ->
                 i++
                 def treeName = tree.text
-                def file = new File(mdOutput, "${treeName}.md")
-                file.withPrintWriter(encoding) { out ->
+                new File(mdOutput, "${treeName}.md").withPrintWriter(encoding) { out ->
                     out.println " ### ${i}.${treeName}"
                     out.println ""
                     tree.children.eachWithIndex() {
@@ -120,16 +111,9 @@ class ApidocTask extends DefaultTask {
                             }
                     }
                 }
-                markdown2html(file, new File(htmlOutput, "${treeName}.html"))
         }
 
 
-    }
-
-    def markdown2html(inFile, outFile) {
-        outFile.withPrintWriter(encoding) { out ->
-            out.println new PegDownProcessor(Extensions.ALL_WITH_OPTIONALS).markdownToHtml(inFile.text.replace('.md', '.html'))
-        }
     }
 
     def printUrlParams(out, fields, key) {
