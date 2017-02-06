@@ -5,7 +5,7 @@ buildscript {
         maven { url 'https://plugins.gradle.org/m2/' }
     }
     dependencies {
-        classpath 'cn.bestwu.gradle:apidoc-plugin:1.0'
+        classpath 'cn.bestwu.gradle:apidoc-plugin:1.1'
     }
 }
 

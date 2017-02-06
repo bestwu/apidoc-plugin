@@ -28,7 +28,7 @@ class HtmlTask extends DefaultTask {
             output.mkdirs()
         }
         input.listFiles().each {
-            markdown2html(it, new File(output, "${it.name}.html"))
+            markdown2html(it, new File(output, "${it.name}.html".replace('.md','')))
         }
     }
 
