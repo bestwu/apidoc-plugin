@@ -11,7 +11,7 @@ class ApidocExtension {
     @Input
     String apiHost = ''
     @Input
-    String input
+    String input = 'src/main/resources/_t'
     @Input
-    String output
+    String output = 'src/main/resources/_t'
 }

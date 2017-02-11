@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="renderer" content="webkit"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>手持端订单</title>
+<style type="text/css">
+    body {
+      margin: 0;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      overflow: auto;
+      padding: 10px;
+      color: #444;
+      font-family: Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
+      font-size: 16px;
+      line-height: 1.5em
+    }
+
+    a {
+      color: #0645ad;
+      text-decoration: none;
+    }
+
+    a:visited {
+      color: #0b0080;
+    }
+
+    a:hover {
+      color: #06e;
+    }
+
+    a:active {
+      color: #faa700;
+    }
+
+    a:focus {
+      outline: thin dotted;
+    }
+
+    a:hover, a:active {
+      outline: 0;
+    }
+
+    p {
+      margin: 1em 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: normal;
+      color: #111;
+      line-height: 1em;
+    }
+
+    h4, h5, h6 {
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: 2.5em;
+    }
+
+    h2 {
+      font-size: 2em;
+      border-bottom: 1px solid silver;
+      padding-bottom: 5px;
+    }
+
+    h3 {
+      font-size: 1.5em;
+    }
+
+    h4 {
+      font-size: 1.2em;
+    }
+
+    h5 {
+      font-size: 1em;
+    }
+
+    h6 {
+      font-size: 0.9em;
+    }
+
+    blockquote {
+      color: #666666;
+      margin: 0;
+      padding-left: 3em;
+      border-left: 0.5em #EEE solid;
+    }
+
+    hr {
+      display: block;
+      height: 2px;
+      border: 0;
+      border-top: 1px solid #aaa;
+      border-bottom: 1px solid #eee;
+      margin: 1em 0;
+      padding: 0;
+    }
+
+    pre, code {
+      color: #000;
+      font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+      font-size: 0.94em; /* 0.94 = 0.88 + (1.00 - 0.88) / 2 */
+      border-radius: 3px;
+      background-color: #F8F8F8;
+      border: 1px solid #CCC;
+    }
+
+    pre {
+      white-space: pre;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      padding: 5px;
+    }
+
+    pre code {
+      border: 0px !important;
+      background: transparent !important;
+      line-height: 1.3em;
+    }
+
+    code {
+      padding: 0 3px 0 3px;
+    }
+
+    sub, sup {
+      font-size: 75%;
+      line-height: 0;
+      position: relative;
+      vertical-align: baseline;
+    }
+
+    sup {
+      top: -0.5em;
+    }
+
+    sub {
+      bottom: -0.25em;
+    }
+
+    ul, ol {
+      margin: 1em 0;
+      padding: 0 0 0 2em;
+    }
+
+    li p:last-child {
+      margin: 0
+    }
+
+    dd {
+      margin: 0 0 0 2em;
+    }
+
+    img {
+      border: 0;
+      -ms-interpolation-mode: bicubic;
+      vertical-align: middle;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    td, th {
+      vertical-align: top;
+      padding: 4px 10px;
+      border: 1px solid #bbb;
+    }
+
+    tr:nth-child(even) td, tr:nth-child(even) th {
+      background: #eee;
+    }
+  </style>
+</head>
+<body>
+<h3><a href="#5-手持端订单" name="5-手持端订单">5 手持端订单</a></h3>
+<h4><a href='#5.1当前订单' name='5.1当前订单'>5.1 当前订单</a></h4>
+<h6><a href="#接口地址" name="接口地址">接口地址</a></h6>
+<p><a href="http://127.0.0.1/waybills/current">http://127.0.0.1/waybills/current</a></p>
+<h6><a href="#请求方法" name="请求方法">请求方法</a></h6>
+<p>GET</p>
+<h6><a href="#请求参数" name="请求参数">请求参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>类型</th>
+      <th>是否必填</th>
+      <th>最大长度</th>
+      <th>描述</th>
+      <th>默认值</th>
+      <th>示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>accessToken </td>
+      <td>object </td>
+      <td>是 </td>
+      <td>- </td>
+      <td>授权码 </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>page </td>
+      <td>int </td>
+      <td>否 </td>
+      <td>- </td>
+      <td>页码，从1开始，默认1 </td>
+      <td>1 </td>
+      <td>1 </td>
+    </tr>
+    <tr>
+      <td>size </td>
+      <td>int </td>
+      <td>否 </td>
+      <td>- </td>
+      <td>每页最大数量，默认20 </td>
+      <td>20 </td>
+      <td>20 </td>
+    </tr>
+  </tbody>
+</table>
+<h6><a href="#响应参数" name="响应参数">响应参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>类型</th>
+      <th>最大长度</th>
+      <th>描述</th>
+      <th>示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>consigneeAddress </td>
+      <td>string </td>
+      <td>250 </td>
+      <td>收货人的地址 </td>
+      <td>丽景园3期 </td>
+    </tr>
+    <tr>
+      <td>consigneeName </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>收货人姓名 </td>
+      <td>赵国柱 </td>
+    </tr>
+    <tr>
+      <td>consigneeTel </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>收货人电话 </td>
+      <td>18224060100 </td>
+    </tr>
+    <tr>
+      <td>finished </td>
+      <td>boolean </td>
+      <td>- </td>
+      <td>是否完成运单 </td>
+      <td>false </td>
+    </tr>
+    <tr>
+      <td>goodsNo </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>货物运单号 </td>
+      <td>718000872243 </td>
+    </tr>
+    <tr>
+      <td>id </td>
+      <td>long </td>
+      <td>- </td>
+      <td>主键ID </td>
+      <td>3 </td>
+    </tr>
+    <tr>
+      <td>status </td>
+      <td>int </td>
+      <td>- </td>
+      <td>状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） </td>
+      <td>2 </td>
+    </tr>
+    <tr>
+      <td>list </td>
+      <td>array </td>
+      <td>- </td>
+      <td>内容 </td>
+      <td>[consigneeAddress:丽景园3期, consigneeName:赵国柱, consigneeTel:18224060100, finished:false, goodsNo:718000872243, id:3, status:2] </td>
+    </tr>
+    <tr>
+      <td>page </td>
+      <td>int </td>
+      <td>- </td>
+      <td>页码，从1开始，默认1 </td>
+      <td>1 </td>
+    </tr>
+    <tr>
+      <td>pages </td>
+      <td>int </td>
+      <td>- </td>
+      <td>总页数 </td>
+      <td>1 </td>
+    </tr>
+    <tr>
+      <td>size </td>
+      <td>int </td>
+      <td>- </td>
+      <td>每页最大数量，默认20 </td>
+      <td>13 </td>
+    </tr>
+    <tr>
+      <td>total </td>
+      <td>long </td>
+      <td>- </td>
+      <td>总记录数 </td>
+      <td>13 </td>
+    </tr>
+  </tbody>
+</table>
+<hr/>
+<h4><a href='#5.2历史订单' name='5.2历史订单'>5.2 历史订单</a></h4>
+<h6><a href="#接口地址" name="接口地址">接口地址</a></h6>
+<p><a href="http://127.0.0.1/waybills/history">http://127.0.0.1/waybills/history</a></p>
+<h6><a href="#请求方法" name="请求方法">请求方法</a></h6>
+<p>GET</p>
+<h6><a href="#请求参数" name="请求参数">请求参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>类型</th>
+      <th>是否必填</th>
+      <th>最大长度</th>
+      <th>描述</th>
+      <th>默认值</th>
+      <th>示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>accessToken </td>
+      <td>object </td>
+      <td>是 </td>
+      <td>- </td>
+      <td>授权码 </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>page </td>
+      <td>int </td>
+      <td>否 </td>
+      <td>- </td>
+      <td>页码，从1开始，默认1 </td>
+      <td>1 </td>
+      <td>1 </td>
+    </tr>
+    <tr>
+      <td>size </td>
+      <td>int </td>
+      <td>否 </td>
+      <td>- </td>
+      <td>每页最大数量，默认20 </td>
+      <td>20 </td>
+      <td>20 </td>
+    </tr>
+  </tbody>
+</table>
+<h6><a href="#响应参数" name="响应参数">响应参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>类型</th>
+      <th>最大长度</th>
+      <th>描述</th>
+      <th>示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>consigneeAddress </td>
+      <td>string </td>
+      <td>250 </td>
+      <td>收货人的地址 </td>
+      <td>丽景园3期 </td>
+    </tr>
+    <tr>
+      <td>consigneeName </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>收货人姓名 </td>
+      <td>赵国柱 </td>
+    </tr>
+    <tr>
+      <td>consigneeTel </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>收货人电话 </td>
+      <td>18224060100 </td>
+    </tr>
+    <tr>
+      <td>finished </td>
+      <td>boolean </td>
+      <td>- </td>
+      <td>是否完成运单 </td>
+      <td>false </td>
+    </tr>
+    <tr>
+      <td>goodsNo </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>货物运单号 </td>
+      <td>718000872243 </td>
+    </tr>
+    <tr>
+      <td>id </td>
+      <td>long </td>
+      <td>- </td>
+      <td>主键ID </td>
+      <td>3 </td>
+    </tr>
+    <tr>
+      <td>status </td>
+      <td>int </td>
+      <td>- </td>
+      <td>状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） </td>
+      <td>2 </td>
+    </tr>
+    <tr>
+      <td>list </td>
+      <td>array </td>
+      <td>- </td>
+      <td>内容 </td>
+      <td>[consigneeAddress:丽景园3期, consigneeName:赵国柱, consigneeTel:18224060100, finished:false, goodsNo:718000872243, id:3, status:2] </td>
+    </tr>
+    <tr>
+      <td>page </td>
+      <td>int </td>
+      <td>- </td>
+      <td>页码，从1开始，默认1 </td>
+      <td>1 </td>
+    </tr>
+    <tr>
+      <td>pages </td>
+      <td>int </td>
+      <td>- </td>
+      <td>总页数 </td>
+      <td>1 </td>
+    </tr>
+    <tr>
+      <td>size </td>
+      <td>int </td>
+      <td>- </td>
+      <td>每页最大数量，默认20 </td>
+      <td>13 </td>
+    </tr>
+    <tr>
+      <td>total </td>
+      <td>long </td>
+      <td>- </td>
+      <td>总记录数 </td>
+      <td>13 </td>
+    </tr>
+  </tbody>
+</table>
+<hr/>
+<h4><a href='#5.3订单详情' name='5.3订单详情'>5.3 订单详情</a></h4>
+<h6><a href="#接口地址" name="接口地址">接口地址</a></h6>
+<p><a href="http://127.0.0.1/waybills/{0}">http://127.0.0.1/waybills/{0}</a></p>
+<h6><a href="#请求方法" name="请求方法">请求方法</a></h6>
+<p>GET</p>
+<h6><a href="#url参数" name="url参数">URL参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th>序号</th>
+      <th>类型</th>
+      <th>最大长度</th>
+      <th>描述</th>
+      <th>示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0 </td>
+      <td>long </td>
+      <td>- </td>
+      <td>主键ID </td>
+      <td>1 </td>
+    </tr>
+  </tbody>
+</table>
+<h6><a href="#请求参数" name="请求参数">请求参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>类型</th>
+      <th>是否必填</th>
+      <th>最大长度</th>
+      <th>描述</th>
+      <th>默认值</th>
+      <th>示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>accessToken </td>
+      <td>object </td>
+      <td>是 </td>
+      <td>- </td>
+      <td>授权码 </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+<h6><a href="#响应参数" name="响应参数">响应参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>类型</th>
+      <th>最大长度</th>
+      <th>描述</th>
+      <th>示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>area </td>
+      <td>string </td>
+      <td>250 </td>
+      <td>所属区域 </td>
+      <td>黄 </td>
+    </tr>
+    <tr>
+      <td>consigneeAddress </td>
+      <td>string </td>
+      <td>250 </td>
+      <td>收货人的地址 </td>
+      <td>眉山红豆园A区1栋4号 </td>
+    </tr>
+    <tr>
+      <td>consigneeName </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>收货人姓名 </td>
+      <td>吴勇 </td>
+    </tr>
+    <tr>
+      <td>consigneeTel </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>收货人电话 </td>
+      <td>18583768030 </td>
+    </tr>
+    <tr>
+      <td>consignorAddress </td>
+      <td>string </td>
+      <td>250 </td>
+      <td>发货人地址 </td>
+      <td>眉山市东坡区环湖中路雕像国际广场 伊藤洋华堂 </td>
+    </tr>
+    <tr>
+      <td>consignorName </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>发货人姓名 </td>
+      <td>张伟 </td>
+    </tr>
+    <tr>
+      <td>consignorTel </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>发货人电话 </td>
+      <td>18819295194 </td>
+    </tr>
+    <tr>
+      <td>distributionDate </td>
+      <td>long </td>
+      <td>- </td>
+      <td>开始配送时间（毫秒数） </td>
+      <td>1484318047501 </td>
+    </tr>
+    <tr>
+      <td>distributionName </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>配送人员姓名 </td>
+      <td>吴大 </td>
+    </tr>
+    <tr>
+      <td>distributionTel </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>配送人员联系电话 </td>
+      <td>18224060100 </td>
+    </tr>
+    <tr>
+      <td>eta </td>
+      <td>long </td>
+      <td>- </td>
+      <td>预计到达时间（毫秒数） </td>
+      <td>0 </td>
+    </tr>
+    <tr>
+      <td>finished </td>
+      <td>boolean </td>
+      <td>- </td>
+      <td>是否完成运单 </td>
+      <td>false </td>
+    </tr>
+    <tr>
+      <td>goodsNo </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>货物运单号 </td>
+      <td>718000872251 </td>
+    </tr>
+    <tr>
+      <td>categoryName </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>分类名称 </td>
+      <td>食品饮料 </td>
+    </tr>
+    <tr>
+      <td>goodsName </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>货物名称 </td>
+      <td>面包 </td>
+    </tr>
+    <tr>
+      <td>goodsNum </td>
+      <td>int </td>
+      <td>- </td>
+      <td>货物数量 </td>
+      <td>1 </td>
+    </tr>
+    <tr>
+      <td>id </td>
+      <td>long </td>
+      <td>- </td>
+      <td>主键ID </td>
+      <td>1 </td>
+    </tr>
+    <tr>
+      <td>goodses </td>
+      <td>array </td>
+      <td>- </td>
+      <td>货物 </td>
+      <td>[categoryName:食品饮料, goodsName:面包, goodsNum:1, id:3] </td>
+    </tr>
+    <tr>
+      <td>id </td>
+      <td>long </td>
+      <td>- </td>
+      <td>主键ID </td>
+      <td>1 </td>
+    </tr>
+    <tr>
+      <td>note </td>
+      <td>string </td>
+      <td>- </td>
+      <td>备注（处理结果） </td>
+      <td>111111111111 </td>
+    </tr>
+    <tr>
+      <td>status </td>
+      <td>int </td>
+      <td>- </td>
+      <td>状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） </td>
+      <td>1 </td>
+    </tr>
+    <tr>
+      <td>sysNo </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>系统运单号 </td>
+      <td>YT20161230120202 </td>
+    </tr>
+    <tr>
+      <td>weight </td>
+      <td>int </td>
+      <td>- </td>
+      <td>重量（单位：g） </td>
+      <td>6000 </td>
+    </tr>
+  </tbody>
+</table>
+<hr/>
+<h4><a href='#5.4订单状态' name='5.4订单状态'>5.4 订单状态</a></h4>
+<h6><a href="#接口地址" name="接口地址">接口地址</a></h6>
+<p><a href="http://127.0.0.1/waybills/{0}/detail">http://127.0.0.1/waybills/{0}/detail</a></p>
+<h6><a href="#请求方法" name="请求方法">请求方法</a></h6>
+<p>GET</p>
+<h6><a href="#url参数" name="url参数">URL参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th>序号</th>
+      <th>类型</th>
+      <th>最大长度</th>
+      <th>描述</th>
+      <th>示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0 </td>
+      <td>long </td>
+      <td>- </td>
+      <td>主键ID </td>
+      <td>1 </td>
+    </tr>
+  </tbody>
+</table>
+<h6><a href="#请求参数" name="请求参数">请求参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>类型</th>
+      <th>是否必填</th>
+      <th>最大长度</th>
+      <th>描述</th>
+      <th>默认值</th>
+      <th>示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>accessToken </td>
+      <td>object </td>
+      <td>是 </td>
+      <td>- </td>
+      <td>授权码 </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+<h6><a href="#响应参数" name="响应参数">响应参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>类型</th>
+      <th>最大长度</th>
+      <th>描述</th>
+      <th>示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>createdDate </td>
+      <td>long </td>
+      <td>- </td>
+      <td>创建时间（毫秒数） </td>
+      <td>1482814443332 </td>
+    </tr>
+    <tr>
+      <td>id </td>
+      <td>long </td>
+      <td>- </td>
+      <td>主键ID </td>
+      <td>67 </td>
+    </tr>
+    <tr>
+      <td>createdDate </td>
+      <td>long </td>
+      <td>- </td>
+      <td>创建时间（毫秒数） </td>
+      <td>1482814443332 </td>
+    </tr>
+    <tr>
+      <td>sysUserJobNumber </td>
+      <td>string </td>
+      <td>200 </td>
+      <td>工号 </td>
+      <td>GL001 </td>
+    </tr>
+    <tr>
+      <td>sysUserName </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>操作人员姓名 </td>
+      <td>张兵 </td>
+    </tr>
+    <tr>
+      <td>sysUserTel </td>
+      <td>string </td>
+      <td>50 </td>
+      <td>操作人员电话 </td>
+      <td>18223456789 </td>
+    </tr>
+    <tr>
+      <td>text </td>
+      <td>string </td>
+      <td>- </td>
+      <td>说明 </td>
+      <td>1 </td>
+    </tr>
+    <tr>
+      <td>notes </td>
+      <td>array </td>
+      <td>- </td>
+      <td>备注 </td>
+      <td>[createdDate:1482814443332, sysUserJobNumber:KF001, sysUserName:李敏, sysUserTel:13657847656, text:2222] </td>
+    </tr>
+    <tr>
+      <td>status </td>
+      <td>int </td>
+      <td>- </td>
+      <td>状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） </td>
+      <td>8 </td>
+    </tr>
+    <tr>
+      <td>sysUserJobNumber </td>
+      <td>string </td>
+      <td>200 </td>
+      <td>工号 </td>
+      <td>GL001 </td>
+    </tr>
+    <tr>
+      <td>sysUserName </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>操作人员姓名 </td>
+      <td>张兵 </td>
+    </tr>
+    <tr>
+      <td>sysUserTel </td>
+      <td>string </td>
+      <td>50 </td>
+      <td>操作人员电话 </td>
+      <td>18223456789 </td>
+    </tr>
+    <tr>
+      <td>text </td>
+      <td>string </td>
+      <td>- </td>
+      <td>说明 </td>
+      <td>1 </td>
+    </tr>
+    <tr>
+      <td>list </td>
+      <td>array </td>
+      <td>- </td>
+      <td>内容 </td>
+      <td>[createdDate:1482808721748, id:67, notes:[createdDate:1482814443332, sysUserJobNumber:KF001, sysUserName:李敏, sysUserTel:13657847656, text:2222], status:8, sysUserJobNumber:GL001, sysUserName:张兵, sysUserTel:18223456789, text:1] </td>
+    </tr>
+  </tbody>
+</table>
+<hr/>
+<h4><a href='#5.5订单号查单' name='5.5订单号查单'>5.5 订单号查单</a></h4>
+<h6><a href="#接口地址" name="接口地址">接口地址</a></h6>
+<p><a href="http://127.0.0.1/waybills/goodsNo">http://127.0.0.1/waybills/goodsNo</a></p>
+<h6><a href="#请求方法" name="请求方法">请求方法</a></h6>
+<p>GET</p>
+<h6><a href="#请求参数" name="请求参数">请求参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>类型</th>
+      <th>是否必填</th>
+      <th>最大长度</th>
+      <th>描述</th>
+      <th>默认值</th>
+      <th>示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>accessToken </td>
+      <td>object </td>
+      <td>是 </td>
+      <td>- </td>
+      <td>授权码 </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>goodsNo </td>
+      <td>string </td>
+      <td>是 </td>
+      <td>100 </td>
+      <td>货物运单号 </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+<h6><a href="#响应参数" name="响应参数">响应参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>类型</th>
+      <th>最大长度</th>
+      <th>描述</th>
+      <th>示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>area </td>
+      <td>string </td>
+      <td>250 </td>
+      <td>所属区域 </td>
+      <td>蓝 </td>
+    </tr>
+    <tr>
+      <td>consigneeAddress </td>
+      <td>string </td>
+      <td>250 </td>
+      <td>收货人的地址 </td>
+      <td>花语苑 </td>
+    </tr>
+    <tr>
+      <td>consigneeName </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>收货人姓名 </td>
+      <td>田田 </td>
+    </tr>
+    <tr>
+      <td>consigneeTel </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>收货人电话 </td>
+      <td>17780533682 </td>
+    </tr>
+    <tr>
+      <td>consignorAddress </td>
+      <td>string </td>
+      <td>250 </td>
+      <td>发货人地址 </td>
+      <td>眉山市东坡区环湖中路雕像国际广场 伊藤洋华堂 </td>
+    </tr>
+    <tr>
+      <td>consignorName </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>发货人姓名 </td>
+      <td>田田 </td>
+    </tr>
+    <tr>
+      <td>consignorTel </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>发货人电话 </td>
+      <td>17780533682 </td>
+    </tr>
+    <tr>
+      <td>distributionDate </td>
+      <td>long </td>
+      <td>- </td>
+      <td>开始配送时间（毫秒数） </td>
+      <td>1482467676252 </td>
+    </tr>
+    <tr>
+      <td>distributionName </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>配送人员姓名 </td>
+      <td>杨森 </td>
+    </tr>
+    <tr>
+      <td>distributionTel </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>配送人员联系电话 </td>
+      <td>18224060100 </td>
+    </tr>
+    <tr>
+      <td>eta </td>
+      <td>long </td>
+      <td>- </td>
+      <td>预计到达时间（毫秒数） </td>
+      <td>0 </td>
+    </tr>
+    <tr>
+      <td>finishTime </td>
+      <td>long </td>
+      <td>- </td>
+      <td>完成时间（毫秒数） </td>
+      <td>1482467691267 </td>
+    </tr>
+    <tr>
+      <td>finished </td>
+      <td>boolean </td>
+      <td>- </td>
+      <td>是否完成运单 </td>
+      <td>false </td>
+    </tr>
+    <tr>
+      <td>goodsNo </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>货物运单号 </td>
+      <td>718000872269 </td>
+    </tr>
+    <tr>
+      <td>categoryName </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>分类名称 </td>
+      <td>中外名酒 </td>
+    </tr>
+    <tr>
+      <td>goodsName </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>货物名称 </td>
+      <td>洋酒 </td>
+    </tr>
+    <tr>
+      <td>goodsNum </td>
+      <td>int </td>
+      <td>- </td>
+      <td>货物数量 </td>
+      <td>1 </td>
+    </tr>
+    <tr>
+      <td>id </td>
+      <td>long </td>
+      <td>- </td>
+      <td>主键ID </td>
+      <td>6 </td>
+    </tr>
+    <tr>
+      <td>goodses </td>
+      <td>array </td>
+      <td>- </td>
+      <td>货物 </td>
+      <td>[categoryName:中外名酒, goodsName:洋酒, goodsNum:1, id:18] </td>
+    </tr>
+    <tr>
+      <td>id </td>
+      <td>long </td>
+      <td>- </td>
+      <td>主键ID </td>
+      <td>6 </td>
+    </tr>
+    <tr>
+      <td>note </td>
+      <td>string </td>
+      <td>- </td>
+      <td>备注（处理结果） </td>
+      <td>111111111111 </td>
+    </tr>
+    <tr>
+      <td>oldWaybillSysNo </td>
+      <td>string </td>
+      <td>200 </td>
+      <td>旧运单系统单号 </td>
+      <td>YT20161223122107 </td>
+    </tr>
+    <tr>
+      <td>status </td>
+      <td>int </td>
+      <td>- </td>
+      <td>状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） </td>
+      <td>5 </td>
+    </tr>
+    <tr>
+      <td>sysNo </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>系统运单号 </td>
+      <td>YT20161223123312 </td>
+    </tr>
+    <tr>
+      <td>weight </td>
+      <td>int </td>
+      <td>- </td>
+      <td>重量（单位：g） </td>
+      <td>6000 </td>
+    </tr>
+  </tbody>
+</table>
+<hr/>
+<h4><a href='#5.6订单号查位置' name='5.6订单号查位置'>5.6 订单号查位置</a></h4>
+<h6><a href="#接口地址" name="接口地址">接口地址</a></h6>
+<p><a href="http://127.0.0.1/waybills/location">http://127.0.0.1/waybills/location</a></p>
+<h6><a href="#请求方法" name="请求方法">请求方法</a></h6>
+<p>GET</p>
+<h6><a href="#请求参数" name="请求参数">请求参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>类型</th>
+      <th>是否必填</th>
+      <th>最大长度</th>
+      <th>描述</th>
+      <th>默认值</th>
+      <th>示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>accessToken </td>
+      <td>object </td>
+      <td>是 </td>
+      <td>- </td>
+      <td>授权码 </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>goodsNo </td>
+      <td>string </td>
+      <td>是 </td>
+      <td>100 </td>
+      <td>货物运单号 </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+<h6><a href="#响应参数" name="响应参数">响应参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>类型</th>
+      <th>最大长度</th>
+      <th>描述</th>
+      <th>示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>lat </td>
+      <td>double </td>
+      <td>- </td>
+      <td>纬度 </td>
+      <td>30.072456 </td>
+    </tr>
+    <tr>
+      <td>lng </td>
+      <td>double </td>
+      <td>- </td>
+      <td>经度 </td>
+      <td>103.84297 </td>
+    </tr>
+  </tbody>
+</table>
+<hr/>
+<h4><a href='#5.7订单接单' name='5.7订单接单'>5.7 订单接单</a></h4>
+<h6><a href="#接口地址" name="接口地址">接口地址</a></h6>
+<p><a href="http://127.0.0.1/waybills/takeOrder">http://127.0.0.1/waybills/takeOrder</a></p>
+<h6><a href="#请求方法" name="请求方法">请求方法</a></h6>
+<p>POST</p>
+<h6><a href="#请求参数" name="请求参数">请求参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>类型</th>
+      <th>是否必填</th>
+      <th>最大长度</th>
+      <th>描述</th>
+      <th>默认值</th>
+      <th>示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>accessToken </td>
+      <td>object </td>
+      <td>是 </td>
+      <td>- </td>
+      <td>授权码 </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>address </td>
+      <td>string </td>
+      <td>否 </td>
+      <td>200 </td>
+      <td>公司地址 </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>id </td>
+      <td>long </td>
+      <td>是 </td>
+      <td>- </td>
+      <td>主键ID </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>lat </td>
+      <td>double </td>
+      <td>否 </td>
+      <td>- </td>
+      <td>纬度 </td>
+      <td> </td>
+      <td>30.072456 </td>
+    </tr>
+    <tr>
+      <td>lng </td>
+      <td>double </td>
+      <td>否 </td>
+      <td>- </td>
+      <td>经度 </td>
+      <td> </td>
+      <td>103.84297 </td>
+    </tr>
+  </tbody>
+</table>
+<h6><a href="#响应参数" name="响应参数">响应参数</a></h6>
+<p>无</p>
+<hr/>
+<h4><a href='#5.8到货处理' name='5.8到货处理'>5.8 到货处理</a></h4>
+<h6><a href="#接口地址" name="接口地址">接口地址</a></h6>
+<p><a href="http://127.0.0.1/waybills/arrive">http://127.0.0.1/waybills/arrive</a></p>
+<h6><a href="#请求方法" name="请求方法">请求方法</a></h6>
+<p>POST</p>
+<h6><a href="#请求参数" name="请求参数">请求参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>类型</th>
+      <th>是否必填</th>
+      <th>最大长度</th>
+      <th>描述</th>
+      <th>默认值</th>
+      <th>示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>accessToken </td>
+      <td>object </td>
+      <td>是 </td>
+      <td>- </td>
+      <td>授权码 </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>address </td>
+      <td>string </td>
+      <td>否 </td>
+      <td>200 </td>
+      <td>公司地址 </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>status </td>
+      <td>enum </td>
+      <td>是 </td>
+      <td>- </td>
+      <td>状态（3：签收，4：其他成功情况，5：拒收，6：其他失败情况） </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>goodsNo </td>
+      <td>string </td>
+      <td>是 </td>
+      <td>100 </td>
+      <td>货物运单号 </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>lat </td>
+      <td>double </td>
+      <td>否 </td>
+      <td>- </td>
+      <td>纬度 </td>
+      <td> </td>
+      <td>30.072456 </td>
+    </tr>
+    <tr>
+      <td>lng </td>
+      <td>double </td>
+      <td>否 </td>
+      <td>- </td>
+      <td>经度 </td>
+      <td> </td>
+      <td>103.84297 </td>
+    </tr>
+    <tr>
+      <td>text </td>
+      <td>string </td>
+      <td>否 </td>
+      <td>- </td>
+      <td>说明 </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+<h6><a href="#响应参数" name="响应参数">响应参数</a></h6>
+<p>无</p>
+<hr/>
+<h4><a href='#5.9更新订单轨迹' name='5.9更新订单轨迹'>5.9 更新订单轨迹</a></h4>
+<h6><a href="#接口地址" name="接口地址">接口地址</a></h6>
+<p><a href="http://127.0.0.1/waybills/route">http://127.0.0.1/waybills/route</a></p>
+<h6><a href="#请求方法" name="请求方法">请求方法</a></h6>
+<p>POST</p>
+<h6><a href="#请求参数" name="请求参数">请求参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>类型</th>
+      <th>是否必填</th>
+      <th>最大长度</th>
+      <th>描述</th>
+      <th>默认值</th>
+      <th>示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>accessToken </td>
+      <td>object </td>
+      <td>是 </td>
+      <td>- </td>
+      <td>授权码 </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>lat </td>
+      <td>double </td>
+      <td>是 </td>
+      <td>- </td>
+      <td>纬度 </td>
+      <td> </td>
+      <td>30.072456 </td>
+    </tr>
+    <tr>
+      <td>lng </td>
+      <td>double </td>
+      <td>是 </td>
+      <td>- </td>
+      <td>经度 </td>
+      <td> </td>
+      <td>103.84297 </td>
+    </tr>
+  </tbody>
+</table>
+<h6><a href="#响应参数" name="响应参数">响应参数</a></h6>
+<p>无</p>
+<hr/>
+</body>
+</html>

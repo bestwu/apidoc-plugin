@@ -8,14 +8,13 @@ buildscript {
         classpath 'cn.bestwu.gradle:apidoc-plugin:1.1'
     }
 }
-
+group 'cn.bestwu.gradle'
+version '1.0'
 
 apply plugin: 'java'
 apply plugin: 'cn.bestwu.apidoc'
 
 apidoc {
-    input '_t'
-    output project.buildDir.name + '/doc'
     apiHost 'http://127.0.0.1'
 }
 

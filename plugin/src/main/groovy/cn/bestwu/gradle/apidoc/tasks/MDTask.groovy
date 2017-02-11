@@ -1,6 +1,7 @@
 package cn.bestwu.gradle.apidoc.tasks
 
 import groovy.json.JsonSlurper
+import groovy.json.internal.LazyMap
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.InputDirectory
@@ -47,6 +48,8 @@ class MDTask extends DefaultTask {
                             def leafName = leaf.text
                             out.println "#### [${i}.${m} ${leafName}](${treeName}.md#${i}.${m}${leafName})"
                     }
+                    out.println ''
+                    out.println '---'
             }
         }
         trees.eachWithIndex() {
@@ -54,7 +57,7 @@ class MDTask extends DefaultTask {
                 i++
                 def treeName = tree.text
                 new File(mdOutput, "${treeName}.md").withPrintWriter(encoding) { out ->
-                    out.println " ### ${i}.${treeName}"
+                    out.println "### ${i} ${treeName}"
                     out.println ""
                     tree.children.eachWithIndex() {
                         leaf, m ->
@@ -73,42 +76,16 @@ class MDTask extends DefaultTask {
                             out.println "###### 请求方法"
                             out.println "${api.httpMethod}"
                             out.println ""
-                            def urlParams = api.urlParams
-                            if (urlParams != null && !urlParams.isEmpty()) {
-                                out.println ""
-                                out.println "###### URL上的参数说明"
-                                out.println ""
-                                out.println "|参数序号|参数说明|"
-                                out.println "|---|---|"
-                                printUrlParams(out, fields, urlParams)
-                            }
-                            out.println "###### 请求参数说明"
-                            out.println ""
-                            def params = api.params
-                            if (params.isEmpty()) {
-                                out.println "无"
-                            } else {
-                                out.println "|参数名称|值描述|是否可空|限制长度|参数类型|"
-                                out.println "|---|---|---|---|---|"
-                                params.each {
-                                    field ->
-                                        printParams(out, fields, field)
-                                }
-                            }
 
-                            out.println "###### 响应字段说明"
-                            out.println ""
-                            def results = api.results
-                            if (results.isEmpty()) {
-                                out.println "无"
-                            } else {
-                                out.println "|名称|值描述|限制长度|参数类型|"
-                                out.println "|---|---|---|---|"
-                                results.each {
-                                    field ->
-                                        printResult(out, fields, field)
+                            if (api.version && api.version.class == ArrayList.class) {
+                                api.version.each {
+                                    fillDesc(out, api, fields, it)
                                 }
-                            }
+                            } else
+                                fillDesc(out, api, fields, null)
+
+                            out.println ''
+                            out.println '---'
                     }
                 }
         }
@@ -116,77 +93,124 @@ class MDTask extends DefaultTask {
 
     }
 
-    def printUrlParams(out, fields, key) {
-        def keyClass = key.class
-        switch (keyClass) {
-            case String.class:
-                getFields(fields, key).eachWithIndex {
-                    p, i ->
-                        out.println "| ${i} | ${p.desc} |"
-                }
-                break
-            case ArrayList.class:
-                key.each {
-                    getFields(fields, it).eachWithIndex {
-                        p, i ->
-                            out.println "| ${i} | ${p.desc} |"
-                    }
-                }
-                break
+    def fillDesc(out, api, fields, version) {
+        def urlParams = api.urlParams
+        def params = api.params
+        def results = api.results
+        if (version && '1.0' != version && api[version]) {
+            if (api[version].urlParams)
+                urlParams = api[version].urlParams
+            if (api[version].params)
+                params = api[version].params
+            if (api[version].results)
+                results = api[version].results
         }
 
-    }
+        urlParams = getFields(fields, urlParams)
+        if (urlParams != null && !urlParams.isEmpty()) {
+            out.println ""
+            out.println "###### URL参数"
+            out.println ""
+            out.println "|序号|类型|最大长度|描述|示例值|"
+            out.println "|---|---|---|---|---|"
+            urlParams.eachWithIndex {
+                it, index ->
+                    out.println "| ${index} | ${it.type} | ${it.length} | ${it.desc} | ${it.tempValue} |"
+            }
+        }
+        out.println "###### 请求参数"
+        out.println ""
 
-    def printParams(out, fields, key) {
-        getFields(fields, key).each {
-            out.println "| ${it.name} | ${it.desc} | ${it.optional ? '是' : '否'} | 无 | ${it.type} |"
+        params = getFields(fields, params)
+        if (params == null || params.isEmpty()) {
+            out.println "无"
+        } else {
+            out.println "|名称|类型|是否必填|最大长度|描述|默认值|示例值|"
+            out.println "|---|---|---|---|---|---|---|"
+            params.each {
+                out.println "| ${it.name} | ${it.type} | ${it.notNullDesc} | ${it.length} | ${it.desc} | ${it.value} | ${it.tempValue} |"
+            }
+        }
+        out.println "###### 响应参数"
+        out.println ""
+
+        results = getFields(fields, results)
+        if (results == null || results.isEmpty()) {
+            out.println "无"
+        } else {
+            out.println "|名称|类型|最大长度|描述|示例值|"
+            out.println "|---|---|---|---|---|"
+            results.each {
+                out.println "| ${it.name} | ${it.type} | ${it.length} | ${it.desc} | ${it.tempValue} |"
+            }
         }
     }
 
-    def printResult(out, fields, key) {
-        getFields(fields, key).each {
-            out.println "| ${it.name} | ${it.desc} | ${it.optional ? '是' : '否'} | ${it.type} |"
-        }
-    }
 
     def getFields(fields, key) {
+        if (!key)
+            return null
         def keyClass = key.class
         switch (keyClass) {
             case String.class:
-                def field = fields[key]
-                if (!field) {
-                    field = [name: key, desc: '']
+                if ('' == key) {
+                    return []
                 }
-                return getFields(fields, field)
+                def params = key.split('&')
+                def paramsObj = new HashMap()
+                params.each {
+                    def kv = it.split('=')
+                    if (kv.length == 2) {
+                        paramsObj.put(kv[0], kv[1])
+                    } else {
+                        paramsObj.put(it, kv[1])
+                    }
+                }
+                return getFields(fields, paramsObj)
             case ArrayList.class:
-                def newkey = []
-                key.each {
-                    it ->
-                        newkey.addAll(getFields(fields, it))
+                def flds = []
+                for (def i = 0; i < key.size(); i++) {
+                    def item = key[i]
+                    flds = flds.addAll(fields, getFields(item))
                 }
-                key = newkey
+                key = flds
                 break
             default:
-                def ftype = key['ftype']
-                if (ftype) {
-                    def field = fields[ftype]
-                    if (!field) {
-                        field = [name: key, desc: '']
+                def flds = []
+                key.each { k, v ->
+                    def notNull = null, name
+                    if (k.endsWith('&')) {
+                        notNull = true
+                        name = k.substring(0, k.length() - 1)
+                    } else if (k.endsWith('^')) {
+                        notNull = false
+                        name = k.substring(0, k.length() - 1)
+                    } else {
+                        name = k
                     }
-                    key['value'] = key['value'] == null ? field['value'] : null
-                    key['name'] = key['name'] == null ? field['name'] : null
-                    key['store'] = key['store'] == null ? field['store'] : null
-                    key['type'] = key['type'] == null ? field['type'] : null
-                    key['optional'] = key['optional'] == null ? field['optional'] : key['optional']
-                    key['desc'] = key['desc'] == null ? field['desc'] : null
-                    key.children = key.children.contains(null) ? field.children : key.children
+
+                    def field = fields[name]
+                    if (field == null) {
+                        field = [name: name]
+                    }
+                    if (notNull == null) {
+                        notNull = field.notNull
+                    }
+                    field.notNullDesc = notNull ? '是' : '否'
+
+                    if (v == null || '' == v) {
+                        field.tempValue = field.value
+                    } else {
+                        field.tempValue = v
+                        if (v.getClass() == LazyMap.class)
+                            flds.addAll(getFields(fields, v))
+                    }
+                    if (field.length == null)
+                        field.length = '-'
+                    field.length = '-' == field.length ? '\\-' : field.length
+                    flds.add(field)
                 }
-                key = [key]
-                def children = key.children
-                children.remove(null)
-                if (children != null && !children.isEmpty()) {
-                    key.addAll(getFields(fields, children))
-                }
+                key = flds
                 break
         }
         return key
