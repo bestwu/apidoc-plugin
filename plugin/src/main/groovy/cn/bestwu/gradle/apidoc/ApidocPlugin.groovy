@@ -24,13 +24,11 @@ class ApidocPlugin implements Plugin<Project> {
                     apiHost project.apidoc.apiHost
                     encoding project.apidoc.encoding
                 }
-                project.task('htmldoc', type: HtmlTask, group: 'app', description: '') {
+                project.task('htmldoc', dependsOn: project.mddoc, type: HtmlTask, group: 'app', description: '') {
                     input project.file(project.apidoc.output + '/md')
                     output project.file(project.apidoc.output + '/html')
                     encoding project.apidoc.encoding
                 }
-                project.task('apidoc', dependsOn: [project.mddoc, project.htmldoc], group: 'app', description: '') {}
-                project.htmldoc.mustRunAfter project.mddoc
             }
         }
     }
