@@ -50,7 +50,7 @@
       "city": "成都市"
     },
     "urlParams": "id=12",
-    "url": "/users/{0}"
+    "url": "/users/{id}"
   },
   {
     "httpMethod": "POST",
@@ -107,7 +107,7 @@
       "city": "\u6210\u90fd\u5e02"
     },
     "urlParams": "id=1",
-    "url": "/users/{0}"
+    "url": "/users/{id}"
   },
   {
     "httpMethod": "PUT",
@@ -465,7 +465,7 @@
       }
     },
     "urlParams": "id=1",
-    "url": "/waybills/{0}"
+    "url": "/waybills/{id}"
   },
   {
     "httpMethod": "GET",
@@ -493,7 +493,7 @@
       }
     },
     "urlParams": "id=1",
-    "url": "/waybills/{0}/detail"
+    "url": "/waybills/{id}/detail"
   },
   {
     "httpMethod": "GET",

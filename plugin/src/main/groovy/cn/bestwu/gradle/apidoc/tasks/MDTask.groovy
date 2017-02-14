@@ -111,11 +111,11 @@ class MDTask extends DefaultTask {
             out.println ""
             out.println "###### URL参数"
             out.println ""
-            out.println "|序号|类型|最大长度|描述|示例值|"
+            out.println "|名称|类型|最大长度|描述|示例值|"
             out.println "|---|---|---|---|---|"
             urlParams.eachWithIndex {
                 it, index ->
-                    out.println "| ${index} | ${it.type} | ${it.length} | ${it.desc} | ${it.tempValue} |"
+                    out.println "| ${it.name} | ${it.type} | ${it.length} | ${it.desc} | ${it.tempValue} |"
             }
         }
         out.println "###### 请求参数"
