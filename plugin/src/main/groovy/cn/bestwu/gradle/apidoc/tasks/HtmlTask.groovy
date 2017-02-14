@@ -40,14 +40,14 @@ class HtmlTask extends DefaultTask {
         def header = '<!DOCTYPE html>\n' +
                 '<html>\n' +
                 '<head>\n' +
-                '    <meta charset="UTF-8"/>\n' +
-                '    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>\n' +
-                '    <meta name="renderer" content="webkit"/>\n' +
-                '    <meta name="apple-touch-fullscreen" content="yes"/>\n' +
-                '    <meta name="apple-mobile-web-app-capable" content="yes"/>\n' +
-                '    <meta name="viewport" content="width=device-width, initial-scale=1"/>\n' +
-                '    <title>' + title + '</title>\n' +
-                '<style type="text/css">\n' +
+                '  <meta charset="UTF-8"/>\n' +
+                '  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>\n' +
+                '  <meta name="renderer" content="webkit"/>\n' +
+                '  <meta name="apple-touch-fullscreen" content="yes"/>\n' +
+                '  <meta name="apple-mobile-web-app-capable" content="yes"/>\n' +
+                '  <meta name="viewport" content="width=device-width, initial-scale=1"/>\n' +
+                '  <title>' + title + '</title>\n' +
+                '  <style type="text/css">\n' +
                 '    body {\n' +
                 '      margin: 0;\n' +
                 '      left: 0;\n' +
