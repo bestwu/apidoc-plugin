@@ -1,0 +1,139 @@
+//打包发布
+apply plugin: 'maven-publish'
+
+task sourceJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task groovydocJar(type: Jar) {
+    classifier = 'javadoc'
+    from groovydoc
+}
+
+artifacts {
+    archives groovydocJar, sourceJar
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            if (plugins.hasPlugin('war')) {
+                from components.web
+            } else {
+                from components.java
+            }
+
+            artifact sourceJar {
+                classifier 'sources'
+            }
+
+            artifact groovydocJar {
+                classifier 'javadoc'
+            }
+
+            pom.withXml {
+                Node root = asNode()
+
+                //compile
+                root.dependencies.'*'.findAll() {
+                    it.scope.text() == 'runtime' && project.configurations.compile.dependencies.find { dep ->
+                        dep.group == it.groupId.text() && dep.name == it.artifactId.text()
+                    }
+                }.each {
+                    it.scope*.value = 'compile'
+                }
+                //provided
+                root.dependencies.'*'.findAll() {
+                    it.scope.text() == 'runtime' && project.configurations.provided.dependencies.find { dep ->
+                        dep.group == it.groupId.text() && dep.name == it.artifactId.text()
+                    }
+                }.each {
+                    it.scope*.value = 'provided'
+                }
+                //optional
+                root.dependencies.'*'.findAll() {
+                    it.scope.text() == 'runtime' && project.configurations.optional.dependencies.find { dep ->
+                        dep.group == it.groupId.text() && dep.name == it.artifactId.text()
+                    }
+                }.each {
+                    it.scope*.value = 'compile'
+                    it.appendNode('optional', 'true')
+                }
+
+                root.children().last() + {
+                    resolveStrategy = DELEGATE_FIRST
+                    name "${project.name}"
+                    packaging 'jar'
+                    description "${project.name}"
+                    url "https://bitbucket.org/bestwu/${project.name}"
+                    licenses {
+                        license {
+                            name 'The Apache Software License, Version 2.0'
+                            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                            distribution 'repo'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id 'bestwu'
+                            name 'Peter Wu'
+                            email 'piterwu@outlook.com'
+                        }
+                    }
+                    scm {
+                        url "https://bitbucket.org/bestwu/${project.name}"
+                        connection "scm:https://bestwu@bitbucket.org/bestwu/${project.name}.git"
+                        developerConnection "scm:git@bitbucket.org:bestwu/${project.name}.git"
+                    }
+                }
+            }
+        }
+    }
+}
+
+project.apply plugin: "com.gradle.plugin-publish"
+
+String name = "${project.name}"
+pluginBundle {
+    website = "https://bitbucket.org/bestwu/${project.name}"
+    vcsUrl = "https://bitbucket.org/bestwu/${project.name}"
+    description = "${project.name}"
+    tags = ['bestwu', name]
+
+    plugins {
+        plugin {
+            id = pluginId
+            displayName = "${project.name}"
+        }
+    }
+}
+
+//发布到私有仓库并同步中央仓库及mavenCentral
+project.apply plugin: 'com.jfrog.bintray'
+bintray {
+    user = bintrayUsername
+    key = bintrayApiKey
+    publications = ['mavenJava']
+
+    publish = true
+    //    override = true
+    pkg {
+        repo = 'maven'
+        name = "${project.name}"
+        desc = "${project.name}"
+        vcsUrl = "https://bitbucket.org/bestwu/${project.name}"
+        licenses = ['Apache-2.0']
+        labels = ["${project.name}"]
+
+        version {
+            mavenCentralSync {
+                sync = true
+                user = mavenCentralUsername
+                password = mavenCentralPassword
+                close = '1'
+            }
+        }
+    }
+}
+bintrayUpload.dependsOn publishToMavenLocal

@@ -1,4 +1,19 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        maven { url 'http://127.0.0.1:8081/plugins/' }
+        jcenter()
+        maven { url 'http://repo.spring.io/plugins-release/' }
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7'
+        classpath 'com.gradle.publish:plugin-publish-plugin:0.9.7'
+    }
+}
+
 apply plugin: 'groovy'
+project.apply(from: "publish.gradle")
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
