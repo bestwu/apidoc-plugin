@@ -18,16 +18,30 @@ class ApidocPlugin implements Plugin<Project> {
         project.configure(project) {
             project.extensions.create('apidoc', ApidocExtension)
             afterEvaluate {
-                project.task('mddoc', type: MDTask, group: 'app', description: '') {
+                project.task('mddoc', type: MDTask, description: '') {
                     input project.file(project.apidoc.input)
                     output project.file(project.apidoc.output + '/md')
-                    apiHost project.apidoc.apiHost
+                    apiHost project.apidoc.apiHost == '' ? project.apidoc.defaultHost : project.apidoc.apiHost
                     encoding project.apidoc.encoding
                 }
                 project.task('htmldoc', dependsOn: project.mddoc, type: HtmlTask, group: 'app', description: '') {
                     input project.file(project.apidoc.output + '/md')
                     output project.file(project.apidoc.output + '/html')
                     encoding project.apidoc.encoding
+                }
+                project.task('alphaMddoc', type: MDTask, description: '') {
+                    input project.file(project.apidoc.input)
+                    output project.file(project.apidoc.output + '/md')
+                    apiHost project.apidoc.defaultHost
+                    encoding project.apidoc.encoding
+                }
+                project.task('alphaHtmldoc', type: HtmlTask, group: 'app', description: '') {
+                    input project.file(project.apidoc.output + '/md')
+                    output project.file(project.apidoc.output + '/html')
+                    encoding project.apidoc.encoding
+                    doFirst {
+                        alphaMddoc.execute()
+                    }
                 }
             }
         }
