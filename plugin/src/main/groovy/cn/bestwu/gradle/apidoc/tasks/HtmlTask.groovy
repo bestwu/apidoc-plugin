@@ -220,7 +220,19 @@ class HtmlTask extends DefaultTask {
                 '    }\n' +
                 '\n' +
                 '    tr:nth-child(even) td, tr:nth-child(even) th {\n' +
-                '      background: #eee;\n' +
+                '      background: #efefef;\n' +
+                '    }\n' +
+                '\n' +
+                '    tr:nth-child(odd) td:hover, tr:nth-child(odd) th:hover {\n' +
+                '      background: #efefef;\n' +
+                '    }\n' +
+                '\n' +
+                '    tr:nth-child(even) td:hover, tr:nth-child(even) th:hover {\n' +
+                '      background: white;\n' +
+                '    }\n' +
+                '\n' +
+                '    table th {\n' +
+                '      white-space: nowrap;\n' +
                 '    }\n' +
                 '  </style>\n' +
                 '</head>\n' +
