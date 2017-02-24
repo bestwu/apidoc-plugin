@@ -76,6 +76,11 @@ class MDTask extends DefaultTask {
                             out.println "###### 请求方法"
                             out.println "${api.httpMethod}"
                             out.println ""
+                            if (api.desc) {
+                                out.println "###### 说明"
+                                out.println "${api.desc}"
+                                out.println ""
+                            }
 
                             if (api.version && api.version.class == ArrayList.class) {
                                 api.version.each {
