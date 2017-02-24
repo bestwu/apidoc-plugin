@@ -1,23 +1,14 @@
-buildscript {
-    repositories {
-        jcenter()
-        maven { url 'http://repo.spring.io/plugins-release/' }
-        maven { url 'https://plugins.gradle.org/m2/' }
-    }
-    dependencies {
-        classpath 'cn.bestwu.gradle:apidoc-plugin:1.1'
-    }
+plugins {
+    id 'java'
+    id 'cn.bestwu.apidoc' version '1.1'
 }
+
 group 'cn.bestwu.gradle'
 version '1.0'
-
-apply plugin: 'java'
-apply plugin: 'cn.bestwu.apidoc'
 
 apidoc {
     apiHost 'http://127.0.0.1'
 }
-
 
 sourceCompatibility = 1.7
 
