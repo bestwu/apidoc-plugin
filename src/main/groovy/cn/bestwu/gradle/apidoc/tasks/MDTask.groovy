@@ -1,7 +1,7 @@
 package cn.bestwu.gradle.apidoc.tasks
 
+import cn.bestwu.gradle.apidoc.support.OrderedJsonParserUsingCharacterSource
 import groovy.json.JsonSlurper
-import groovy.json.internal.LazyMap
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.InputDirectory
@@ -33,7 +33,9 @@ class MDTask extends DefaultTask {
         def slurper = new JsonSlurper()
 
         def trees = slurper.parseText(jsonFilter(new File(input, 'tree.json')))
-        def apis = slurper.parseText(jsonFilter(new File(input, "api.json")))
+        //        def apis = slurper.parseText(jsonFilter(new File(input, "api.json")))
+        def apis = new OrderedJsonParserUsingCharacterSource().parse(jsonFilter(new File(input, "api.json")))
+
         def fields = slurper.parseText(jsonFilter(new File(input, "field.json")))
         def catalogFile = new File(mdOutput, "index.md")
         def readme = new File(input, "README.md")
@@ -264,17 +266,18 @@ class MDTask extends DefaultTask {
                     }
                     field.notNullDesc = notNull ? '是' : '否'
 
-                    if (v == null || '' == v) {
+                    if (v == null || '' == v || ((v instanceof Map || v instanceof Collection) && v.size() == 0)) {
                         field.tempValue = field.value
                     } else {
                         field.tempValue = v
-                        if (v.getClass() == LazyMap.class)
-                            flds.addAll(getFields(fields, v))
                     }
                     if (field.length == null)
                         field.length = '-'
                     field.length = '-' == field.length ? '\\-' : field.length
                     flds.add(field)
+                    if (v instanceof Map && v.size() > 0) {
+                        flds.addAll(getFields(fields, v))
+                    }
                 }
                 key = flds
                 break

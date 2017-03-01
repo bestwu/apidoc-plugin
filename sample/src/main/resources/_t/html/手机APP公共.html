@@ -7,7 +7,7 @@
   <meta name="apple-touch-fullscreen" content="yes"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>签名算法</title>
+  <title>手机APP公共</title>
   <style type="text/css">
     body {
       margin: 0;
@@ -214,66 +214,78 @@
 </ul>
 <hr/></div>
 <div mdin style="float: left;width:74%;margin-left: 1%;">
-<h2><a href="#签名算法" name="签名算法">签名算法</a></h2>
-<ul>
-  <li>
-  <p>筛选<br/>获取所有请求参数，不包括字节类型参数，如文件、字节流，不包括签名参数“sign”。</p></li>
-  <li>
-  <p>排序<br/>将筛选的参数按照参数名第一个字符的键值ASCII码递增排序（字母升序排序），如果遇到相同字符则按照第二个字符的键值ASCII码递增排序，以此类推。如果遇到一个参数多个值（如：q=1&amp;q=2）则转换为一个值为英文逗号（,）分隔的参数（如：q=1,2）</p></li>
-  <li>
-  <p>拼接<br/>将排序后的参数与其对应值，组合成“参数=参数值”的格式，加入当前时间毫秒数(从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数)，并且把这些参数用&amp;字符连接起来。此时生成的字符串为待签名字符串。<br/>例如下面的请求示例，参数值都是示例，开发者参考格式即可：</p></li>
-</ul>
-<pre><code class="html">    REQUEST URL: https://www.xxx.com?page=0&amp;size=25&amp;type=0&amp;showTime=&amp;start=0&amp;limit=25
-    
-      当前时间毫秒数(从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数):1462772665882
-    
-    组成的待签名字符串为：
-    
-      limit=25&amp;page=0&amp;size=25&amp;start=0&amp;type=0&amp;1462772665882
-</code></pre>
-<blockquote>
-  <p>注意：</p>
-  <blockquote>
-    <p>没有值的参数无需传递，也无需包含到待签名数据中；</p>
-    <p>待签名数据应该是原生值而不是URL Encoding之后的值。例如：调用某接口需要对请求参数email进行数字签名，那么待签名数据应该是email=test@msn.com，而不是email=test%40msn.com。</p>
-  </blockquote>
-</blockquote>
-<ul>
-  <li>使用MD5对待签名字符串进行加密，加密前进行加盐，加盐值为client_secret,待签名字符串为&ldquo;UTF-8&rdquo;编码。</li>
-</ul>
-<pre><code class="html">        假如client_secret为:alkdfjaso
-    
-        加盐算法 limit=25&amp;page=0&amp;size=25&amp;start=0&amp;type=0&amp;1462772665882{alkdfjaso}
-    
-        加密后值：96cf7db864ae65f3926b85f6d2d66d0b
-</code></pre>
-<ul>
-  <li>将之前取的时间毫秒数(从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数)及MD5加密后的字符串用“:”拼接并进行Base64编码，编码后的值为最终的签名值。</li>
-</ul>
-<pre><code class="html">        拼接字符串：1462772665882:96cf7db864ae65f3926b85f6d2d66d0b
-    
-        编码后：MTQ2Mjc3MjY2NTg4Mjo5NmNmN2RiODY0YWU2NWYzOTI2Yjg1ZjZkMmQ2NmQwYg==
-</code></pre>
-<ul>
-  <li>后台将验证当前时间，10分钟以内的请求为有效请求。所以时间应取当前时间毫秒数(从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数)，整个签名算法过程中时间应取统一值。</li>
-</ul>
-<h2><a href="#签名传递方式" name="签名传递方式">签名传递方式</a></h2>
-<ul>
-  <li>支持request.header、request.querystring、request.form等方式传递签名，签名参数名为：&ldquo;sign&rdquo;。便于客户端缓存数据，推荐使用request.header方便传递。</li>
-</ul>
-<pre><code><br/>Accept: application/json;version=1.0.b
-Accept-Language: zh-CN,en-US;q=0.5
-Accept-Encoding: gzip, deflate
-sign: MTQ2Mjc3MjY2NTg4Mjo5NmNmN2RiODY0YWU2NWYzOTI2Yjg1ZjZkMmQ2NmQwYg==
-
-或
-
-https://www.xxx.com?page=0&amp;size=25&amp;type=0&amp;showTime=&amp;start=0&amp;limit=25&amp;sign=MTQ2Mjc3MjY2NTg4Mjo5NmNmN2RiODY0YWU2NWYzOTI2Yjg1ZjZkMmQ2NmQwYg==
-</code></pre>
-<h2><a href="#值" name="值">值</a></h2>
-<blockquote>
-  <p>client_secret:QAZd37vdkiES0SBFr9gFIydHR1C2wxzZ</p>
-</blockquote></div>
+<h3><a href="#1-手机app公共" name="1-手机app公共">1 手机APP公共</a></h3>
+<h4><a href='#1.1省市区数据' name='1.1省市区数据'>1.1 省市区数据</a></h4>
+<h6><a href="#接口地址" name="接口地址">接口地址</a></h6>
+<p><a href="http://127.0.0.1/place.json">http://127.0.0.1/place.json</a></p>
+<h6><a href="#请求方法" name="请求方法">请求方法</a></h6>
+<p>GET</p>
+<h6><a href="#请求参数" name="请求参数">请求参数</a></h6>
+<p>无</p>
+<h6><a href="#响应参数" name="响应参数">响应参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>类型</th>
+      <th>最大长度</th>
+      <th>描述</th>
+      <th>示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>list </td>
+      <td>array </td>
+      <td>- </td>
+      <td>内容 </td>
+      <td>[id:110000, name:北京, children:[id:110101, name:东城区, children:[:]]] </td>
+    </tr>
+    <tr>
+      <td>id </td>
+      <td>long </td>
+      <td>- </td>
+      <td>主键ID </td>
+      <td>110101 </td>
+    </tr>
+    <tr>
+      <td>name </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>名称 </td>
+      <td>东城区 </td>
+    </tr>
+    <tr>
+      <td>children </td>
+      <td>array </td>
+      <td>- </td>
+      <td>子对象 </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>id </td>
+      <td>long </td>
+      <td>- </td>
+      <td>主键ID </td>
+      <td>110101 </td>
+    </tr>
+    <tr>
+      <td>name </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>名称 </td>
+      <td>东城区 </td>
+    </tr>
+    <tr>
+      <td>children </td>
+      <td>array </td>
+      <td>- </td>
+      <td>子对象 </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+<hr/></div>
 <div style="display:block;position:fixed;z-index:1001;bottom:10px;right:0;margin:0;padding:0;background-color:#c9c9c9">
   <a style="display:block;padding:12px;background:rgba(255,255,255,.5);" href="#">
     <span style="display:block;width:33px;height:24px;">TOP</span>

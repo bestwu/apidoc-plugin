@@ -1,5 +1,359 @@
 [
   {
+    "httpMethod": "GET",
+    "name": "我的投诉",
+    "desc": "",
+    "headers": {
+      "sign": ""
+    },
+    "params": {
+      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339",
+      "page": "",
+      "size": ""
+    },
+    "resourceType": "手机APP订单",
+    "results": {
+      "size": 7,
+      "total": 7,
+      "pages": 1,
+      "list": {
+        "id": 1691,
+        "waybillSysNo": "YT20170109170317",
+        "text": "东西坏的",
+        "c_note": {
+          "createdDate": 1487746147569,
+          "ct_note": "给你退",
+          "sysUserId": 1,
+          "sysUserNo": "KF001"
+        },
+        "resolved": true,
+        "createdDate": 1483953433584
+      },
+      "page": 1
+    },
+    "urlParams": "",
+    "url": "/complaints"
+  },
+  {
+    "httpMethod": "GET",
+    "name": "我的钱包",
+    "desc": "",
+    "headers": {
+      "sign": ""
+    },
+    "params": {
+      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339",
+      "page": "",
+      "size": ""
+    },
+    "resourceType": "手机APP支付",
+    "results": {
+      "money": 100,
+      "size": 2,
+      "total": 2,
+      "pages": 1,
+      "list": {
+        "subject": "\u94b1\u5305\u5145\u503c",
+        "createdDate": 1487726987744,
+        "totalAmount": 100
+      },
+      "page": 1
+    },
+    "urlParams": "",
+    "url": "/wallets"
+  },
+  {
+    "httpMethod": "POST",
+    "name": "充值",
+    "desc": "",
+    "headers": {
+      "sign": ""
+    },
+    "params": {
+      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339",
+      "money": "1",
+      "payment": "2"
+    },
+    "resourceType": "手机APP支付",
+    "results": {
+      "money": 1,
+      "payment": 2,
+      "orderInfo": "app_id=2016112103042572&biz_content=%7B%22out_trade_no%22%3A%22201702220929471%22%2C%22total_amount%22%3A%220.01%22%2C%22subject%22%3A%22%E9%92%B1%E5%8C%85%E5%85%85%E5%80%BC%22%2C%22body%22%3A%22%E9%92%B1%E5%8C%85%E5%85%85%E5%80%BC%22%2C%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22seller_id%22%3A%222088421595009690%22%7D&charset=UTF-8&method=alipay.trade.app.pay&notify_url=http%3A%2F%2F127.0.0.1%3A8080%2Fmobile%2Fnotifies%2Falipay&sign_type=RSA2&timestamp=2017-02-22+09%3A29%3A48&version=1.0&sign=lzMHOpwJIFdGMW8n4KIC%2FH9yUcP6w6SRmMMYtnn1o7QP2cMKdjizQIAd%2BddMKQpGVG2nOscTJ7cIiKkOk1rPe8C3Hb6HD6%2BVjIwK78bSCoM5rRI5hngQc6OMAuf52NlbtnNO8iJb6SQViWSP5TWDtYj9IRUPOyVB1bVD44Zw4QQ%3D"
+    },
+    "urlParams": "",
+    "url": "/wallets/charge"
+  },
+  {
+    "httpMethod": "GET",
+    "name": "alipay客户端结果验签",
+    "desc": "",
+    "headers": {
+      "sign": ""
+    },
+    "params": {
+      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339",
+      "alipay_trade_app_pay_response": "{\"code\":\"10000\",\"msg\":\"Success\",\"total_amount\":\"9.00\",\"app_id\":\"2014072300007148\",\"trade_no\":\"2014112400001000340011111118\",\"seller_id\":\"2088111111116894\",\"out_trade_no\":\"70501111111S001111119\"}",
+      "a_sign": "toffPr9RgL1FuP7BWg3q1JvvG9B0oaP23cqad2ih+cMCaixeEBB0ocwqC8OA4Oo+g03J2Ax8O2Vlf76yjeguZHctlvtunFGLGthhQmEtMIGqlU4G+VZTx/ZlNm8iipOUOILf2EyB55QuSxBC5k5/t1eLnXLlRSwXQljday8hVlU=",
+      "sign_type": "RSA2"
+    },
+    "resourceType": "手机APP支付",
+    "results": {
+      "validated": "false"
+    },
+    "urlParams": "",
+    "url": "/alipay/checkClientResult"
+  },
+  {
+    "httpMethod": "GET",
+    "name": "收货点",
+    "desc": "",
+    "headers": {
+      "sign": ""
+    },
+    "params": {
+      "lat": "30.04728",
+      "lng": "103.83516"
+    },
+    "resourceType": "手机APP公共",
+    "results": {
+      "id": 1,
+      "name": "伊藤洋华堂（眉山店）",
+      "receivingSpaces": {
+        "id": 1,
+        "floor": 5,
+        "address": "服务台旁",
+        "lat": 30.047301,
+        "lng": 103.835434
+      }
+    },
+    "urlParams": "",
+    "url": "/receivingSpaces"
+  },
+  {
+    "httpMethod": "GET",
+    "name": "配送范围",
+    "desc": "",
+    "headers": {
+      "sign": ""
+    },
+    "params": {
+      "lat": "30.04728",
+      "lng": "103.83516"
+    },
+    "resourceType": "手机APP公共",
+    "results": {
+      "id": 1,
+      "name": "\u4f0a\u85e4\u6d0b\u534e\u5802\uff08\u7709\u5c71\u5e97\uff09",
+      "address": "\u7709\u5c71\u5e02\u4e1c\u5761\u533a\u73af\u6e56\u4e2d\u8def\u96d5\u50cf\u56fd\u9645\u5e7f\u573a \u4f0a\u85e4\u6d0b\u534e\u5802",
+      "c_lng": 103.835434,
+      "c_lat": 30.047301,
+      "mapZoom": "13",
+      "logo": "http://192.168.1.110:8888/logo/ytlogo.png",
+      "mapAreas": {
+        "id": 8,
+        "color": "#9a9a9a",
+        "path": {
+          "lat": 30.02651,
+          "lng": 103.867385
+        },
+        "name": "\u7070"
+      }
+    },
+    "urlParams": "",
+    "url": "/mapAreas"
+  },
+  {
+    "httpMethod": "POST",
+    "name": "我要投诉",
+    "desc": "",
+    "headers": {
+      "sign": ""
+    },
+    "params": {
+      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339",
+      "waybillId&": "1",
+      "text&": "我要投诉"
+    },
+    "resourceType": "手机APP订单",
+    "results": {
+      "id": 1774,
+      "waybillId": 1,
+      "waybillSysNo": "YT20161230120202",
+      "userId": 3,
+      "userName": "ddddd",
+      "userTel": "18224060100",
+      "text": "\u6211\u8981\u6295\u8bc9",
+      "resolved": false,
+      "createdDate": 1487302834686
+    },
+    "urlParams": "",
+    "url": "/complaints"
+  },
+  {
+    "httpMethod": "DELETE",
+    "name": "删除订单",
+    "desc": "",
+    "headers": {
+      "sign": ""
+    },
+    "params": {
+      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339"
+    },
+    "resourceType": "手机APP订单",
+    "results": {
+    },
+    "urlParams": "id=1",
+    "url": "/waybills/self/{id}"
+  },
+  {
+    "httpMethod": "GET",
+    "name": "省市区数据",
+    "desc": "",
+    "params": {
+    },
+    "resourceType": "手机APP公共",
+    "results": {
+      "list": {
+        "id": 110000,
+        "name": "北京",
+        "children": {
+          "id": 110101,
+          "name": "东城区",
+          "children": {}
+        }
+      }
+    },
+    "url": "/place.json"
+  },
+  {
+    "httpMethod": "GET",
+    "name": "订单轨迹",
+    "desc": "",
+    "headers": {
+      "sign": ""
+    },
+    "params": {
+      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339"
+    },
+    "resourceType": "手机APP订单",
+    "results": {
+      "route": {
+        "lat": 30.048832,
+        "lng": 103.839111
+      },
+      "sysUserName": "杨森",
+      "sysUserTel": "18224060100",
+      "w_id": 108,
+      "w_lat": 30.048646,
+      "w_lng": 103.839111,
+      "deliveryTime": "2017-01-01 16:36 ~ 22:00"
+    },
+    "urlParams": "id=108",
+    "url": "/waybills/self/{id}/route"
+  },
+  {
+    "httpMethod": "GET",
+    "name": "物流状态",
+    "desc": "",
+    "headers": {
+      "sign": ""
+    },
+    "params": {
+      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339"
+    },
+    "resourceType": "手机APP订单",
+    "results": {
+      "id": 1,
+      "distributionName": "\u5434\u5927",
+      "distributionTel": "18224060100",
+      "details": {
+        "id": 67,
+        "createdDate": 1482808721748,
+        "status": 8,
+        "notes": {
+          "text": "1",
+          "createdDate": 1482808721748,
+          "sysUserJobNumber": "GL001",
+          "sysUserName": "\u5f20\u5175"
+        }
+      },
+      "deliveryTime": "2016-12-24 10:17 ~ 22:00"
+    },
+    "urlParams": "id=1",
+    "url": "/waybills/self/{id}/detail"
+  },
+  {
+    "httpMethod": "GET",
+    "name": "个人订单详情",
+    "desc": "",
+    "headers": {
+      "sign": ""
+    },
+    "params": {
+      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339"
+    },
+    "resourceType": "手机APP订单",
+    "results": {
+      "id": 1,
+      "sysNo": "YT20161230120202",
+      "goodsNo": "718000872251",
+      "distributionName": "\u5434\u5927",
+      "distributionTel": "18224060100",
+      "consigneeName": "\u5434\u52c7",
+      "consigneeTel": "182****0100",
+      "consigneeAddress": "\u7709\u5c71\u7ea2\u8c46\u56edA\u533a1\u680b4\u53f7",
+      "status": 1,
+      "createdDate": 1482463020055,
+      "goodses": {
+        "id": 1,
+        "categoryName": "\u98df\u54c1\u996e\u6599",
+        "goodsName": "\u4f11\u95f2\u96f6\u98df",
+        "goodsNum": 1
+      },
+      "deliveryTimeDesc": "\u5f53\u65e5\u9001\u8fbe",
+      "logisticsCompany": "\u6211\u7684\u4f0a\u5bb6",
+      "queryStatus": 2,
+      "deliveryTime": "2016-12-24 10:17 ~ 22:00"
+    },
+    "urlParams": "id=1",
+    "url": "/waybills/self/{id}"
+  },
+  {
+    "httpMethod": "GET",
+    "name": "我的订单",
+    "desc": "",
+    "headers": {
+      "sign": ""
+    },
+    "params": {
+      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339",
+      "type": "",
+      "keyword": "",
+      "page": "",
+      "size": ""
+    },
+    "resourceType": "手机APP订单",
+    "results": {
+      "size": 20,
+      "total": 98,
+      "pages": 5,
+      "list": {
+        "id": 174,
+        "sysNo": "YT20170122102902",
+        "goodsNo": "718000872251",
+        "status": 0,
+        "createdDate": 1485052172929,
+        "goodsNum": 2,
+        "logo": "http://192.168.1.110:8888/logo/ytlogo.png",
+        "companyName": "伊藤洋华堂（眉山店）",
+        "queryStatus": 1
+      },
+      "page": 1
+    },
+    "urlParams": "",
+    "url": "/waybills/self"
+  },
+  {
     "httpMethod": "POST",
     "name": "生成测试验证码",
     "desc": "",
@@ -11,6 +365,8 @@
     },
     "resourceType": "测试时所用接口",
     "results": {
+      "createdDate": 1486825570165,
+      "code": "085215"
     },
     "urlParams": "",
     "url": "/test/vCode"
@@ -23,34 +379,92 @@
       "sign": ""
     },
     "params": {
-      "accessToken": "7e8696eb-85e7-4d25-819a-ccd0ac05dfd4",
-      "code^": "",
-      "oldPassword^": "",
-      "address": "",
+      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339",
       "avatar": "",
       "name": "",
-      "password^": "",
-      "tel^": "44444"
+      "region": "武侯区",
+      "city": "成都市",
+      "address": "XX路",
+      "sex": 1,
+      "qq": "9389349384",
+      "email": "xxx@126.com"
     },
     "resourceType": "手机APP用户",
     "results": {
-      "id": 1,
-      "avatar": "",
-      "name": "sdd",
-      "lastLoginDate": 1486518910384,
+      "id": 3,
+      "avatar": "http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png",
+      "name": "sdfsfsdf",
+      "lastLoginDate": 1486954741739,
       "lastLoginIp": "127.0.0.1",
       "tel": "18224060100",
-      "address": "四川省成都市武侯区天华路靠近英郡2期",
-      "accessTokenType": {
-        "accessToken": "bca64816-41f4-4e84-8048-76e48f49e77f",
-        "expiration": 1487728510482,
-        "expiresIn": 1209600
-      },
-      "region": "武侯区",
-      "city": "成都市"
+      "address": "XXX\u8def",
+      "city": "\u6210\u90fd",
+      "region": "\u6b66\u4faf",
+      "sex": 1,
+      "qq": "9389349384",
+      "email": "xxx@126.com"
     },
-    "urlParams": "id=12",
-    "url": "/users/{id}"
+    "url": "/users/self"
+  },
+  {
+    "httpMethod": "PUT",
+    "name": "修改手机号",
+    "desc": "",
+    "headers": {
+      "sign": ""
+    },
+    "params": {
+      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339",
+      "code": "",
+      "oldPassword": "",
+      "password": "",
+      "tel": ""
+    },
+    "resourceType": "手机APP用户",
+    "results": {
+      "id": 3,
+      "avatar": "http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png",
+      "name": "sdfsfsdf",
+      "lastLoginDate": 1486954741739,
+      "lastLoginIp": "127.0.0.1",
+      "tel": "18224060100",
+      "address": "XXX\u8def",
+      "city": "\u6210\u90fd",
+      "region": "\u6b66\u4faf",
+      "sex": 1,
+      "qq": "9389349384",
+      "email": "xxx@126.com"
+    },
+    "url": "/users/self"
+  },
+  {
+    "httpMethod": "PUT",
+    "name": "修改密码",
+    "desc": "",
+    "headers": {
+      "sign": ""
+    },
+    "params": {
+      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339",
+      "oldPassword": "",
+      "password": ""
+    },
+    "resourceType": "手机APP用户",
+    "results": {
+      "id": 3,
+      "avatar": "http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png",
+      "name": "sdfsfsdf",
+      "lastLoginDate": 1486954741739,
+      "lastLoginIp": "127.0.0.1",
+      "tel": "18224060100",
+      "address": "XXX\u8def",
+      "city": "\u6210\u90fd",
+      "region": "\u6b66\u4faf",
+      "sex": 1,
+      "qq": "9389349384",
+      "email": "xxx@126.com"
+    },
+    "url": "/users/self"
   },
   {
     "httpMethod": "POST",
@@ -66,20 +480,23 @@
     },
     "resourceType": "手机APP用户",
     "results": {
-      "id": 1,
-      "avatar": "",
-      "name": "sdd",
-      "lastLoginDate": 1486518910384,
+      "id": 3,
+      "avatar": "http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png",
+      "name": "sdfsfsdf",
+      "lastLoginDate": 1486954741739,
       "lastLoginIp": "127.0.0.1",
       "tel": "18224060100",
-      "address": "四川省成都市武侯区天华路靠近英郡2期",
-      "accessTokenType": {
-        "accessToken": "bca64816-41f4-4e84-8048-76e48f49e77f",
-        "expiration": 1487728510482,
-        "expiresIn": 1209600
-      },
-      "region": "武侯区",
-      "city": "成都市"
+      "address": "XXX\u8def",
+      "city": "\u6210\u90fd",
+      "region": "\u6b66\u4faf",
+      "sex": 1,
+      "qq": "9389349384",
+      "email": "xxx@126.com",
+      "accessToken": {
+        "accessToken": "53cd7efb-7517-4b03-b4e6-1a8325f58a08",
+        "expiration": 1488164341846,
+        "expiresIn": 1209599
+      }
     },
     "urlParams": "",
     "url": "/users"
@@ -92,22 +509,24 @@
       "sign": ""
     },
     "params": {
-      "accessToken": "7e8696eb-85e7-4d25-819a-ccd0ac05dfd4"
+      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339"
     },
     "resourceType": "手机APP用户",
     "results": {
-      "id": 1,
-      "avatar": "",
-      "name": "sdd",
-      "lastLoginDate": 1486541073150,
+      "id": 3,
+      "avatar": "http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png",
+      "name": "sdfsfsdf",
+      "lastLoginDate": 1486954741739,
       "lastLoginIp": "127.0.0.1",
       "tel": "18224060100",
-      "address": "\u56db\u5ddd\u7701\u6210\u90fd\u5e02\u6b66\u4faf\u533a\u5929\u534e\u8def\u9760\u8fd1\u82f1\u90e12\u671f",
-      "region": "\u6b66\u4faf\u533a",
-      "city": "\u6210\u90fd\u5e02"
+      "address": "XXX\u8def",
+      "city": "\u6210\u90fd",
+      "region": "\u6b66\u4faf",
+      "sex": 1,
+      "qq": "9389349384",
+      "email": "xxx@126.com"
     },
-    "urlParams": "id=1",
-    "url": "/users/{id}"
+    "url": "/users/self"
   },
   {
     "httpMethod": "PUT",
@@ -123,20 +542,23 @@
     },
     "resourceType": "手机APP用户",
     "results": {
-      "id": 1,
-      "avatar": "",
-      "name": "sdd",
-      "lastLoginDate": 1486518910384,
+      "id": 3,
+      "avatar": "http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png",
+      "name": "sdfsfsdf",
+      "lastLoginDate": 1486954741739,
       "lastLoginIp": "127.0.0.1",
       "tel": "18224060100",
-      "address": "四川省成都市武侯区天华路靠近英郡2期",
-      "accessTokenType": {
-        "accessToken": "bca64816-41f4-4e84-8048-76e48f49e77f",
-        "expiration": 1487728510482,
-        "expiresIn": 1209600
-      },
-      "region": "武侯区",
-      "city": "成都市"
+      "address": "XXX\u8def",
+      "city": "\u6210\u90fd",
+      "region": "\u6b66\u4faf",
+      "sex": 1,
+      "qq": "9389349384",
+      "email": "xxx@126.com",
+      "accessToken": {
+        "accessToken": "53cd7efb-7517-4b03-b4e6-1a8325f58a08",
+        "expiration": 1488164341846,
+        "expiresIn": 1209599
+      }
     },
     "urlParams": "",
     "url": "/users/password"
@@ -174,7 +596,7 @@
   },
   {
     "httpMethod": "POST",
-    "name": "修改密码发送验证码",
+    "name": "找回密码发送验证码",
     "desc": "",
     "headers": {
       "sign": ""
@@ -199,20 +621,23 @@
     },
     "resourceType": "手机APP用户",
     "results": {
-      "id": 1,
-      "avatar": "",
-      "name": "sdd",
-      "lastLoginDate": 1486518910384,
+      "id": 3,
+      "avatar": "http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png",
+      "name": "sdfsfsdf",
+      "lastLoginDate": 1486954741739,
       "lastLoginIp": "127.0.0.1",
       "tel": "18224060100",
-      "address": "四川省成都市武侯区天华路靠近英郡2期",
-      "accessTokenType": {
-        "accessToken": "bca64816-41f4-4e84-8048-76e48f49e77f",
-        "expiration": 1487728510482,
-        "expiresIn": 1209600
-      },
-      "region": "武侯区",
-      "city": "成都市"
+      "address": "XXX\u8def",
+      "city": "\u6210\u90fd",
+      "region": "\u6b66\u4faf",
+      "sex": 1,
+      "qq": "9389349384",
+      "email": "xxx@126.com",
+      "accessToken": {
+        "accessToken": "53cd7efb-7517-4b03-b4e6-1a8325f58a08",
+        "expiration": 1488164341846,
+        "expiresIn": 1209599
+      }
     },
     "urlParams": "",
     "url": "/user/accessToken"
@@ -262,7 +687,7 @@
     "httpMethod": "GET",
     "name": "登出",
     "params": {
-      "accessToken": ""
+      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891"
     },
     "resourceType": "手持端用户",
     "results": [
@@ -272,28 +697,15 @@
   {
     "httpMethod": "PUT",
     "name": "修改密码",
-    "desc": "修改后更新客户端token",
+    "desc": "",
     "params": {
-      "accessToken": "",
+      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891",
       "jobNumber": "",
       "oldPassword": "",
       "password": ""
     },
     "resourceType": "手持端用户",
     "results": {
-      "id": 3,
-      "jobNumber": "KD001",
-      "createdDate": 1482411971918,
-      "lastModifiedDate": 1486538177218,
-      "lastLogoutDate": 1483945745377,
-      "lastLoginDate": 1486538177218,
-      "lastLoginIp": "127.0.0.1",
-      "accessTokenType": {
-        "accessToken": "820261be-bb1a-4143-adc8-cc92bb436796",
-        "expiration": 1487749011058,
-        "needAddInfo": false,
-        "expiresIn": 1209599
-      }
     },
     "url": "/sysUsers/password"
   },
@@ -302,7 +714,7 @@
     "name": "修改个人信息",
     "desc": "修改后更新客户端token",
     "params": {
-      "accessToken": "",
+      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891",
       "name": "",
       "idCard": "",
       "tel^": ""
@@ -329,7 +741,7 @@
     "httpMethod": "GET",
     "name": "查看个人信息",
     "params": {
-      "accessToken": ""
+      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891"
     },
     "resourceType": "手持端用户",
     "results": {
@@ -350,7 +762,7 @@
     "httpMethod": "GET",
     "name": "当前订单",
     "params": {
-      "accessToken": "",
+      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891",
       "page": "",
       "size": ""
     },
@@ -376,7 +788,7 @@
     "httpMethod": "GET",
     "name": "历史订单",
     "params": {
-      "accessToken": "",
+      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891",
       "page": "",
       "size": ""
     },
@@ -402,7 +814,7 @@
     "httpMethod": "POST",
     "name": "订单接单",
     "params": {
-      "accessToken": "",
+      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891",
       "id": "",
       "lat": "30.072456",
       "lng": "103.84297",
@@ -417,7 +829,7 @@
     "httpMethod": "POST",
     "name": "到货处理",
     "params": {
-      "accessToken": "",
+      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891",
       "goodsNo": "",
       "lat": "30.072456",
       "lng": "103.84297",
@@ -434,7 +846,7 @@
     "httpMethod": "GET",
     "name": "订单详情",
     "params": {
-      "accessToken": ""
+      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891"
     },
     "resourceType": "手持端订单",
     "results": {
@@ -471,24 +883,19 @@
     "httpMethod": "GET",
     "name": "订单状态",
     "params": {
-      "accessToken": ""
+      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891"
     },
     "resourceType": "手持端订单",
     "results": {
       "list": {
         "id": 67,
         "createdDate": 1482808721748,
-        "text": "1",
         "status": 8,
-        "sysUserJobNumber": "GL001",
-        "sysUserName": "\u5f20\u5175",
-        "sysUserTel": "18223456789",
         "notes": {
-          "text": "2222",
-          "createdDate": 1482814443332,
-          "sysUserJobNumber": "KF001",
-          "sysUserName": "\u674e\u654f",
-          "sysUserTel": "13657847656"
+          "text": "1",
+          "createdDate": 1482808721748,
+          "sysUserJobNumber": "GL001",
+          "sysUserName": "\u5f20\u5175"
         }
       }
     },
@@ -499,7 +906,7 @@
     "httpMethod": "GET",
     "name": "订单号查单",
     "params": {
-      "accessToken": "",
+      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891",
       "goodsNo": ""
     },
     "resourceType": "手持端订单",
@@ -538,7 +945,7 @@
     "httpMethod": "GET",
     "name": "订单号查位置",
     "params": {
-      "accessToken": "",
+      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891",
       "goodsNo": ""
     },
     "resourceType": "手持端订单",
@@ -552,7 +959,7 @@
     "httpMethod": "POST",
     "name": "更新订单轨迹",
     "params": {
-      "accessToken": "",
+      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891",
       "lat&": "30.072456",
       "lng&": "103.84297"
     },

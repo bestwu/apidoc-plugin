@@ -7,7 +7,7 @@
   <meta name="apple-touch-fullscreen" content="yes"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>手持端基本</title>
+  <title>手机APP支付</title>
   <style type="text/css">
     body {
       margin: 0;
@@ -302,14 +302,55 @@
 </ul>
 <hr/></div>
 <div mdin style="float: left;width:74%;margin-left: 1%;">
-<h3><a href="#6-手持端基本" name="6-手持端基本">6 手持端基本</a></h3>
-<h4><a href='#6.1检查版本号' name='6.1检查版本号'>6.1 检查版本号</a></h4>
+<h3><a href="#1-手机app支付" name="1-手机app支付">1 手机APP支付</a></h3>
+<h4><a href='#1.1我的钱包' name='1.1我的钱包'>1.1 我的钱包</a></h4>
 <h6><a href="#接口地址" name="接口地址">接口地址</a></h6>
-<p><a href="http://127.0.0.1/clientVersions">http://127.0.0.1/clientVersions</a></p>
+<p><a href="http://127.0.0.1/wallets">http://127.0.0.1/wallets</a></p>
 <h6><a href="#请求方法" name="请求方法">请求方法</a></h6>
 <p>GET</p>
 <h6><a href="#请求参数" name="请求参数">请求参数</a></h6>
-<p>无</p>
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>类型</th>
+      <th>是否必填</th>
+      <th>最大长度</th>
+      <th>描述</th>
+      <th>默认值</th>
+      <th>示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>accessToken </td>
+      <td>object </td>
+      <td>是 </td>
+      <td>- </td>
+      <td>授权码 </td>
+      <td> </td>
+      <td>fecb84d4-eac7-4e75-b21f-f97a52e83339 </td>
+    </tr>
+    <tr>
+      <td>page </td>
+      <td>int </td>
+      <td>否 </td>
+      <td>- </td>
+      <td>页码，从1开始，默认1 </td>
+      <td>1 </td>
+      <td>1 </td>
+    </tr>
+    <tr>
+      <td>size </td>
+      <td>int </td>
+      <td>否 </td>
+      <td>- </td>
+      <td>每页最大数量，默认20 </td>
+      <td>20 </td>
+      <td>20 </td>
+    </tr>
+  </tbody>
+</table>
 <h6><a href="#响应参数" name="响应参数">响应参数</a></h6>
 <table>
   <thead>
@@ -323,39 +364,230 @@
   </thead>
   <tbody>
     <tr>
-      <td>id </td>
+      <td>list </td>
+      <td>array </td>
+      <td>- </td>
+      <td>内容 </td>
+      <td>[createdDate:1487726987744, subject:钱包充值, totalAmount:100] </td>
+    </tr>
+    <tr>
+      <td>createdDate </td>
       <td>long </td>
       <td>- </td>
-      <td>主键ID </td>
-      <td>1 </td>
+      <td>创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
+      <td>1487726987744 </td>
     </tr>
     <tr>
-      <td>isForce </td>
-      <td>boolean </td>
-      <td>- </td>
-      <td>是否强制更新 </td>
-      <td>false </td>
-    </tr>
-    <tr>
-      <td>text </td>
+      <td>subject </td>
       <td>string </td>
-      <td>- </td>
-      <td>说明 </td>
-      <td>更新更新 </td>
+      <td>250 </td>
+      <td>交易说明 </td>
+      <td>钱包充值 </td>
     </tr>
     <tr>
-      <td>versionCode </td>
+      <td>totalAmount </td>
+      <td>long </td>
+      <td>- </td>
+      <td>交易金额（单元：分） </td>
+      <td>100 </td>
+    </tr>
+    <tr>
+      <td>money </td>
+      <td>long </td>
+      <td>- </td>
+      <td>零钱（单位：分） </td>
+      <td>100 </td>
+    </tr>
+    <tr>
+      <td>page </td>
       <td>int </td>
       <td>- </td>
-      <td>版本号 </td>
+      <td>页码，从1开始，默认1 </td>
       <td>1 </td>
     </tr>
     <tr>
-      <td>versionName </td>
+      <td>pages </td>
+      <td>int </td>
+      <td>- </td>
+      <td>总页数 </td>
+      <td>1 </td>
+    </tr>
+    <tr>
+      <td>size </td>
+      <td>int </td>
+      <td>- </td>
+      <td>每页最大数量，默认20 </td>
+      <td>2 </td>
+    </tr>
+    <tr>
+      <td>total </td>
+      <td>long </td>
+      <td>- </td>
+      <td>总记录数 </td>
+      <td>2 </td>
+    </tr>
+  </tbody>
+</table>
+<hr/>
+<h4><a href='#1.2充值' name='1.2充值'>1.2 充值</a></h4>
+<h6><a href="#接口地址" name="接口地址">接口地址</a></h6>
+<p><a href="http://127.0.0.1/wallets/charge">http://127.0.0.1/wallets/charge</a></p>
+<h6><a href="#请求方法" name="请求方法">请求方法</a></h6>
+<p>POST</p>
+<h6><a href="#请求参数" name="请求参数">请求参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>类型</th>
+      <th>是否必填</th>
+      <th>最大长度</th>
+      <th>描述</th>
+      <th>默认值</th>
+      <th>示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>accessToken </td>
+      <td>object </td>
+      <td>是 </td>
+      <td>- </td>
+      <td>授权码 </td>
+      <td> </td>
+      <td>fecb84d4-eac7-4e75-b21f-f97a52e83339 </td>
+    </tr>
+    <tr>
+      <td>money </td>
+      <td>long </td>
+      <td>是 </td>
+      <td>- </td>
+      <td>零钱（单位：分） </td>
+      <td> </td>
+      <td>1 </td>
+    </tr>
+    <tr>
+      <td>payment </td>
+      <td>int </td>
+      <td>是 </td>
+      <td>- </td>
+      <td>支付方式（0：龙支付，1：微信支付，2：支付宝支付，3：银联支付） </td>
+      <td> </td>
+      <td>2 </td>
+    </tr>
+  </tbody>
+</table>
+<h6><a href="#响应参数" name="响应参数">响应参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>类型</th>
+      <th>最大长度</th>
+      <th>描述</th>
+      <th>示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>money </td>
+      <td>long </td>
+      <td>- </td>
+      <td>零钱（单位：分） </td>
+      <td>1 </td>
+    </tr>
+    <tr>
+      <td>orderInfo </td>
       <td>string </td>
-      <td>50 </td>
-      <td>版本名称 </td>
-      <td>1.0 </td>
+      <td>- </td>
+      <td>订单参数字符串，用于支付宝客户端调用 </td>
+      <td>app_id=2016112103042572&amp;biz_content=%7B%22out_trade_no%22%3A%22201702220929471%22%2C%22total_amount%22%3A%220.01%22%2C%22subject%22%3A%22%E9%92%B1%E5%8C%85%E5%85%85%E5%80%BC%22%2C%22body%22%3A%22%E9%92%B1%E5%8C%85%E5%85%85%E5%80%BC%22%2C%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22seller_id%22%3A%222088421595009690%22%7D&amp;charset=UTF-8&amp;method=alipay.trade.app.pay&amp;notify_url=http%3A%2F%2F127.0.0.1%3A8080%2Fmobile%2Fnotifies%2Falipay&amp;sign_type=RSA2&amp;timestamp=2017-02-22+09%3A29%3A48&amp;version=1.0&amp;sign=lzMHOpwJIFdGMW8n4KIC%2FH9yUcP6w6SRmMMYtnn1o7QP2cMKdjizQIAd%2BddMKQpGVG2nOscTJ7cIiKkOk1rPe8C3Hb6HD6%2BVjIwK78bSCoM5rRI5hngQc6OMAuf52NlbtnNO8iJb6SQViWSP5TWDtYj9IRUPOyVB1bVD44Zw4QQ%3D </td>
+    </tr>
+    <tr>
+      <td>payment </td>
+      <td>int </td>
+      <td>- </td>
+      <td>支付方式（0：龙支付，1：微信支付，2：支付宝支付，3：银联支付） </td>
+      <td>2 </td>
+    </tr>
+  </tbody>
+</table>
+<hr/>
+<h4><a href='#1.3alipay客户端结果验签' name='1.3alipay客户端结果验签'>1.3 alipay客户端结果验签</a></h4>
+<h6><a href="#接口地址" name="接口地址">接口地址</a></h6>
+<p><a href="http://127.0.0.1/alipay/checkClientResult">http://127.0.0.1/alipay/checkClientResult</a></p>
+<h6><a href="#请求方法" name="请求方法">请求方法</a></h6>
+<p>GET</p>
+<h6><a href="#请求参数" name="请求参数">请求参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>类型</th>
+      <th>是否必填</th>
+      <th>最大长度</th>
+      <th>描述</th>
+      <th>默认值</th>
+      <th>示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>sign </td>
+      <td>string </td>
+      <td>是 </td>
+      <td>- </td>
+      <td>签名 </td>
+      <td> </td>
+      <td>toffPr9RgL1FuP7BWg3q1JvvG9B0oaP23cqad2ih+cMCaixeEBB0ocwqC8OA4Oo+g03J2Ax8O2Vlf76yjeguZHctlvtunFGLGthhQmEtMIGqlU4G+VZTx/ZlNm8iipOUOILf2EyB55QuSxBC5k5/t1eLnXLlRSwXQljday8hVlU= </td>
+    </tr>
+    <tr>
+      <td>accessToken </td>
+      <td>object </td>
+      <td>是 </td>
+      <td>- </td>
+      <td>授权码 </td>
+      <td> </td>
+      <td>fecb84d4-eac7-4e75-b21f-f97a52e83339 </td>
+    </tr>
+    <tr>
+      <td>alipay_trade_app_pay_response </td>
+      <td>string </td>
+      <td>是 </td>
+      <td>- </td>
+      <td>alipay APP支付客户端同步返回结果 </td>
+      <td> </td>
+      <td>{&ldquo;code&rdquo;:&ldquo;10000&rdquo;,&ldquo;msg&rdquo;:&ldquo;Success&rdquo;,&ldquo;total_amount&rdquo;:&ldquo;9.00&rdquo;,&ldquo;app_id&rdquo;:&ldquo;2014072300007148&rdquo;,&ldquo;trade_no&rdquo;:&ldquo;2014112400001000340011111118&rdquo;,&ldquo;seller_id&rdquo;:&ldquo;2088111111116894&rdquo;,&ldquo;out_trade_no&rdquo;:&ldquo;70501111111S001111119&rdquo;} </td>
+    </tr>
+    <tr>
+      <td>sign_type </td>
+      <td>string </td>
+      <td>是 </td>
+      <td>- </td>
+      <td>签名方式 </td>
+      <td> </td>
+      <td>RSA2 </td>
+    </tr>
+  </tbody>
+</table>
+<h6><a href="#响应参数" name="响应参数">响应参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>类型</th>
+      <th>最大长度</th>
+      <th>描述</th>
+      <th>示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>validated </td>
+      <td>boolean </td>
+      <td>- </td>
+      <td>验证是否成功 </td>
+      <td>false </td>
     </tr>
   </tbody>
 </table>

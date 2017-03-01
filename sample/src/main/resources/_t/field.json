@@ -1,9 +1,23 @@
 {
-  "sign": {
-    "desc": "接口签名 <a href='html/签名算法.html' target='_blank'>签名算法</a>",
+  "a_sign": {
+    "desc": "签名",
     "name": "sign",
-    "type": "string",
     "notNull": true,
+    "type": "string",
+    "value": ""
+  },
+  "accessToken": {
+    "desc": "授权码",
+    "name": "accessToken",
+    "notNull": true,
+    "type": "object",
+    "value": ""
+  },
+  "accessTokenType": {
+    "desc": "授权码",
+    "name": "accessToken",
+    "notNull": true,
+    "type": "object",
     "value": ""
   },
   "addCaseCost": {
@@ -15,18 +29,17 @@
     "value": "'0'"
   },
   "address": {
-    "desc": "公司地址",
+    "desc": "地址",
     "length": 200,
     "name": "address",
     "notNull": false,
     "type": "string",
     "value": ""
   },
-  "adress": {
-    "desc": null,
-    "length": 255,
-    "name": "adress",
-    "notNull": false,
+  "alipay_trade_app_pay_response": {
+    "desc": "alipay APP支付客户端同步返回结果",
+    "name": "alipay_trade_app_pay_response",
+    "notNull": true,
     "type": "string",
     "value": ""
   },
@@ -36,6 +49,19 @@
     "name": "area",
     "notNull": false,
     "type": "string",
+    "value": ""
+  },
+  "arriveStatus": {
+    "desc": "状态（3：签收，4：其他成功情况，5：拒收，6：其他失败情况）",
+    "name": "status",
+    "notNull": true,
+    "store": [
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "type": "enum",
     "value": ""
   },
   "authentication": {
@@ -59,14 +85,7 @@
     "length": 250,
     "name": "avatar",
     "notNull": false,
-    "type": "string",
-    "value": ""
-  },
-  "code": {
-    "desc": "验证码",
-    "name": "code",
-    "notNull": true,
-    "type": "string",
+    "type": "file",
     "value": ""
   },
   "billCopy": {
@@ -75,6 +94,22 @@
     "name": "billCopy",
     "notNull": false,
     "type": "string",
+    "value": ""
+  },
+  "c_lat": {
+    "desc": "公司所在纬度",
+    "length": "-",
+    "name": "lat",
+    "notNull": false,
+    "type": "double",
+    "value": ""
+  },
+  "c_lng": {
+    "desc": "公司所在经度",
+    "length": "-",
+    "name": "lng",
+    "notNull": false,
+    "type": "double",
     "value": ""
   },
   "cargoValue": {
@@ -106,6 +141,28 @@
     "length": 100,
     "name": "categoryName",
     "notNull": false,
+    "type": "string",
+    "value": ""
+  },
+  "children": {
+    "desc": "子对象",
+    "name": "children",
+    "notNull": true,
+    "type": "array",
+    "value": ""
+  },
+  "city": {
+    "desc": "城市",
+    "length": 100,
+    "name": "city",
+    "notNull": false,
+    "type": "string",
+    "value": ""
+  },
+  "code": {
+    "desc": "验证码",
+    "name": "code",
+    "notNull": true,
     "type": "string",
     "value": ""
   },
@@ -157,20 +214,6 @@
     "type": "string",
     "value": ""
   },
-  "accessTokenType": {
-    "desc": "授权码",
-    "name": "accessToken",
-    "notNull": true,
-    "type": "object",
-    "value": ""
-  },
-  "accessToken": {
-    "desc": "授权码",
-    "name": "accessToken",
-    "notNull": true,
-    "type": "object",
-    "value": ""
-  },
   "consignorAddress": {
     "desc": "发货人地址",
     "length": 250,
@@ -220,7 +263,7 @@
     "value": ""
   },
   "createdDate": {
-    "desc": "创建时间（毫秒数）",
+    "desc": "创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）",
     "length": "-",
     "name": "createdDate",
     "notNull": false,
@@ -251,6 +294,20 @@
     "type": "boolean",
     "value": "'0'"
   },
+  "deliveryTime": {
+    "desc": "配送时间",
+    "name": "deliveryTime",
+    "notNull": true,
+    "type": "string",
+    "value": ""
+  },
+  "deliveryTimeDesc": {
+    "desc": "即日达时效",
+    "name": "deliveryTimeDesc",
+    "notNull": true,
+    "type": "string",
+    "value": ""
+  },
   "description": {
     "desc": "设备描述",
     "length": 200,
@@ -259,19 +316,19 @@
     "type": "string",
     "value": ""
   },
+  "details": {
+    "desc": "详情",
+    "name": "details",
+    "notNull": true,
+    "type": "array",
+    "value": ""
+  },
   "device": {
     "desc": "登录设备",
     "length": 250,
     "name": "device",
     "notNull": false,
     "type": "string",
-    "value": ""
-  },
-  "goodses": {
-    "desc": "货物",
-    "name": "goodses",
-    "notNull": true,
-    "type": "array",
     "value": ""
   },
   "deviceNo": {
@@ -283,7 +340,7 @@
     "value": ""
   },
   "distributionDate": {
-    "desc": "开始配送时间（毫秒数）",
+    "desc": "开始配送时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）",
     "length": "-",
     "name": "distributionDate",
     "notNull": false,
@@ -330,8 +387,16 @@
     "type": "string",
     "value": ""
   },
+  "email": {
+    "desc": "电子邮箱",
+    "length": 200,
+    "name": "email",
+    "notNull": false,
+    "type": "string",
+    "value": ""
+  },
   "eta": {
-    "desc": "预计到达时间（毫秒数）",
+    "desc": "预计到达时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）",
     "length": "-",
     "name": "eta",
     "notNull": false,
@@ -339,15 +404,21 @@
     "value": ""
   },
   "expiration": {
-    "desc": "过期时间（毫秒数）",
+    "desc": "过期时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）",
     "length": "-",
     "name": "expiration",
     "notNull": false,
     "type": "long",
     "value": ""
   },
+  "expiresIn": {
+    "desc": "多少秒后过期",
+    "name": "expiresIn",
+    "type": "int",
+    "value": ""
+  },
   "finishTime": {
-    "desc": "完成时间（毫秒数）",
+    "desc": "完成时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）",
     "length": "-",
     "name": "finishTime",
     "notNull": false,
@@ -361,6 +432,14 @@
     "notNull": false,
     "type": "boolean",
     "value": "'0'"
+  },
+  "floor": {
+    "desc": "楼层",
+    "length": "-",
+    "name": "floor",
+    "notNull": false,
+    "type": "int",
+    "value": ""
   },
   "goodsId": {
     "desc": "货物ID",
@@ -393,6 +472,13 @@
     "notNull": false,
     "type": "int",
     "value": "'0'"
+  },
+  "goodses": {
+    "desc": "货物",
+    "name": "goodses",
+    "notNull": true,
+    "type": "array",
+    "value": ""
   },
   "handheldDeviceId": {
     "desc": "手持设备ID",
@@ -458,13 +544,6 @@
     "type": "string",
     "value": ""
   },
-  "oldPassword": {
-    "desc": "原密码（加密后）",
-    "name": "oldPassword",
-    "notNull": true,
-    "type": "string",
-    "value": ""
-  },
   "jurisdicalPerson": {
     "desc": "公司法人",
     "length": 100,
@@ -473,8 +552,15 @@
     "type": "string",
     "value": ""
   },
+  "keyword": {
+    "desc": "关键字",
+    "name": "keyword",
+    "notNull": false,
+    "type": "string",
+    "value": ""
+  },
   "lastLoginDate": {
-    "desc": "最后登录日期（毫秒数）",
+    "desc": "最后登录日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）",
     "length": "-",
     "name": "lastLoginDate",
     "notNull": false,
@@ -490,7 +576,7 @@
     "value": ""
   },
   "lastLogoutDate": {
-    "desc": "上次退出日期（毫秒数）",
+    "desc": "上次退出日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）",
     "length": "-",
     "name": "lastLogoutDate",
     "notNull": false,
@@ -498,7 +584,7 @@
     "value": ""
   },
   "lastModifiedDate": {
-    "desc": "上次修改时间（毫秒数）",
+    "desc": "上次修改时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）",
     "length": "-",
     "name": "lastModifiedDate",
     "notNull": false,
@@ -513,6 +599,12 @@
     "type": "double",
     "value": ""
   },
+  "list": {
+    "desc": "内容",
+    "name": "list",
+    "type": "array",
+    "value": ""
+  },
   "lng": {
     "desc": "经度",
     "length": "-",
@@ -521,12 +613,41 @@
     "type": "double",
     "value": ""
   },
+  "logisticsCompany": {
+    "desc": "物流公司",
+    "name": "logisticsCompany",
+    "notNull": true,
+    "type": "string",
+    "value": ""
+  },
+  "logo": {
+    "desc": "公司logo",
+    "length": 250,
+    "name": "logo",
+    "notNull": false,
+    "type": "string",
+    "value": ""
+  },
+  "mapAreas": {
+    "desc": "地图范围",
+    "name": "mapAreas",
+    "type": "array",
+    "value": ""
+  },
   "mapZoom": {
     "desc": "地图缩放级别",
     "length": 20,
     "name": "mapZoom",
     "notNull": false,
     "type": "string",
+    "value": ""
+  },
+  "money": {
+    "desc": "零钱（单位：分）",
+    "length": "-",
+    "name": "money",
+    "notNull": true,
+    "type": "long",
     "value": ""
   },
   "msg": {
@@ -545,6 +666,12 @@
     "type": "string",
     "value": ""
   },
+  "needAddInfo": {
+    "desc": "是否需要补充资料",
+    "name": "needAddInfo",
+    "type": "boolean",
+    "value": ""
+  },
   "newWaybillId": {
     "desc": "新运单ID",
     "length": "-",
@@ -561,13 +688,15 @@
     "type": "string",
     "value": ""
   },
-  "expiresIn": {
-    "desc": "多少秒后过期",
-    "name": "expiresIn",
-    "type": "int",
+  "c_note": {
+    "desc": "备注（处理结果）",
+    "length": "-",
+    "name": "note",
+    "notNull": false,
+    "type": "array",
     "value": ""
   },
-  "note": {
+  "ct_note": {
     "desc": "备注（处理结果）",
     "length": "-",
     "name": "note",
@@ -575,10 +704,19 @@
     "type": "string",
     "value": ""
   },
-  "needAddInfo": {
-    "desc": "是否需要补充资料",
-    "name": "needAddInfo",
-    "type": "boolean",
+  "note": {
+    "desc": "备注",
+    "length": "-",
+    "name": "note",
+    "notNull": false,
+    "type": "string",
+    "value": ""
+  },
+  "notes": {
+    "desc": "备注",
+    "name": "notes",
+    "notNull": true,
+    "type": "array",
     "value": ""
   },
   "num": {
@@ -589,40 +727,11 @@
     "type": "int",
     "value": ""
   },
-  "page": {
-    "desc": "页码，从1开始，默认1",
-    "name": "page",
-    "type": "int",
-    "value": "1"
-  },
-  "size": {
-    "desc": "每页最大数量，默认20",
-    "name": "size",
-    "type": "int",
-    "value": "20"
-  },
-  "pageSize": {
-    "desc": "当前页的数量",
-    "name": "size",
-    "type": "int",
-    "value": ""
-  },
-  "total": {
-    "desc": "总记录数",
-    "name": "total",
-    "type": "long",
-    "value": ""
-  },
-  "pages": {
-    "desc": "总页数",
-    "name": "pages",
-    "type": "int",
-    "value": ""
-  },
-  "list": {
-    "desc": "内容",
-    "name": "list",
-    "type": "array",
+  "oldPassword": {
+    "desc": "原密码（加密后）",
+    "name": "oldPassword",
+    "notNull": true,
+    "type": "string",
     "value": ""
   },
   "oldWaybillId": {
@@ -641,12 +750,38 @@
     "type": "string",
     "value": ""
   },
+  "orderNo": {
+    "desc": "系统交易号",
+    "length": 200,
+    "name": "orderNo",
+    "notNull": false,
+    "type": "string",
+    "value": ""
+  },
   "pId": {
     "desc": "父级查询ID",
     "length": "-",
     "name": "pId",
     "notNull": false,
     "type": "long",
+    "value": ""
+  },
+  "page": {
+    "desc": "页码，从1开始，默认1",
+    "name": "page",
+    "type": "int",
+    "value": "1"
+  },
+  "pageSize": {
+    "desc": "当前页的数量",
+    "name": "size",
+    "type": "int",
+    "value": ""
+  },
+  "pages": {
+    "desc": "总页数",
+    "name": "pages",
+    "type": "int",
     "value": ""
   },
   "parameters": {
@@ -674,7 +809,7 @@
     "value": ""
   },
   "password": {
-    "desc": "密码（MD5（明文密码+工号））",
+    "desc": "密码（MD5（明文密码+工号/手机号））",
     "length": 100,
     "name": "password",
     "notNull": true,
@@ -689,29 +824,32 @@
     "type": "string",
     "value": ""
   },
+  "orderInfo": {
+    "desc": "订单参数字符串，用于支付宝客户端调用",
+    "length": "-",
+    "name": "orderInfo",
+    "notNull": false,
+    "type": "string",
+    "value": ""
+  },
+  "payment": {
+    "desc": "支付方式（0：龙支付，1：微信支付，2：支付宝支付，3：银联支付）",
+    "length": "-",
+    "name": "payment",
+    "notNull": true,
+    "type": "int",
+    "value": ""
+  },
   "plannedEndTime": {
-    "desc": "计划配送结束时间（毫秒数）",
+    "desc": "计划配送结束时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）",
     "length": "-",
     "name": "plannedEndTime",
     "notNull": false,
     "type": "long",
     "value": ""
   },
-  "arriveStatus": {
-    "desc": "状态（3：签收，4：其他成功情况，5：拒收，6：其他失败情况）",
-    "name": "status",
-    "notNull": true,
-    "type": "enum",
-    "value": "",
-    "store": [
-      "3",
-      "4",
-      "5",
-      "6"
-    ]
-  },
   "plannedStartTime": {
-    "desc": "计划配送开始时间（毫秒数）",
+    "desc": "计划配送开始时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）",
     "length": "-",
     "name": "plannedStartTime",
     "notNull": false,
@@ -725,6 +863,44 @@
     "notNull": false,
     "type": "boolean",
     "value": "'0'"
+  },
+  "validated": {
+    "desc": "验证是否成功",
+    "length": "-",
+    "name": "validated",
+    "notNull": false,
+    "type": "boolean",
+    "value": "'0'"
+  },
+  "qq": {
+    "desc": "QQ号",
+    "length": 100,
+    "name": "qq",
+    "notNull": false,
+    "type": "string",
+    "value": ""
+  },
+  "queryStatus": {
+    "desc": "显示状态：1：待配送，2：配送中，3：已完成，4：已退货",
+    "name": "queryStatus",
+    "notNull": true,
+    "type": "int",
+    "value": ""
+  },
+  "receivingSpaces": {
+    "desc": "送货点",
+    "name": "receivingSpaces",
+    "notNull": true,
+    "type": "array",
+    "value": ""
+  },
+  "region": {
+    "desc": "地区",
+    "length": 100,
+    "name": "region",
+    "notNull": false,
+    "type": "string",
+    "value": ""
   },
   "renewalCost": {
     "desc": "续重费（分）",
@@ -807,12 +983,40 @@
     "value": ""
   },
   "route": {
-    "desc": "轨迹（保存经纬数组，短号分隔）",
+    "desc": "轨迹",
+    "length": "-",
     "name": "route",
     "notNull": false,
-    "length": "-",
     "type": "string",
     "value": ""
+  },
+  "sex": {
+    "desc": "性别（0：女，1：男，2：未知）",
+    "length": "-",
+    "name": "sex",
+    "notNull": false,
+    "type": "int",
+    "value": ""
+  },
+  "sign": {
+    "desc": "接口签名 <a href='html/签名算法.html' target='_blank'>签名算法</a>",
+    "name": "sign",
+    "notNull": true,
+    "type": "string",
+    "value": ""
+  },
+  "sign_type": {
+    "desc": "签名方式",
+    "name": "sign_type",
+    "notNull": true,
+    "type": "string",
+    "value": ""
+  },
+  "size": {
+    "desc": "每页最大数量，默认20",
+    "name": "size",
+    "type": "int",
+    "value": "20"
   },
   "status": {
     "desc": "状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成）",
@@ -826,6 +1030,14 @@
     "desc": "订单状态描述",
     "length": 200,
     "name": "statusDesc",
+    "notNull": false,
+    "type": "string",
+    "value": ""
+  },
+  "subject": {
+    "desc": "交易说明",
+    "length": 250,
+    "name": "subject",
     "notNull": false,
     "type": "string",
     "value": ""
@@ -848,9 +1060,9 @@
   },
   "sysUserAvatar": {
     "desc": "配送员头像",
+    "length": 250,
     "name": "sysUserAvatar",
     "notNull": false,
-    "length": 250,
     "type": "string",
     "value": ""
   },
@@ -894,13 +1106,6 @@
     "type": "string",
     "value": ""
   },
-  "notes": {
-    "desc": "备注",
-    "name": "notes",
-    "notNull": true,
-    "type": "array",
-    "value": ""
-  },
   "sysUserType": {
     "desc": "用户类型",
     "length": "-",
@@ -926,7 +1131,7 @@
     "value": ""
   },
   "time": {
-    "desc": "更新时间（毫秒数）",
+    "desc": "更新时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）",
     "length": "-",
     "name": "time",
     "notNull": false,
@@ -941,13 +1146,34 @@
     "type": "string",
     "value": ""
   },
+  "total": {
+    "desc": "总记录数",
+    "name": "total",
+    "type": "long",
+    "value": ""
+  },
+  "totalAmount": {
+    "desc": "交易金额（单元：分）",
+    "length": "-",
+    "name": "totalAmount",
+    "notNull": false,
+    "type": "long",
+    "value": ""
+  },
   "type": {
-    "desc": null,
+    "desc": "订单查询状态：0:全部，1：待配送，2：配送中，3：已完成，4：已退货，默认为：0",
     "length": "-",
     "name": "type",
     "notNull": false,
-    "type": "int",
-    "value": ""
+    "store": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "type": "enum",
+    "value": "0"
   },
   "userId": {
     "desc": "系统用户ID",
@@ -995,6 +1221,38 @@
     "name": "versionName",
     "notNull": false,
     "type": "string",
+    "value": ""
+  },
+  "w_id": {
+    "desc": "所属运单ID",
+    "length": "-",
+    "name": "id",
+    "notNull": false,
+    "type": "long",
+    "value": ""
+  },
+  "w_lat": {
+    "desc": "目的地纬度",
+    "length": "-",
+    "name": "lat",
+    "notNull": false,
+    "type": "double",
+    "value": ""
+  },
+  "w_lng": {
+    "desc": "目的地经度",
+    "length": "-",
+    "name": "lng",
+    "notNull": false,
+    "type": "double",
+    "value": ""
+  },
+  "walletId": {
+    "desc": "钱包ID",
+    "length": "-",
+    "name": "walletId",
+    "notNull": false,
+    "type": "long",
     "value": ""
   },
   "waybillDetailId": {
