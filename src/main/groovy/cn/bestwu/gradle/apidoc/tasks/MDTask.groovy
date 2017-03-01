@@ -35,67 +35,109 @@ class MDTask extends DefaultTask {
         def trees = slurper.parseText(jsonFilter(new File(input, 'tree.json')))
         def apis = slurper.parseText(jsonFilter(new File(input, "api.json")))
         def fields = slurper.parseText(jsonFilter(new File(input, "field.json")))
-        new File(mdOutput, "index.md").withPrintWriter(encoding) { out ->
-            trees.eachWithIndex() {
-                tree, i ->
-                    i++
-                    def treeName = tree.text
-                    out.println "- [${i}.${treeName}](${treeName}.md)"
-                    out.println ""
-                    tree.children.eachWithIndex() {
-                        leaf, m ->
-                            m++
-                            def leafName = leaf.text
-                            out.println "\t- [${i}.${m} ${leafName}](${treeName}.md#${i}.${m}${leafName})"
-                    }
+        def catalogFile = new File(mdOutput, "index.md")
+        def readme = new File(input, "README.md")
+        def catalogOut = new StringWriter()
+        catalogOut.println "- [文档首页](index.md)"
+        catalogOut.println ''
+        readme.readLines().forEach({ it ->
+            if (it.startsWith('### ')) {
+                def name = it.replace('### ', '').trim()
+                catalogOut.println "\t- [${name}](index.md#${name.replace(' ', '-')})"
+            }
+        })
+        catalogOut.println ''
+        catalogOut.println '---'
+        catalogOut.println ''
+        trees.eachWithIndex() {
+            tree, i ->
+                i++
+                def treeName = tree.text
+                catalogOut.println "- [${i} ${treeName}](${treeName}.md)"
+                catalogOut.println ''
+                tree.children.eachWithIndex() {
+                    leaf, m ->
+                        m++
+                        def leafName = leaf.text
+                        catalogOut.println "\t- [${i}.${m} ${leafName}](${treeName}.md#${i}.${m}${leafName})"
+                }
+                catalogOut.println ''
+                catalogOut.println '---'
+        }
+        def catalog = catalogOut.toString()
+        catalogFile.withPrintWriter(encoding) { out ->
+            printFile(out, catalog, {
+                if (readme.exists()) {
+                    out.println readme.text
                     out.println ''
                     out.println '---'
-            }
+                }
+            })
         }
+
         trees.eachWithIndex() {
             tree, i ->
                 i++
                 def treeName = tree.text
                 new File(mdOutput, "${treeName}.md").withPrintWriter(encoding) { out ->
-                    out.println "### ${i} ${treeName}"
-                    out.println ""
-                    tree.children.eachWithIndex() {
-                        leaf, m ->
-                            m++
-                            def leafName = leaf.text
-                            out.println "#### <a href='#${i}.${m}${leafName}' name='${i}.${m}${leafName}'>${i}.${m} ${leafName}</a>"
-                            out.println ""
-                            def api = apis.find({
-                                api ->
-                                    api.resourceType == treeName && api.name == leafName
-                            })
-                            out.println "###### 接口地址"
-                            out.println ""
-                            out.println "[${apiHost + api.url}](${apiHost + api.url})"
-                            out.println ""
-                            out.println "###### 请求方法"
-                            out.println "${api.httpMethod}"
-                            out.println ""
-                            if (api.desc) {
-                                out.println "###### 说明"
-                                out.println "${api.desc}"
-                                out.println ""
-                            }
-
-                            if (api.version && api.version.class == ArrayList.class) {
-                                api.version.each {
-                                    fillDesc(out, api, fields, it)
+                    printFile(out, catalog, {
+                        out.println "### ${i} ${treeName}"
+                        out.println ''
+                        tree.children.eachWithIndex() {
+                            leaf, m ->
+                                m++
+                                def leafName = leaf.text
+                                out.println "#### <a href='#${i}.${m}${leafName}' name='${i}.${m}${leafName}'>${i}.${m} ${leafName}</a>"
+                                out.println ''
+                                def api = apis.find({
+                                    api ->
+                                        api.resourceType == treeName && api.name == leafName
+                                })
+                                out.println "###### 接口地址"
+                                out.println ''
+                                out.println "[${apiHost + api.url}](${apiHost + api.url})"
+                                out.println ''
+                                out.println "###### 请求方法"
+                                out.println "${api.httpMethod}"
+                                out.println ''
+                                if (api.desc) {
+                                    out.println "###### 说明"
+                                    out.println "${api.desc}"
+                                    out.println ''
                                 }
-                            } else
-                                fillDesc(out, api, fields, null)
 
-                            out.println ''
-                            out.println '---'
-                    }
+                                if (api.version && api.version.class == ArrayList.class) {
+                                    api.version.each {
+                                        fillDesc(out, api, fields, it)
+                                    }
+                                } else
+                                    fillDesc(out, api, fields, null)
+
+                                out.println ''
+                                out.println '---'
+                        }
+                    })
                 }
         }
 
 
+    }
+
+    static printFile(out, catalog, closure) {
+        out.println "<div mdin style=\"float: left;width:25%;background-color: #f7f5fa;\">"
+        out.println ''
+        out.println catalog
+        out.println "</div>"
+        out.println "<div mdin style=\"float: left;width:74%;margin-left: 1%;\">"
+        out.println ''
+        closure.call()
+        out.println ''
+        out.println "</div>"
+        out.println "<div style=\"display:block;position:fixed;z-index:1001;bottom:10px;right:0;margin:0;padding:0;background-color:#c9c9c9\">\n" +
+                "  <a style=\"display:block;padding:12px;background:rgba(255,255,255,.5);\" href=\"#\">\n" +
+                "    <span style=\"display:block;width:33px;height:24px;\">TOP</span>\n" +
+                "  </a>\n" +
+                "</div>"
     }
 
     def fillDesc(out, api, fields, version) {
@@ -113,9 +155,9 @@ class MDTask extends DefaultTask {
 
         urlParams = getFields(fields, urlParams)
         if (urlParams != null && !urlParams.isEmpty()) {
-            out.println ""
+            out.println ''
             out.println "###### URL参数"
-            out.println ""
+            out.println ''
             out.println "|名称|类型|最大长度|描述|示例值|"
             out.println "|---|---|---|---|---|"
             urlParams.eachWithIndex {
@@ -124,7 +166,7 @@ class MDTask extends DefaultTask {
             }
         }
         out.println "###### 请求参数"
-        out.println ""
+        out.println ''
 
         params = getFields(fields, params)
         if (params == null || params.isEmpty()) {
@@ -137,7 +179,7 @@ class MDTask extends DefaultTask {
             }
         }
         out.println "###### 响应参数"
-        out.println ""
+        out.println ''
 
         results = getFields(fields, results)
         if (results == null || results.isEmpty()) {

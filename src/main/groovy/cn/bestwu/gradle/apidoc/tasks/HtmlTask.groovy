@@ -5,8 +5,10 @@ import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
-import org.pegdown.Extensions
-import org.pegdown.PegDownProcessor
+import org.pegdown.*
+import org.pegdown.ast.HtmlBlockNode
+import org.pegdown.ast.RootNode
+import org.pegdown.plugins.ToHtmlSerializerPlugin
 
 /**
  * 生成接口文档
@@ -55,7 +57,8 @@ class HtmlTask extends DefaultTask {
                 '      right: 0;\n' +
                 '      bottom: 0;\n' +
                 '      overflow: auto;\n' +
-                '      padding: 10px;\n' +
+                '      padding-right: 10px;\n' +
+                '      padding-bottom: 10px;\n' +
                 '      color: #444;\n' +
                 '      font-family: Georgia, Palatino, \'Palatino Linotype\', Times, \'Times New Roman\', serif;\n' +
                 '      font-size: 16px;\n' +
@@ -63,12 +66,13 @@ class HtmlTask extends DefaultTask {
                 '    }\n' +
                 '\n' +
                 '    a {\n' +
+                '      outline: none;\n' +
                 '      color: #0645ad;\n' +
                 '      text-decoration: none;\n' +
                 '    }\n' +
                 '\n' +
                 '    a:visited {\n' +
-                '      color: #0b0080;\n' +
+                '      color: #0645ad;\n' +
                 '    }\n' +
                 '\n' +
                 '    a:hover {\n' +
@@ -77,14 +81,6 @@ class HtmlTask extends DefaultTask {
                 '\n' +
                 '    a:active {\n' +
                 '      color: #faa700;\n' +
-                '    }\n' +
-                '\n' +
-                '    a:focus {\n' +
-                '      outline: thin dotted;\n' +
-                '    }\n' +
-                '\n' +
-                '    a:hover, a:active {\n' +
-                '      outline: 0;\n' +
                 '    }\n' +
                 '\n' +
                 '    p {\n' +
@@ -240,7 +236,37 @@ class HtmlTask extends DefaultTask {
         def footer = '\n</body>\n' +
                 '</html>'
         outFile.withPrintWriter(encoding) { out ->
-            out.println header + new PegDownProcessor(Extensions.ALL_WITH_OPTIONALS).markdownToHtml(inFile.text.replace('.md', '.html')) + footer
+            out.println header + new PegDownProcessor(Extensions.ALL_WITH_OPTIONALS) {
+                String markdownToHtml(char[] markdownSource,
+                                      LinkRenderer linkRenderer,
+                                      Map<String, VerbatimSerializer> verbatimSerializerMap,
+                                      List<ToHtmlSerializerPlugin> plugins) {
+                    try {
+                        def processor = this
+                        RootNode astRoot = parseMarkdown(markdownSource)
+                        return new ToHtmlSerializer(linkRenderer, verbatimSerializerMap, plugins) {
+                            void visit(HtmlBlockNode node) {
+                                String text = node.getText()
+                                if (text.length() > 0) {
+                                    printer.println()
+                                    if (text.matches('^<div mdin .*?>(\\s.*\\s*)*?</div>$')) {
+                                        String content = text.replaceAll('^<div mdin .*?>((\\s.*\\s*)*?)</div>$', '$1')
+                                        String tagopen = text.replaceAll('^(<div mdin .*?>)(\\s.*\\s*)*?</div>$', '$1')
+                                        String tagclose = '</div>'
+                                        printer.print(tagopen)
+                                        visit(processor.parseMarkdown(content.toCharArray()))
+                                        printer.print(tagclose)
+                                    } else {
+                                        printer.print(text)
+                                    }
+                                }
+                            }
+                        }.toHtml(astRoot)
+                    } catch (ParsingTimeoutException ignored) {
+                        return null
+                    }
+                }
+            }.markdownToHtml(inFile.text.replace('.md', '.html')) + footer
         }
     }
 
