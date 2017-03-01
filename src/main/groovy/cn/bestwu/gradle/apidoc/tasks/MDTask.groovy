@@ -40,13 +40,13 @@ class MDTask extends DefaultTask {
                 tree, i ->
                     i++
                     def treeName = tree.text
-                    out.println "### [${i}.${treeName}](${treeName}.md)"
+                    out.println "- [${i}.${treeName}](${treeName}.md)"
                     out.println ""
                     tree.children.eachWithIndex() {
                         leaf, m ->
                             m++
                             def leafName = leaf.text
-                            out.println "#### [${i}.${m} ${leafName}](${treeName}.md#${i}.${m}${leafName})"
+                            out.println "\t- [${i}.${m} ${leafName}](${treeName}.md#${i}.${m}${leafName})"
                     }
                     out.println ''
                     out.println '---'
