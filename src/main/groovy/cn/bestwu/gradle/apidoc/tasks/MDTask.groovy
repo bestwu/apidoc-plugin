@@ -46,6 +46,17 @@ class MDTask extends DefaultTask {
                 catalogOut.println "\t- [${name}](index.md#${name.replace(' ', '-')})"
             }
         })
+        def extraFiles = input.listFiles(new FileFilter() {
+            @Override
+            boolean accept(File pathname) {
+                def name = pathname.name
+                def accept = name.endsWith('.md') && name != 'README.md'
+                if (accept) {
+                    catalogOut.println "\t- [${name.replace('.md', '')}](${name})"
+                }
+                return accept
+            }
+        })
         catalogOut.println ''
         catalogOut.println '---'
         catalogOut.println ''
@@ -65,6 +76,14 @@ class MDTask extends DefaultTask {
                 catalogOut.println '---'
         }
         def catalog = catalogOut.toString()
+        extraFiles.each { file ->
+            new File(mdOutput, file.name).withPrintWriter(encoding) { out ->
+                printFile(out, catalog, {
+                    out.println file.text
+                }
+                )
+            }
+        }
         catalogFile.withPrintWriter(encoding) { out ->
             printFile(out, catalog, {
                 if (readme.exists()) {

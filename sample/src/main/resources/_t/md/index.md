@@ -2,8 +2,10 @@
 
 - [文档首页](index.md)
 
-	- [1 系统概述](index.md#1-系统概述)
-	- [2 客户端请求说明](index.md#2-客户端请求说明)
+	- [系统概述](index.md#系统概述)
+	- [客户端请求说明](index.md#客户端请求说明)
+	- [接口授权说明](接口授权说明.md)
+	- [签名算法](签名算法.md)
 
 ---
 
@@ -55,9 +57,13 @@
 </div>
 <div mdin style="float: left;width:74%;margin-left: 1%;">
 
-### 1 系统概述
+### 系统概述
 
 系统接口采用REST规范，所有的接口以资源方式提供客户端访问。
+
+[接口授权说明](接口授权说明.md)
+
+[签名算法](签名算法.md)
 
 RESTful Web 服务：
 
@@ -72,7 +78,7 @@ DELETE | /{model} | 批量删除资源 | 204
 
 由于restful的特点，服务端不保存用户的状态，所以每次用户访问都须传输自身信息。
 
-### 2 客户端请求说明
+### 客户端请求说明
 
 客户端与服务器的通讯通过HTTP内容协商。所以，HTTP请求头应遵守以下规范：
 
@@ -80,7 +86,7 @@ DELETE | /{model} | 批量删除资源 | 204
 
 > version参数表示要请求的接口的版本。如果不传,服务器将按最低版本响应，强烈建议每次都传入确定的版本信息。
 
-> 服务器接受的有效的Accept格式,(\*/* 、application/* 、application/json), 例子： \*/\*;version=1.0、application/*;version=1.0、application/json;version=1.0
+> 服务器接受的有效的Accept格式,(\*/* 、 application/* 、 application/json), 例子： \*/\*;version=1.0、application/*;version=1.0、application/json;version=1.0
 错误的Accept服务器将响应406 HTTP Status Code
 
 * User-Agent的格式建议统一为: logistics/version (deviceInfo)

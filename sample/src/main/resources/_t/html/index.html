@@ -196,8 +196,10 @@
 <ul>
   <li><a href="index.html">文档首页</a>
     <ul>
-      <li><a href="index.html#1-系统概述">1 系统概述</a></li>
-      <li><a href="index.html#2-客户端请求说明">2 客户端请求说明</a></li>
+      <li><a href="index.html#系统概述">系统概述</a></li>
+      <li><a href="index.html#客户端请求说明">客户端请求说明</a></li>
+      <li><a href="接口授权说明.html">接口授权说明</a></li>
+      <li><a href="签名算法.html">签名算法</a></li>
     </ul>
   </li>
 </ul>
@@ -264,8 +266,10 @@
 </ul>
 <hr/></div>
 <div mdin style="float: left;width:74%;margin-left: 1%;">
-<h3><a href="#1-系统概述" name="1-系统概述">1 系统概述</a></h3>
+<h3><a href="#系统概述" name="系统概述">系统概述</a></h3>
 <p>系统接口采用REST规范，所有的接口以资源方式提供客户端访问。</p>
+<p><a href="接口授权说明.html">接口授权说明</a></p>
+<p><a href="签名算法.html">签名算法</a></p>
 <p>RESTful Web 服务：</p>
 <table>
   <thead>
@@ -316,14 +320,14 @@
   </tbody>
 </table>
 <p>由于restful的特点，服务端不保存用户的状态，所以每次用户访问都须传输自身信息。</p>
-<h3><a href="#2-客户端请求说明" name="2-客户端请求说明">2 客户端请求说明</a></h3>
+<h3><a href="#客户端请求说明" name="客户端请求说明">客户端请求说明</a></h3>
 <p>客户端与服务器的通讯通过HTTP内容协商。所以，HTTP请求头应遵守以下规范：</p>
 <ul>
   <li>Accept的格式为:application/json;version=version</li>
 </ul>
 <blockquote>
   <p>version参数表示要请求的接口的版本。如果不传,服务器将按最低版本响应，强烈建议每次都传入确定的版本信息。</p>
-  <p>服务器接受的有效的Accept格式,(*/* 、application/* 、application/json), 例子： */*;version=1.0、application/*;version=1.0、application/json;version=1.0<br/>错误的Accept服务器将响应406 HTTP Status Code</p>
+  <p>服务器接受的有效的Accept格式,(*/* 、 application/* 、 application/json), 例子： */*;version=1.0、application/*;version=1.0、application/json;version=1.0<br/>错误的Accept服务器将响应406 HTTP Status Code</p>
 </blockquote>
 <ul>
   <li>User-Agent的格式建议统一为: logistics/version (deviceInfo)</li>
