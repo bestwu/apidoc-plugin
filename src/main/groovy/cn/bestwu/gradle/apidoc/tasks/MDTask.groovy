@@ -142,18 +142,18 @@ class MDTask extends DefaultTask {
     }
 
     static printFile(out, catalog, closure) {
-        out.println "<div mdin style=\"float: left;width:25%;background-color: #f7f5fa;\">"
+        out.println "<div mdin class=\"catalog\">"
         out.println ''
         out.println catalog
         out.println "</div>"
-        out.println "<div mdin style=\"float: left;width:74%;margin-left: 1%;\">"
+        out.println "<div mdin class=\"content\">"
         out.println ''
         closure.call()
         out.println ''
         out.println "</div>"
-        out.println "<div style=\"display:block;position:fixed;z-index:1001;bottom:10px;right:0;margin:0;padding:0;background-color:#c9c9c9\">\n" +
-                "  <a style=\"display:block;padding:12px;background:rgba(255,255,255,.5);\" href=\"#\">\n" +
-                "    <span style=\"display:block;width:33px;height:24px;\">TOP</span>\n" +
+        out.println "<div class=\"topAnchor\">\n" +
+                "  <a href=\"#\">\n" +
+                "    <span></span>\n" +
                 "  </a>\n" +
                 "</div>"
     }

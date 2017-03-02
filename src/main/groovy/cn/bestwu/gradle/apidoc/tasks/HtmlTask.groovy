@@ -56,9 +56,8 @@ class HtmlTask extends DefaultTask {
                 '      top: 0;\n' +
                 '      right: 0;\n' +
                 '      bottom: 0;\n' +
+                '      padding: 10px;\n' +
                 '      overflow: auto;\n' +
-                '      padding-right: 10px;\n' +
-                '      padding-bottom: 10px;\n' +
                 '      color: #444;\n' +
                 '      font-family: Georgia, Palatino, \'Palatino Linotype\', Times, \'Times New Roman\', serif;\n' +
                 '      font-size: 16px;\n' +
@@ -213,6 +212,9 @@ class HtmlTask extends DefaultTask {
                 '      vertical-align: top;\n' +
                 '      padding: 4px 10px;\n' +
                 '      border: 1px solid #bbb;\n' +
+                '      max-width: 300px;\n' +
+                '      overflow: hidden;\n' +
+                '      text-overflow: ellipsis;\n' +
                 '    }\n' +
                 '\n' +
                 '    tr:nth-child(even) td, tr:nth-child(even) th {\n' +
@@ -229,6 +231,49 @@ class HtmlTask extends DefaultTask {
                 '\n' +
                 '    table th {\n' +
                 '      white-space: nowrap;\n' +
+                '    }\n' +
+                '\n' +
+                '    .topAnchor {\n' +
+                '      display: block;\n' +
+                '      position: fixed;\n' +
+                '      z-index: 1001;\n' +
+                '      bottom: 10px;\n' +
+                '      right: 0;\n' +
+                '      margin: 0;\n' +
+                '      padding: 0;\n' +
+                '      background-color: #c9c9c9;\n' +
+                '    }\n' +
+                '\n' +
+                '    .topAnchor a {\n' +
+                '      display: block;\n' +
+                '      padding: 12px;\n' +
+                '      background: rgba(255, 255, 255, .5);\n' +
+                '    }\n' +
+                '\n' +
+                '    .topAnchor a span {\n' +
+                '      display: block;\n' +
+                '      width: 24px;\n' +
+                '      height: 24px;\n' +
+                '      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAQAAABKfvVzAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAHdElNRQfeAhkNNgFF8q46AAAAd0lEQVQ4y+2RoQ2AMBAADwGisjBPh2CLahzrgMEwAmuVYIogBFIa+iHB9eT/3ZuHzA8U0WlFC8xssiMlPQ5HTynVVzxelpz6xIRnTSWnPqDRjKnk0msAmvck1BNJQffQ70kXPkCxRPQrWVDhwmAj+pFYjOQjmc/sNUsv1+vGNvUAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTYtMDktMTdUMTU6MTk6NDErMDg6MDD2piBqAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE0LTAyLTI1VDEzOjU0OjAxKzA4OjAwtu6diAAAAE10RVh0c29mdHdhcmUASW1hZ2VNYWdpY2sgNy4wLjEtNiBRMTYgeDg2XzY0IDIwMTYtMDktMTcgaHR0cDovL3d3dy5pbWFnZW1hZ2ljay5vcmfd2aVOAAAAGHRFWHRUaHVtYjo6RG9jdW1lbnQ6OlBhZ2VzADGn/7svAAAAGHRFWHRUaHVtYjo6SW1hZ2U6OkhlaWdodAAxMjhDfEGAAAAAF3RFWHRUaHVtYjo6SW1hZ2U6OldpZHRoADEyONCNEd0AAAAZdEVYdFRodW1iOjpNaW1ldHlwZQBpbWFnZS9wbmc/slZOAAAAF3RFWHRUaHVtYjo6TVRpbWUAMTM5MzMwNzY0MWqa+K0AAAASdEVYdFRodW1iOjpTaXplADEuNjlLQvWCP7QAAABfdEVYdFRodW1iOjpVUkkAZmlsZTovLy9ob21lL3d3d3Jvb3Qvc2l0ZS93d3cuZWFzeWljb24ubmV0L2Nkbi1pbWcuZWFzeWljb24uY24vc3JjLzExMzc3LzExMzc3NDgucG5nniX3RQAAAABJRU5ErkJggg==");\n' +
+                '    }\n' +
+                '\n' +
+                '    @media (min-width: 800px) {\n' +
+                '      body {\n' +
+                '        padding-left: 0;\n' +
+                '        padding-top: 0;\n' +
+                '      }\n' +
+                '\n' +
+                '      .catalog {\n' +
+                '        float: left;\n' +
+                '        width: 25%;\n' +
+                '        background-color: #f7f5fa;\n' +
+                '      }\n' +
+                '\n' +
+                '      .content {\n' +
+                '        float: left;\n' +
+                '        width: 74%;\n' +
+                '        margin-left: 1%;\n' +
+                '      }\n' +
                 '    }\n' +
                 '  </style>\n' +
                 '</head>\n' +

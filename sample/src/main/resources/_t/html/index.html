@@ -15,9 +15,8 @@
       top: 0;
       right: 0;
       bottom: 0;
+      padding: 10px;
       overflow: auto;
-      padding-right: 10px;
-      padding-bottom: 10px;
       color: #444;
       font-family: Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
       font-size: 16px;
@@ -172,6 +171,9 @@
       vertical-align: top;
       padding: 4px 10px;
       border: 1px solid #bbb;
+      max-width: 300px;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     tr:nth-child(even) td, tr:nth-child(even) th {
@@ -189,10 +191,53 @@
     table th {
       white-space: nowrap;
     }
+
+    .topAnchor {
+      display: block;
+      position: fixed;
+      z-index: 1001;
+      bottom: 10px;
+      right: 0;
+      margin: 0;
+      padding: 0;
+      background-color: #c9c9c9;
+    }
+
+    .topAnchor a {
+      display: block;
+      padding: 12px;
+      background: rgba(255, 255, 255, .5);
+    }
+
+    .topAnchor a span {
+      display: block;
+      width: 24px;
+      height: 24px;
+      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAQAAABKfvVzAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAHdElNRQfeAhkNNgFF8q46AAAAd0lEQVQ4y+2RoQ2AMBAADwGisjBPh2CLahzrgMEwAmuVYIogBFIa+iHB9eT/3ZuHzA8U0WlFC8xssiMlPQ5HTynVVzxelpz6xIRnTSWnPqDRjKnk0msAmvck1BNJQffQ70kXPkCxRPQrWVDhwmAj+pFYjOQjmc/sNUsv1+vGNvUAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTYtMDktMTdUMTU6MTk6NDErMDg6MDD2piBqAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE0LTAyLTI1VDEzOjU0OjAxKzA4OjAwtu6diAAAAE10RVh0c29mdHdhcmUASW1hZ2VNYWdpY2sgNy4wLjEtNiBRMTYgeDg2XzY0IDIwMTYtMDktMTcgaHR0cDovL3d3dy5pbWFnZW1hZ2ljay5vcmfd2aVOAAAAGHRFWHRUaHVtYjo6RG9jdW1lbnQ6OlBhZ2VzADGn/7svAAAAGHRFWHRUaHVtYjo6SW1hZ2U6OkhlaWdodAAxMjhDfEGAAAAAF3RFWHRUaHVtYjo6SW1hZ2U6OldpZHRoADEyONCNEd0AAAAZdEVYdFRodW1iOjpNaW1ldHlwZQBpbWFnZS9wbmc/slZOAAAAF3RFWHRUaHVtYjo6TVRpbWUAMTM5MzMwNzY0MWqa+K0AAAASdEVYdFRodW1iOjpTaXplADEuNjlLQvWCP7QAAABfdEVYdFRodW1iOjpVUkkAZmlsZTovLy9ob21lL3d3d3Jvb3Qvc2l0ZS93d3cuZWFzeWljb24ubmV0L2Nkbi1pbWcuZWFzeWljb24uY24vc3JjLzExMzc3LzExMzc3NDgucG5nniX3RQAAAABJRU5ErkJggg==");
+    }
+
+    @media (min-width: 800px) {
+      body {
+        padding-left: 0;
+        padding-top: 0;
+      }
+
+      .catalog {
+        float: left;
+        width: 25%;
+        background-color: #f7f5fa;
+      }
+
+      .content {
+        float: left;
+        width: 74%;
+        margin-left: 1%;
+      }
+    }
   </style>
 </head>
 <body>
-<div mdin style="float: left;width:25%;background-color: #f7f5fa;">
+<div mdin class="catalog">
 <ul>
   <li><a href="index.html">文档首页</a>
     <ul>
@@ -301,7 +346,7 @@
   </li>
 </ul>
 <hr/></div>
-<div mdin style="float: left;width:74%;margin-left: 1%;">
+<div mdin class="content">
 <h3><a href="#系统概述" name="系统概述">系统概述</a></h3>
 <p>系统接口采用REST规范，所有的接口以资源方式提供客户端访问。</p>
 <p><a href="接口授权说明.html">接口授权说明</a></p>
@@ -486,9 +531,9 @@
   </tbody>
 </table>
 <hr/></div>
-<div style="display:block;position:fixed;z-index:1001;bottom:10px;right:0;margin:0;padding:0;background-color:#c9c9c9">
-  <a style="display:block;padding:12px;background:rgba(255,255,255,.5);" href="#">
-    <span style="display:block;width:33px;height:24px;">TOP</span>
+<div class="topAnchor">
+  <a href="#">
+    <span></span>
   </a>
 </div>
 </body>
