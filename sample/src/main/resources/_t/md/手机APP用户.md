@@ -99,27 +99,27 @@ POST
 
 |名称|类型|是否必填|最大长度|描述|默认值|示例值|
 |---|---|---|---|---|---|---|
-| password | string | 是 | 100 | 密码（MD5（明文密码+工号/手机号）） |  | 1a4e06591ef41cc4b3c6e8b232b23e5a |
 | tel | string | 是 | 20 | 手机号码 |  | 18224060100 |
+| password | string | 是 | 100 | 密码（MD5（明文密码+工号/手机号）） |  | 1a4e06591ef41cc4b3c6e8b232b23e5a |
 ###### 响应参数
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
+| id | long | \- | 主键ID | 3 |
+| name | string | 100 | 名称 | sdfsfsdf |
+| lastLoginDate | long | \- | 最后登录日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1486954741739 |
+| lastLoginIp | string | 200 | 最后登录IP地址 | 127.0.0.1 |
+| tel | string | 20 | 手机号码 | 18224060100 |
+| address | string | 200 | 地址 | XXX路 |
+| city | string | 100 | 城市 | 成都 |
+| region | string | 100 | 地区 | 武侯 |
+| sex | int | \- | 性别（0：女，1：男，2：未知） | 1 |
+| qq | string | 100 | QQ号 | 9389349384 |
+| email | string | 200 | 电子邮箱 | xxx@126.com |
 | accessToken | object | \- | 授权码 | 53cd7efb-7517-4b03-b4e6-1a8325f58a08 |
 | accessToken | object | \- | 授权码 | 53cd7efb-7517-4b03-b4e6-1a8325f58a08 |
 | expiration | long | \- | 过期时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1488164341846 |
 | expiresIn | int | \- | 多少秒后过期 | 1209599 |
-| address | string | 200 | 地址 | XXX路 |
-| city | string | 100 | 城市 | 成都 |
-| email | string | 200 | 电子邮箱 | xxx@126.com |
-| id | long | \- | 主键ID | 3 |
-| lastLoginDate | long | \- | 最后登录日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1486954741739 |
-| lastLoginIp | string | 200 | 最后登录IP地址 | 127.0.0.1 |
-| name | string | 100 | 名称 | sdfsfsdf |
-| qq | string | 100 | QQ号 | 9389349384 |
-| region | string | 100 | 地区 | 武侯 |
-| sex | int | \- | 性别（0：女，1：男，2：未知） | 1 |
-| tel | string | 20 | 手机号码 | 18224060100 |
 
 ---
 #### <a href='#4.2注册/绑定新手机号发送验证码' name='4.2注册/绑定新手机号发送验证码'>4.2 注册/绑定新手机号发送验证码</a>
@@ -176,8 +176,8 @@ POST
 
 |名称|类型|是否必填|最大长度|描述|默认值|示例值|
 |---|---|---|---|---|---|---|
-| code | string | 是 | \- | 验证码 |  |  |
 | tel | string | 是 | 20 | 手机号码 |  | 18224060100 |
+| code | string | 是 | \- | 验证码 |  |  |
 ###### 响应参数
 
 无
@@ -203,21 +203,21 @@ POST
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
+| id | long | \- | 主键ID | 3 |
+| name | string | 100 | 名称 | sdfsfsdf |
+| lastLoginDate | long | \- | 最后登录日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1486954741739 |
+| lastLoginIp | string | 200 | 最后登录IP地址 | 127.0.0.1 |
+| tel | string | 20 | 手机号码 | 18224060100 |
+| address | string | 200 | 地址 | XXX路 |
+| city | string | 100 | 城市 | 成都 |
+| region | string | 100 | 地区 | 武侯 |
+| sex | int | \- | 性别（0：女，1：男，2：未知） | 1 |
+| qq | string | 100 | QQ号 | 9389349384 |
+| email | string | 200 | 电子邮箱 | xxx@126.com |
 | accessToken | object | \- | 授权码 | 53cd7efb-7517-4b03-b4e6-1a8325f58a08 |
 | accessToken | object | \- | 授权码 | 53cd7efb-7517-4b03-b4e6-1a8325f58a08 |
 | expiration | long | \- | 过期时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1488164341846 |
 | expiresIn | int | \- | 多少秒后过期 | 1209599 |
-| address | string | 200 | 地址 | XXX路 |
-| city | string | 100 | 城市 | 成都 |
-| email | string | 200 | 电子邮箱 | xxx@126.com |
-| id | long | \- | 主键ID | 3 |
-| lastLoginDate | long | \- | 最后登录日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1486954741739 |
-| lastLoginIp | string | 200 | 最后登录IP地址 | 127.0.0.1 |
-| name | string | 100 | 名称 | sdfsfsdf |
-| qq | string | 100 | QQ号 | 9389349384 |
-| region | string | 100 | 地区 | 武侯 |
-| sex | int | \- | 性别（0：女，1：男，2：未知） | 1 |
-| tel | string | 20 | 手机号码 | 18224060100 |
 
 ---
 #### <a href='#4.6查看个人详情' name='4.6查看个人详情'>4.6 查看个人详情</a>
@@ -238,17 +238,17 @@ GET
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
-| address | string | 200 | 地址 | XXX路 |
-| city | string | 100 | 城市 | 成都 |
-| email | string | 200 | 电子邮箱 | xxx@126.com |
 | id | long | \- | 主键ID | 3 |
+| name | string | 100 | 名称 | sdfsfsdf |
 | lastLoginDate | long | \- | 最后登录日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1486954741739 |
 | lastLoginIp | string | 200 | 最后登录IP地址 | 127.0.0.1 |
-| name | string | 100 | 名称 | sdfsfsdf |
-| qq | string | 100 | QQ号 | 9389349384 |
+| tel | string | 20 | 手机号码 | 18224060100 |
+| address | string | 200 | 地址 | XXX路 |
+| city | string | 100 | 城市 | 成都 |
 | region | string | 100 | 地区 | 武侯 |
 | sex | int | \- | 性别（0：女，1：男，2：未知） | 1 |
-| tel | string | 20 | 手机号码 | 18224060100 |
+| qq | string | 100 | QQ号 | 9389349384 |
+| email | string | 200 | 电子邮箱 | xxx@126.com |
 
 ---
 #### <a href='#4.7更新资料' name='4.7更新资料'>4.7 更新资料</a>
@@ -265,29 +265,29 @@ PUT
 |名称|类型|是否必填|最大长度|描述|默认值|示例值|
 |---|---|---|---|---|---|---|
 | accessToken | object | 是 | \- | 授权码 |  | fecb84d4-eac7-4e75-b21f-f97a52e83339 |
-| address | string | 否 | 200 | 地址 |  | XX路 |
 | avatar | file | 否 | 250 | 头像 |  |  |
-| city | string | 否 | 100 | 城市 |  | 成都市 |
-| email | string | 否 | 200 | 电子邮箱 |  | xxx@126.com |
 | name | string | 否 | 100 | 名称 |  |  |
-| qq | string | 否 | 100 | QQ号 |  | 9389349384 |
 | region | string | 否 | 100 | 地区 |  | 武侯区 |
+| city | string | 否 | 100 | 城市 |  | 成都市 |
+| address | string | 否 | 200 | 地址 |  | XX路 |
 | sex | int | 否 | \- | 性别（0：女，1：男，2：未知） |  | 1 |
+| qq | string | 否 | 100 | QQ号 |  | 9389349384 |
+| email | string | 否 | 200 | 电子邮箱 |  | xxx@126.com |
 ###### 响应参数
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
-| address | string | 200 | 地址 | XXX路 |
-| city | string | 100 | 城市 | 成都 |
-| email | string | 200 | 电子邮箱 | xxx@126.com |
 | id | long | \- | 主键ID | 3 |
+| name | string | 100 | 名称 | sdfsfsdf |
 | lastLoginDate | long | \- | 最后登录日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1486954741739 |
 | lastLoginIp | string | 200 | 最后登录IP地址 | 127.0.0.1 |
-| name | string | 100 | 名称 | sdfsfsdf |
-| qq | string | 100 | QQ号 | 9389349384 |
+| tel | string | 20 | 手机号码 | 18224060100 |
+| address | string | 200 | 地址 | XXX路 |
+| city | string | 100 | 城市 | 成都 |
 | region | string | 100 | 地区 | 武侯 |
 | sex | int | \- | 性别（0：女，1：男，2：未知） | 1 |
-| tel | string | 20 | 手机号码 | 18224060100 |
+| qq | string | 100 | QQ号 | 9389349384 |
+| email | string | 200 | 电子邮箱 | xxx@126.com |
 
 ---
 #### <a href='#4.8修改手机号' name='4.8修改手机号'>4.8 修改手机号</a>
@@ -312,17 +312,17 @@ PUT
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
-| address | string | 200 | 地址 | XXX路 |
-| city | string | 100 | 城市 | 成都 |
-| email | string | 200 | 电子邮箱 | xxx@126.com |
 | id | long | \- | 主键ID | 3 |
+| name | string | 100 | 名称 | sdfsfsdf |
 | lastLoginDate | long | \- | 最后登录日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1486954741739 |
 | lastLoginIp | string | 200 | 最后登录IP地址 | 127.0.0.1 |
-| name | string | 100 | 名称 | sdfsfsdf |
-| qq | string | 100 | QQ号 | 9389349384 |
+| tel | string | 20 | 手机号码 | 18224060100 |
+| address | string | 200 | 地址 | XXX路 |
+| city | string | 100 | 城市 | 成都 |
 | region | string | 100 | 地区 | 武侯 |
 | sex | int | \- | 性别（0：女，1：男，2：未知） | 1 |
-| tel | string | 20 | 手机号码 | 18224060100 |
+| qq | string | 100 | QQ号 | 9389349384 |
+| email | string | 200 | 电子邮箱 | xxx@126.com |
 
 ---
 #### <a href='#4.9修改密码' name='4.9修改密码'>4.9 修改密码</a>
@@ -345,17 +345,17 @@ PUT
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
-| address | string | 200 | 地址 | XXX路 |
-| city | string | 100 | 城市 | 成都 |
-| email | string | 200 | 电子邮箱 | xxx@126.com |
 | id | long | \- | 主键ID | 3 |
+| name | string | 100 | 名称 | sdfsfsdf |
 | lastLoginDate | long | \- | 最后登录日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1486954741739 |
 | lastLoginIp | string | 200 | 最后登录IP地址 | 127.0.0.1 |
-| name | string | 100 | 名称 | sdfsfsdf |
-| qq | string | 100 | QQ号 | 9389349384 |
+| tel | string | 20 | 手机号码 | 18224060100 |
+| address | string | 200 | 地址 | XXX路 |
+| city | string | 100 | 城市 | 成都 |
 | region | string | 100 | 地区 | 武侯 |
 | sex | int | \- | 性别（0：女，1：男，2：未知） | 1 |
-| tel | string | 20 | 手机号码 | 18224060100 |
+| qq | string | 100 | QQ号 | 9389349384 |
+| email | string | 200 | 电子邮箱 | xxx@126.com |
 
 ---
 #### <a href='#4.10找回密码' name='4.10找回密码'>4.10 找回密码</a>
@@ -371,28 +371,28 @@ PUT
 
 |名称|类型|是否必填|最大长度|描述|默认值|示例值|
 |---|---|---|---|---|---|---|
-| code | string | 是 | \- | 验证码 |  |  |
-| password | string | 是 | 100 | 密码（MD5（明文密码+工号/手机号）） |  |  |
 | tel | string | 是 | 20 | 手机号码 |  | 18224060100 |
+| password | string | 是 | 100 | 密码（MD5（明文密码+工号/手机号）） |  |  |
+| code | string | 是 | \- | 验证码 |  |  |
 ###### 响应参数
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
+| id | long | \- | 主键ID | 3 |
+| name | string | 100 | 名称 | sdfsfsdf |
+| lastLoginDate | long | \- | 最后登录日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1486954741739 |
+| lastLoginIp | string | 200 | 最后登录IP地址 | 127.0.0.1 |
+| tel | string | 20 | 手机号码 | 18224060100 |
+| address | string | 200 | 地址 | XXX路 |
+| city | string | 100 | 城市 | 成都 |
+| region | string | 100 | 地区 | 武侯 |
+| sex | int | \- | 性别（0：女，1：男，2：未知） | 1 |
+| qq | string | 100 | QQ号 | 9389349384 |
+| email | string | 200 | 电子邮箱 | xxx@126.com |
 | accessToken | object | \- | 授权码 | 53cd7efb-7517-4b03-b4e6-1a8325f58a08 |
 | accessToken | object | \- | 授权码 | 53cd7efb-7517-4b03-b4e6-1a8325f58a08 |
 | expiration | long | \- | 过期时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1488164341846 |
 | expiresIn | int | \- | 多少秒后过期 | 1209599 |
-| address | string | 200 | 地址 | XXX路 |
-| city | string | 100 | 城市 | 成都 |
-| email | string | 200 | 电子邮箱 | xxx@126.com |
-| id | long | \- | 主键ID | 3 |
-| lastLoginDate | long | \- | 最后登录日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1486954741739 |
-| lastLoginIp | string | 200 | 最后登录IP地址 | 127.0.0.1 |
-| name | string | 100 | 名称 | sdfsfsdf |
-| qq | string | 100 | QQ号 | 9389349384 |
-| region | string | 100 | 地区 | 武侯 |
-| sex | int | \- | 性别（0：女，1：男，2：未知） | 1 |
-| tel | string | 20 | 手机号码 | 18224060100 |
 
 ---
 

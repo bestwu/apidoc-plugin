@@ -178,70 +178,62 @@ class OrderedJsonParserUsingCharacterSource extends BaseJsonParser {
     }
 
     protected final List decodeJsonArray() {
-        ArrayList<Object> list
-        boolean foundEnd = false
+        ArrayList<Object> list = null
 
+        boolean foundEnd = false
         try {
-            CharacterSource ex = this.characterSource
+            CharacterSource characterSource = this.characterSource
+
             if (this.characterSource.currentChar() == 91) {
-                ex.nextChar()
+                characterSource.nextChar()
             }
 
-            ex.skipWhiteSpace()
+            characterSource.skipWhiteSpace()
+
+            /* the list might be empty  */
             if (this.characterSource.currentChar() == 93) {
-                ex.nextChar()
+                characterSource.nextChar()
                 return new ArrayList()
             }
 
-            list = new ArrayList<>()
+            list = new ArrayList()
 
-            ex.skipWhiteSpace()
-            Object arrayItem = this.decodeValue()
-            list.add(arrayItem)
-            ex.skipWhiteSpace()
-            int c = ex.currentChar()
-            if (c == 44) {
-                ex.nextChar()
-            } else if (c == 93) {
-                foundEnd = true
-                ex.nextChar()
-            } else {
-                String charString = this.charDescription(c)
-                this.complain(String.format(
-                        "expecting a \',\' or a \']\',  but got \nthe current character of  %s  on array index of %s \n",
-                        charString, list.size()))
-            }
+            while (characterSource.hasChar()) {
+                characterSource.skipWhiteSpace()
 
-            while (ex.hasChar()) {
-                ex.skipWhiteSpace()
-                arrayItem = this.decodeValue()
+                Object arrayItem = decodeValue()
+
                 list.add(arrayItem)
-                ex.skipWhiteSpace()
-                c = ex.currentChar()
-                if (c == 44) {
-                    ex.nextChar()
-                } else {
-                    if (c == 93) {
-                        foundEnd = true
-                        ex.nextChar()
-                        break
-                    }
 
-                    String charString = this.charDescription(c)
-                    this.complain(String.format(
-                            "expecting a \',\' or a \']\',  but got \nthe current character of  %s  on array index of %s \n",
-                            charString, list.size()))
+                characterSource.skipWhiteSpace()
+
+                int c = characterSource.currentChar()
+
+                if (c == COMMA) {
+                    characterSource.nextChar()
+                } else if (c == CLOSED_BRACKET) {
+                    foundEnd = true
+                    characterSource.nextChar()
+                    break
+                } else {
+                    String charString = charDescription(c)
+
+                    complain(
+                            String.format("expecting a ',' or a ']', " +
+                                    " but got \nthe current character of  %s " +
+                                    " on array index of %s \n", charString, list.size())
+                    )
+
                 }
             }
-        } catch (Exception var7) {
-            throw new JsonException(this.exceptionDetails("Unexpected issue"), var7)
+        } catch (Exception ex) {
+            throw new JsonException(exceptionDetails("Unexpected issue"), ex)
         }
 
         if (!foundEnd) {
-            throw new JsonException(this.exceptionDetails("Could not find end of JSON array"))
-        } else {
-            return list
+            throw new JsonException(exceptionDetails("Could not find end of JSON array"))
         }
+        return list
     }
 
     Object parse(Reader reader) {

@@ -332,6 +332,15 @@
       <td>fecb84d4-eac7-4e75-b21f-f97a52e83339 </td>
     </tr>
     <tr>
+      <td>type </td>
+      <td>enum </td>
+      <td>否 </td>
+      <td>- </td>
+      <td>订单查询状态：0:全部，1：待配送，2：配送中，3：已完成，4：已退货，默认为：0 </td>
+      <td>0 </td>
+      <td>0 </td>
+    </tr>
+    <tr>
       <td>keyword </td>
       <td>string </td>
       <td>否 </td>
@@ -358,15 +367,6 @@
       <td>20 </td>
       <td>20 </td>
     </tr>
-    <tr>
-      <td>type </td>
-      <td>enum </td>
-      <td>否 </td>
-      <td>- </td>
-      <td>订单查询状态：0:全部，1：待配送，2：配送中，3：已完成，4：已退货，默认为：0 </td>
-      <td>0 </td>
-      <td>0 </td>
-    </tr>
   </tbody>
 </table>
 <h6><a href="#响应参数" name="响应参数">响应参数</a></h6>
@@ -382,83 +382,6 @@
   </thead>
   <tbody>
     <tr>
-      <td>list </td>
-      <td>array </td>
-      <td>- </td>
-      <td>内容 </td>
-      <td>[companyName:伊藤洋华堂（眉山店）, createdDate:1485052172929, goodsNo:718000872251, goodsNum:2, id:174, queryStatus:1, status:0, sysNo:YT20170122102902] </td>
-    </tr>
-    <tr>
-      <td>companyName </td>
-      <td>string </td>
-      <td>100 </td>
-      <td>所属公司名称 </td>
-      <td>伊藤洋华堂（眉山店） </td>
-    </tr>
-    <tr>
-      <td>createdDate </td>
-      <td>long </td>
-      <td>- </td>
-      <td>创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
-      <td>1485052172929 </td>
-    </tr>
-    <tr>
-      <td>goodsNo </td>
-      <td>string </td>
-      <td>100 </td>
-      <td>货物运单号 </td>
-      <td>718000872251 </td>
-    </tr>
-    <tr>
-      <td>goodsNum </td>
-      <td>int </td>
-      <td>- </td>
-      <td>货物数量 </td>
-      <td>2 </td>
-    </tr>
-    <tr>
-      <td>id </td>
-      <td>long </td>
-      <td>- </td>
-      <td>主键ID </td>
-      <td>174 </td>
-    </tr>
-    <tr>
-      <td>queryStatus </td>
-      <td>int </td>
-      <td>- </td>
-      <td>显示状态：1：待配送，2：配送中，3：已完成，4：已退货 </td>
-      <td>1 </td>
-    </tr>
-    <tr>
-      <td>status </td>
-      <td>int </td>
-      <td>- </td>
-      <td>状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） </td>
-      <td>0 </td>
-    </tr>
-    <tr>
-      <td>sysNo </td>
-      <td>string </td>
-      <td>100 </td>
-      <td>系统运单号 </td>
-      <td>YT20170122102902 </td>
-    </tr>
-    <tr>
-      <td>page </td>
-      <td>int </td>
-      <td>- </td>
-      <td>页码，从1开始，默认1 </td>
-      <td>1 </td>
-    </tr>
-    <tr>
-      <td>pages </td>
-      <td>int </td>
-      <td>- </td>
-      <td>总页数 </td>
-      <td>5 </td>
-    </tr>
-    <tr>
       <td>size </td>
       <td>int </td>
       <td>- </td>
@@ -471,6 +394,83 @@
       <td>- </td>
       <td>总记录数 </td>
       <td>98 </td>
+    </tr>
+    <tr>
+      <td>pages </td>
+      <td>int </td>
+      <td>- </td>
+      <td>总页数 </td>
+      <td>5 </td>
+    </tr>
+    <tr>
+      <td>list </td>
+      <td>array </td>
+      <td>- </td>
+      <td>内容 </td>
+      <td>[id:174, sysNo:YT20170122102902, goodsNo:718000872251, status:0, createdDate:1485052172929, goodsNum:2, companyName:伊藤洋华堂（眉山店）, queryStatus:1] </td>
+    </tr>
+    <tr>
+      <td>id </td>
+      <td>long </td>
+      <td>- </td>
+      <td>主键ID </td>
+      <td>174 </td>
+    </tr>
+    <tr>
+      <td>sysNo </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>系统运单号 </td>
+      <td>YT20170122102902 </td>
+    </tr>
+    <tr>
+      <td>goodsNo </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>货物运单号 </td>
+      <td>718000872251 </td>
+    </tr>
+    <tr>
+      <td>status </td>
+      <td>int </td>
+      <td>- </td>
+      <td>状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） </td>
+      <td>0 </td>
+    </tr>
+    <tr>
+      <td>createdDate </td>
+      <td>long </td>
+      <td>- </td>
+      <td>创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
+      <td>1485052172929 </td>
+    </tr>
+    <tr>
+      <td>goodsNum </td>
+      <td>int </td>
+      <td>- </td>
+      <td>货物数量 </td>
+      <td>2 </td>
+    </tr>
+    <tr>
+      <td>companyName </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>所属公司名称 </td>
+      <td>伊藤洋华堂（眉山店） </td>
+    </tr>
+    <tr>
+      <td>queryStatus </td>
+      <td>int </td>
+      <td>- </td>
+      <td>显示状态：1：待配送，2：配送中，3：已完成，4：已退货 </td>
+      <td>1 </td>
+    </tr>
+    <tr>
+      <td>page </td>
+      <td>int </td>
+      <td>- </td>
+      <td>页码，从1开始，默认1 </td>
+      <td>1 </td>
     </tr>
   </tbody>
 </table>
@@ -539,46 +539,25 @@
   </thead>
   <tbody>
     <tr>
-      <td>consigneeAddress </td>
-      <td>string </td>
-      <td>250 </td>
-      <td>收货人的地址 </td>
-      <td>眉山红豆园A区1栋4号 </td>
-    </tr>
-    <tr>
-      <td>consigneeName </td>
-      <td>string </td>
-      <td>100 </td>
-      <td>收货人姓名 </td>
-      <td>吴勇 </td>
-    </tr>
-    <tr>
-      <td>consigneeTel </td>
-      <td>string </td>
-      <td>100 </td>
-      <td>收货人电话 </td>
-      <td>182****0100 </td>
-    </tr>
-    <tr>
-      <td>createdDate </td>
+      <td>id </td>
       <td>long </td>
       <td>- </td>
-      <td>创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
-      <td>1482463020055 </td>
+      <td>主键ID </td>
+      <td>1 </td>
     </tr>
     <tr>
-      <td>deliveryTime </td>
+      <td>sysNo </td>
       <td>string </td>
-      <td>- </td>
-      <td>配送时间 </td>
-      <td>2016-12-24 10:17 ~ 22:00 </td>
+      <td>100 </td>
+      <td>系统运单号 </td>
+      <td>YT20161230120202 </td>
     </tr>
     <tr>
-      <td>deliveryTimeDesc </td>
+      <td>goodsNo </td>
       <td>string </td>
-      <td>- </td>
-      <td>即日达时效 </td>
-      <td>当日送达 </td>
+      <td>100 </td>
+      <td>货物运单号 </td>
+      <td>718000872251 </td>
     </tr>
     <tr>
       <td>distributionName </td>
@@ -595,18 +574,53 @@
       <td>18224060100 </td>
     </tr>
     <tr>
-      <td>goodsNo </td>
+      <td>consigneeName </td>
       <td>string </td>
       <td>100 </td>
-      <td>货物运单号 </td>
-      <td>718000872251 </td>
+      <td>收货人姓名 </td>
+      <td>吴勇 </td>
+    </tr>
+    <tr>
+      <td>consigneeTel </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>收货人电话 </td>
+      <td>182****0100 </td>
+    </tr>
+    <tr>
+      <td>consigneeAddress </td>
+      <td>string </td>
+      <td>250 </td>
+      <td>收货人的地址 </td>
+      <td>眉山红豆园A区1栋4号 </td>
+    </tr>
+    <tr>
+      <td>status </td>
+      <td>int </td>
+      <td>- </td>
+      <td>状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） </td>
+      <td>1 </td>
+    </tr>
+    <tr>
+      <td>createdDate </td>
+      <td>long </td>
+      <td>- </td>
+      <td>创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
+      <td>1482463020055 </td>
     </tr>
     <tr>
       <td>goodses </td>
       <td>array </td>
       <td>- </td>
       <td>货物 </td>
-      <td>[categoryName:食品饮料, goodsName:休闲零食, goodsNum:1, id:1] </td>
+      <td>[id:1, categoryName:食品饮料, goodsName:休闲零食, goodsNum:1] </td>
+    </tr>
+    <tr>
+      <td>id </td>
+      <td>long </td>
+      <td>- </td>
+      <td>主键ID </td>
+      <td>1 </td>
     </tr>
     <tr>
       <td>categoryName </td>
@@ -630,18 +644,11 @@
       <td>1 </td>
     </tr>
     <tr>
-      <td>id </td>
-      <td>long </td>
+      <td>deliveryTimeDesc </td>
+      <td>string </td>
       <td>- </td>
-      <td>主键ID </td>
-      <td>1 </td>
-    </tr>
-    <tr>
-      <td>id </td>
-      <td>long </td>
-      <td>- </td>
-      <td>主键ID </td>
-      <td>1 </td>
+      <td>即日达时效 </td>
+      <td>当日送达 </td>
     </tr>
     <tr>
       <td>logisticsCompany </td>
@@ -658,18 +665,11 @@
       <td>2 </td>
     </tr>
     <tr>
-      <td>status </td>
-      <td>int </td>
-      <td>- </td>
-      <td>状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） </td>
-      <td>1 </td>
-    </tr>
-    <tr>
-      <td>sysNo </td>
+      <td>deliveryTime </td>
       <td>string </td>
-      <td>100 </td>
-      <td>系统运单号 </td>
-      <td>YT20161230120202 </td>
+      <td>- </td>
+      <td>配送时间 </td>
+      <td>2016-12-24 10:17 ~ 22:00 </td>
     </tr>
   </tbody>
 </table>
@@ -738,18 +738,39 @@
   </thead>
   <tbody>
     <tr>
-      <td>deliveryTime </td>
-      <td>string </td>
+      <td>id </td>
+      <td>long </td>
       <td>- </td>
-      <td>配送时间 </td>
-      <td>2016-12-24 10:17 ~ 22:00 </td>
+      <td>主键ID </td>
+      <td>67 </td>
+    </tr>
+    <tr>
+      <td>distributionName </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>配送人员姓名 </td>
+      <td>吴大 </td>
+    </tr>
+    <tr>
+      <td>distributionTel </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>配送人员联系电话 </td>
+      <td>18224060100 </td>
     </tr>
     <tr>
       <td>details </td>
       <td>array </td>
       <td>- </td>
       <td>详情 </td>
-      <td>[createdDate:1482808721748, id:67, notes:[createdDate:1482808721748, sysUserJobNumber:GL001, sysUserName:张兵, text:1], status:8] </td>
+      <td>[id:67, createdDate:1482808721748, status:8, notes:[text:1, createdDate:1482808721748, sysUserJobNumber:GL001, sysUserName:张兵]] </td>
+    </tr>
+    <tr>
+      <td>id </td>
+      <td>long </td>
+      <td>- </td>
+      <td>主键ID </td>
+      <td>67 </td>
     </tr>
     <tr>
       <td>createdDate </td>
@@ -759,18 +780,25 @@
       <td>1482808721748 </td>
     </tr>
     <tr>
-      <td>id </td>
-      <td>long </td>
+      <td>status </td>
+      <td>int </td>
       <td>- </td>
-      <td>主键ID </td>
-      <td>1 </td>
+      <td>状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） </td>
+      <td>8 </td>
     </tr>
     <tr>
       <td>notes </td>
       <td>array </td>
       <td>- </td>
       <td>备注 </td>
-      <td>[createdDate:1482808721748, sysUserJobNumber:GL001, sysUserName:张兵, text:1] </td>
+      <td>[text:1, createdDate:1482808721748, sysUserJobNumber:GL001, sysUserName:张兵] </td>
+    </tr>
+    <tr>
+      <td>text </td>
+      <td>string </td>
+      <td>- </td>
+      <td>说明 </td>
+      <td>1 </td>
     </tr>
     <tr>
       <td>createdDate </td>
@@ -794,39 +822,11 @@
       <td>张兵 </td>
     </tr>
     <tr>
-      <td>text </td>
+      <td>deliveryTime </td>
       <td>string </td>
       <td>- </td>
-      <td>说明 </td>
-      <td>1 </td>
-    </tr>
-    <tr>
-      <td>status </td>
-      <td>int </td>
-      <td>- </td>
-      <td>状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） </td>
-      <td>8 </td>
-    </tr>
-    <tr>
-      <td>distributionName </td>
-      <td>string </td>
-      <td>100 </td>
-      <td>配送人员姓名 </td>
-      <td>吴大 </td>
-    </tr>
-    <tr>
-      <td>distributionTel </td>
-      <td>string </td>
-      <td>100 </td>
-      <td>配送人员联系电话 </td>
-      <td>18224060100 </td>
-    </tr>
-    <tr>
-      <td>id </td>
-      <td>long </td>
-      <td>- </td>
-      <td>主键ID </td>
-      <td>1 </td>
+      <td>配送时间 </td>
+      <td>2016-12-24 10:17 ~ 22:00 </td>
     </tr>
   </tbody>
 </table>
@@ -895,13 +895,6 @@
   </thead>
   <tbody>
     <tr>
-      <td>deliveryTime </td>
-      <td>string </td>
-      <td>- </td>
-      <td>配送时间 </td>
-      <td>2017-01-01 16:36 ~ 22:00 </td>
-    </tr>
-    <tr>
       <td>route </td>
       <td>string </td>
       <td>- </td>
@@ -956,6 +949,13 @@
       <td>- </td>
       <td>目的地经度 </td>
       <td>103.839111 </td>
+    </tr>
+    <tr>
+      <td>deliveryTime </td>
+      <td>string </td>
+      <td>- </td>
+      <td>配送时间 </td>
+      <td>2017-01-01 16:36 ~ 22:00 </td>
     </tr>
   </tbody>
 </table>
@@ -1043,15 +1043,6 @@
       <td>fecb84d4-eac7-4e75-b21f-f97a52e83339 </td>
     </tr>
     <tr>
-      <td>text </td>
-      <td>string </td>
-      <td>是 </td>
-      <td>- </td>
-      <td>说明 </td>
-      <td> </td>
-      <td>我要投诉 </td>
-    </tr>
-    <tr>
       <td>waybillId </td>
       <td>long </td>
       <td>是 </td>
@@ -1059,6 +1050,15 @@
       <td>所属运单ID </td>
       <td> </td>
       <td>1 </td>
+    </tr>
+    <tr>
+      <td>text </td>
+      <td>string </td>
+      <td>是 </td>
+      <td>- </td>
+      <td>说明 </td>
+      <td> </td>
+      <td>我要投诉 </td>
     </tr>
   </tbody>
 </table>
@@ -1075,13 +1075,6 @@
   </thead>
   <tbody>
     <tr>
-      <td>createdDate </td>
-      <td>long </td>
-      <td>- </td>
-      <td>创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
-      <td>1487302834686 </td>
-    </tr>
-    <tr>
       <td>id </td>
       <td>long </td>
       <td>- </td>
@@ -1089,18 +1082,18 @@
       <td>1774 </td>
     </tr>
     <tr>
-      <td>resolved </td>
-      <td>boolean </td>
+      <td>waybillId </td>
+      <td>long </td>
       <td>- </td>
-      <td>是否处理 </td>
-      <td>false </td>
+      <td>所属运单ID </td>
+      <td>1 </td>
     </tr>
     <tr>
-      <td>text </td>
+      <td>waybillSysNo </td>
       <td>string </td>
-      <td>- </td>
-      <td>说明 </td>
-      <td>我要投诉 </td>
+      <td>100 </td>
+      <td>运单单号 </td>
+      <td>YT20161230120202 </td>
     </tr>
     <tr>
       <td>userId </td>
@@ -1124,18 +1117,25 @@
       <td>18224060100 </td>
     </tr>
     <tr>
-      <td>waybillId </td>
-      <td>long </td>
+      <td>text </td>
+      <td>string </td>
       <td>- </td>
-      <td>所属运单ID </td>
-      <td>1 </td>
+      <td>说明 </td>
+      <td>我要投诉 </td>
     </tr>
     <tr>
-      <td>waybillSysNo </td>
-      <td>string </td>
-      <td>100 </td>
-      <td>运单单号 </td>
-      <td>YT20161230120202 </td>
+      <td>resolved </td>
+      <td>boolean </td>
+      <td>- </td>
+      <td>是否处理 </td>
+      <td>false </td>
+    </tr>
+    <tr>
+      <td>createdDate </td>
+      <td>long </td>
+      <td>- </td>
+      <td>创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
+      <td>1487302834686 </td>
     </tr>
   </tbody>
 </table>
@@ -1201,11 +1201,53 @@
   </thead>
   <tbody>
     <tr>
+      <td>size </td>
+      <td>int </td>
+      <td>- </td>
+      <td>每页最大数量，默认20 </td>
+      <td>7 </td>
+    </tr>
+    <tr>
+      <td>total </td>
+      <td>long </td>
+      <td>- </td>
+      <td>总记录数 </td>
+      <td>7 </td>
+    </tr>
+    <tr>
+      <td>pages </td>
+      <td>int </td>
+      <td>- </td>
+      <td>总页数 </td>
+      <td>1 </td>
+    </tr>
+    <tr>
       <td>list </td>
       <td>array </td>
       <td>- </td>
       <td>内容 </td>
-      <td>[c_note:[createdDate:1487746147569, ct_note:给你退, sysUserId:1, sysUserNo:KF001], createdDate:1483953433584, id:1691, resolved:true, text:东西坏的, waybillSysNo:YT20170109170317] </td>
+      <td>[id:1691, waybillSysNo:YT20170109170317, text:东西坏的, c_note:[createdDate:1487746147569, ct_note:给你退, sysUserId:1, sysUserNo:KF001], resolved:true, createdDate:1483953433584] </td>
+    </tr>
+    <tr>
+      <td>id </td>
+      <td>long </td>
+      <td>- </td>
+      <td>主键ID </td>
+      <td>1691 </td>
+    </tr>
+    <tr>
+      <td>waybillSysNo </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>运单单号 </td>
+      <td>YT20170109170317 </td>
+    </tr>
+    <tr>
+      <td>text </td>
+      <td>string </td>
+      <td>- </td>
+      <td>说明 </td>
+      <td>东西坏的 </td>
     </tr>
     <tr>
       <td>note </td>
@@ -1243,20 +1285,6 @@
       <td>KF001 </td>
     </tr>
     <tr>
-      <td>createdDate </td>
-      <td>long </td>
-      <td>- </td>
-      <td>创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
-      <td>1483953433584 </td>
-    </tr>
-    <tr>
-      <td>id </td>
-      <td>long </td>
-      <td>- </td>
-      <td>主键ID </td>
-      <td>1691 </td>
-    </tr>
-    <tr>
       <td>resolved </td>
       <td>boolean </td>
       <td>- </td>
@@ -1264,18 +1292,11 @@
       <td>true </td>
     </tr>
     <tr>
-      <td>text </td>
-      <td>string </td>
+      <td>createdDate </td>
+      <td>long </td>
       <td>- </td>
-      <td>说明 </td>
-      <td>东西坏的 </td>
-    </tr>
-    <tr>
-      <td>waybillSysNo </td>
-      <td>string </td>
-      <td>100 </td>
-      <td>运单单号 </td>
-      <td>YT20170109170317 </td>
+      <td>创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
+      <td>1483953433584 </td>
     </tr>
     <tr>
       <td>page </td>
@@ -1283,27 +1304,6 @@
       <td>- </td>
       <td>页码，从1开始，默认1 </td>
       <td>1 </td>
-    </tr>
-    <tr>
-      <td>pages </td>
-      <td>int </td>
-      <td>- </td>
-      <td>总页数 </td>
-      <td>1 </td>
-    </tr>
-    <tr>
-      <td>size </td>
-      <td>int </td>
-      <td>- </td>
-      <td>每页最大数量，默认20 </td>
-      <td>7 </td>
-    </tr>
-    <tr>
-      <td>total </td>
-      <td>long </td>
-      <td>- </td>
-      <td>总记录数 </td>
-      <td>7 </td>
     </tr>
   </tbody>
 </table>

@@ -100,27 +100,27 @@ GET
 |名称|类型|是否必填|最大长度|描述|默认值|示例值|
 |---|---|---|---|---|---|---|
 | accessToken | object | 是 | \- | 授权码 |  | fecb84d4-eac7-4e75-b21f-f97a52e83339 |
+| type | enum | 否 | \- | 订单查询状态：0:全部，1：待配送，2：配送中，3：已完成，4：已退货，默认为：0 | 0 | 0 |
 | keyword | string | 否 | \- | 关键字 |  |  |
 | page | int | 否 | \- | 页码，从1开始，默认1 | 1 | 1 |
 | size | int | 否 | \- | 每页最大数量，默认20 | 20 | 20 |
-| type | enum | 否 | \- | 订单查询状态：0:全部，1：待配送，2：配送中，3：已完成，4：已退货，默认为：0 | 0 | 0 |
 ###### 响应参数
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
-| list | array | \- | 内容 | [companyName:伊藤洋华堂（眉山店）, createdDate:1485052172929, goodsNo:718000872251, goodsNum:2, id:174, queryStatus:1, status:0, sysNo:YT20170122102902] |
-| companyName | string | 100 | 所属公司名称 | 伊藤洋华堂（眉山店） |
-| createdDate | long | \- | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1485052172929 |
-| goodsNo | string | 100 | 货物运单号 | 718000872251 |
-| goodsNum | int | \- | 货物数量 | 2 |
-| id | long | \- | 主键ID | 174 |
-| queryStatus | int | \- | 显示状态：1：待配送，2：配送中，3：已完成，4：已退货 | 1 |
-| status | int | \- | 状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） | 0 |
-| sysNo | string | 100 | 系统运单号 | YT20170122102902 |
-| page | int | \- | 页码，从1开始，默认1 | 1 |
-| pages | int | \- | 总页数 | 5 |
 | size | int | \- | 每页最大数量，默认20 | 20 |
 | total | long | \- | 总记录数 | 98 |
+| pages | int | \- | 总页数 | 5 |
+| list | array | \- | 内容 | [id:174, sysNo:YT20170122102902, goodsNo:718000872251, status:0, createdDate:1485052172929, goodsNum:2, companyName:伊藤洋华堂（眉山店）, queryStatus:1] |
+| id | long | \- | 主键ID | 174 |
+| sysNo | string | 100 | 系统运单号 | YT20170122102902 |
+| goodsNo | string | 100 | 货物运单号 | 718000872251 |
+| status | int | \- | 状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） | 0 |
+| createdDate | long | \- | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1485052172929 |
+| goodsNum | int | \- | 货物数量 | 2 |
+| companyName | string | 100 | 所属公司名称 | 伊藤洋华堂（眉山店） |
+| queryStatus | int | \- | 显示状态：1：待配送，2：配送中，3：已完成，4：已退货 | 1 |
+| page | int | \- | 页码，从1开始，默认1 | 1 |
 
 ---
 #### <a href='#3.2个人订单详情' name='3.2个人订单详情'>3.2 个人订单详情</a>
@@ -147,25 +147,25 @@ GET
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
-| consigneeAddress | string | 250 | 收货人的地址 | 眉山红豆园A区1栋4号 |
-| consigneeName | string | 100 | 收货人姓名 | 吴勇 |
-| consigneeTel | string | 100 | 收货人电话 | 182****0100 |
-| createdDate | long | \- | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1482463020055 |
-| deliveryTime | string | \- | 配送时间 | 2016-12-24 10:17 ~ 22:00 |
-| deliveryTimeDesc | string | \- | 即日达时效 | 当日送达 |
+| id | long | \- | 主键ID | 1 |
+| sysNo | string | 100 | 系统运单号 | YT20161230120202 |
+| goodsNo | string | 100 | 货物运单号 | 718000872251 |
 | distributionName | string | 100 | 配送人员姓名 | 吴大 |
 | distributionTel | string | 100 | 配送人员联系电话 | 18224060100 |
-| goodsNo | string | 100 | 货物运单号 | 718000872251 |
-| goodses | array | \- | 货物 | [categoryName:食品饮料, goodsName:休闲零食, goodsNum:1, id:1] |
+| consigneeName | string | 100 | 收货人姓名 | 吴勇 |
+| consigneeTel | string | 100 | 收货人电话 | 182****0100 |
+| consigneeAddress | string | 250 | 收货人的地址 | 眉山红豆园A区1栋4号 |
+| status | int | \- | 状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） | 1 |
+| createdDate | long | \- | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1482463020055 |
+| goodses | array | \- | 货物 | [id:1, categoryName:食品饮料, goodsName:休闲零食, goodsNum:1] |
+| id | long | \- | 主键ID | 1 |
 | categoryName | string | 100 | 分类名称 | 食品饮料 |
 | goodsName | string | 100 | 货物名称 | 休闲零食 |
 | goodsNum | int | \- | 货物数量 | 1 |
-| id | long | \- | 主键ID | 1 |
-| id | long | \- | 主键ID | 1 |
+| deliveryTimeDesc | string | \- | 即日达时效 | 当日送达 |
 | logisticsCompany | string | \- | 物流公司 | 我的伊家 |
 | queryStatus | int | \- | 显示状态：1：待配送，2：配送中，3：已完成，4：已退货 | 2 |
-| status | int | \- | 状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） | 1 |
-| sysNo | string | 100 | 系统运单号 | YT20161230120202 |
+| deliveryTime | string | \- | 配送时间 | 2016-12-24 10:17 ~ 22:00 |
 
 ---
 #### <a href='#3.3物流状态' name='3.3物流状态'>3.3 物流状态</a>
@@ -192,19 +192,19 @@ GET
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
-| deliveryTime | string | \- | 配送时间 | 2016-12-24 10:17 ~ 22:00 |
-| details | array | \- | 详情 | [createdDate:1482808721748, id:67, notes:[createdDate:1482808721748, sysUserJobNumber:GL001, sysUserName:张兵, text:1], status:8] |
+| id | long | \- | 主键ID | 67 |
+| distributionName | string | 100 | 配送人员姓名 | 吴大 |
+| distributionTel | string | 100 | 配送人员联系电话 | 18224060100 |
+| details | array | \- | 详情 | [id:67, createdDate:1482808721748, status:8, notes:[text:1, createdDate:1482808721748, sysUserJobNumber:GL001, sysUserName:张兵]] |
+| id | long | \- | 主键ID | 67 |
 | createdDate | long | \- | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1482808721748 |
-| id | long | \- | 主键ID | 1 |
-| notes | array | \- | 备注 | [createdDate:1482808721748, sysUserJobNumber:GL001, sysUserName:张兵, text:1] |
+| status | int | \- | 状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） | 8 |
+| notes | array | \- | 备注 | [text:1, createdDate:1482808721748, sysUserJobNumber:GL001, sysUserName:张兵] |
+| text | string | \- | 说明 | 1 |
 | createdDate | long | \- | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1482808721748 |
 | sysUserJobNumber | string | 200 | 工号 | GL001 |
 | sysUserName | string | 100 | 操作人员姓名 | 张兵 |
-| text | string | \- | 说明 | 1 |
-| status | int | \- | 状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） | 8 |
-| distributionName | string | 100 | 配送人员姓名 | 吴大 |
-| distributionTel | string | 100 | 配送人员联系电话 | 18224060100 |
-| id | long | \- | 主键ID | 1 |
+| deliveryTime | string | \- | 配送时间 | 2016-12-24 10:17 ~ 22:00 |
 
 ---
 #### <a href='#3.4订单轨迹' name='3.4订单轨迹'>3.4 订单轨迹</a>
@@ -231,7 +231,6 @@ GET
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
-| deliveryTime | string | \- | 配送时间 | 2017-01-01 16:36 ~ 22:00 |
 | route | string | \- | 轨迹 | [lat:30.048832, lng:103.839111] |
 | lat | double | \- | 纬度 | 30.048832 |
 | lng | double | \- | 经度 | 103.839111 |
@@ -240,6 +239,7 @@ GET
 | id | long | \- | 所属运单ID | 108 |
 | lat | double | \- | 目的地纬度 | 30.048646 |
 | lng | double | \- | 目的地经度 | 103.839111 |
+| deliveryTime | string | \- | 配送时间 | 2017-01-01 16:36 ~ 22:00 |
 
 ---
 #### <a href='#3.5删除订单' name='3.5删除订单'>3.5 删除订单</a>
@@ -281,21 +281,21 @@ POST
 |名称|类型|是否必填|最大长度|描述|默认值|示例值|
 |---|---|---|---|---|---|---|
 | accessToken | object | 是 | \- | 授权码 |  | fecb84d4-eac7-4e75-b21f-f97a52e83339 |
-| text | string | 是 | \- | 说明 |  | 我要投诉 |
 | waybillId | long | 是 | \- | 所属运单ID |  | 1 |
+| text | string | 是 | \- | 说明 |  | 我要投诉 |
 ###### 响应参数
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
-| createdDate | long | \- | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1487302834686 |
 | id | long | \- | 主键ID | 1774 |
-| resolved | boolean | \- | 是否处理 | false |
-| text | string | \- | 说明 | 我要投诉 |
+| waybillId | long | \- | 所属运单ID | 1 |
+| waybillSysNo | string | 100 | 运单单号 | YT20161230120202 |
 | userId | long | \- | 系统用户ID | 3 |
 | userName | string | 50 | 用户姓名 | ddddd |
 | userTel | string | 20 | 用户电话 | 18224060100 |
-| waybillId | long | \- | 所属运单ID | 1 |
-| waybillSysNo | string | 100 | 运单单号 | YT20161230120202 |
+| text | string | \- | 说明 | 我要投诉 |
+| resolved | boolean | \- | 是否处理 | false |
+| createdDate | long | \- | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1487302834686 |
 
 ---
 #### <a href='#3.7我的投诉' name='3.7我的投诉'>3.7 我的投诉</a>
@@ -318,21 +318,21 @@ GET
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
-| list | array | \- | 内容 | [c_note:[createdDate:1487746147569, ct_note:给你退, sysUserId:1, sysUserNo:KF001], createdDate:1483953433584, id:1691, resolved:true, text:东西坏的, waybillSysNo:YT20170109170317] |
+| size | int | \- | 每页最大数量，默认20 | 7 |
+| total | long | \- | 总记录数 | 7 |
+| pages | int | \- | 总页数 | 1 |
+| list | array | \- | 内容 | [id:1691, waybillSysNo:YT20170109170317, text:东西坏的, c_note:[createdDate:1487746147569, ct_note:给你退, sysUserId:1, sysUserNo:KF001], resolved:true, createdDate:1483953433584] |
+| id | long | \- | 主键ID | 1691 |
+| waybillSysNo | string | 100 | 运单单号 | YT20170109170317 |
+| text | string | \- | 说明 | 东西坏的 |
 | note | array | \- | 备注（处理结果） | [createdDate:1487746147569, ct_note:给你退, sysUserId:1, sysUserNo:KF001] |
 | createdDate | long | \- | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1483953433584 |
 | note | string | \- | 备注（处理结果） | 给你退 |
 | sysUserId | long | \- | 客服务人员（处理人员）ID | 1 |
 | sysUserNo | string | 100 | 客服务人员（处理人员）工号 | KF001 |
-| createdDate | long | \- | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1483953433584 |
-| id | long | \- | 主键ID | 1691 |
 | resolved | boolean | \- | 是否处理 | true |
-| text | string | \- | 说明 | 东西坏的 |
-| waybillSysNo | string | 100 | 运单单号 | YT20170109170317 |
+| createdDate | long | \- | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1483953433584 |
 | page | int | \- | 页码，从1开始，默认1 | 1 |
-| pages | int | \- | 总页数 | 1 |
-| size | int | \- | 每页最大数量，默认20 | 7 |
-| total | long | \- | 总记录数 | 7 |
 
 ---
 

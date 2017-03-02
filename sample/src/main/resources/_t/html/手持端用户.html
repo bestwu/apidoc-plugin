@@ -355,48 +355,6 @@
   </thead>
   <tbody>
     <tr>
-      <td>accessToken </td>
-      <td>object </td>
-      <td>- </td>
-      <td>授权码 </td>
-      <td>[accessToken:5abd2a1b-549a-4063-a9db-5c3d6fbefac9, expiration:1487747777343, expiresIn:1209600, needAddInfo:false] </td>
-    </tr>
-    <tr>
-      <td>accessToken </td>
-      <td>object </td>
-      <td>- </td>
-      <td>授权码 </td>
-      <td>5abd2a1b-549a-4063-a9db-5c3d6fbefac9 </td>
-    </tr>
-    <tr>
-      <td>expiration </td>
-      <td>long </td>
-      <td>- </td>
-      <td>过期时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
-      <td>1487747777343 </td>
-    </tr>
-    <tr>
-      <td>expiresIn </td>
-      <td>int </td>
-      <td>- </td>
-      <td>多少秒后过期 </td>
-      <td>1209600 </td>
-    </tr>
-    <tr>
-      <td>needAddInfo </td>
-      <td>boolean </td>
-      <td>- </td>
-      <td>是否需要补充资料 </td>
-      <td>false </td>
-    </tr>
-    <tr>
-      <td>createdDate </td>
-      <td>long </td>
-      <td>- </td>
-      <td>创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
-      <td>1482411971918 </td>
-    </tr>
-    <tr>
       <td>id </td>
       <td>long </td>
       <td>- </td>
@@ -409,6 +367,34 @@
       <td>100 </td>
       <td>工号 </td>
       <td>KD001 </td>
+    </tr>
+    <tr>
+      <td>name </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>名称 </td>
+      <td>刘名 </td>
+    </tr>
+    <tr>
+      <td>createdDate </td>
+      <td>long </td>
+      <td>- </td>
+      <td>创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
+      <td>1482411971918 </td>
+    </tr>
+    <tr>
+      <td>lastModifiedDate </td>
+      <td>long </td>
+      <td>- </td>
+      <td>上次修改时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
+      <td>1486538177218 </td>
+    </tr>
+    <tr>
+      <td>lastLogoutDate </td>
+      <td>long </td>
+      <td>- </td>
+      <td>上次退出日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
+      <td>1483945745377 </td>
     </tr>
     <tr>
       <td>lastLoginDate </td>
@@ -425,32 +411,46 @@
       <td>127.0.0.1 </td>
     </tr>
     <tr>
-      <td>lastLogoutDate </td>
-      <td>long </td>
-      <td>- </td>
-      <td>上次退出日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
-      <td>1483945745377 </td>
-    </tr>
-    <tr>
-      <td>lastModifiedDate </td>
-      <td>long </td>
-      <td>- </td>
-      <td>上次修改时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
-      <td>1486538177218 </td>
-    </tr>
-    <tr>
-      <td>name </td>
-      <td>string </td>
-      <td>100 </td>
-      <td>名称 </td>
-      <td>刘名 </td>
-    </tr>
-    <tr>
       <td>tel </td>
       <td>string </td>
       <td>20 </td>
       <td>手机号码 </td>
       <td>18224060100 </td>
+    </tr>
+    <tr>
+      <td>accessToken </td>
+      <td>object </td>
+      <td>- </td>
+      <td>授权码 </td>
+      <td>[accessToken:5abd2a1b-549a-4063-a9db-5c3d6fbefac9, expiration:1487747777343, needAddInfo:false, expiresIn:1209600] </td>
+    </tr>
+    <tr>
+      <td>accessToken </td>
+      <td>object </td>
+      <td>- </td>
+      <td>授权码 </td>
+      <td>5abd2a1b-549a-4063-a9db-5c3d6fbefac9 </td>
+    </tr>
+    <tr>
+      <td>expiration </td>
+      <td>long </td>
+      <td>- </td>
+      <td>过期时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
+      <td>1487747777343 </td>
+    </tr>
+    <tr>
+      <td>needAddInfo </td>
+      <td>boolean </td>
+      <td>- </td>
+      <td>是否需要补充资料 </td>
+      <td>false </td>
+    </tr>
+    <tr>
+      <td>expiresIn </td>
+      <td>int </td>
+      <td>- </td>
+      <td>多少秒后过期 </td>
+      <td>1209600 </td>
     </tr>
   </tbody>
 </table>
@@ -531,20 +531,6 @@
   </thead>
   <tbody>
     <tr>
-      <td>companyName </td>
-      <td>string </td>
-      <td>100 </td>
-      <td>所属公司名称 </td>
-      <td>眉山店 </td>
-    </tr>
-    <tr>
-      <td>createdDate </td>
-      <td>long </td>
-      <td>- </td>
-      <td>创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
-      <td>1482411971918 </td>
-    </tr>
-    <tr>
       <td>id </td>
       <td>long </td>
       <td>- </td>
@@ -557,6 +543,34 @@
       <td>100 </td>
       <td>工号 </td>
       <td>KD001 </td>
+    </tr>
+    <tr>
+      <td>name </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>名称 </td>
+      <td>刘名 </td>
+    </tr>
+    <tr>
+      <td>createdDate </td>
+      <td>long </td>
+      <td>- </td>
+      <td>创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
+      <td>1482411971918 </td>
+    </tr>
+    <tr>
+      <td>lastModifiedDate </td>
+      <td>long </td>
+      <td>- </td>
+      <td>上次修改时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
+      <td>1486538177218 </td>
+    </tr>
+    <tr>
+      <td>lastLogoutDate </td>
+      <td>long </td>
+      <td>- </td>
+      <td>上次退出日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
+      <td>1483945745377 </td>
     </tr>
     <tr>
       <td>lastLoginDate </td>
@@ -573,32 +587,18 @@
       <td>127.0.0.1 </td>
     </tr>
     <tr>
-      <td>lastLogoutDate </td>
-      <td>long </td>
-      <td>- </td>
-      <td>上次退出日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
-      <td>1483945745377 </td>
-    </tr>
-    <tr>
-      <td>lastModifiedDate </td>
-      <td>long </td>
-      <td>- </td>
-      <td>上次修改时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
-      <td>1486538177218 </td>
-    </tr>
-    <tr>
-      <td>name </td>
-      <td>string </td>
-      <td>100 </td>
-      <td>名称 </td>
-      <td>刘名 </td>
-    </tr>
-    <tr>
       <td>tel </td>
       <td>string </td>
       <td>20 </td>
       <td>手机号码 </td>
       <td>18224060100 </td>
+    </tr>
+    <tr>
+      <td>companyName </td>
+      <td>string </td>
+      <td>100 </td>
+      <td>所属公司名称 </td>
+      <td>眉山店 </td>
     </tr>
   </tbody>
 </table>
@@ -634,20 +634,20 @@
       <td>aaae9397-2ace-4bbe-b6cb-f1b362d8f891 </td>
     </tr>
     <tr>
-      <td>idCard </td>
-      <td>string </td>
-      <td>否 </td>
-      <td>50 </td>
-      <td>身份证号 </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
       <td>name </td>
       <td>string </td>
       <td>否 </td>
       <td>100 </td>
       <td>名称 </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>idCard </td>
+      <td>string </td>
+      <td>否 </td>
+      <td>50 </td>
+      <td>身份证号 </td>
       <td> </td>
       <td> </td>
     </tr>
@@ -675,48 +675,6 @@
   </thead>
   <tbody>
     <tr>
-      <td>accessToken </td>
-      <td>object </td>
-      <td>- </td>
-      <td>授权码 </td>
-      <td>[accessToken:820261be-bb1a-4143-adc8-cc92bb436796, expiration:1487749011058, expiresIn:1209599, needAddInfo:false] </td>
-    </tr>
-    <tr>
-      <td>accessToken </td>
-      <td>object </td>
-      <td>- </td>
-      <td>授权码 </td>
-      <td>820261be-bb1a-4143-adc8-cc92bb436796 </td>
-    </tr>
-    <tr>
-      <td>expiration </td>
-      <td>long </td>
-      <td>- </td>
-      <td>过期时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
-      <td>1487749011058 </td>
-    </tr>
-    <tr>
-      <td>expiresIn </td>
-      <td>int </td>
-      <td>- </td>
-      <td>多少秒后过期 </td>
-      <td>1209599 </td>
-    </tr>
-    <tr>
-      <td>needAddInfo </td>
-      <td>boolean </td>
-      <td>- </td>
-      <td>是否需要补充资料 </td>
-      <td>false </td>
-    </tr>
-    <tr>
-      <td>createdDate </td>
-      <td>long </td>
-      <td>- </td>
-      <td>创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
-      <td>1482411971918 </td>
-    </tr>
-    <tr>
       <td>id </td>
       <td>long </td>
       <td>- </td>
@@ -729,6 +687,27 @@
       <td>100 </td>
       <td>工号 </td>
       <td>KD001 </td>
+    </tr>
+    <tr>
+      <td>createdDate </td>
+      <td>long </td>
+      <td>- </td>
+      <td>创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
+      <td>1482411971918 </td>
+    </tr>
+    <tr>
+      <td>lastModifiedDate </td>
+      <td>long </td>
+      <td>- </td>
+      <td>上次修改时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
+      <td>1486538177218 </td>
+    </tr>
+    <tr>
+      <td>lastLogoutDate </td>
+      <td>long </td>
+      <td>- </td>
+      <td>上次退出日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
+      <td>1483945745377 </td>
     </tr>
     <tr>
       <td>lastLoginDate </td>
@@ -745,18 +724,39 @@
       <td>127.0.0.1 </td>
     </tr>
     <tr>
-      <td>lastLogoutDate </td>
-      <td>long </td>
+      <td>accessToken </td>
+      <td>object </td>
       <td>- </td>
-      <td>上次退出日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
-      <td>1483945745377 </td>
+      <td>授权码 </td>
+      <td>[accessToken:820261be-bb1a-4143-adc8-cc92bb436796, expiration:1487749011058, needAddInfo:false, expiresIn:1209599] </td>
     </tr>
     <tr>
-      <td>lastModifiedDate </td>
+      <td>accessToken </td>
+      <td>object </td>
+      <td>- </td>
+      <td>授权码 </td>
+      <td>820261be-bb1a-4143-adc8-cc92bb436796 </td>
+    </tr>
+    <tr>
+      <td>expiration </td>
       <td>long </td>
       <td>- </td>
-      <td>上次修改时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
-      <td>1486538177218 </td>
+      <td>过期时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） </td>
+      <td>1487749011058 </td>
+    </tr>
+    <tr>
+      <td>needAddInfo </td>
+      <td>boolean </td>
+      <td>- </td>
+      <td>是否需要补充资料 </td>
+      <td>false </td>
+    </tr>
+    <tr>
+      <td>expiresIn </td>
+      <td>int </td>
+      <td>- </td>
+      <td>多少秒后过期 </td>
+      <td>1209599 </td>
     </tr>
   </tbody>
 </table>
