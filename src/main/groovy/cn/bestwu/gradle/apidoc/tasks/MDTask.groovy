@@ -4,10 +4,8 @@ import cn.bestwu.gradle.apidoc.support.OrderedJsonParserUsingCharacterSource
 import groovy.json.JsonSlurper
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
-import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
-
 /**
  * 生成接口文档
  *
@@ -19,7 +17,6 @@ class MDTask extends DefaultTask {
     String encoding = 'UTF-8'
     @Input
     String apiHost = ''
-    @InputDirectory
     File input
     @OutputDirectory
     File output

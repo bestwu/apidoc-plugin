@@ -19,8 +19,17 @@ class ApidocPlugin implements Plugin<Project> {
             project.extensions.create('apidoc', ApidocExtension)
             afterEvaluate {
                 project.task('mddoc', type: MDTask, description: '') {
-                    input project.file(project.apidoc.input)
-                    output project.file(project.apidoc.output + '/md')
+                    def inputDir = project.file(project.apidoc.input)
+                    def outputDir = project.file(project.apidoc.output + '/md')
+                    inputs.files inputDir.listFiles(new FileFilter() {
+                        @Override
+                        boolean accept(File pathname) {
+                            return pathname != outputDir && pathname != project.file(project.apidoc.output + '/html')
+                        }
+                    })
+
+                    input inputDir
+                    output outputDir
                     apiHost project.apidoc.apiHost == '' ? project.apidoc.defaultHost : project.apidoc.apiHost
                     encoding project.apidoc.encoding
                 }
@@ -30,12 +39,21 @@ class ApidocPlugin implements Plugin<Project> {
                     encoding project.apidoc.encoding
                 }
                 project.task('alphaMddoc', type: MDTask, description: '') {
-                    input project.file(project.apidoc.input)
-                    output project.file(project.apidoc.output + '/md')
+                    def inputDir = project.file(project.apidoc.input)
+                    def outputDir = project.file(project.apidoc.output + '/md')
+                    inputs.files inputDir.listFiles(new FileFilter() {
+                        @Override
+                        boolean accept(File pathname) {
+                            return pathname != outputDir && pathname != project.file(project.apidoc.output + '/html')
+                        }
+                    })
+
+                    input inputDir
+                    output outputDir
                     apiHost project.apidoc.defaultHost
                     encoding project.apidoc.encoding
                 }
-                project.task('alphaHtmldoc', type: HtmlTask, group: 'app', description: '') {
+                project.task('alphaHtmldoc', type: HtmlTask, description: '') {
                     input project.file(project.apidoc.output + '/md')
                     output project.file(project.apidoc.output + '/html')
                     encoding project.apidoc.encoding
