@@ -6,6 +6,7 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
+
 /**
  * 生成接口文档
  *
@@ -37,21 +38,15 @@ class MDTask extends DefaultTask {
         def catalogFile = new File(mdOutput, "index.md")
         def readme = new File(input, "README.md")
         def catalogOut = new StringWriter()
-        catalogOut.println "- [文档首页](index.md)"
+        catalogOut.println "- [系统介绍](index.md)"
         catalogOut.println ''
-        readme.readLines().forEach({ it ->
-            if (it.startsWith('### ')) {
-                def name = it.replace('### ', '').trim()
-                catalogOut.println "\t- [${name}](index.md#${name.replace(' ', '-')})"
-            }
-        })
         def extraFiles = input.listFiles(new FileFilter() {
             @Override
             boolean accept(File pathname) {
                 def name = pathname.name
                 def accept = name.endsWith('.md') && name != 'README.md'
                 if (accept) {
-                    catalogOut.println "\t- [${name.replace('.md', '')}](${name})"
+                    catalogOut.println "- [${name.replace('.md', '')}](${name})"
                 }
                 return accept
             }
@@ -75,14 +70,6 @@ class MDTask extends DefaultTask {
                 catalogOut.println '---'
         }
         def catalog = catalogOut.toString()
-        extraFiles.each { file ->
-            new File(mdOutput, file.name).withPrintWriter(encoding) { out ->
-                printFile(out, catalog, {
-                    out.println file.text
-                }
-                )
-            }
-        }
         catalogFile.withPrintWriter(encoding) { out ->
             printFile(out, catalog, {
                 if (readme.exists()) {
@@ -91,6 +78,14 @@ class MDTask extends DefaultTask {
                     out.println '---'
                 }
             })
+        }
+        extraFiles.each { file ->
+            new File(mdOutput, file.name).withPrintWriter(encoding) { out ->
+                printFile(out, catalog, {
+                    out.println file.text
+                }
+                )
+            }
         }
 
         trees.eachWithIndex() {
