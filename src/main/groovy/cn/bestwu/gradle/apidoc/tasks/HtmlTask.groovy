@@ -6,8 +6,7 @@ import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
 import org.pegdown.*
-import org.pegdown.ast.HtmlBlockNode
-import org.pegdown.ast.RootNode
+import org.pegdown.ast.*
 import org.pegdown.plugins.ToHtmlSerializerPlugin
 
 /**
@@ -290,6 +289,26 @@ class HtmlTask extends DefaultTask {
                         def processor = this
                         RootNode astRoot = parseMarkdown(markdownSource)
                         return new ToHtmlSerializer(linkRenderer, verbatimSerializerMap, plugins) {
+                            void visit(TableCellNode node) {
+                                String tag = inTableHeader ? "th" : "td"
+                                List<TableColumnNode> columns = currentTableNode.getColumns()
+                                TableColumnNode column = columns.get(Math.min(currentTableColumn, columns.size() - 1))
+
+                                def titleText = ''
+                                node.getChildren().each {
+                                    if (it instanceof TextNode)
+                                        titleText += it.text.replace('\"', '&quot;')
+                                }
+                                printer.println().print('<').print(tag).print(' title=\"').print(titleText).print("\"")
+                                column.accept(this)
+                                if (node.getColSpan() > 1) printer.print(" colspan=\"").print(Integer.toString(node.getColSpan())).print('"')
+                                printer.print('>')
+                                visitChildren(node)
+                                printer.print('<').print('/').print(tag).print('>')
+
+                                currentTableColumn += node.getColSpan()
+                            }
+
                             void visit(HtmlBlockNode node) {
                                 String text = node.getText()
                                 if (text.length() > 0) {

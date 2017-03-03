@@ -176,7 +176,7 @@ class MDTask extends DefaultTask {
             out.println "|---|---|---|---|---|"
             urlParams.eachWithIndex {
                 it, index ->
-                    out.println "| ${it.name} | ${it.type} | ${it.length} | ${it.desc} | ${it.tempValue} |"
+                    out.println "|${it.name}|${it.type}|${it.length}|${it.desc}|${it.tempValue}|"
             }
         }
         out.println "###### 请求参数"
@@ -189,7 +189,7 @@ class MDTask extends DefaultTask {
             out.println "|名称|类型|是否必填|最大长度|描述|默认值|示例值|"
             out.println "|---|---|---|---|---|---|---|"
             params.each {
-                out.println "| ${it.name} | ${it.type} | ${it.notNullDesc} | ${it.length} | ${it.desc} | ${it.value} | ${it.tempValue} |"
+                out.println "|${it.name}|${it.type}|${it.notNullDesc}|${it.length}|${it.desc}|${it.value}|${it.tempValue}|"
             }
         }
         out.println "###### 响应参数"
@@ -202,7 +202,7 @@ class MDTask extends DefaultTask {
             out.println "|名称|类型|最大长度|描述|示例值|"
             out.println "|---|---|---|---|---|"
             results.each {
-                out.println "| ${it.name} | ${it.type} | ${it.length} | ${it.desc} | ${it.tempValue} |"
+                out.println "|${it.name}|${it.type}|${it.length}|${it.desc}|${it.tempValue}|"
             }
         }
     }
