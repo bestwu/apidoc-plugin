@@ -1,6 +1,7 @@
 package cn.bestwu.gradle.apidoc.tasks
 
 import cn.bestwu.gradle.apidoc.support.OrderedJsonParserUsingCharacterSource
+import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
@@ -261,7 +262,13 @@ class MDTask extends DefaultTask {
                     if (v == null || '' == v || ((v instanceof Map || v instanceof Collection) && v.size() == 0)) {
                         field.tempValue = field.value
                     } else {
-                        field.tempValue = v
+                        if (v instanceof Map)
+                            if (field.type == 'array') {
+                                field.tempValue = '[' + JsonOutput.toJson(v) + ']'
+                            } else
+                                field.tempValue = JsonOutput.toJson(v)
+                        else
+                            field.tempValue = v
                     }
                     if (field.length == null)
                         field.length = '-'

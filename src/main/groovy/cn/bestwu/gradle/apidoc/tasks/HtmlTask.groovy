@@ -281,7 +281,7 @@ class HtmlTask extends DefaultTask {
         def footer = '\n</body>\n' +
                 '</html>'
         outFile.withPrintWriter(encoding) { out ->
-            out.println header + new PegDownProcessor(Extensions.ALL_WITH_OPTIONALS) {
+            out.println header + new PegDownProcessor(Extensions.ALL_WITH_OPTIONALS ^ Extensions.SMARTYPANTS) {
                 String markdownToHtml(char[] markdownSource,
                                       LinkRenderer linkRenderer,
                                       Map<String, VerbatimSerializer> verbatimSerializerMap,
