@@ -33,7 +33,7 @@ class ApidocPlugin implements Plugin<Project> {
                     apiHost project.apidoc.apiHost == '' ? project.apidoc.defaultHost : project.apidoc.apiHost
                     encoding project.apidoc.encoding
                 }
-                project.task('htmldoc', dependsOn: project.mddoc, type: HtmlTask, group: 'app', description: '') {
+                project.task('htmldoc', dependsOn: project.mddoc, type: HtmlTask, description: '') {
                     input project.file(project.apidoc.output + '/md')
                     output project.file(project.apidoc.output + '/html')
                     encoding project.apidoc.encoding

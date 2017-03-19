@@ -1,6 +1,7 @@
 package cn.bestwu.gradle.apidoc
 
 import org.junit.Test
+
 /**
  * @author Peter Wu
  */
