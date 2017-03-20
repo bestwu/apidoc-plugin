@@ -93,20 +93,23 @@
 ###### 请求方法
 GET
 
+
 ###### 请求参数
 
 无
+
 ###### 响应参数
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
-| list | array | \- | 内容 | [{"id":110000,"name":"\u5317\u4eac","children":{"id":110101,"name":"\u4e1c\u57ce\u533a","children":{}}}] |
+| list | array | \- | 内容 | \[{"id":110000,"name":"\u5317\u4eac","children":\[{"id":110101,"name":"\u4e1c\u57ce\u533a","children":\[]}]}] |
 | id | long | \- | 主键ID | 110000 |
 | name | string | 100 | 名称 | 北京 |
-| children | array | \- | 子对象 | [{"id":110101,"name":"\u4e1c\u57ce\u533a","children":{}}] |
+| children | array | \- | 子对象 | \[{"id":110101,"name":"\u4e1c\u57ce\u533a","children":\[]}] |
 | id | long | \- | 主键ID | 110101 |
 | name | string | 100 | 名称 | 东城区 |
 | children | array | \- | 子对象 | \- |
+
 ###### 响应示例
 
 ```json
@@ -120,9 +123,7 @@ GET
                     "id": 110101,
                     "name": "\u4e1c\u57ce\u533a",
                     "children": [
-                        {
-                            
-                        }
+                        
                     ]
                 }
             ]
@@ -141,12 +142,20 @@ GET
 ###### 请求方法
 GET
 
+
+###### 请求头参数
+
+|名称|类型|是否必填|最大长度|描述|示例值|
+|---|---|---|---|---|---|
+| sign | string | 是 | \- | 接口签名 <a href='签名算法.md' target='_blank'>签名算法</a> | \- |
+
 ###### 请求参数
 
 |名称|类型|是否必填|最大长度|描述|默认值|示例值|
 |---|---|---|---|---|---|---|
 | lat | double | 否 | \- | 纬度 | \- | 30.04728 |
 | lng | double | 否 | \- | 经度 | \- | 103.83516 |
+
 ###### 响应参数
 
 |名称|类型|最大长度|描述|示例值|
@@ -157,13 +166,14 @@ GET
 | lng | double | \- | 公司所在经度 | 103.835434 |
 | lat | double | \- | 公司所在纬度 | 30.047301 |
 | mapZoom | string | 20 | 地图缩放级别 | 13 |
-| mapAreas | array | \- | 地图范围 | [{"id":8,"color":"#9a9a9a","path":{"lat":30.02651,"lng":103.867385},"name":"\u7070"}] |
+| mapAreas | array | \- | 地图范围 | {"id":8,"color":"#9a9a9a","path":{"lat":30.02651,"lng":103.867385},"name":"\u7070"} |
 | id | long | \- | 主键ID | 8 |
 | color | string | 20 | 颜色 | #9a9a9a |
 | path | string | \- | 路径 | {"lat":30.02651,"lng":103.867385} |
 | lat | double | \- | 纬度 | 30.02651 |
 | lng | double | \- | 经度 | 103.867385 |
 | name | string | 100 | 名称 | 灰 |
+
 ###### 响应示例
 
 ```json
@@ -174,17 +184,15 @@ GET
     "lng": 103.835434,
     "lat": 30.047301,
     "mapZoom": "13",
-    "mapAreas": [
-        {
-            "id": 8,
-            "color": "#9a9a9a",
-            "path": {
-                "lat": 30.02651,
-                "lng": 103.867385
-            },
-            "name": "\u7070"
-        }
-    ]
+    "mapAreas": {
+        "id": 8,
+        "color": "#9a9a9a",
+        "path": {
+            "lat": 30.02651,
+            "lng": 103.867385
+        },
+        "name": "\u7070"
+    }
 }
 ```
 
@@ -198,39 +206,46 @@ GET
 ###### 请求方法
 GET
 
+
+###### 请求头参数
+
+|名称|类型|是否必填|最大长度|描述|示例值|
+|---|---|---|---|---|---|
+| sign | string | 是 | \- | 接口签名 <a href='签名算法.md' target='_blank'>签名算法</a> | \- |
+
 ###### 请求参数
 
 |名称|类型|是否必填|最大长度|描述|默认值|示例值|
 |---|---|---|---|---|---|---|
 | lat | double | 否 | \- | 纬度 | \- | 30.04728 |
 | lng | double | 否 | \- | 经度 | \- | 103.83516 |
+
 ###### 响应参数
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
 | id | long | \- | 主键ID | 1 |
 | name | string | 100 | 名称 | 伊藤洋华堂（眉山店） |
-| receivingSpaces | array | \- | 送货点 | [{"id":1,"floor":5,"address":"\u670d\u52a1\u53f0\u65c1","lat":30.047301,"lng":103.835434}] |
+| receivingSpaces | array | \- | 送货点 | {"id":1,"floor":5,"address":"\u670d\u52a1\u53f0\u65c1","lat":30.047301,"lng":103.835434} |
 | id | long | \- | 主键ID | 1 |
 | floor | int | \- | 楼层 | 5 |
 | address | string | 200 | 地址 | 服务台旁 |
 | lat | double | \- | 纬度 | 30.047301 |
 | lng | double | \- | 经度 | 103.835434 |
+
 ###### 响应示例
 
 ```json
 {
     "id": 1,
     "name": "\u4f0a\u85e4\u6d0b\u534e\u5802\uff08\u7709\u5c71\u5e97\uff09",
-    "receivingSpaces": [
-        {
-            "id": 1,
-            "floor": 5,
-            "address": "\u670d\u52a1\u53f0\u65c1",
-            "lat": 30.047301,
-            "lng": 103.835434
-        }
-    ]
+    "receivingSpaces": {
+        "id": 1,
+        "floor": 5,
+        "address": "\u670d\u52a1\u53f0\u65c1",
+        "lat": 30.047301,
+        "lng": 103.835434
+    }
 }
 ```
 

@@ -16,19 +16,23 @@
       "size": 7,
       "total": 7,
       "pages": 1,
-      "list": {
-        "id": 1691,
-        "waybillSysNo": "YT20170109170317",
-        "text": "东西坏的",
-        "c_note": {
-          "createdDate": 1487746147569,
-          "ct_note": "给你退",
-          "sysUserId": 1,
-          "sysUserNo": "KF001"
-        },
-        "resolved": true,
-        "createdDate": 1483953433584
-      },
+      "list": [
+        {
+          "id": 1691,
+          "waybillSysNo": "YT20170109170317",
+          "text": "东西坏的",
+          "c_note": [
+            {
+              "createdDate": 1487746147569,
+              "ct_note": "给你退",
+              "sysUserId": 1,
+              "sysUserNo": "KF001"
+            }
+          ],
+          "resolved": true,
+          "createdDate": 1483953433584
+        }
+      ],
       "page": 1
     },
     "urlParams": "",
@@ -52,11 +56,18 @@
       "size": 2,
       "total": 2,
       "pages": 1,
-      "list": {
-        "subject": "\u94b1\u5305\u5145\u503c",
-        "createdDate": 1487726987744,
-        "totalAmount": 100
-      },
+      "list": [
+        {
+          "subject": "\u94b1\u5305\u5145\u503c",
+          "createdDate": 1487726987744,
+          "totalAmount": 100
+        },
+        {
+          "subject": "\u94b1\u5305\u5145\u503c",
+          "createdDate": 1487726987744,
+          "totalAmount": 100
+        }
+      ],
       "page": 1
     },
     "urlParams": "",
@@ -202,7 +213,9 @@
     "resourceType": "手机APP订单",
     "results": {
     },
-    "urlParams": "id=1",
+    "urlParams": {
+      "id": "1"
+    },
     "url": "/waybills/self/{id}"
   },
   {
@@ -213,15 +226,17 @@
     },
     "resourceType": "手机APP公共",
     "results": {
-      "list": {
-        "id": 110000,
-        "name": "北京",
-        "children": {
-          "id": 110101,
-          "name": "东城区",
-          "children": {}
+      "list": [
+        {
+          "id": 110000,
+          "name": "北京",
+          "children": [{
+            "id": 110101,
+            "name": "东城区",
+            "children": []
+          }]
         }
-      }
+      ]
     },
     "url": "/place.json"
   },
@@ -248,7 +263,9 @@
       "w_lng": 103.839111,
       "deliveryTime": "2017-01-01 16:36 ~ 22:00"
     },
-    "urlParams": "id=108",
+    "urlParams": {
+      "id": "108"
+    },
     "url": "/waybills/self/{id}/route"
   },
   {
@@ -270,16 +287,20 @@
         "id": 67,
         "createdDate": 1482808721748,
         "status": 8,
-        "notes": {
-          "text": "1",
-          "createdDate": 1482808721748,
-          "sysUserJobNumber": "GL001",
-          "sysUserName": "\u5f20\u5175"
-        }
+        "notes": [
+          {
+            "text": "1",
+            "createdDate": 1482808721748,
+            "sysUserJobNumber": "GL001",
+            "sysUserName": "\u5f20\u5175"
+          }
+        ]
       },
       "deliveryTime": "2016-12-24 10:17 ~ 22:00"
     },
-    "urlParams": "id=1",
+    "urlParams": {
+      "id": "1"
+    },
     "url": "/waybills/self/{id}/detail"
   },
   {
@@ -304,18 +325,22 @@
       "consigneeAddress": "\u7709\u5c71\u7ea2\u8c46\u56edA\u533a1\u680b4\u53f7",
       "status": 1,
       "createdDate": 1482463020055,
-      "goodses": {
-        "id": 1,
-        "categoryName": "\u98df\u54c1\u996e\u6599",
-        "goodsName": "\u4f11\u95f2\u96f6\u98df",
-        "goodsNum": 1
-      },
+      "goodses": [
+        {
+          "id": 1,
+          "categoryName": "\u98df\u54c1\u996e\u6599",
+          "goodsName": "\u4f11\u95f2\u96f6\u98df",
+          "goodsNum": 1
+        }
+      ],
       "deliveryTimeDesc": "\u5f53\u65e5\u9001\u8fbe",
       "logisticsCompany": "\u6211\u7684\u4f0a\u5bb6",
       "queryStatus": 2,
       "deliveryTime": "2016-12-24 10:17 ~ 22:00"
     },
-    "urlParams": "id=1",
+    "urlParams": {
+      "id": "1"
+    },
     "url": "/waybills/self/{id}"
   },
   {
@@ -337,17 +362,19 @@
       "size": 20,
       "total": 98,
       "pages": 5,
-      "list": {
-        "id": 174,
-        "sysNo": "YT20170122102902",
-        "goodsNo": "718000872251",
-        "status": 0,
-        "createdDate": 1485052172929,
-        "goodsNum": 2,
-        "logo": "http://192.168.1.110:8888/logo/ytlogo.png",
-        "companyName": "伊藤洋华堂（眉山店）",
-        "queryStatus": 1
-      },
+      "list": [
+        {
+          "id": 174,
+          "sysNo": "YT20170122102902",
+          "goodsNo": "718000872251",
+          "status": 0,
+          "createdDate": 1485052172929,
+          "goodsNum": 2,
+          "logo": "http://192.168.1.110:8888/logo/ytlogo.png",
+          "companyName": "伊藤洋华堂（眉山店）",
+          "queryStatus": 1
+        }
+      ],
       "page": 1
     },
     "urlParams": "",
@@ -492,7 +519,7 @@
       "sex": 1,
       "qq": "9389349384",
       "email": "xxx@126.com",
-      "accessToken": {
+      "accessTokenType": {
         "accessToken": "53cd7efb-7517-4b03-b4e6-1a8325f58a08",
         "expiration": 1488164341846,
         "expiresIn": 1209599
@@ -554,7 +581,7 @@
       "sex": 1,
       "qq": "9389349384",
       "email": "xxx@126.com",
-      "accessToken": {
+      "accessTokenType": {
         "accessToken": "53cd7efb-7517-4b03-b4e6-1a8325f58a08",
         "expiration": 1488164341846,
         "expiresIn": 1209599
@@ -633,7 +660,7 @@
       "sex": 1,
       "qq": "9389349384",
       "email": "xxx@126.com",
-      "accessToken": {
+      "accessTokenType": {
         "accessToken": "53cd7efb-7517-4b03-b4e6-1a8325f58a08",
         "expiration": 1488164341846,
         "expiresIn": 1209599
@@ -771,15 +798,17 @@
       "size": 13,
       "total": 13,
       "pages": 1,
-      "list": {
-        "id": 3,
-        "goodsNo": "718000872243",
-        "consigneeName": "\u8d75\u56fd\u67f1",
-        "consigneeTel": "18224060100",
-        "consigneeAddress": "\u4e3d\u666f\u56ed3\u671f",
-        "status": 2,
-        "finished": false
-      },
+      "list": [
+        {
+          "id": 3,
+          "goodsNo": "718000872243",
+          "consigneeName": "\u8d75\u56fd\u67f1",
+          "consigneeTel": "18224060100",
+          "consigneeAddress": "\u4e3d\u666f\u56ed3\u671f",
+          "status": 2,
+          "finished": false
+        }
+      ],
       "page": 1
     },
     "url": "/waybills/current"
@@ -797,15 +826,17 @@
       "size": 13,
       "total": 13,
       "pages": 1,
-      "list": {
-        "id": 3,
-        "goodsNo": "718000872243",
-        "consigneeName": "\u8d75\u56fd\u67f1",
-        "consigneeTel": "18224060100",
-        "consigneeAddress": "\u4e3d\u666f\u56ed3\u671f",
-        "status": 2,
-        "finished": false
-      },
+      "list": [
+        {
+          "id": 3,
+          "goodsNo": "718000872243",
+          "consigneeName": "\u8d75\u56fd\u67f1",
+          "consigneeTel": "18224060100",
+          "consigneeAddress": "\u4e3d\u666f\u56ed3\u671f",
+          "status": 2,
+          "finished": false
+        }
+      ],
       "page": 1
     },
     "url": "/waybills/history"
@@ -869,14 +900,18 @@
       "note": "111111111111",
       "billCopy": "http://127.0.0.1:8888/image/1.png",
       "weight": 6000,
-      "goodses": {
-        "id": 3,
-        "categoryName": "\u98df\u54c1\u996e\u6599",
-        "goodsName": "\u9762\u5305",
-        "goodsNum": 1
-      }
+      "goodses": [
+        {
+          "id": 3,
+          "categoryName": "\u98df\u54c1\u996e\u6599",
+          "goodsName": "\u9762\u5305",
+          "goodsNum": 1
+        }
+      ]
     },
-    "urlParams": "id=1",
+    "urlParams": {
+      "id": "1"
+    },
     "url": "/waybills/{id}"
   },
   {
@@ -887,19 +922,25 @@
     },
     "resourceType": "手持端订单",
     "results": {
-      "list": {
-        "id": 67,
-        "createdDate": 1482808721748,
-        "status": 8,
-        "notes": {
-          "text": "1",
+      "list": [
+        {
+          "id": 67,
           "createdDate": 1482808721748,
-          "sysUserJobNumber": "GL001",
-          "sysUserName": "\u5f20\u5175"
+          "status": 8,
+          "notes": [
+            {
+              "text": "1",
+              "createdDate": 1482808721748,
+              "sysUserJobNumber": "GL001",
+              "sysUserName": "\u5f20\u5175"
+            }
+          ]
         }
-      }
+      ]
     },
-    "urlParams": "id=1",
+    "urlParams": {
+      "id": "1"
+    },
     "url": "/waybills/{id}/detail"
   },
   {
@@ -932,12 +973,14 @@
       "billCopy": "http://127.0.0.1:8888/image/1.png",
       "oldWaybillSysNo": "YT20161223122107",
       "weight": 6000,
-      "goodses": {
-        "id": 18,
-        "categoryName": "\u4e2d\u5916\u540d\u9152",
-        "goodsName": "\u6d0b\u9152",
-        "goodsNum": 1
-      }
+      "goodses": [
+        {
+          "id": 18,
+          "categoryName": "\u4e2d\u5916\u540d\u9152",
+          "goodsName": "\u6d0b\u9152",
+          "goodsNum": 1
+        }
+      ]
     },
     "url": "/waybills/goodsNo"
   },

@@ -155,10 +155,13 @@ class MDTask extends DefaultTask {
     }
 
     def fillDesc(out, api, fields, version) {
+        def headers = api.headers
         def urlParams = api.urlParams
         def params = api.params
         def results = api.results
         if (version && '1.0' != version && api[version]) {
+            if (api[version].headers)
+                headers = api[version].headers
             if (api[version].urlParams)
                 urlParams = api[version].urlParams
             if (api[version].params)
@@ -167,7 +170,18 @@ class MDTask extends DefaultTask {
                 results = api[version].results
         }
 
-        urlParams = getFields(fields, urlParams)
+        headers = getParamFields(fields, headers)
+        if (headers != null && !headers.isEmpty()) {
+            out.println ''
+            out.println "###### 请求头参数"
+            out.println ''
+            out.println "|名称|类型|是否必填|最大长度|描述|示例值|"
+            out.println "|---|---|---|---|---|---|"
+            headers.each {
+                out.println "| ${it.name} | ${it.type} | ${it.notNullDesc} | ${it.length} | ${it.desc} | ${it.tempValue} |"
+            }
+        }
+        urlParams = getParamFields(fields, urlParams)
         if (urlParams != null && !urlParams.isEmpty()) {
             out.println ''
             out.println "###### URL参数"
@@ -179,10 +193,11 @@ class MDTask extends DefaultTask {
                     out.println "| ${it.name} | ${it.type} | ${it.length} | ${it.desc} | ${it.tempValue} |"
             }
         }
+        out.println ''
         out.println "###### 请求参数"
         out.println ''
 
-        params = getFields(fields, params)
+        params = getParamFields(fields, params)
         if (params == null || params.isEmpty()) {
             out.println "无"
         } else {
@@ -192,10 +207,11 @@ class MDTask extends DefaultTask {
                 out.println "| ${it.name} | ${it.type} | ${it.notNullDesc} | ${it.length} | ${it.desc} | ${it.value} | ${it.tempValue} |"
             }
         }
+        out.println ''
         out.println "###### 响应参数"
         out.println ''
 
-        def resultFields = getFields(fields, results)
+        def resultFields = getResultFields(fields, results)
         if (resultFields == null || resultFields.isEmpty()) {
             out.println "无"
         } else {
@@ -205,6 +221,7 @@ class MDTask extends DefaultTask {
                 out.println "| ${it.name} | ${it.type} | ${it.length} | ${it.desc} | ${it.tempValue} |"
             }
 
+            out.println ''
             out.println "###### 响应示例"
             out.println ''
             out.println '```json'
@@ -212,123 +229,157 @@ class MDTask extends DefaultTask {
             out.println '```'
         }
     }
-
+/**
+ * 转换结果示例
+ * @param fields
+ * @param results
+ * @return
+ */
     def convertResults(fields, results) {
-        def result = new LinkedHashMap()
-        results.each() {
-            k, v ->
-                def field = fields[k]
-                def tempValue
-                if (v == null || '' == v) {
-                    tempValue = field.value
-                }
-                if (v instanceof Map) {
-                    v = convertResults(fields, v)
-                }
-                if (field.type == 'array') {
-                    tempValue = []
-                    tempValue.add(v)
-                } else
+        if (results instanceof Collection) {
+            def convertedResults = []
+            results.each {
+                convertedResults.add(convertResults(fields, it))
+            }
+            return convertedResults
+        } else {
+            def convertedResults = new LinkedHashMap()
+            results.each() {
+                k, v ->
+                    def field = fields[k]
+                    def tempValue
+                    if (v == null || '' == v) {
+                        tempValue = field.value
+                    }
+                    if (v instanceof Map || v instanceof Collection) {
+                        v = convertResults(fields, v)
+                    }
                     tempValue = v
-
-                result.put(field.name, tempValue)
+                    convertedResults.put(field.name, tempValue)
+            }
+            return convertedResults
         }
+    }
+/**
+ * 参数字段
+ * @param fields
+ * @param param
+ * @return
+ */
+    static getParamFields(fields, param) {
+        if (!param)
+            return null
+        def flds = []
+        param.each { k, v ->
+            def notNull = null, name
+            if (k.endsWith('&')) {
+                notNull = true
+                name = k.substring(0, k.length() - 1)
+            } else if (k.endsWith('^')) {
+                notNull = false
+                name = k.substring(0, k.length() - 1)
+            } else {
+                name = k
+            }
+
+            def origin = fields[name]
+            def field = new HashMap()
+            copyProperties(origin, field)
+
+            if (field == null) {
+                field = [name: name]
+            }
+            if (notNull == null) {
+                notNull = field.notNull
+            }
+            field.notNullDesc = notNull ? '是' : '否'
+
+            if (v == null || '' == v) {
+                v = field.value
+            }
+            field.tempValue = v
+
+            if (field.desc == null || '' == field.desc || '-' == field.tempValue)
+                field.desc = '\\-'
+            field.desc = field.desc.replace('href=\'html/', 'href=\'').replace('.html\'', '.md\'')
+            if (field.value == null || '' == field.value || '-' == field.tempValue)
+                field.value = '\\-'
+            if (field.tempValue == null || '' == field.tempValue || '-' == field.tempValue)
+                field.tempValue = '\\-'
+            if (field.length == null || '' == field.length || '-' == field.length)
+                field.length = '\\-'
+
+            flds.add(field)
+        }
+        param = flds
+        return param
+    }
+/**
+ * 响应结果字段
+ * @param fields
+ * @param result
+ * @return
+ */
+    def getResultFields(fields, result) {
+        if (!result)
+            return null
+        def flds = []
+        result.each { k, v ->
+            def origin = fields[k]
+            def field = new HashMap()
+            copyProperties(origin, field)
+
+            if (field == null) {
+                field = [name: k]
+            }
+
+            if (v == null || '' == v || ((v instanceof Map || v instanceof Collection) && v.size() == 0)) {
+                v = field.value
+            }
+            if (v instanceof Map)
+                field.tempValue = JsonOutput.toJson(v).replace('[','\\[')
+            else if (v instanceof Collection) {
+                if (v.size() >= 1) {
+                    v = v[0]
+                }
+                field.tempValue = JsonOutput.toJson(convertResults(fields, Collections.singletonList(v))).replace('[','\\[')
+            } else
+                field.tempValue = v
+
+            if (field.desc == null || '' == field.desc)
+                field.desc = '\\-'
+            if (field.value == null || '' == field.value)
+                field.value = '\\-'
+            if (field.tempValue == null || '' == field.tempValue)
+                field.tempValue = '\\-'
+
+            if (field.length == null)
+                field.length = '-'
+            field.length = '-' == field.length ? '\\-' : field.length
+            flds.add(field)
+            if (v instanceof Map && v.size() > 0) {
+                flds.addAll(getResultFields(fields, v))
+            }
+        }
+        result = flds
         return result
     }
-
-
-    def getFields(fields, key) {
-        if (!key)
-            return null
-        def keyClass = key.class
-        switch (keyClass) {
-            case String.class:
-                if ('' == key) {
-                    return []
-                }
-                def params = key.split('&')
-                def paramsObj = new HashMap()
-                params.each {
-                    def kv = it.split('=')
-                    if (kv.length == 2) {
-                        paramsObj.put(kv[0], kv[1])
-                    } else {
-                        paramsObj.put(it, kv[1])
-                    }
-                }
-                return getFields(fields, paramsObj)
-            case ArrayList.class:
-                def flds = []
-                for (def i = 0; i < key.size(); i++) {
-                    def item = key[i]
-                    flds = flds.addAll(fields, getFields(item))
-                }
-                key = flds
-                break
-            default:
-                def flds = []
-                key.each { k, v ->
-                    def notNull = null, name
-                    if (k.endsWith('&')) {
-                        notNull = true
-                        name = k.substring(0, k.length() - 1)
-                    } else if (k.endsWith('^')) {
-                        notNull = false
-                        name = k.substring(0, k.length() - 1)
-                    } else {
-                        name = k
-                    }
-
-                    def origin = fields[name]
-                    def field = new HashMap()
-                    copyProperties(origin, field)
-
-                    if (field == null) {
-                        field = [name: name]
-                    }
-                    if (notNull == null) {
-                        notNull = field.notNull
-                    }
-                    field.notNullDesc = notNull ? '是' : '否'
-
-                    if (v == null || '' == v || ((v instanceof Map || v instanceof Collection) && v.size() == 0)) {
-                        v = field.value
-                    }
-                    if (v instanceof Map)
-                        if (field.type == 'array') {
-                            field.tempValue = '[' + JsonOutput.toJson(v) + ']'
-                        } else
-                            field.tempValue = JsonOutput.toJson(v)
-                    else
-                        field.tempValue = v
-
-                    if (field.desc == null || '' == field.desc)
-                        field.desc = '\\-'
-                    if (field.value == null || '' == field.value)
-                        field.value = '\\-'
-                    if (field.tempValue == null || '' == field.tempValue)
-                        field.tempValue = '\\-'
-
-                    if (field.length == null)
-                        field.length = '-'
-                    field.length = '-' == field.length ? '\\-' : field.length
-                    flds.add(field)
-                    if (v instanceof Map && v.size() > 0) {
-                        flds.addAll(getFields(fields, v))
-                    }
-                }
-                key = flds
-                break
-        }
-        return key
-    }
-
+/**
+ * 复制属性
+ * @param source
+ * @param target
+ * @return
+ */
     static copyProperties(source, target) {
         source.each { key, value ->
             target[key] = value
         }
     }
-
+/**
+ * 过滤注释
+ * @param file
+ * @return
+ */
     static jsonFilter(File file) {
         file.filterLine {
             !it.contains('//')

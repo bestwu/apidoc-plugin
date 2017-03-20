@@ -93,6 +93,13 @@
 ###### 请求方法
 GET
 
+
+###### 请求头参数
+
+|名称|类型|是否必填|最大长度|描述|示例值|
+|---|---|---|---|---|---|
+| sign | string | 是 | \- | 接口签名 <a href='签名算法.md' target='_blank'>签名算法</a> | \- |
+
 ###### 请求参数
 
 |名称|类型|是否必填|最大长度|描述|默认值|示例值|
@@ -102,6 +109,7 @@ GET
 | keyword | string | 否 | \- | 关键字 | \- | \- |
 | page | int | 否 | \- | 页码，从1开始，默认1 | 1 | 1 |
 | size | int | 否 | \- | 每页最大数量，默认20 | 20 | 20 |
+
 ###### 响应参数
 
 |名称|类型|最大长度|描述|示例值|
@@ -109,7 +117,7 @@ GET
 | size | int | \- | 每页最大数量，默认20 | 20 |
 | total | long | \- | 总记录数 | 98 |
 | pages | int | \- | 总页数 | 5 |
-| list | array | \- | 内容 | [{"id":174,"sysNo":"YT20170122102902","goodsNo":"718000872251","status":0,"createdDate":1485052172929,"goodsNum":2,"companyName":"\u4f0a\u85e4\u6d0b\u534e\u5802\uff08\u7709\u5c71\u5e97\uff09","queryStatus":1}] |
+| list | array | \- | 内容 | \[{"id":174,"sysNo":"YT20170122102902","goodsNo":"718000872251","status":0,"createdDate":1485052172929,"goodsNum":2,"companyName":"\u4f0a\u85e4\u6d0b\u534e\u5802\uff08\u7709\u5c71\u5e97\uff09","queryStatus":1}] |
 | id | long | \- | 主键ID | 174 |
 | sysNo | string | 100 | 系统运单号 | YT20170122102902 |
 | goodsNo | string | 100 | 货物运单号 | 718000872251 |
@@ -119,6 +127,7 @@ GET
 | companyName | string | 100 | 所属公司名称 | 伊藤洋华堂（眉山店） |
 | queryStatus | int | \- | 显示状态：1：待配送，2：配送中，3：已完成，4：已退货 | 1 |
 | page | int | \- | 页码，从1开始，默认1 | 1 |
+
 ###### 响应示例
 
 ```json
@@ -153,16 +162,24 @@ GET
 GET
 
 
+###### 请求头参数
+
+|名称|类型|是否必填|最大长度|描述|示例值|
+|---|---|---|---|---|---|
+| sign | string | 是 | \- | 接口签名 <a href='签名算法.md' target='_blank'>签名算法</a> | \- |
+
 ###### URL参数
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
 | id | long | \- | 主键ID | 1 |
+
 ###### 请求参数
 
 |名称|类型|是否必填|最大长度|描述|默认值|示例值|
 |---|---|---|---|---|---|---|
 | accessToken | string | 是 | \- | 授权码 | \- | fecb84d4-eac7-4e75-b21f-f97a52e83339 |
+
 ###### 响应参数
 
 |名称|类型|最大长度|描述|示例值|
@@ -177,7 +194,7 @@ GET
 | consigneeAddress | string | 250 | 收货人的地址 | 眉山红豆园A区1栋4号 |
 | status | int | \- | 状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） | 1 |
 | createdDate | long | \- | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1482463020055 |
-| goodses | array | \- | 货物 | [{"id":1,"categoryName":"\u98df\u54c1\u996e\u6599","goodsName":"\u4f11\u95f2\u96f6\u98df","goodsNum":1}] |
+| goodses | array | \- | 货物 | \[{"id":1,"categoryName":"\u98df\u54c1\u996e\u6599","goodsName":"\u4f11\u95f2\u96f6\u98df","goodsNum":1}] |
 | id | long | \- | 主键ID | 1 |
 | categoryName | string | 100 | 分类名称 | 食品饮料 |
 | goodsName | string | 100 | 货物名称 | 休闲零食 |
@@ -186,6 +203,7 @@ GET
 | logisticsCompany | string | \- | 物流公司 | 我的伊家 |
 | queryStatus | int | \- | 显示状态：1：待配送，2：配送中，3：已完成，4：已退货 | 2 |
 | deliveryTime | string | \- | 配送时间 | 2016-12-24 10:17 ~ 22:00 |
+
 ###### 响应示例
 
 ```json
@@ -226,16 +244,24 @@ GET
 GET
 
 
+###### 请求头参数
+
+|名称|类型|是否必填|最大长度|描述|示例值|
+|---|---|---|---|---|---|
+| sign | string | 是 | \- | 接口签名 <a href='签名算法.md' target='_blank'>签名算法</a> | \- |
+
 ###### URL参数
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
 | id | long | \- | 主键ID | 1 |
+
 ###### 请求参数
 
 |名称|类型|是否必填|最大长度|描述|默认值|示例值|
 |---|---|---|---|---|---|---|
 | accessToken | string | 是 | \- | 授权码 | \- | fecb84d4-eac7-4e75-b21f-f97a52e83339 |
+
 ###### 响应参数
 
 |名称|类型|最大长度|描述|示例值|
@@ -243,16 +269,17 @@ GET
 | id | long | \- | 主键ID | 1 |
 | distributionName | string | 100 | 配送人员姓名 | 吴大 |
 | distributionTel | string | 100 | 配送人员联系电话 | 18224060100 |
-| details | array | \- | 详情 | [{"id":67,"createdDate":1482808721748,"status":8,"notes":{"text":"1","createdDate":1482808721748,"sysUserJobNumber":"GL001","sysUserName":"\u5f20\u5175"}}] |
+| details | array | \- | 详情 | {"id":67,"createdDate":1482808721748,"status":8,"notes":\[{"text":"1","createdDate":1482808721748,"sysUserJobNumber":"GL001","sysUserName":"\u5f20\u5175"}]} |
 | id | long | \- | 主键ID | 67 |
 | createdDate | long | \- | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1482808721748 |
 | status | int | \- | 状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） | 8 |
-| notes | array | \- | 备注 | [{"text":"1","createdDate":1482808721748,"sysUserJobNumber":"GL001","sysUserName":"\u5f20\u5175"}] |
+| notes | array | \- | 备注 | \[{"text":"1","createdDate":1482808721748,"sysUserJobNumber":"GL001","sysUserName":"\u5f20\u5175"}] |
 | text | string | \- | 说明 | 1 |
 | createdDate | long | \- | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1482808721748 |
 | sysUserJobNumber | string | 200 | 工号 | GL001 |
 | sysUserName | string | 100 | 操作人员姓名 | 张兵 |
 | deliveryTime | string | \- | 配送时间 | 2016-12-24 10:17 ~ 22:00 |
+
 ###### 响应示例
 
 ```json
@@ -260,21 +287,19 @@ GET
     "id": 1,
     "distributionName": "\u5434\u5927",
     "distributionTel": "18224060100",
-    "details": [
-        {
-            "id": 67,
-            "createdDate": 1482808721748,
-            "status": 8,
-            "notes": [
-                {
-                    "text": "1",
-                    "createdDate": 1482808721748,
-                    "sysUserJobNumber": "GL001",
-                    "sysUserName": "\u5f20\u5175"
-                }
-            ]
-        }
-    ],
+    "details": {
+        "id": 67,
+        "createdDate": 1482808721748,
+        "status": 8,
+        "notes": [
+            {
+                "text": "1",
+                "createdDate": 1482808721748,
+                "sysUserJobNumber": "GL001",
+                "sysUserName": "\u5f20\u5175"
+            }
+        ]
+    },
     "deliveryTime": "2016-12-24 10:17 ~ 22:00"
 }
 ```
@@ -290,16 +315,24 @@ GET
 GET
 
 
+###### 请求头参数
+
+|名称|类型|是否必填|最大长度|描述|示例值|
+|---|---|---|---|---|---|
+| sign | string | 是 | \- | 接口签名 <a href='签名算法.md' target='_blank'>签名算法</a> | \- |
+
 ###### URL参数
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
 | id | long | \- | 主键ID | 108 |
+
 ###### 请求参数
 
 |名称|类型|是否必填|最大长度|描述|默认值|示例值|
 |---|---|---|---|---|---|---|
 | accessToken | string | 是 | \- | 授权码 | \- | fecb84d4-eac7-4e75-b21f-f97a52e83339 |
+
 ###### 响应参数
 
 |名称|类型|最大长度|描述|示例值|
@@ -313,6 +346,7 @@ GET
 | lat | double | \- | 目的地纬度 | 30.048646 |
 | lng | double | \- | 目的地经度 | 103.839111 |
 | deliveryTime | string | \- | 配送时间 | 2017-01-01 16:36 ~ 22:00 |
+
 ###### 响应示例
 
 ```json
@@ -341,16 +375,24 @@ GET
 DELETE
 
 
+###### 请求头参数
+
+|名称|类型|是否必填|最大长度|描述|示例值|
+|---|---|---|---|---|---|
+| sign | string | 是 | \- | 接口签名 <a href='签名算法.md' target='_blank'>签名算法</a> | \- |
+
 ###### URL参数
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
 | id | long | \- | 主键ID | 1 |
+
 ###### 请求参数
 
 |名称|类型|是否必填|最大长度|描述|默认值|示例值|
 |---|---|---|---|---|---|---|
 | accessToken | string | 是 | \- | 授权码 | \- | fecb84d4-eac7-4e75-b21f-f97a52e83339 |
+
 ###### 响应参数
 
 无
@@ -365,6 +407,13 @@ DELETE
 ###### 请求方法
 POST
 
+
+###### 请求头参数
+
+|名称|类型|是否必填|最大长度|描述|示例值|
+|---|---|---|---|---|---|
+| sign | string | 是 | \- | 接口签名 <a href='签名算法.md' target='_blank'>签名算法</a> | \- |
+
 ###### 请求参数
 
 |名称|类型|是否必填|最大长度|描述|默认值|示例值|
@@ -372,6 +421,7 @@ POST
 | accessToken | string | 是 | \- | 授权码 | \- | fecb84d4-eac7-4e75-b21f-f97a52e83339 |
 | waybillId | long | 是 | \- | 所属运单ID | \- | 1 |
 | text | string | 是 | \- | 说明 | \- | 我要投诉 |
+
 ###### 响应参数
 
 |名称|类型|最大长度|描述|示例值|
@@ -385,6 +435,7 @@ POST
 | text | string | \- | 说明 | 我要投诉 |
 | resolved | boolean | \- | 是否处理 | false |
 | createdDate | long | \- | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1487302834686 |
+
 ###### 响应示例
 
 ```json
@@ -411,6 +462,13 @@ POST
 ###### 请求方法
 GET
 
+
+###### 请求头参数
+
+|名称|类型|是否必填|最大长度|描述|示例值|
+|---|---|---|---|---|---|
+| sign | string | 是 | \- | 接口签名 <a href='签名算法.md' target='_blank'>签名算法</a> | \- |
+
 ###### 请求参数
 
 |名称|类型|是否必填|最大长度|描述|默认值|示例值|
@@ -418,6 +476,7 @@ GET
 | accessToken | string | 是 | \- | 授权码 | \- | fecb84d4-eac7-4e75-b21f-f97a52e83339 |
 | page | int | 否 | \- | 页码，从1开始，默认1 | 1 | 1 |
 | size | int | 否 | \- | 每页最大数量，默认20 | 20 | 20 |
+
 ###### 响应参数
 
 |名称|类型|最大长度|描述|示例值|
@@ -425,11 +484,11 @@ GET
 | size | int | \- | 每页最大数量，默认20 | 7 |
 | total | long | \- | 总记录数 | 7 |
 | pages | int | \- | 总页数 | 1 |
-| list | array | \- | 内容 | [{"id":1691,"waybillSysNo":"YT20170109170317","text":"\u4e1c\u897f\u574f\u7684","c_note":{"createdDate":1487746147569,"ct_note":"\u7ed9\u4f60\u9000","sysUserId":1,"sysUserNo":"KF001"},"resolved":true,"createdDate":1483953433584}] |
+| list | array | \- | 内容 | \[{"id":1691,"waybillSysNo":"YT20170109170317","text":"\u4e1c\u897f\u574f\u7684","note":\[{"createdDate":1487746147569,"note":"\u7ed9\u4f60\u9000","sysUserId":1,"sysUserNo":"KF001"}],"resolved":true,"createdDate":1483953433584}] |
 | id | long | \- | 主键ID | 1691 |
 | waybillSysNo | string | 100 | 运单单号 | YT20170109170317 |
 | text | string | \- | 说明 | 东西坏的 |
-| note | array | \- | 备注（处理结果） | [{"createdDate":1487746147569,"ct_note":"\u7ed9\u4f60\u9000","sysUserId":1,"sysUserNo":"KF001"}] |
+| note | array | \- | 备注（处理结果） | \[{"createdDate":1487746147569,"note":"\u7ed9\u4f60\u9000","sysUserId":1,"sysUserNo":"KF001"}] |
 | createdDate | long | \- | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1487746147569 |
 | note | string | \- | 备注（处理结果） | 给你退 |
 | sysUserId | long | \- | 客服务人员（处理人员）ID | 1 |
@@ -437,6 +496,7 @@ GET
 | resolved | boolean | \- | 是否处理 | true |
 | createdDate | long | \- | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1483953433584 |
 | page | int | \- | 页码，从1开始，默认1 | 1 |
+
 ###### 响应示例
 
 ```json

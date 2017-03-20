@@ -5,6 +5,7 @@ import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
+import org.jsoup.Jsoup
 import org.pegdown.*
 import org.pegdown.ast.*
 import org.pegdown.plugins.ToHtmlSerializerPlugin
@@ -297,7 +298,7 @@ class HtmlTask extends DefaultTask {
                                 def titleText = ''
                                 node.getChildren().each {
                                     if (it instanceof TextNode)
-                                        titleText += it.text.replace('\"', '&quot;')
+                                        titleText += Jsoup.parse(it.text).text().replace('\"', '&quot;')
                                 }
                                 printer.println().print('<').print(tag).print(' title=\"').print(titleText).print("\"")
                                 column.accept(this)
