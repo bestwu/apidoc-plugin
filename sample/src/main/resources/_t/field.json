@@ -10,7 +10,7 @@
     "desc": "授权码",
     "name": "accessToken",
     "notNull": true,
-    "type": "object",
+    "type": "string",
     "value": ""
   },
   "accessTokenType": {

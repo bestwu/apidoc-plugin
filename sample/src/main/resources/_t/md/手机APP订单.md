@@ -97,28 +97,50 @@ GET
 
 |名称|类型|是否必填|最大长度|描述|默认值|示例值|
 |---|---|---|---|---|---|---|
-|accessToken|object|是|\-|授权码||fecb84d4-eac7-4e75-b21f-f97a52e83339|
-|type|enum|否|\-|订单查询状态：0:全部，1：待配送，2：配送中，3：已完成，4：已退货，默认为：0|0|0|
-|keyword|string|否|\-|关键字|||
-|page|int|否|\-|页码，从1开始，默认1|1|1|
-|size|int|否|\-|每页最大数量，默认20|20|20|
+| accessToken | string | 是 | \- | 授权码 | \- | fecb84d4-eac7-4e75-b21f-f97a52e83339 |
+| type | enum | 否 | \- | 订单查询状态：0:全部，1：待配送，2：配送中，3：已完成，4：已退货，默认为：0 | 0 | 0 |
+| keyword | string | 否 | \- | 关键字 | \- | \- |
+| page | int | 否 | \- | 页码，从1开始，默认1 | 1 | 1 |
+| size | int | 否 | \- | 每页最大数量，默认20 | 20 | 20 |
 ###### 响应参数
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
-|size|int|\-|每页最大数量，默认20|20|
-|total|long|\-|总记录数|98|
-|pages|int|\-|总页数|5|
-|list|array|\-|内容|[{"id":174,"sysNo":"YT20170122102902","goodsNo":"718000872251","status":0,"createdDate":1485052172929,"goodsNum":2,"companyName":"\u4f0a\u85e4\u6d0b\u534e\u5802\uff08\u7709\u5c71\u5e97\uff09","queryStatus":1}]|
-|id|long|\-|主键ID|174|
-|sysNo|string|100|系统运单号|YT20170122102902|
-|goodsNo|string|100|货物运单号|718000872251|
-|status|int|\-|状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成）|0|
-|createdDate|long|\-|创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）|1485052172929|
-|goodsNum|int|\-|货物数量|2|
-|companyName|string|100|所属公司名称|伊藤洋华堂（眉山店）|
-|queryStatus|int|\-|显示状态：1：待配送，2：配送中，3：已完成，4：已退货|1|
-|page|int|\-|页码，从1开始，默认1|1|
+| size | int | \- | 每页最大数量，默认20 | 20 |
+| total | long | \- | 总记录数 | 98 |
+| pages | int | \- | 总页数 | 5 |
+| list | array | \- | 内容 | [{"id":174,"sysNo":"YT20170122102902","goodsNo":"718000872251","status":0,"createdDate":1485052172929,"goodsNum":2,"companyName":"\u4f0a\u85e4\u6d0b\u534e\u5802\uff08\u7709\u5c71\u5e97\uff09","queryStatus":1}] |
+| id | long | \- | 主键ID | 174 |
+| sysNo | string | 100 | 系统运单号 | YT20170122102902 |
+| goodsNo | string | 100 | 货物运单号 | 718000872251 |
+| status | int | \- | 状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） | 0 |
+| createdDate | long | \- | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1485052172929 |
+| goodsNum | int | \- | 货物数量 | 2 |
+| companyName | string | 100 | 所属公司名称 | 伊藤洋华堂（眉山店） |
+| queryStatus | int | \- | 显示状态：1：待配送，2：配送中，3：已完成，4：已退货 | 1 |
+| page | int | \- | 页码，从1开始，默认1 | 1 |
+###### 响应示例
+
+```json
+{
+    "size": 20,
+    "total": 98,
+    "pages": 5,
+    "list": [
+        {
+            "id": 174,
+            "sysNo": "YT20170122102902",
+            "goodsNo": "718000872251",
+            "status": 0,
+            "createdDate": 1485052172929,
+            "goodsNum": 2,
+            "companyName": "\u4f0a\u85e4\u6d0b\u534e\u5802\uff08\u7709\u5c71\u5e97\uff09",
+            "queryStatus": 1
+        }
+    ],
+    "page": 1
+}
+```
 
 ---
 #### <a href='#3.2个人订单详情' name='3.2个人订单详情'>3.2 个人订单详情</a>
@@ -135,35 +157,63 @@ GET
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
-|id|long|\-|主键ID|1|
+| id | long | \- | 主键ID | 1 |
 ###### 请求参数
 
 |名称|类型|是否必填|最大长度|描述|默认值|示例值|
 |---|---|---|---|---|---|---|
-|accessToken|object|是|\-|授权码||fecb84d4-eac7-4e75-b21f-f97a52e83339|
+| accessToken | string | 是 | \- | 授权码 | \- | fecb84d4-eac7-4e75-b21f-f97a52e83339 |
 ###### 响应参数
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
-|id|long|\-|主键ID|1|
-|sysNo|string|100|系统运单号|YT20161230120202|
-|goodsNo|string|100|货物运单号|718000872251|
-|distributionName|string|100|配送人员姓名|吴大|
-|distributionTel|string|100|配送人员联系电话|18224060100|
-|consigneeName|string|100|收货人姓名|吴勇|
-|consigneeTel|string|100|收货人电话|182****0100|
-|consigneeAddress|string|250|收货人的地址|眉山红豆园A区1栋4号|
-|status|int|\-|状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成）|1|
-|createdDate|long|\-|创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）|1482463020055|
-|goodses|array|\-|货物|[{"id":1,"categoryName":"\u98df\u54c1\u996e\u6599","goodsName":"\u4f11\u95f2\u96f6\u98df","goodsNum":1}]|
-|id|long|\-|主键ID|1|
-|categoryName|string|100|分类名称|食品饮料|
-|goodsName|string|100|货物名称|休闲零食|
-|goodsNum|int|\-|货物数量|1|
-|deliveryTimeDesc|string|\-|即日达时效|当日送达|
-|logisticsCompany|string|\-|物流公司|我的伊家|
-|queryStatus|int|\-|显示状态：1：待配送，2：配送中，3：已完成，4：已退货|2|
-|deliveryTime|string|\-|配送时间|2016-12-24 10:17 ~ 22:00|
+| id | long | \- | 主键ID | 1 |
+| sysNo | string | 100 | 系统运单号 | YT20161230120202 |
+| goodsNo | string | 100 | 货物运单号 | 718000872251 |
+| distributionName | string | 100 | 配送人员姓名 | 吴大 |
+| distributionTel | string | 100 | 配送人员联系电话 | 18224060100 |
+| consigneeName | string | 100 | 收货人姓名 | 吴勇 |
+| consigneeTel | string | 100 | 收货人电话 | 182****0100 |
+| consigneeAddress | string | 250 | 收货人的地址 | 眉山红豆园A区1栋4号 |
+| status | int | \- | 状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） | 1 |
+| createdDate | long | \- | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1482463020055 |
+| goodses | array | \- | 货物 | [{"id":1,"categoryName":"\u98df\u54c1\u996e\u6599","goodsName":"\u4f11\u95f2\u96f6\u98df","goodsNum":1}] |
+| id | long | \- | 主键ID | 1 |
+| categoryName | string | 100 | 分类名称 | 食品饮料 |
+| goodsName | string | 100 | 货物名称 | 休闲零食 |
+| goodsNum | int | \- | 货物数量 | 1 |
+| deliveryTimeDesc | string | \- | 即日达时效 | 当日送达 |
+| logisticsCompany | string | \- | 物流公司 | 我的伊家 |
+| queryStatus | int | \- | 显示状态：1：待配送，2：配送中，3：已完成，4：已退货 | 2 |
+| deliveryTime | string | \- | 配送时间 | 2016-12-24 10:17 ~ 22:00 |
+###### 响应示例
+
+```json
+{
+    "id": 1,
+    "sysNo": "YT20161230120202",
+    "goodsNo": "718000872251",
+    "distributionName": "\u5434\u5927",
+    "distributionTel": "18224060100",
+    "consigneeName": "\u5434\u52c7",
+    "consigneeTel": "182****0100",
+    "consigneeAddress": "\u7709\u5c71\u7ea2\u8c46\u56edA\u533a1\u680b4\u53f7",
+    "status": 1,
+    "createdDate": 1482463020055,
+    "goodses": [
+        {
+            "id": 1,
+            "categoryName": "\u98df\u54c1\u996e\u6599",
+            "goodsName": "\u4f11\u95f2\u96f6\u98df",
+            "goodsNum": 1
+        }
+    ],
+    "deliveryTimeDesc": "\u5f53\u65e5\u9001\u8fbe",
+    "logisticsCompany": "\u6211\u7684\u4f0a\u5bb6",
+    "queryStatus": 2,
+    "deliveryTime": "2016-12-24 10:17 ~ 22:00"
+}
+```
 
 ---
 #### <a href='#3.3物流状态' name='3.3物流状态'>3.3 物流状态</a>
@@ -180,29 +230,54 @@ GET
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
-|id|long|\-|主键ID|1|
+| id | long | \- | 主键ID | 1 |
 ###### 请求参数
 
 |名称|类型|是否必填|最大长度|描述|默认值|示例值|
 |---|---|---|---|---|---|---|
-|accessToken|object|是|\-|授权码||fecb84d4-eac7-4e75-b21f-f97a52e83339|
+| accessToken | string | 是 | \- | 授权码 | \- | fecb84d4-eac7-4e75-b21f-f97a52e83339 |
 ###### 响应参数
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
-|id|long|\-|主键ID|67|
-|distributionName|string|100|配送人员姓名|吴大|
-|distributionTel|string|100|配送人员联系电话|18224060100|
-|details|array|\-|详情|[{"id":67,"createdDate":1482808721748,"status":8,"notes":{"text":"1","createdDate":1482808721748,"sysUserJobNumber":"GL001","sysUserName":"\u5f20\u5175"}}]|
-|id|long|\-|主键ID|67|
-|createdDate|long|\-|创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）|1482808721748|
-|status|int|\-|状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成）|8|
-|notes|array|\-|备注|[{"text":"1","createdDate":1482808721748,"sysUserJobNumber":"GL001","sysUserName":"\u5f20\u5175"}]|
-|text|string|\-|说明|1|
-|createdDate|long|\-|创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）|1482808721748|
-|sysUserJobNumber|string|200|工号|GL001|
-|sysUserName|string|100|操作人员姓名|张兵|
-|deliveryTime|string|\-|配送时间|2016-12-24 10:17 ~ 22:00|
+| id | long | \- | 主键ID | 1 |
+| distributionName | string | 100 | 配送人员姓名 | 吴大 |
+| distributionTel | string | 100 | 配送人员联系电话 | 18224060100 |
+| details | array | \- | 详情 | [{"id":67,"createdDate":1482808721748,"status":8,"notes":{"text":"1","createdDate":1482808721748,"sysUserJobNumber":"GL001","sysUserName":"\u5f20\u5175"}}] |
+| id | long | \- | 主键ID | 67 |
+| createdDate | long | \- | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1482808721748 |
+| status | int | \- | 状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） | 8 |
+| notes | array | \- | 备注 | [{"text":"1","createdDate":1482808721748,"sysUserJobNumber":"GL001","sysUserName":"\u5f20\u5175"}] |
+| text | string | \- | 说明 | 1 |
+| createdDate | long | \- | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1482808721748 |
+| sysUserJobNumber | string | 200 | 工号 | GL001 |
+| sysUserName | string | 100 | 操作人员姓名 | 张兵 |
+| deliveryTime | string | \- | 配送时间 | 2016-12-24 10:17 ~ 22:00 |
+###### 响应示例
+
+```json
+{
+    "id": 1,
+    "distributionName": "\u5434\u5927",
+    "distributionTel": "18224060100",
+    "details": [
+        {
+            "id": 67,
+            "createdDate": 1482808721748,
+            "status": 8,
+            "notes": [
+                {
+                    "text": "1",
+                    "createdDate": 1482808721748,
+                    "sysUserJobNumber": "GL001",
+                    "sysUserName": "\u5f20\u5175"
+                }
+            ]
+        }
+    ],
+    "deliveryTime": "2016-12-24 10:17 ~ 22:00"
+}
+```
 
 ---
 #### <a href='#3.4订单轨迹' name='3.4订单轨迹'>3.4 订单轨迹</a>
@@ -219,25 +294,41 @@ GET
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
-|id|long|\-|主键ID|108|
+| id | long | \- | 主键ID | 108 |
 ###### 请求参数
 
 |名称|类型|是否必填|最大长度|描述|默认值|示例值|
 |---|---|---|---|---|---|---|
-|accessToken|object|是|\-|授权码||fecb84d4-eac7-4e75-b21f-f97a52e83339|
+| accessToken | string | 是 | \- | 授权码 | \- | fecb84d4-eac7-4e75-b21f-f97a52e83339 |
 ###### 响应参数
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
-|route|string|\-|轨迹|{"lat":30.048832,"lng":103.839111}|
-|lat|double|\-|纬度|30.048832|
-|lng|double|\-|经度|103.839111|
-|sysUserName|string|100|操作人员姓名|杨森|
-|sysUserTel|string|50|操作人员电话|18224060100|
-|id|long|\-|所属运单ID|108|
-|lat|double|\-|目的地纬度|30.048646|
-|lng|double|\-|目的地经度|103.839111|
-|deliveryTime|string|\-|配送时间|2017-01-01 16:36 ~ 22:00|
+| route | string | \- | 轨迹 | {"lat":30.048832,"lng":103.839111} |
+| lat | double | \- | 纬度 | 30.048832 |
+| lng | double | \- | 经度 | 103.839111 |
+| sysUserName | string | 100 | 操作人员姓名 | 杨森 |
+| sysUserTel | string | 50 | 操作人员电话 | 18224060100 |
+| id | long | \- | 所属运单ID | 108 |
+| lat | double | \- | 目的地纬度 | 30.048646 |
+| lng | double | \- | 目的地经度 | 103.839111 |
+| deliveryTime | string | \- | 配送时间 | 2017-01-01 16:36 ~ 22:00 |
+###### 响应示例
+
+```json
+{
+    "route": {
+        "lat": 30.048832,
+        "lng": 103.839111
+    },
+    "sysUserName": "\u6768\u68ee",
+    "sysUserTel": "18224060100",
+    "id": 108,
+    "lat": 30.048646,
+    "lng": 103.839111,
+    "deliveryTime": "2017-01-01 16:36 ~ 22:00"
+}
+```
 
 ---
 #### <a href='#3.5删除订单' name='3.5删除订单'>3.5 删除订单</a>
@@ -254,12 +345,12 @@ DELETE
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
-|id|long|\-|主键ID|1|
+| id | long | \- | 主键ID | 1 |
 ###### 请求参数
 
 |名称|类型|是否必填|最大长度|描述|默认值|示例值|
 |---|---|---|---|---|---|---|
-|accessToken|object|是|\-|授权码||fecb84d4-eac7-4e75-b21f-f97a52e83339|
+| accessToken | string | 是 | \- | 授权码 | \- | fecb84d4-eac7-4e75-b21f-f97a52e83339 |
 ###### 响应参数
 
 无
@@ -278,22 +369,37 @@ POST
 
 |名称|类型|是否必填|最大长度|描述|默认值|示例值|
 |---|---|---|---|---|---|---|
-|accessToken|object|是|\-|授权码||fecb84d4-eac7-4e75-b21f-f97a52e83339|
-|waybillId|long|是|\-|所属运单ID||1|
-|text|string|是|\-|说明||我要投诉|
+| accessToken | string | 是 | \- | 授权码 | \- | fecb84d4-eac7-4e75-b21f-f97a52e83339 |
+| waybillId | long | 是 | \- | 所属运单ID | \- | 1 |
+| text | string | 是 | \- | 说明 | \- | 我要投诉 |
 ###### 响应参数
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
-|id|long|\-|主键ID|1774|
-|waybillId|long|\-|所属运单ID|1|
-|waybillSysNo|string|100|运单单号|YT20161230120202|
-|userId|long|\-|系统用户ID|3|
-|userName|string|50|用户姓名|ddddd|
-|userTel|string|20|用户电话|18224060100|
-|text|string|\-|说明|我要投诉|
-|resolved|boolean|\-|是否处理|false|
-|createdDate|long|\-|创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）|1487302834686|
+| id | long | \- | 主键ID | 1774 |
+| waybillId | long | \- | 所属运单ID | 1 |
+| waybillSysNo | string | 100 | 运单单号 | YT20161230120202 |
+| userId | long | \- | 系统用户ID | 3 |
+| userName | string | 50 | 用户姓名 | ddddd |
+| userTel | string | 20 | 用户电话 | 18224060100 |
+| text | string | \- | 说明 | 我要投诉 |
+| resolved | boolean | \- | 是否处理 | false |
+| createdDate | long | \- | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1487302834686 |
+###### 响应示例
+
+```json
+{
+    "id": 1774,
+    "waybillId": 1,
+    "waybillSysNo": "YT20161230120202",
+    "userId": 3,
+    "userName": "ddddd",
+    "userTel": "18224060100",
+    "text": "\u6211\u8981\u6295\u8bc9",
+    "resolved": false,
+    "createdDate": 1487302834686
+}
+```
 
 ---
 #### <a href='#3.7我的投诉' name='3.7我的投诉'>3.7 我的投诉</a>
@@ -309,28 +415,55 @@ GET
 
 |名称|类型|是否必填|最大长度|描述|默认值|示例值|
 |---|---|---|---|---|---|---|
-|accessToken|object|是|\-|授权码||fecb84d4-eac7-4e75-b21f-f97a52e83339|
-|page|int|否|\-|页码，从1开始，默认1|1|1|
-|size|int|否|\-|每页最大数量，默认20|20|20|
+| accessToken | string | 是 | \- | 授权码 | \- | fecb84d4-eac7-4e75-b21f-f97a52e83339 |
+| page | int | 否 | \- | 页码，从1开始，默认1 | 1 | 1 |
+| size | int | 否 | \- | 每页最大数量，默认20 | 20 | 20 |
 ###### 响应参数
 
 |名称|类型|最大长度|描述|示例值|
 |---|---|---|---|---|
-|size|int|\-|每页最大数量，默认20|7|
-|total|long|\-|总记录数|7|
-|pages|int|\-|总页数|1|
-|list|array|\-|内容|[{"id":1691,"waybillSysNo":"YT20170109170317","text":"\u4e1c\u897f\u574f\u7684","c_note":{"createdDate":1487746147569,"ct_note":"\u7ed9\u4f60\u9000","sysUserId":1,"sysUserNo":"KF001"},"resolved":true,"createdDate":1483953433584}]|
-|id|long|\-|主键ID|1691|
-|waybillSysNo|string|100|运单单号|YT20170109170317|
-|text|string|\-|说明|东西坏的|
-|note|array|\-|备注（处理结果）|[{"createdDate":1487746147569,"ct_note":"\u7ed9\u4f60\u9000","sysUserId":1,"sysUserNo":"KF001"}]|
-|createdDate|long|\-|创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）|1483953433584|
-|note|string|\-|备注（处理结果）|给你退|
-|sysUserId|long|\-|客服务人员（处理人员）ID|1|
-|sysUserNo|string|100|客服务人员（处理人员）工号|KF001|
-|resolved|boolean|\-|是否处理|true|
-|createdDate|long|\-|创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）|1483953433584|
-|page|int|\-|页码，从1开始，默认1|1|
+| size | int | \- | 每页最大数量，默认20 | 7 |
+| total | long | \- | 总记录数 | 7 |
+| pages | int | \- | 总页数 | 1 |
+| list | array | \- | 内容 | [{"id":1691,"waybillSysNo":"YT20170109170317","text":"\u4e1c\u897f\u574f\u7684","c_note":{"createdDate":1487746147569,"ct_note":"\u7ed9\u4f60\u9000","sysUserId":1,"sysUserNo":"KF001"},"resolved":true,"createdDate":1483953433584}] |
+| id | long | \- | 主键ID | 1691 |
+| waybillSysNo | string | 100 | 运单单号 | YT20170109170317 |
+| text | string | \- | 说明 | 东西坏的 |
+| note | array | \- | 备注（处理结果） | [{"createdDate":1487746147569,"ct_note":"\u7ed9\u4f60\u9000","sysUserId":1,"sysUserNo":"KF001"}] |
+| createdDate | long | \- | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1487746147569 |
+| note | string | \- | 备注（处理结果） | 给你退 |
+| sysUserId | long | \- | 客服务人员（处理人员）ID | 1 |
+| sysUserNo | string | 100 | 客服务人员（处理人员）工号 | KF001 |
+| resolved | boolean | \- | 是否处理 | true |
+| createdDate | long | \- | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1483953433584 |
+| page | int | \- | 页码，从1开始，默认1 | 1 |
+###### 响应示例
+
+```json
+{
+    "size": 7,
+    "total": 7,
+    "pages": 1,
+    "list": [
+        {
+            "id": 1691,
+            "waybillSysNo": "YT20170109170317",
+            "text": "\u4e1c\u897f\u574f\u7684",
+            "note": [
+                {
+                    "createdDate": 1487746147569,
+                    "note": "\u7ed9\u4f60\u9000",
+                    "sysUserId": 1,
+                    "sysUserNo": "KF001"
+                }
+            ],
+            "resolved": true,
+            "createdDate": 1483953433584
+        }
+    ],
+    "page": 1
+}
+```
 
 ---
 

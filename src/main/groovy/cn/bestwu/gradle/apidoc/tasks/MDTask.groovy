@@ -176,7 +176,7 @@ class MDTask extends DefaultTask {
             out.println "|---|---|---|---|---|"
             urlParams.eachWithIndex {
                 it, index ->
-                    out.println "|${it.name}|${it.type}|${it.length}|${it.desc}|${it.tempValue}|"
+                    out.println "| ${it.name} | ${it.type} | ${it.length} | ${it.desc} | ${it.tempValue} |"
             }
         }
         out.println "###### 请求参数"
@@ -189,22 +189,51 @@ class MDTask extends DefaultTask {
             out.println "|名称|类型|是否必填|最大长度|描述|默认值|示例值|"
             out.println "|---|---|---|---|---|---|---|"
             params.each {
-                out.println "|${it.name}|${it.type}|${it.notNullDesc}|${it.length}|${it.desc}|${it.value}|${it.tempValue}|"
+                out.println "| ${it.name} | ${it.type} | ${it.notNullDesc} | ${it.length} | ${it.desc} | ${it.value} | ${it.tempValue} |"
             }
         }
         out.println "###### 响应参数"
         out.println ''
 
-        results = getFields(fields, results)
-        if (results == null || results.isEmpty()) {
+        def resultFields = getFields(fields, results)
+        if (resultFields == null || resultFields.isEmpty()) {
             out.println "无"
         } else {
             out.println "|名称|类型|最大长度|描述|示例值|"
             out.println "|---|---|---|---|---|"
-            results.each {
-                out.println "|${it.name}|${it.type}|${it.length}|${it.desc}|${it.tempValue}|"
+            resultFields.each {
+                out.println "| ${it.name} | ${it.type} | ${it.length} | ${it.desc} | ${it.tempValue} |"
             }
+
+            out.println "###### 响应示例"
+            out.println ''
+            out.println '```json'
+            out.println JsonOutput.prettyPrint(JsonOutput.toJson(convertResults(fields, results)))
+            out.println '```'
         }
+    }
+
+    def convertResults(fields, results) {
+        def result = new LinkedHashMap()
+        results.each() {
+            k, v ->
+                def field = fields[k]
+                def tempValue
+                if (v == null || '' == v) {
+                    tempValue = field.value
+                }
+                if (v instanceof Map) {
+                    v = convertResults(fields, v)
+                }
+                if (field.type == 'array') {
+                    tempValue = []
+                    tempValue.add(v)
+                } else
+                    tempValue = v
+
+                result.put(field.name, tempValue)
+        }
+        return result
     }
 
 
@@ -250,7 +279,10 @@ class MDTask extends DefaultTask {
                         name = k
                     }
 
-                    def field = fields[name]
+                    def origin = fields[name]
+                    def field = new HashMap()
+                    copyProperties(origin, field)
+
                     if (field == null) {
                         field = [name: name]
                     }
@@ -260,16 +292,23 @@ class MDTask extends DefaultTask {
                     field.notNullDesc = notNull ? '是' : '否'
 
                     if (v == null || '' == v || ((v instanceof Map || v instanceof Collection) && v.size() == 0)) {
-                        field.tempValue = field.value
-                    } else {
-                        if (v instanceof Map)
-                            if (field.type == 'array') {
-                                field.tempValue = '[' + JsonOutput.toJson(v) + ']'
-                            } else
-                                field.tempValue = JsonOutput.toJson(v)
-                        else
-                            field.tempValue = v
+                        v = field.value
                     }
+                    if (v instanceof Map)
+                        if (field.type == 'array') {
+                            field.tempValue = '[' + JsonOutput.toJson(v) + ']'
+                        } else
+                            field.tempValue = JsonOutput.toJson(v)
+                    else
+                        field.tempValue = v
+
+                    if (field.desc == null || '' == field.desc)
+                        field.desc = '\\-'
+                    if (field.value == null || '' == field.value)
+                        field.value = '\\-'
+                    if (field.tempValue == null || '' == field.tempValue)
+                        field.tempValue = '\\-'
+
                     if (field.length == null)
                         field.length = '-'
                     field.length = '-' == field.length ? '\\-' : field.length
@@ -282,6 +321,12 @@ class MDTask extends DefaultTask {
                 break
         }
         return key
+    }
+
+    static copyProperties(source, target) {
+        source.each { key, value ->
+            target[key] = value
+        }
     }
 
     static jsonFilter(File file) {
