@@ -175,10 +175,10 @@ class MDTask extends DefaultTask {
             out.println ''
             out.println "###### 请求头参数"
             out.println ''
-            out.println "|名称|类型|是否必填|最大长度|描述|示例值|"
-            out.println "|---|---|---|---|---|---|"
+            out.println "|名称|类型|是否必填|描述|示例值|"
+            out.println "|---|---|---|---|---|"
             headers.each {
-                out.println "| ${it.name} | ${it.type} | ${it.notNullDesc} | ${it.length} | ${it.desc} | ${it.tempValue} |"
+                out.println "| ${it.name} | ${it.type} | ${it.notNullDesc} | ${it.desc} | ${it.tempValue} |"
             }
         }
         urlParams = getParamFields(fields, urlParams)
@@ -186,11 +186,11 @@ class MDTask extends DefaultTask {
             out.println ''
             out.println "###### URL参数"
             out.println ''
-            out.println "|名称|类型|最大长度|描述|示例值|"
-            out.println "|---|---|---|---|---|"
+            out.println "|名称|类型|描述|示例值|"
+            out.println "|---|---|---|---|"
             urlParams.eachWithIndex {
                 it, index ->
-                    out.println "| ${it.name} | ${it.type} | ${it.length} | ${it.desc} | ${it.tempValue} |"
+                    out.println "| ${it.name} | ${it.type} | ${it.desc} | ${it.tempValue} |"
             }
         }
         out.println ''
@@ -201,10 +201,10 @@ class MDTask extends DefaultTask {
         if (params == null || params.isEmpty()) {
             out.println "无"
         } else {
-            out.println "|名称|类型|是否必填|最大长度|描述|默认值|示例值|"
-            out.println "|---|---|---|---|---|---|---|"
+            out.println "|名称|类型|是否必填|描述|默认值|示例值|"
+            out.println "|---|---|---|---|---|---|"
             params.each {
-                out.println "| ${it.name} | ${it.type} | ${it.notNullDesc} | ${it.length} | ${it.desc} | ${it.value} | ${it.tempValue} |"
+                out.println "| ${it.name} | ${it.type} | ${it.notNullDesc} | ${it.desc} | ${it.value} | ${it.tempValue} |"
             }
         }
         out.println ''
@@ -215,10 +215,10 @@ class MDTask extends DefaultTask {
         if (resultFields == null || resultFields.isEmpty()) {
             out.println "无"
         } else {
-            out.println "|名称|类型|最大长度|描述|示例值|"
-            out.println "|---|---|---|---|---|"
+            out.println "|名称|类型|描述|示例值|"
+            out.println "|---|---|---|---|"
             resultFields.each {
-                out.println "| ${it.name} | ${it.type} | ${it.length} | ${it.desc} | ${it.tempValue} |"
+                out.println "| ${it.name} | ${it.type} | ${it.desc} | ${it.tempValue} |"
             }
 
             out.println ''
@@ -306,8 +306,6 @@ class MDTask extends DefaultTask {
                 field.value = '\\-'
             if (field.tempValue == null || '' == field.tempValue || '-' == field.tempValue)
                 field.tempValue = '\\-'
-            if (field.length == null || '' == field.length || '-' == field.length)
-                field.length = '\\-'
 
             flds.add(field)
         }
@@ -353,9 +351,6 @@ class MDTask extends DefaultTask {
             if (field.tempValue == null || '' == field.tempValue)
                 field.tempValue = '\\-'
 
-            if (field.length == null)
-                field.length = '-'
-            field.length = '-' == field.length ? '\\-' : field.length
             flds.add(field)
             if (v instanceof Map && v.size() > 0) {
                 flds.addAll(getResultFields(fields, v))
