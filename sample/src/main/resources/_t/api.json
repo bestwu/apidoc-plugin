@@ -519,7 +519,7 @@
       "sex": 1,
       "qq": "9389349384",
       "email": "xxx@126.com",
-      "accessTokenType": {
+      "accessToken": {
         "accessToken": "53cd7efb-7517-4b03-b4e6-1a8325f58a08",
         "expiration": 1488164341846,
         "expiresIn": 1209599
@@ -581,7 +581,7 @@
       "sex": 1,
       "qq": "9389349384",
       "email": "xxx@126.com",
-      "accessTokenType": {
+      "accessToken": {
         "accessToken": "53cd7efb-7517-4b03-b4e6-1a8325f58a08",
         "expiration": 1488164341846,
         "expiresIn": 1209599
@@ -660,7 +660,7 @@
       "sex": 1,
       "qq": "9389349384",
       "email": "xxx@126.com",
-      "accessTokenType": {
+      "accessToken": {
         "accessToken": "53cd7efb-7517-4b03-b4e6-1a8325f58a08",
         "expiration": 1488164341846,
         "expiresIn": 1209599
@@ -701,7 +701,7 @@
       "lastLoginDate": 1486538177218,
       "lastLoginIp": "127.0.0.1",
       "tel": "18224060100",
-      "accessTokenType": {
+      "accessToken": {
         "accessToken": "5abd2a1b-549a-4063-a9db-5c3d6fbefac9",
         "expiration": 1487747777343,
         "needAddInfo": false,
@@ -755,7 +755,7 @@
       "lastLogoutDate": 1483945745377,
       "lastLoginDate": 1486538177218,
       "lastLoginIp": "127.0.0.1",
-      "accessTokenType": {
+      "accessToken": {
         "accessToken": "820261be-bb1a-4143-adc8-cc92bb436796",
         "expiration": 1487749011058,
         "needAddInfo": false,

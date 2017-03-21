@@ -102,10 +102,10 @@ GET
 
 |名称|类型|描述|示例值|
 |---|---|---|---|
-| list | Array | 内容 | \[{"id":110000,"name":"\u5317\u4eac","children":\[{"id":110101,"name":"\u4e1c\u57ce\u533a","children":\[]}]}] |
+| list | Array | 内容 | [{"id":110000,"name":"北京","children":[{"id":110101,"name":"东城区","children":[]}]}] |
 | id | Long | 主键ID | 110000 |
 | name | String(100) | 名称 | 北京 |
-| children | Array | 子对象 | \[{"id":110101,"name":"\u4e1c\u57ce\u533a","children":\[]}] |
+| children | Array | 子对象 | [{"id":110101,"name":"东城区","children":[]}] |
 | id | Long | 主键ID | 110101 |
 | name | String(100) | 名称 | 东城区 |
 | children | Array | 子对象 | \- |
@@ -117,11 +117,11 @@ GET
     "list": [
         {
             "id": 110000,
-            "name": "\u5317\u4eac",
+            "name": "北京",
             "children": [
                 {
                     "id": 110101,
-                    "name": "\u4e1c\u57ce\u533a",
+                    "name": "东城区",
                     "children": [
                         
                     ]
@@ -166,7 +166,7 @@ GET
 | lng | Double | 公司所在经度 | 103.835434 |
 | lat | Double | 公司所在纬度 | 30.047301 |
 | mapZoom | String(20) | 地图缩放级别 | 13 |
-| mapAreas | Array | 地图范围 | {"id":8,"color":"#9a9a9a","path":{"lat":30.02651,"lng":103.867385},"name":"\u7070"} |
+| mapAreas | Array | 地图范围 | {"id":8,"color":"#9a9a9a","path":{"lat":30.02651,"lng":103.867385},"name":"灰"} |
 | id | Long | 主键ID | 8 |
 | color | String(20) | 颜色 | #9a9a9a |
 | path | String | 路径 | {"lat":30.02651,"lng":103.867385} |
@@ -179,8 +179,8 @@ GET
 ```json
 {
     "id": 1,
-    "name": "\u4f0a\u85e4\u6d0b\u534e\u5802\uff08\u7709\u5c71\u5e97\uff09",
-    "address": "\u7709\u5c71\u5e02\u4e1c\u5761\u533a\u73af\u6e56\u4e2d\u8def\u96d5\u50cf\u56fd\u9645\u5e7f\u573a \u4f0a\u85e4\u6d0b\u534e\u5802",
+    "name": "伊藤洋华堂（眉山店）",
+    "address": "眉山市东坡区环湖中路雕像国际广场 伊藤洋华堂",
     "lng": 103.835434,
     "lat": 30.047301,
     "mapZoom": "13",
@@ -191,7 +191,7 @@ GET
             "lat": 30.02651,
             "lng": 103.867385
         },
-        "name": "\u7070"
+        "name": "灰"
     }
 }
 ```
@@ -226,7 +226,7 @@ GET
 |---|---|---|---|
 | id | Long | 主键ID | 1 |
 | name | String(100) | 名称 | 伊藤洋华堂（眉山店） |
-| receivingSpaces | Array | 送货点 | {"id":1,"floor":5,"address":"\u670d\u52a1\u53f0\u65c1","lat":30.047301,"lng":103.835434} |
+| receivingSpaces | Array | 送货点 | {"id":1,"floor":5,"address":"服务台旁","lat":30.047301,"lng":103.835434} |
 | id | Long | 主键ID | 1 |
 | floor | Int | 楼层 | 5 |
 | address | String(200) | 地址 | 服务台旁 |
@@ -238,11 +238,11 @@ GET
 ```json
 {
     "id": 1,
-    "name": "\u4f0a\u85e4\u6d0b\u534e\u5802\uff08\u7709\u5c71\u5e97\uff09",
+    "name": "伊藤洋华堂（眉山店）",
     "receivingSpaces": {
         "id": 1,
         "floor": 5,
-        "address": "\u670d\u52a1\u53f0\u65c1",
+        "address": "服务台旁",
         "lat": 30.047301,
         "lng": 103.835434
     }

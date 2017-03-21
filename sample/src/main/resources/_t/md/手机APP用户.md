@@ -122,7 +122,7 @@ POST
 | sex | Int | 性别（0：女，1：男，2：未知） | 1 |
 | qq | String(100) | QQ号 | 9389349384 |
 | email | String(200) | 电子邮箱 | xxx@126.com |
-| accessToken | Object | 授权码 | {"accessToken":"53cd7efb-7517-4b03-b4e6-1a8325f58a08","expiration":1488164341846,"expiresIn":1209599} |
+| accessToken | Map | 授权码 | {"accessToken":"53cd7efb-7517-4b03-b4e6-1a8325f58a08","expiration":1488164341846,"expiresIn":1209599} |
 | accessToken | String | 授权码 | 53cd7efb-7517-4b03-b4e6-1a8325f58a08 |
 | expiration | Long | 过期时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1488164341846 |
 | expiresIn | Int | 多少秒后过期 | 1209599 |
@@ -136,9 +136,9 @@ POST
     "lastLoginDate": 1486954741739,
     "lastLoginIp": "127.0.0.1",
     "tel": "18224060100",
-    "address": "XXX\u8def",
-    "city": "\u6210\u90fd",
-    "region": "\u6b66\u4faf",
+    "address": "XXX路",
+    "city": "成都",
+    "region": "武侯",
     "sex": 1,
     "qq": "9389349384",
     "email": "xxx@126.com",
@@ -275,7 +275,7 @@ POST
 | sex | Int | 性别（0：女，1：男，2：未知） | 1 |
 | qq | String(100) | QQ号 | 9389349384 |
 | email | String(200) | 电子邮箱 | xxx@126.com |
-| accessToken | Object | 授权码 | {"accessToken":"53cd7efb-7517-4b03-b4e6-1a8325f58a08","expiration":1488164341846,"expiresIn":1209599} |
+| accessToken | Map | 授权码 | {"accessToken":"53cd7efb-7517-4b03-b4e6-1a8325f58a08","expiration":1488164341846,"expiresIn":1209599} |
 | accessToken | String | 授权码 | 53cd7efb-7517-4b03-b4e6-1a8325f58a08 |
 | expiration | Long | 过期时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1488164341846 |
 | expiresIn | Int | 多少秒后过期 | 1209599 |
@@ -289,9 +289,9 @@ POST
     "lastLoginDate": 1486954741739,
     "lastLoginIp": "127.0.0.1",
     "tel": "18224060100",
-    "address": "XXX\u8def",
-    "city": "\u6210\u90fd",
-    "region": "\u6b66\u4faf",
+    "address": "XXX路",
+    "city": "成都",
+    "region": "武侯",
     "sex": 1,
     "qq": "9389349384",
     "email": "xxx@126.com",
@@ -351,9 +351,9 @@ GET
     "lastLoginDate": 1488271046932,
     "lastLoginIp": "127.0.0.1",
     "tel": "18224060100",
-    "address": "XX\u8def",
-    "city": "\u6210\u90fd\u5e02",
-    "region": "\u6b66\u4faf\u533a",
+    "address": "XX路",
+    "city": "成都市",
+    "region": "武侯区",
     "sex": 1,
     "qq": "9389349384",
     "email": "xxx@126.com"
@@ -416,9 +416,9 @@ PUT
     "lastLoginDate": 1488271046932,
     "lastLoginIp": "127.0.0.1",
     "tel": "18224060100",
-    "address": "XX\u8def",
-    "city": "\u6210\u90fd\u5e02",
-    "region": "\u6b66\u4faf\u533a",
+    "address": "XX路",
+    "city": "成都市",
+    "region": "武侯区",
     "sex": 1,
     "qq": "9389349384",
     "email": "xxx@126.com"
@@ -477,9 +477,9 @@ PUT
     "lastLoginDate": 1486954741739,
     "lastLoginIp": "127.0.0.1",
     "tel": "18224060100",
-    "address": "XXX\u8def",
-    "city": "\u6210\u90fd",
-    "region": "\u6b66\u4faf",
+    "address": "XXX路",
+    "city": "成都",
+    "region": "武侯",
     "sex": 1,
     "qq": "9389349384",
     "email": "xxx@126.com"
@@ -536,9 +536,9 @@ PUT
     "lastLoginDate": 1486954741739,
     "lastLoginIp": "127.0.0.1",
     "tel": "18224060100",
-    "address": "XXX\u8def",
-    "city": "\u6210\u90fd",
-    "region": "\u6b66\u4faf",
+    "address": "XXX路",
+    "city": "成都",
+    "region": "武侯",
     "sex": 1,
     "qq": "9389349384",
     "email": "xxx@126.com"
@@ -585,7 +585,7 @@ PUT
 | sex | Int | 性别（0：女，1：男，2：未知） | 1 |
 | qq | String(100) | QQ号 | 9389349384 |
 | email | String(200) | 电子邮箱 | xxx@126.com |
-| accessToken | Object | 授权码 | {"accessToken":"53cd7efb-7517-4b03-b4e6-1a8325f58a08","expiration":1488164341846,"expiresIn":1209599} |
+| accessToken | Map | 授权码 | {"accessToken":"53cd7efb-7517-4b03-b4e6-1a8325f58a08","expiration":1488164341846,"expiresIn":1209599} |
 | accessToken | String | 授权码 | 53cd7efb-7517-4b03-b4e6-1a8325f58a08 |
 | expiration | Long | 过期时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1488164341846 |
 | expiresIn | Int | 多少秒后过期 | 1209599 |
@@ -599,9 +599,9 @@ PUT
     "lastLoginDate": 1486954741739,
     "lastLoginIp": "127.0.0.1",
     "tel": "18224060100",
-    "address": "XXX\u8def",
-    "city": "\u6210\u90fd",
-    "region": "\u6b66\u4faf",
+    "address": "XXX路",
+    "city": "成都",
+    "region": "武侯",
     "sex": 1,
     "qq": "9389349384",
     "email": "xxx@126.com",

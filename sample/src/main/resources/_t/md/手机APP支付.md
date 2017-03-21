@@ -116,7 +116,7 @@ GET
 | size | Int | 每页最大数量，默认20 | 2 |
 | total | Long | 总记录数 | 2 |
 | pages | Int | 总页数 | 1 |
-| list | Array | 内容 | \[{"subject":"\u94b1\u5305\u5145\u503c","createdDate":1487726987744,"totalAmount":100}] |
+| list | Array | 内容 | [{"subject":"钱包充值","createdDate":1487726987744,"totalAmount":100}] |
 | subject | String(250) | 交易说明 | 钱包充值 |
 | createdDate | Long | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1487726987744 |
 | totalAmount | Long | 交易金额（单元：分） | 100 |
@@ -132,12 +132,12 @@ GET
     "pages": 1,
     "list": [
         {
-            "subject": "\u94b1\u5305\u5145\u503c",
+            "subject": "钱包充值",
             "createdDate": 1487726987744,
             "totalAmount": 100
         },
         {
-            "subject": "\u94b1\u5305\u5145\u503c",
+            "subject": "钱包充值",
             "createdDate": 1487726987744,
             "totalAmount": 100
         }

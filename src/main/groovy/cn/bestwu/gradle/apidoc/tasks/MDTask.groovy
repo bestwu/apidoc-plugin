@@ -3,6 +3,7 @@ package cn.bestwu.gradle.apidoc.tasks
 import cn.bestwu.gradle.apidoc.support.OrderedJsonParserUsingCharacterSource
 import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
+import groovy.json.StringEscapeUtils
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.OutputDirectory
@@ -225,7 +226,7 @@ class MDTask extends DefaultTask {
             out.println "###### 响应示例"
             out.println ''
             out.println '```json'
-            out.println JsonOutput.prettyPrint(JsonOutput.toJson(convertResults(fields, results)))
+            out.println StringEscapeUtils.unescapeJava(JsonOutput.prettyPrint(JsonOutput.toJson(convertResults(fields, results))))
             out.println '```'
         }
     }
@@ -246,7 +247,7 @@ class MDTask extends DefaultTask {
             def convertedResults = new LinkedHashMap()
             results.each() {
                 k, v ->
-                    def field = fields[k]
+                    def field = findField(fields, k, v)
                     def tempValue
                     if (v == null || '' == v) {
                         tempValue = field.value
@@ -282,13 +283,8 @@ class MDTask extends DefaultTask {
                 name = k
             }
 
-            def origin = fields[name]
-            def field = new HashMap()
-            copyProperties(origin, field)
+            def field = findField(fields, name, v)
 
-            if (field == null) {
-                field = [name: name]
-            }
             if (notNull == null) {
                 notNull = field.notNull
             }
@@ -322,25 +318,25 @@ class MDTask extends DefaultTask {
         if (!result)
             return null
         def flds = []
-        result.each { k, v ->
-            def origin = fields[k]
-            def field = new HashMap()
-            copyProperties(origin, field)
-
-            if (field == null) {
-                field = [name: k]
+        if (result instanceof Collection) {
+            if (result.size() == 0) {
+                return null
             }
+            result = result[0]
+        }
+        result.each { k, v ->
+            def field = findField(fields, k, v)
 
             if (v == null || '' == v || ((v instanceof Map || v instanceof Collection) && v.size() == 0)) {
                 v = field.value
             }
             if (v instanceof Map)
-                field.tempValue = JsonOutput.toJson(v).replace('[','\\[')
+                field.tempValue = StringEscapeUtils.unescapeJava(JsonOutput.toJson(v).replace('[', '\\['))
             else if (v instanceof Collection) {
                 if (v.size() >= 1) {
                     v = v[0]
                 }
-                field.tempValue = JsonOutput.toJson(convertResults(fields, Collections.singletonList(v))).replace('[','\\[')
+                field.tempValue = StringEscapeUtils.unescapeJava(JsonOutput.toJson(convertResults(fields, Collections.singletonList(v))).replace('[', '\\['))
             } else
                 field.tempValue = v
 
@@ -358,6 +354,71 @@ class MDTask extends DefaultTask {
         }
         result = flds
         return result
+    }
+
+    /**
+     * 转换字段类型
+     * @param value
+     */
+    static getFieldType(value) {
+        if (value instanceof Map)
+            return 'Map'
+        if (value instanceof Collection)
+            return 'Array'
+        return value.class.simpleName
+    }
+    /**
+     * 查找字段
+     * @param fields
+     * @param name
+     * @param value
+     * @return
+     */
+    static findField(fields, name, value) {
+        def origin
+        def result = fields.findAll {
+            if (it.id && it.id == name) {
+                return it
+            }
+        }
+        def size = result.size()
+        if (size > 1)
+            throw new RuntimeException('存在多个未区分属性说明：' + StringEscapeUtils.unescapeJava(JsonOutput.toJson(result)))
+        if (size == 1) {
+            origin = result[0]
+        } else {
+            result = fields.findAll {
+                if (!it.id && it.name == name && it.type.contains(getFieldType(value))) {
+                    return it
+                }
+            }
+            size = result.size()
+            if (size > 1)
+                throw new RuntimeException('存在多个未区分属性说明：' + StringEscapeUtils.unescapeJava(JsonOutput.toJson(result)))
+            if (size == 1) {
+                origin = result[0]
+            } else {
+                result = fields.findAll {
+                    if (!it.id && it.name == name) {
+                        return it
+                    }
+                }
+                size = result.size()
+                if (size > 1)
+                    throw new RuntimeException('存在多个未区分属性说明：' + StringEscapeUtils.unescapeJava(JsonOutput.toJson(result)))
+                if (size == 1) {
+                    origin = result[0]
+                }
+            }
+        }
+        if (origin == null) {
+            origin = [name: name]
+        }
+
+        def field = new HashMap()
+        copyProperties(origin, field)
+
+        return field
     }
 /**
  * 复制属性

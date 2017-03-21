@@ -117,7 +117,7 @@ GET
 | size | Int | 每页最大数量，默认20 | 20 |
 | total | Long | 总记录数 | 98 |
 | pages | Int | 总页数 | 5 |
-| list | Array | 内容 | \[{"id":174,"sysNo":"YT20170122102902","goodsNo":"718000872251","status":0,"createdDate":1485052172929,"goodsNum":2,"companyName":"\u4f0a\u85e4\u6d0b\u534e\u5802\uff08\u7709\u5c71\u5e97\uff09","queryStatus":1}] |
+| list | Array | 内容 | [{"id":174,"sysNo":"YT20170122102902","goodsNo":"718000872251","status":0,"createdDate":1485052172929,"goodsNum":2,"companyName":"伊藤洋华堂（眉山店）","queryStatus":1}] |
 | id | Long | 主键ID | 174 |
 | sysNo | String(100) | 系统运单号 | YT20170122102902 |
 | goodsNo | String(100) | 货物运单号 | 718000872251 |
@@ -143,7 +143,7 @@ GET
             "status": 0,
             "createdDate": 1485052172929,
             "goodsNum": 2,
-            "companyName": "\u4f0a\u85e4\u6d0b\u534e\u5802\uff08\u7709\u5c71\u5e97\uff09",
+            "companyName": "伊藤洋华堂（眉山店）",
             "queryStatus": 1
         }
     ],
@@ -194,7 +194,7 @@ GET
 | consigneeAddress | String(250) | 收货人的地址 | 眉山红豆园A区1栋4号 |
 | status | Int | 状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） | 1 |
 | createdDate | Long | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1482463020055 |
-| goodses | Array | 货物 | \[{"id":1,"categoryName":"\u98df\u54c1\u996e\u6599","goodsName":"\u4f11\u95f2\u96f6\u98df","goodsNum":1}] |
+| goodses | Array | 货物 | [{"id":1,"categoryName":"食品饮料","goodsName":"休闲零食","goodsNum":1}] |
 | id | Long | 主键ID | 1 |
 | categoryName | String(100) | 分类名称 | 食品饮料 |
 | goodsName | String(100) | 货物名称 | 休闲零食 |
@@ -211,23 +211,23 @@ GET
     "id": 1,
     "sysNo": "YT20161230120202",
     "goodsNo": "718000872251",
-    "distributionName": "\u5434\u5927",
+    "distributionName": "吴大",
     "distributionTel": "18224060100",
-    "consigneeName": "\u5434\u52c7",
+    "consigneeName": "吴勇",
     "consigneeTel": "182****0100",
-    "consigneeAddress": "\u7709\u5c71\u7ea2\u8c46\u56edA\u533a1\u680b4\u53f7",
+    "consigneeAddress": "眉山红豆园A区1栋4号",
     "status": 1,
     "createdDate": 1482463020055,
     "goodses": [
         {
             "id": 1,
-            "categoryName": "\u98df\u54c1\u996e\u6599",
-            "goodsName": "\u4f11\u95f2\u96f6\u98df",
+            "categoryName": "食品饮料",
+            "goodsName": "休闲零食",
             "goodsNum": 1
         }
     ],
-    "deliveryTimeDesc": "\u5f53\u65e5\u9001\u8fbe",
-    "logisticsCompany": "\u6211\u7684\u4f0a\u5bb6",
+    "deliveryTimeDesc": "当日送达",
+    "logisticsCompany": "我的伊家",
     "queryStatus": 2,
     "deliveryTime": "2016-12-24 10:17 ~ 22:00"
 }
@@ -269,11 +269,11 @@ GET
 | id | Long | 主键ID | 1 |
 | distributionName | String(100) | 配送人员姓名 | 吴大 |
 | distributionTel | String(100) | 配送人员联系电话 | 18224060100 |
-| details | Array | 详情 | {"id":67,"createdDate":1482808721748,"status":8,"notes":\[{"text":"1","createdDate":1482808721748,"sysUserJobNumber":"GL001","sysUserName":"\u5f20\u5175"}]} |
+| details | Array | 详情 | {"id":67,"createdDate":1482808721748,"status":8,"notes":[{"text":"1","createdDate":1482808721748,"sysUserJobNumber":"GL001","sysUserName":"张兵"}]} |
 | id | Long | 主键ID | 67 |
 | createdDate | Long | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1482808721748 |
 | status | Int | 状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） | 8 |
-| notes | Array | 备注 | \[{"text":"1","createdDate":1482808721748,"sysUserJobNumber":"GL001","sysUserName":"\u5f20\u5175"}] |
+| notes | Array | 备注 | [{"text":"1","createdDate":1482808721748,"sysUserJobNumber":"GL001","sysUserName":"张兵"}] |
 | text | String | 说明 | 1 |
 | createdDate | Long | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1482808721748 |
 | sysUserJobNumber | String(200) | 工号 | GL001 |
@@ -285,7 +285,7 @@ GET
 ```json
 {
     "id": 1,
-    "distributionName": "\u5434\u5927",
+    "distributionName": "吴大",
     "distributionTel": "18224060100",
     "details": {
         "id": 67,
@@ -296,7 +296,7 @@ GET
                 "text": "1",
                 "createdDate": 1482808721748,
                 "sysUserJobNumber": "GL001",
-                "sysUserName": "\u5f20\u5175"
+                "sysUserName": "张兵"
             }
         ]
     },
@@ -355,7 +355,7 @@ GET
         "lat": 30.048832,
         "lng": 103.839111
     },
-    "sysUserName": "\u6768\u68ee",
+    "sysUserName": "杨森",
     "sysUserTel": "18224060100",
     "id": 108,
     "lat": 30.048646,
@@ -446,7 +446,7 @@ POST
     "userId": 3,
     "userName": "ddddd",
     "userTel": "18224060100",
-    "text": "\u6211\u8981\u6295\u8bc9",
+    "text": "我要投诉",
     "resolved": false,
     "createdDate": 1487302834686
 }
@@ -484,11 +484,11 @@ GET
 | size | Int | 每页最大数量，默认20 | 7 |
 | total | Long | 总记录数 | 7 |
 | pages | Int | 总页数 | 1 |
-| list | Array | 内容 | \[{"id":1691,"waybillSysNo":"YT20170109170317","text":"\u4e1c\u897f\u574f\u7684","note":\[{"createdDate":1487746147569,"note":"\u7ed9\u4f60\u9000","sysUserId":1,"sysUserNo":"KF001"}],"resolved":true,"createdDate":1483953433584}] |
+| list | Array | 内容 | [{"id":1691,"waybillSysNo":"YT20170109170317","text":"东西坏的","note":[{"createdDate":1487746147569,"note":"给你退","sysUserId":1,"sysUserNo":"KF001"}],"resolved":true,"createdDate":1483953433584}] |
 | id | Long | 主键ID | 1691 |
 | waybillSysNo | String(100) | 运单单号 | YT20170109170317 |
 | text | String | 说明 | 东西坏的 |
-| note | Array | 备注（处理结果） | \[{"createdDate":1487746147569,"note":"\u7ed9\u4f60\u9000","sysUserId":1,"sysUserNo":"KF001"}] |
+| note | Array | 备注（处理结果） | [{"createdDate":1487746147569,"note":"给你退","sysUserId":1,"sysUserNo":"KF001"}] |
 | createdDate | Long | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1487746147569 |
 | note | String | 备注（处理结果） | 给你退 |
 | sysUserId | Long | 客服务人员（处理人员）ID | 1 |
@@ -508,11 +508,11 @@ GET
         {
             "id": 1691,
             "waybillSysNo": "YT20170109170317",
-            "text": "\u4e1c\u897f\u574f\u7684",
+            "text": "东西坏的",
             "note": [
                 {
                     "createdDate": 1487746147569,
-                    "note": "\u7ed9\u4f60\u9000",
+                    "note": "给你退",
                     "sysUserId": 1,
                     "sysUserNo": "KF001"
                 }

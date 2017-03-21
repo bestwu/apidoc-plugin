@@ -1,5 +1,6 @@
 package cn.bestwu.gradle.apidoc
 
+import cn.bestwu.gradle.apidoc.tasks.MDTask
 import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
 import groovy.json.StringEscapeUtils
@@ -23,15 +24,26 @@ class PluginTest {
     }
 
     @Test
+    void findField() throws Exception {
+        def file = new File("D:\\Repositories\\bestwu\\apidoc-plugin\\sample\\src\\main\\resources\\_t\\field.json")
+        def json = new JsonSlurper().parseText(jsonFilter(file))
+        System.err.println(MDTask.findField(json,'note','String'))
+    }
+
+    @Test
     void convertFields() throws Exception {
         def file = new File("D:\\Repositories\\bestwu\\apidoc-plugin\\sample\\src\\main\\resources\\_t\\field.json")
         def json = new JsonSlurper().parseText(jsonFilter(file))
-        json.each { k, get ->
-            get.type = get.length != null && get.length != '-' ? "${get.type.capitalize()}(${get.length})" : get.type.capitalize()
+        def j=[]
+        json.each {k,get->
+            get.type = get.length != null&&get.length != '-' ? "${get.type.capitalize()}(${get.length})" : get.type.capitalize()
             get.remove('length')
+            get.id=k
+
+            j.add(get)
         }
         file.withPrintWriter('UTF-8') { out ->
-            out.println StringEscapeUtils.unescapeJava(JsonOutput.prettyPrint(JsonOutput.toJson(json)))
+            out.println StringEscapeUtils.unescapeJava(JsonOutput.prettyPrint(JsonOutput.toJson(j)))
         }
     }
 
