@@ -248,15 +248,13 @@ class MDTask extends DefaultTask {
             results.each() {
                 k, v ->
                     def field = findField(fields, k, v)
-                    def tempValue
                     if (v == null || '' == v) {
-                        tempValue = field.value
+                        v = field.value
                     }
                     if (v instanceof Map || v instanceof Collection) {
                         v = convertResults(fields, v)
                     }
-                    tempValue = v
-                    convertedResults.put(field.name, tempValue)
+                    convertedResults.put(field.name, v)
             }
             return convertedResults
         }
@@ -300,6 +298,8 @@ class MDTask extends DefaultTask {
 
             if (field.desc == null || '' == field.desc || '-' == field.tempValue)
                 field.desc = '\\-'
+            if (field.type == null)
+                field.type = 'String'
             field.desc = field.desc.replace('href=\'html/', 'href=\'').replace('.html\'', '.md\'')
             if (field.value == null || '' == field.value || '-' == field.tempValue)
                 field.value = '\\-'
@@ -333,15 +333,21 @@ class MDTask extends DefaultTask {
                 v = field.value
             }
             if (v instanceof Map)
-                field.tempValue = StringEscapeUtils.unescapeJava(JsonOutput.toJson(convertResults(fields,v)).replace('[', '\\['))
+                field.tempValue = StringEscapeUtils.unescapeJava(JsonOutput.toJson(convertResults(fields, v)).replace('[', '\\['))
             else if (v instanceof Collection) {
+                def list
                 if (v.size() >= 1) {
                     v = v[0]
+                    list = Collections.singletonList(v)
+                } else {
+                    list = []
                 }
-                field.tempValue = StringEscapeUtils.unescapeJava(JsonOutput.toJson(convertResults(fields, Collections.singletonList(v))).replace('[', '\\['))
+                field.tempValue = StringEscapeUtils.unescapeJava(JsonOutput.toJson(convertResults(fields, list)).replace('[', '\\['))
             } else
                 field.tempValue = v
 
+            if (field.type == null)
+                field.type = 'String'
             if (field.desc == null || '' == field.desc)
                 field.desc = '\\-'
             if (field.value == null || '' == field.value)

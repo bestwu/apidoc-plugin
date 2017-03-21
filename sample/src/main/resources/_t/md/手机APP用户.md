@@ -122,7 +122,7 @@ POST
 | sex | Int | 性别（0：女，1：男，2：未知） | 1 |
 | qq | String(100) | QQ号 | 9389349384 |
 | email | String(200) | 电子邮箱 | xxx@126.com |
-| accessToken | Map | 授权码 | {"accessToken":"53cd7efb-7517-4b03-b4e6-1a8325f58a08","expiration":1488164341846,"expiresIn":1209599} |
+| accessToken | Object | 授权码 | {"accessToken":"53cd7efb-7517-4b03-b4e6-1a8325f58a08","expiration":1488164341846,"expiresIn":1209599} |
 | accessToken | String | 授权码 | 53cd7efb-7517-4b03-b4e6-1a8325f58a08 |
 | expiration | Long | 过期时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1488164341846 |
 | expiresIn | Int | 多少秒后过期 | 1209599 |
@@ -275,7 +275,7 @@ POST
 | sex | Int | 性别（0：女，1：男，2：未知） | 1 |
 | qq | String(100) | QQ号 | 9389349384 |
 | email | String(200) | 电子邮箱 | xxx@126.com |
-| accessToken | Map | 授权码 | {"accessToken":"53cd7efb-7517-4b03-b4e6-1a8325f58a08","expiration":1488164341846,"expiresIn":1209599} |
+| accessToken | Object | 授权码 | {"accessToken":"53cd7efb-7517-4b03-b4e6-1a8325f58a08","expiration":1488164341846,"expiresIn":1209599} |
 | accessToken | String | 授权码 | 53cd7efb-7517-4b03-b4e6-1a8325f58a08 |
 | expiration | Long | 过期时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1488164341846 |
 | expiresIn | Int | 多少秒后过期 | 1209599 |
@@ -585,7 +585,7 @@ PUT
 | sex | Int | 性别（0：女，1：男，2：未知） | 1 |
 | qq | String(100) | QQ号 | 9389349384 |
 | email | String(200) | 电子邮箱 | xxx@126.com |
-| accessToken | Map | 授权码 | {"accessToken":"53cd7efb-7517-4b03-b4e6-1a8325f58a08","expiration":1488164341846,"expiresIn":1209599} |
+| accessToken | Object | 授权码 | {"accessToken":"53cd7efb-7517-4b03-b4e6-1a8325f58a08","expiration":1488164341846,"expiresIn":1209599} |
 | accessToken | String | 授权码 | 53cd7efb-7517-4b03-b4e6-1a8325f58a08 |
 | expiration | Long | 过期时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1488164341846 |
 | expiresIn | Int | 多少秒后过期 | 1209599 |
