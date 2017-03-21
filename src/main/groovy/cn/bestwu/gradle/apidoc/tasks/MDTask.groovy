@@ -106,14 +106,14 @@ class MDTask extends DefaultTask {
                                 out.println ''
                                 def api = apis.find({
                                     api ->
-                                        api.resourceType == treeName && api.name == leafName
+                                        api.resource == treeName && api.name == leafName
                                 })
                                 out.println "###### 接口地址"
                                 out.println ''
                                 out.println "[${apiHost + api.url}](${apiHost + api.url})"
                                 out.println ''
                                 out.println "###### 请求方法"
-                                out.println "${api.httpMethod}"
+                                out.println "${api.method}"
                                 out.println ''
                                 if (api.desc) {
                                     out.println "###### 说明"
@@ -157,14 +157,14 @@ class MDTask extends DefaultTask {
 
     def fillDesc(out, api, fields, version) {
         def headers = api.headers
-        def urlParams = api.urlParams
+        def uriVariables = api.uriVariables
         def params = api.params
         def results = api.results
         if (version && '1.0' != version && api[version]) {
             if (api[version].headers)
                 headers = api[version].headers
-            if (api[version].urlParams)
-                urlParams = api[version].urlParams
+            if (api[version].uriVariables)
+                uriVariables = api[version].uriVariables
             if (api[version].params)
                 params = api[version].params
             if (api[version].results)
@@ -179,17 +179,17 @@ class MDTask extends DefaultTask {
             out.println "|名称|类型|是否必填|描述|示例值|"
             out.println "|---|---|---|---|---|"
             headers.each {
-                out.println "| ${it.name} | ${it.type} | ${it.notNullDesc} | ${it.desc} | ${it.tempValue} |"
+                out.println "| ${it.name} | ${it.type} | ${it.nullableDesc} | ${it.desc} | ${it.tempValue} |"
             }
         }
-        urlParams = getParamFields(fields, urlParams)
-        if (urlParams != null && !urlParams.isEmpty()) {
+        uriVariables = getParamFields(fields, uriVariables)
+        if (uriVariables != null && !uriVariables.isEmpty()) {
             out.println ''
             out.println "###### URL参数"
             out.println ''
             out.println "|名称|类型|描述|示例值|"
             out.println "|---|---|---|---|"
-            urlParams.eachWithIndex {
+            uriVariables.eachWithIndex {
                 it, index ->
                     out.println "| ${it.name} | ${it.type} | ${it.desc} | ${it.tempValue} |"
             }
@@ -205,7 +205,7 @@ class MDTask extends DefaultTask {
             out.println "|名称|类型|是否必填|描述|默认值|示例值|"
             out.println "|---|---|---|---|---|---|"
             params.each {
-                out.println "| ${it.name} | ${it.type} | ${it.notNullDesc} | ${it.desc} | ${it.value} | ${it.tempValue} |"
+                out.println "| ${it.name} | ${it.type} | ${it.nullableDesc} | ${it.desc} | ${it.value} | ${it.tempValue} |"
             }
         }
         out.println ''
@@ -272,12 +272,12 @@ class MDTask extends DefaultTask {
             return null
         def flds = []
         param.each { k, v ->
-            def notNull = null, name
+            def nullable = null, name
             if (k.endsWith('&')) {
-                notNull = true
+                nullable = false
                 name = k.substring(0, k.length() - 1)
             } else if (k.endsWith('^')) {
-                notNull = false
+                nullable = true
                 name = k.substring(0, k.length() - 1)
             } else {
                 name = k
@@ -285,10 +285,13 @@ class MDTask extends DefaultTask {
 
             def field = findField(fields, name, v)
 
-            if (notNull == null) {
-                notNull = field.notNull
+            if (nullable == null) {
+                nullable = field.nullable
             }
-            field.notNullDesc = notNull ? '是' : '否'
+            if (nullable == null) {
+                nullable = true
+            }
+            field.nullableDesc = nullable ? '否' : '是'
 
             if (v == null || '' == v) {
                 v = field.value
@@ -305,8 +308,7 @@ class MDTask extends DefaultTask {
 
             flds.add(field)
         }
-        param = flds
-        return param
+        return flds
     }
 /**
  * 响应结果字段
@@ -331,7 +333,7 @@ class MDTask extends DefaultTask {
                 v = field.value
             }
             if (v instanceof Map)
-                field.tempValue = StringEscapeUtils.unescapeJava(JsonOutput.toJson(v).replace('[', '\\['))
+                field.tempValue = StringEscapeUtils.unescapeJava(JsonOutput.toJson(convertResults(fields,v)).replace('[', '\\['))
             else if (v instanceof Collection) {
                 if (v.size() >= 1) {
                     v = v[0]
@@ -362,7 +364,7 @@ class MDTask extends DefaultTask {
      */
     static getFieldType(value) {
         if (value instanceof Map)
-            return 'Map'
+            return 'Object'
         if (value instanceof Collection)
             return 'Array'
         return value.class.simpleName

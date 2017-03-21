@@ -3,29 +3,29 @@
     "desc": "签名",
     "id": "a_sign",
     "name": "sign",
-    "notNull": true,
+    "nullable": false,
     "type": "String",
     "value": ""
   },
   {
     "desc": "授权码",
     "name": "accessToken",
-    "notNull": true,
+    "nullable": false,
     "type": "String",
     "value": ""
   },
   {
     "desc": "授权码",
     "name": "accessToken",
-    "notNull": true,
-    "type": "Map",
+    "nullable": false,
+    "type": "Object",
     "value": ""
   },
   {
     "desc": "加箱费（分）",
     "id": "addCaseCost",
     "name": "addCaseCost",
-    "notNull": false,
+    "nullable": true,
     "type": "Int",
     "value": "'0'"
   },
@@ -33,7 +33,7 @@
     "desc": "地址",
     "id": "address",
     "name": "address",
-    "notNull": false,
+    "nullable": true,
     "type": "String(200)",
     "value": ""
   },
@@ -41,7 +41,7 @@
     "desc": "alipay APP支付客户端同步返回结果",
     "id": "alipay_trade_app_pay_response",
     "name": "alipay_trade_app_pay_response",
-    "notNull": true,
+    "nullable": false,
     "type": "String",
     "value": ""
   },
@@ -49,7 +49,7 @@
     "desc": "所属区域",
     "id": "area",
     "name": "area",
-    "notNull": false,
+    "nullable": true,
     "type": "String(250)",
     "value": ""
   },
@@ -57,7 +57,7 @@
     "desc": "状态（3：签收，4：其他成功情况，5：拒收，6：其他失败情况）",
     "id": "arriveStatus",
     "name": "status",
-    "notNull": true,
+    "nullable": false,
     "store": [
       "3",
       "4",
@@ -71,7 +71,7 @@
     "desc": "授权信息",
     "id": "authentication",
     "name": "authentication",
-    "notNull": false,
+    "nullable": true,
     "type": "String",
     "value": ""
   },
@@ -79,7 +79,7 @@
     "desc": "权限标识",
     "id": "authorityMark",
     "name": "authorityMark",
-    "notNull": false,
+    "nullable": true,
     "type": "String(100)",
     "value": ""
   },
@@ -87,7 +87,7 @@
     "desc": "头像",
     "id": "avatar",
     "name": "avatar",
-    "notNull": false,
+    "nullable": true,
     "type": "File(250)",
     "value": ""
   },
@@ -95,7 +95,7 @@
     "desc": "底单图片地址",
     "id": "billCopy",
     "name": "billCopy",
-    "notNull": false,
+    "nullable": true,
     "type": "String",
     "value": ""
   },
@@ -103,7 +103,7 @@
     "desc": "公司所在纬度",
     "id": "c_lat",
     "name": "lat",
-    "notNull": false,
+    "nullable": true,
     "type": "Double",
     "value": ""
   },
@@ -111,7 +111,7 @@
     "desc": "公司所在经度",
     "id": "c_lng",
     "name": "lng",
-    "notNull": false,
+    "nullable": true,
     "type": "Double",
     "value": ""
   },
@@ -119,7 +119,7 @@
     "desc": "备注（处理结果）",
     "id": "c_note",
     "name": "note",
-    "notNull": false,
+    "nullable": true,
     "type": "Array",
     "value": ""
   },
@@ -127,7 +127,7 @@
     "desc": "货值（分）",
     "id": "cargoValue",
     "name": "cargoValue",
-    "notNull": false,
+    "nullable": true,
     "type": "Int",
     "value": "'0'"
   },
@@ -135,7 +135,7 @@
     "desc": "箱号",
     "id": "caseNo",
     "name": "caseNo",
-    "notNull": false,
+    "nullable": true,
     "type": "String(20)",
     "value": ""
   },
@@ -143,7 +143,7 @@
     "desc": "分类ID",
     "id": "categoryId",
     "name": "categoryId",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -151,7 +151,7 @@
     "desc": "分类名称",
     "id": "categoryName",
     "name": "categoryName",
-    "notNull": false,
+    "nullable": true,
     "type": "String(100)",
     "value": ""
   },
@@ -159,7 +159,7 @@
     "desc": "子对象",
     "id": "children",
     "name": "children",
-    "notNull": true,
+    "nullable": false,
     "type": "Array",
     "value": ""
   },
@@ -167,7 +167,7 @@
     "desc": "城市",
     "id": "city",
     "name": "city",
-    "notNull": false,
+    "nullable": true,
     "type": "String(100)",
     "value": ""
   },
@@ -175,7 +175,7 @@
     "desc": "验证码",
     "id": "code",
     "name": "code",
-    "notNull": true,
+    "nullable": false,
     "type": "String",
     "value": ""
   },
@@ -183,7 +183,7 @@
     "desc": "颜色",
     "id": "color",
     "name": "color",
-    "notNull": false,
+    "nullable": true,
     "type": "String(20)",
     "value": ""
   },
@@ -191,7 +191,7 @@
     "desc": "所属公司",
     "id": "companyId",
     "name": "companyId",
-    "notNull": true,
+    "nullable": false,
     "type": "Long",
     "value": ""
   },
@@ -199,7 +199,7 @@
     "desc": "所属公司名称",
     "id": "companyName",
     "name": "companyName",
-    "notNull": false,
+    "nullable": true,
     "type": "String(100)",
     "value": ""
   },
@@ -207,7 +207,7 @@
     "desc": "收货人的地址",
     "id": "consigneeAddress",
     "name": "consigneeAddress",
-    "notNull": false,
+    "nullable": true,
     "type": "String(250)",
     "value": ""
   },
@@ -215,7 +215,7 @@
     "desc": "收货人姓名",
     "id": "consigneeName",
     "name": "consigneeName",
-    "notNull": false,
+    "nullable": true,
     "type": "String(100)",
     "value": ""
   },
@@ -223,7 +223,7 @@
     "desc": "收货人电话",
     "id": "consigneeTel",
     "name": "consigneeTel",
-    "notNull": false,
+    "nullable": true,
     "type": "String(100)",
     "value": ""
   },
@@ -231,7 +231,7 @@
     "desc": "发货人地址",
     "id": "consignorAddress",
     "name": "consignorAddress",
-    "notNull": false,
+    "nullable": true,
     "type": "String(250)",
     "value": ""
   },
@@ -239,7 +239,7 @@
     "desc": "发货人姓名",
     "id": "consignorName",
     "name": "consignorName",
-    "notNull": false,
+    "nullable": true,
     "type": "String(100)",
     "value": ""
   },
@@ -247,7 +247,7 @@
     "desc": "发货人电话",
     "id": "consignorTel",
     "name": "consignorTel",
-    "notNull": false,
+    "nullable": true,
     "type": "String(100)",
     "value": ""
   },
@@ -255,7 +255,7 @@
     "desc": "联系人姓名",
     "id": "contactName",
     "name": "contactName",
-    "notNull": false,
+    "nullable": true,
     "type": "String(200)",
     "value": ""
   },
@@ -263,7 +263,7 @@
     "desc": "联系电话",
     "id": "contactTel",
     "name": "contactTel",
-    "notNull": false,
+    "nullable": true,
     "type": "String(50)",
     "value": ""
   },
@@ -271,7 +271,7 @@
     "desc": "寄货费用（单位：分）",
     "id": "cost",
     "name": "cost",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -279,7 +279,7 @@
     "desc": "创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）",
     "id": "createdDate",
     "name": "createdDate",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -287,7 +287,7 @@
     "desc": "备注（处理结果）",
     "id": "ct_note",
     "name": "note",
-    "notNull": false,
+    "nullable": true,
     "type": "String",
     "value": ""
   },
@@ -295,7 +295,7 @@
     "desc": "体积(单位：平方厘米)",
     "id": "cubage",
     "name": "cubage",
-    "notNull": false,
+    "nullable": true,
     "type": "Int",
     "value": "'0'"
   },
@@ -303,7 +303,7 @@
     "desc": "是否可删",
     "id": "deletable",
     "name": "deletable",
-    "notNull": false,
+    "nullable": true,
     "type": "Boolean",
     "value": "'0'"
   },
@@ -311,7 +311,7 @@
     "desc": "是否删除",
     "id": "deleted",
     "name": "deleted",
-    "notNull": false,
+    "nullable": true,
     "type": "Boolean",
     "value": "'0'"
   },
@@ -319,7 +319,7 @@
     "desc": "配送时间",
     "id": "deliveryTime",
     "name": "deliveryTime",
-    "notNull": true,
+    "nullable": false,
     "type": "String",
     "value": ""
   },
@@ -327,7 +327,7 @@
     "desc": "即日达时效",
     "id": "deliveryTimeDesc",
     "name": "deliveryTimeDesc",
-    "notNull": true,
+    "nullable": false,
     "type": "String",
     "value": ""
   },
@@ -335,7 +335,7 @@
     "desc": "设备描述",
     "id": "description",
     "name": "description",
-    "notNull": false,
+    "nullable": true,
     "type": "String(200)",
     "value": ""
   },
@@ -343,7 +343,7 @@
     "desc": "详情",
     "id": "details",
     "name": "details",
-    "notNull": true,
+    "nullable": false,
     "type": "Array",
     "value": ""
   },
@@ -351,7 +351,7 @@
     "desc": "登录设备",
     "id": "device",
     "name": "device",
-    "notNull": false,
+    "nullable": true,
     "type": "String(250)",
     "value": ""
   },
@@ -359,7 +359,7 @@
     "desc": "设备编号",
     "id": "deviceNo",
     "name": "deviceNo",
-    "notNull": true,
+    "nullable": false,
     "type": "String(100)",
     "value": ""
   },
@@ -367,7 +367,7 @@
     "desc": "开始配送时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）",
     "id": "distributionDate",
     "name": "distributionDate",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -375,7 +375,7 @@
     "desc": "配送人ID",
     "id": "distributionId",
     "name": "distributionId",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -383,7 +383,7 @@
     "desc": "配送人工号",
     "id": "distributionJobNumber",
     "name": "distributionJobNumber",
-    "notNull": false,
+    "nullable": true,
     "type": "String(100)",
     "value": ""
   },
@@ -391,7 +391,7 @@
     "desc": "配送人员姓名",
     "id": "distributionName",
     "name": "distributionName",
-    "notNull": false,
+    "nullable": true,
     "type": "String(100)",
     "value": ""
   },
@@ -399,7 +399,7 @@
     "desc": "配送人员联系电话",
     "id": "distributionTel",
     "name": "distributionTel",
-    "notNull": false,
+    "nullable": true,
     "type": "String(100)",
     "value": ""
   },
@@ -407,7 +407,7 @@
     "desc": "下载链接",
     "id": "downloadLink",
     "name": "downloadLink",
-    "notNull": false,
+    "nullable": true,
     "type": "String(250)",
     "value": ""
   },
@@ -415,7 +415,7 @@
     "desc": "电子邮箱",
     "id": "email",
     "name": "email",
-    "notNull": false,
+    "nullable": true,
     "type": "String(200)",
     "value": ""
   },
@@ -423,7 +423,7 @@
     "desc": "预计到达时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）",
     "id": "eta",
     "name": "eta",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -431,7 +431,7 @@
     "desc": "过期时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）",
     "id": "expiration",
     "name": "expiration",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -446,7 +446,7 @@
     "desc": "完成时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）",
     "id": "finishTime",
     "name": "finishTime",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -454,7 +454,7 @@
     "desc": "是否完成运单",
     "id": "finished",
     "name": "finished",
-    "notNull": false,
+    "nullable": true,
     "type": "Boolean",
     "value": "'0'"
   },
@@ -462,7 +462,7 @@
     "desc": "楼层",
     "id": "floor",
     "name": "floor",
-    "notNull": false,
+    "nullable": true,
     "type": "Int",
     "value": ""
   },
@@ -470,7 +470,7 @@
     "desc": "货物ID",
     "id": "goodsId",
     "name": "goodsId",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -478,7 +478,7 @@
     "desc": "货物名称",
     "id": "goodsName",
     "name": "goodsName",
-    "notNull": false,
+    "nullable": true,
     "type": "String(100)",
     "value": ""
   },
@@ -486,7 +486,7 @@
     "desc": "货物运单号",
     "id": "goodsNo",
     "name": "goodsNo",
-    "notNull": true,
+    "nullable": false,
     "type": "String(100)",
     "value": ""
   },
@@ -494,7 +494,7 @@
     "desc": "货物数量",
     "id": "goodsNum",
     "name": "goodsNum",
-    "notNull": false,
+    "nullable": true,
     "type": "Int",
     "value": "'0'"
   },
@@ -502,7 +502,7 @@
     "desc": "货物",
     "id": "goodses",
     "name": "goodses",
-    "notNull": true,
+    "nullable": false,
     "type": "Array",
     "value": ""
   },
@@ -510,7 +510,7 @@
     "desc": "手持设备ID",
     "id": "handheldDeviceId",
     "name": "handheldDeviceId",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -518,7 +518,7 @@
     "desc": "是否有轨迹信息",
     "id": "hasRoute",
     "name": "hasRoute",
-    "notNull": true,
+    "nullable": false,
     "type": "Boolean",
     "value": "'0'"
   },
@@ -526,7 +526,7 @@
     "desc": "是否隐藏",
     "id": "hide",
     "name": "hide",
-    "notNull": false,
+    "nullable": true,
     "type": "Boolean",
     "value": "'0'"
   },
@@ -534,7 +534,7 @@
     "desc": "主键ID",
     "id": "id",
     "name": "id",
-    "notNull": true,
+    "nullable": false,
     "type": "Long",
     "value": ""
   },
@@ -542,7 +542,7 @@
     "desc": "身份证号",
     "id": "idCard",
     "name": "idCard",
-    "notNull": false,
+    "nullable": true,
     "type": "String(50)",
     "value": ""
   },
@@ -550,7 +550,7 @@
     "desc": "客户端IP",
     "id": "ipAddress",
     "name": "ipAddress",
-    "notNull": false,
+    "nullable": true,
     "type": "String(100)",
     "value": ""
   },
@@ -558,7 +558,7 @@
     "desc": "是否强制更新",
     "id": "isForce",
     "name": "isForce",
-    "notNull": false,
+    "nullable": true,
     "type": "Boolean",
     "value": "'0'"
   },
@@ -566,7 +566,7 @@
     "desc": "工号",
     "id": "jobNumber",
     "name": "jobNumber",
-    "notNull": true,
+    "nullable": false,
     "type": "String(100)",
     "value": ""
   },
@@ -574,7 +574,7 @@
     "desc": "公司法人",
     "id": "jurisdicalPerson",
     "name": "jurisdicalPerson",
-    "notNull": false,
+    "nullable": true,
     "type": "String(100)",
     "value": ""
   },
@@ -582,7 +582,7 @@
     "desc": "关键字",
     "id": "keyword",
     "name": "keyword",
-    "notNull": false,
+    "nullable": true,
     "type": "String",
     "value": ""
   },
@@ -590,7 +590,7 @@
     "desc": "最后登录日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）",
     "id": "lastLoginDate",
     "name": "lastLoginDate",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -598,7 +598,7 @@
     "desc": "最后登录IP地址",
     "id": "lastLoginIp",
     "name": "lastLoginIp",
-    "notNull": false,
+    "nullable": true,
     "type": "String(200)",
     "value": ""
   },
@@ -606,7 +606,7 @@
     "desc": "上次退出日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）",
     "id": "lastLogoutDate",
     "name": "lastLogoutDate",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -614,7 +614,7 @@
     "desc": "上次修改时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）",
     "id": "lastModifiedDate",
     "name": "lastModifiedDate",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -622,7 +622,7 @@
     "desc": "纬度",
     "id": "lat",
     "name": "lat",
-    "notNull": false,
+    "nullable": true,
     "type": "Double",
     "value": ""
   },
@@ -637,7 +637,7 @@
     "desc": "经度",
     "id": "lng",
     "name": "lng",
-    "notNull": false,
+    "nullable": true,
     "type": "Double",
     "value": ""
   },
@@ -645,7 +645,7 @@
     "desc": "物流公司",
     "id": "logisticsCompany",
     "name": "logisticsCompany",
-    "notNull": true,
+    "nullable": false,
     "type": "String",
     "value": ""
   },
@@ -653,7 +653,7 @@
     "desc": "公司logo",
     "id": "logo",
     "name": "logo",
-    "notNull": false,
+    "nullable": true,
     "type": "String(250)",
     "value": ""
   },
@@ -668,7 +668,7 @@
     "desc": "地图缩放级别",
     "id": "mapZoom",
     "name": "mapZoom",
-    "notNull": false,
+    "nullable": true,
     "type": "String(20)",
     "value": ""
   },
@@ -676,7 +676,7 @@
     "desc": "零钱（单位：分）",
     "id": "money",
     "name": "money",
-    "notNull": true,
+    "nullable": false,
     "type": "Long",
     "value": ""
   },
@@ -684,7 +684,7 @@
     "desc": "操作信息",
     "id": "msg",
     "name": "msg",
-    "notNull": false,
+    "nullable": true,
     "type": "String(250)",
     "value": ""
   },
@@ -692,7 +692,7 @@
     "desc": "名称",
     "id": "name",
     "name": "name",
-    "notNull": false,
+    "nullable": true,
     "type": "String(100)",
     "value": ""
   },
@@ -707,7 +707,7 @@
     "desc": "新运单ID",
     "id": "newWaybillId",
     "name": "newWaybillId",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -715,7 +715,7 @@
     "desc": "新运单系统单号",
     "id": "newWaybillSysNo",
     "name": "newWaybillSysNo",
-    "notNull": false,
+    "nullable": true,
     "type": "String(200)",
     "value": ""
   },
@@ -723,7 +723,7 @@
     "desc": "备注",
     "id": "note",
     "name": "note",
-    "notNull": false,
+    "nullable": true,
     "type": "String",
     "value": ""
   },
@@ -731,7 +731,7 @@
     "desc": "备注",
     "id": "notes",
     "name": "notes",
-    "notNull": true,
+    "nullable": false,
     "type": "Array",
     "value": ""
   },
@@ -739,7 +739,7 @@
     "desc": "数量",
     "id": "num",
     "name": "num",
-    "notNull": false,
+    "nullable": true,
     "type": "Int",
     "value": ""
   },
@@ -747,7 +747,7 @@
     "desc": "原密码（加密后）",
     "id": "oldPassword",
     "name": "oldPassword",
-    "notNull": true,
+    "nullable": false,
     "type": "String",
     "value": ""
   },
@@ -755,7 +755,7 @@
     "desc": "旧运单ID",
     "id": "oldWaybillId",
     "name": "oldWaybillId",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -763,7 +763,7 @@
     "desc": "旧运单系统单号",
     "id": "oldWaybillSysNo",
     "name": "oldWaybillSysNo",
-    "notNull": false,
+    "nullable": true,
     "type": "String(200)",
     "value": ""
   },
@@ -771,7 +771,7 @@
     "desc": "订单参数字符串，用于支付宝客户端调用",
     "id": "orderInfo",
     "name": "orderInfo",
-    "notNull": false,
+    "nullable": true,
     "type": "String",
     "value": ""
   },
@@ -779,7 +779,7 @@
     "desc": "系统交易号",
     "id": "orderNo",
     "name": "orderNo",
-    "notNull": false,
+    "nullable": true,
     "type": "String(200)",
     "value": ""
   },
@@ -787,7 +787,7 @@
     "desc": "父级查询ID",
     "id": "pId",
     "name": "pId",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -816,7 +816,7 @@
     "desc": "请求参数",
     "id": "parameters",
     "name": "parameters",
-    "notNull": false,
+    "nullable": true,
     "type": "String",
     "value": ""
   },
@@ -824,7 +824,7 @@
     "desc": "父级ID",
     "id": "parentId",
     "name": "parentId",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -832,7 +832,7 @@
     "desc": "父级名称",
     "id": "parentName",
     "name": "parentName",
-    "notNull": false,
+    "nullable": true,
     "type": "String(100)",
     "value": ""
   },
@@ -840,7 +840,7 @@
     "desc": "密码（MD5（明文密码+工号/手机号））",
     "id": "password",
     "name": "password",
-    "notNull": true,
+    "nullable": false,
     "type": "String(100)",
     "value": ""
   },
@@ -848,7 +848,7 @@
     "desc": "路径",
     "id": "path",
     "name": "path",
-    "notNull": false,
+    "nullable": true,
     "type": "String",
     "value": ""
   },
@@ -856,7 +856,7 @@
     "desc": "支付方式（0：龙支付，1：微信支付，2：支付宝支付，3：银联支付）",
     "id": "payment",
     "name": "payment",
-    "notNull": true,
+    "nullable": false,
     "type": "Int",
     "value": ""
   },
@@ -864,7 +864,7 @@
     "desc": "计划配送结束时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）",
     "id": "plannedEndTime",
     "name": "plannedEndTime",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -872,7 +872,7 @@
     "desc": "计划配送开始时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）",
     "id": "plannedStartTime",
     "name": "plannedStartTime",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -880,7 +880,7 @@
     "desc": "是否促销",
     "id": "promotional",
     "name": "promotional",
-    "notNull": false,
+    "nullable": true,
     "type": "Boolean",
     "value": "'0'"
   },
@@ -888,7 +888,7 @@
     "desc": "QQ号",
     "id": "qq",
     "name": "qq",
-    "notNull": false,
+    "nullable": true,
     "type": "String(100)",
     "value": ""
   },
@@ -896,7 +896,7 @@
     "desc": "显示状态：1：待配送，2：配送中，3：已完成，4：已退货",
     "id": "queryStatus",
     "name": "queryStatus",
-    "notNull": true,
+    "nullable": false,
     "type": "Int",
     "value": ""
   },
@@ -904,7 +904,7 @@
     "desc": "送货点",
     "id": "receivingSpaces",
     "name": "receivingSpaces",
-    "notNull": true,
+    "nullable": false,
     "type": "Array",
     "value": ""
   },
@@ -912,7 +912,7 @@
     "desc": "地区",
     "id": "region",
     "name": "region",
-    "notNull": false,
+    "nullable": true,
     "type": "String(100)",
     "value": ""
   },
@@ -920,7 +920,7 @@
     "desc": "续重费（分）",
     "id": "renewalCost",
     "name": "renewalCost",
-    "notNull": false,
+    "nullable": true,
     "type": "Int",
     "value": "'0'"
   },
@@ -928,7 +928,7 @@
     "desc": "续重费谁出（0：用户出，1：伊藤出）",
     "id": "renewalType",
     "name": "renewalType",
-    "notNull": false,
+    "nullable": true,
     "type": "Int",
     "value": "'0'"
   },
@@ -936,7 +936,7 @@
     "desc": "请求头",
     "id": "requestHeaders",
     "name": "requestHeaders",
-    "notNull": false,
+    "nullable": true,
     "type": "String",
     "value": ""
   },
@@ -944,7 +944,7 @@
     "desc": "请求资源签名",
     "id": "requestSignature",
     "name": "requestSignature",
-    "notNull": false,
+    "nullable": true,
     "type": "String(200)",
     "value": ""
   },
@@ -952,7 +952,7 @@
     "desc": "是否处理",
     "id": "resolved",
     "name": "resolved",
-    "notNull": false,
+    "nullable": true,
     "type": "Boolean",
     "value": ""
   },
@@ -960,7 +960,7 @@
     "desc": "操作资源",
     "id": "resource",
     "name": "resource",
-    "notNull": false,
+    "nullable": true,
     "type": "String(200)",
     "value": ""
   },
@@ -968,7 +968,7 @@
     "desc": "响应内容",
     "id": "response",
     "name": "response",
-    "notNull": false,
+    "nullable": true,
     "type": "String",
     "value": ""
   },
@@ -976,7 +976,7 @@
     "desc": "响应头",
     "id": "responseHeaders",
     "name": "responseHeaders",
-    "notNull": false,
+    "nullable": true,
     "type": "String",
     "value": ""
   },
@@ -984,7 +984,7 @@
     "desc": "根分类ID",
     "id": "rootCid",
     "name": "rootCid",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -992,7 +992,7 @@
     "desc": "根分类名称",
     "id": "rootCname",
     "name": "rootCname",
-    "notNull": false,
+    "nullable": true,
     "type": "String(100)",
     "value": ""
   },
@@ -1000,7 +1000,7 @@
     "desc": "轨迹",
     "id": "route",
     "name": "route",
-    "notNull": false,
+    "nullable": true,
     "type": "String",
     "value": ""
   },
@@ -1008,7 +1008,7 @@
     "desc": "性别（0：女，1：男，2：未知）",
     "id": "sex",
     "name": "sex",
-    "notNull": false,
+    "nullable": true,
     "type": "Int",
     "value": ""
   },
@@ -1016,7 +1016,7 @@
     "desc": "接口签名 <a href='html/签名算法.html' target='_blank'>签名算法</a>",
     "id": "sign",
     "name": "sign",
-    "notNull": true,
+    "nullable": false,
     "type": "String",
     "value": ""
   },
@@ -1024,7 +1024,7 @@
     "desc": "签名方式",
     "id": "sign_type",
     "name": "sign_type",
-    "notNull": true,
+    "nullable": false,
     "type": "String",
     "value": ""
   },
@@ -1039,7 +1039,7 @@
     "desc": "状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成）",
     "id": "status",
     "name": "status",
-    "notNull": true,
+    "nullable": false,
     "type": "Int",
     "value": "'0'"
   },
@@ -1047,7 +1047,7 @@
     "desc": "订单状态描述",
     "id": "statusDesc",
     "name": "statusDesc",
-    "notNull": false,
+    "nullable": true,
     "type": "String(200)",
     "value": ""
   },
@@ -1055,7 +1055,7 @@
     "desc": "交易说明",
     "id": "subject",
     "name": "subject",
-    "notNull": false,
+    "nullable": true,
     "type": "String(250)",
     "value": ""
   },
@@ -1063,7 +1063,7 @@
     "desc": "是否支持3点后配送",
     "id": "supportAfter03",
     "name": "supportAfter03",
-    "notNull": false,
+    "nullable": true,
     "type": "Boolean",
     "value": "'1'"
   },
@@ -1071,7 +1071,7 @@
     "desc": "系统运单号",
     "id": "sysNo",
     "name": "sysNo",
-    "notNull": false,
+    "nullable": true,
     "type": "String(100)",
     "value": ""
   },
@@ -1079,7 +1079,7 @@
     "desc": "配送员头像",
     "id": "sysUserAvatar",
     "name": "sysUserAvatar",
-    "notNull": false,
+    "nullable": true,
     "type": "String(250)",
     "value": ""
   },
@@ -1087,7 +1087,7 @@
     "desc": "客服务人员（处理人员）ID",
     "id": "sysUserId",
     "name": "sysUserId",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -1095,7 +1095,7 @@
     "desc": "工号",
     "id": "sysUserJobNumber",
     "name": "sysUserJobNumber",
-    "notNull": false,
+    "nullable": true,
     "type": "String(200)",
     "value": ""
   },
@@ -1103,7 +1103,7 @@
     "desc": "操作人员姓名",
     "id": "sysUserName",
     "name": "sysUserName",
-    "notNull": false,
+    "nullable": true,
     "type": "String(100)",
     "value": ""
   },
@@ -1111,7 +1111,7 @@
     "desc": "客服务人员（处理人员）工号",
     "id": "sysUserNo",
     "name": "sysUserNo",
-    "notNull": false,
+    "nullable": true,
     "type": "String(100)",
     "value": ""
   },
@@ -1119,7 +1119,7 @@
     "desc": "操作人员电话",
     "id": "sysUserTel",
     "name": "sysUserTel",
-    "notNull": false,
+    "nullable": true,
     "type": "String(50)",
     "value": ""
   },
@@ -1127,7 +1127,7 @@
     "desc": "用户类型",
     "id": "sysUserType",
     "name": "sysUserType",
-    "notNull": false,
+    "nullable": true,
     "type": "Int",
     "value": ""
   },
@@ -1135,7 +1135,7 @@
     "desc": "手机号码",
     "id": "tel",
     "name": "tel",
-    "notNull": true,
+    "nullable": false,
     "type": "String(20)",
     "value": ""
   },
@@ -1143,7 +1143,7 @@
     "desc": "说明",
     "id": "text",
     "name": "text",
-    "notNull": false,
+    "nullable": true,
     "type": "String",
     "value": ""
   },
@@ -1151,7 +1151,7 @@
     "desc": "更新时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数）",
     "id": "time",
     "name": "time",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -1159,7 +1159,7 @@
     "desc": "授权码",
     "id": "token",
     "name": "token",
-    "notNull": false,
+    "nullable": true,
     "type": "String",
     "value": ""
   },
@@ -1174,7 +1174,7 @@
     "desc": "交易金额（单元：分）",
     "id": "totalAmount",
     "name": "totalAmount",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -1182,7 +1182,7 @@
     "desc": "订单查询状态：0:全部，1：待配送，2：配送中，3：已完成，4：已退货，默认为：0",
     "id": "type",
     "name": "type",
-    "notNull": false,
+    "nullable": true,
     "store": [
       "0",
       "1",
@@ -1197,7 +1197,7 @@
     "desc": "系统用户ID",
     "id": "userId",
     "name": "userId",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -1205,7 +1205,7 @@
     "desc": "用户姓名",
     "id": "userName",
     "name": "userName",
-    "notNull": false,
+    "nullable": true,
     "type": "String(50)",
     "value": ""
   },
@@ -1213,7 +1213,7 @@
     "desc": "用户电话",
     "id": "userTel",
     "name": "userTel",
-    "notNull": false,
+    "nullable": true,
     "type": "String(20)",
     "value": ""
   },
@@ -1221,7 +1221,7 @@
     "desc": "用户名",
     "id": "username",
     "name": "username",
-    "notNull": false,
+    "nullable": true,
     "type": "String(100)",
     "value": ""
   },
@@ -1229,7 +1229,7 @@
     "desc": "验证是否成功",
     "id": "validated",
     "name": "validated",
-    "notNull": false,
+    "nullable": true,
     "type": "Boolean",
     "value": "'0'"
   },
@@ -1237,7 +1237,7 @@
     "desc": "版本号",
     "id": "versionCode",
     "name": "versionCode",
-    "notNull": false,
+    "nullable": true,
     "type": "Int",
     "value": ""
   },
@@ -1245,7 +1245,7 @@
     "desc": "版本名称",
     "id": "versionName",
     "name": "versionName",
-    "notNull": false,
+    "nullable": true,
     "type": "String(50)",
     "value": ""
   },
@@ -1253,7 +1253,7 @@
     "desc": "所属运单ID",
     "id": "w_id",
     "name": "id",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -1261,7 +1261,7 @@
     "desc": "目的地纬度",
     "id": "w_lat",
     "name": "lat",
-    "notNull": false,
+    "nullable": true,
     "type": "Double",
     "value": ""
   },
@@ -1269,7 +1269,7 @@
     "desc": "目的地经度",
     "id": "w_lng",
     "name": "lng",
-    "notNull": false,
+    "nullable": true,
     "type": "Double",
     "value": ""
   },
@@ -1277,7 +1277,7 @@
     "desc": "钱包ID",
     "id": "walletId",
     "name": "walletId",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -1285,7 +1285,7 @@
     "desc": "订单详情ID",
     "id": "waybillDetailId",
     "name": "waybillDetailId",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -1293,7 +1293,7 @@
     "desc": "所属运单ID",
     "id": "waybillId",
     "name": "waybillId",
-    "notNull": false,
+    "nullable": true,
     "type": "Long",
     "value": ""
   },
@@ -1301,7 +1301,7 @@
     "desc": "运单单号",
     "id": "waybillSysNo",
     "name": "waybillSysNo",
-    "notNull": false,
+    "nullable": true,
     "type": "String(100)",
     "value": ""
   },
@@ -1309,7 +1309,7 @@
     "desc": "重量（单位：g）",
     "id": "weight",
     "name": "weight",
-    "notNull": false,
+    "nullable": true,
     "type": "Int",
     "value": "'0'"
   }

@@ -1,6 +1,6 @@
 [
   {
-    "httpMethod": "GET",
+    "method": "GET",
     "name": "我的投诉",
     "desc": "",
     "headers": {
@@ -11,7 +11,7 @@
       "page": "",
       "size": ""
     },
-    "resourceType": "手机APP订单",
+    "resource": "手机APP订单",
     "results": {
       "size": 7,
       "total": 7,
@@ -35,11 +35,11 @@
       ],
       "page": 1
     },
-    "urlParams": "",
+    "uriVariables": "",
     "url": "/complaints"
   },
   {
-    "httpMethod": "GET",
+    "method": "GET",
     "name": "我的钱包",
     "desc": "",
     "headers": {
@@ -50,7 +50,7 @@
       "page": "",
       "size": ""
     },
-    "resourceType": "手机APP支付",
+    "resource": "手机APP支付",
     "results": {
       "money": 100,
       "size": 2,
@@ -70,11 +70,11 @@
       ],
       "page": 1
     },
-    "urlParams": "",
+    "uriVariables": "",
     "url": "/wallets"
   },
   {
-    "httpMethod": "POST",
+    "method": "POST",
     "name": "充值",
     "desc": "",
     "headers": {
@@ -85,17 +85,17 @@
       "money": "1",
       "payment": "2"
     },
-    "resourceType": "手机APP支付",
+    "resource": "手机APP支付",
     "results": {
       "money": 1,
       "payment": 2,
       "orderInfo": "app_id=2016112103042572&biz_content=%7B%22out_trade_no%22%3A%22201702220929471%22%2C%22total_amount%22%3A%220.01%22%2C%22subject%22%3A%22%E9%92%B1%E5%8C%85%E5%85%85%E5%80%BC%22%2C%22body%22%3A%22%E9%92%B1%E5%8C%85%E5%85%85%E5%80%BC%22%2C%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22seller_id%22%3A%222088421595009690%22%7D&charset=UTF-8&method=alipay.trade.app.pay&notify_url=http%3A%2F%2F127.0.0.1%3A8080%2Fmobile%2Fnotifies%2Falipay&sign_type=RSA2&timestamp=2017-02-22+09%3A29%3A48&version=1.0&sign=lzMHOpwJIFdGMW8n4KIC%2FH9yUcP6w6SRmMMYtnn1o7QP2cMKdjizQIAd%2BddMKQpGVG2nOscTJ7cIiKkOk1rPe8C3Hb6HD6%2BVjIwK78bSCoM5rRI5hngQc6OMAuf52NlbtnNO8iJb6SQViWSP5TWDtYj9IRUPOyVB1bVD44Zw4QQ%3D"
     },
-    "urlParams": "",
+    "uriVariables": "",
     "url": "/wallets/charge"
   },
   {
-    "httpMethod": "GET",
+    "method": "GET",
     "name": "alipay客户端结果验签",
     "desc": "",
     "headers": {
@@ -107,15 +107,15 @@
       "a_sign": "toffPr9RgL1FuP7BWg3q1JvvG9B0oaP23cqad2ih+cMCaixeEBB0ocwqC8OA4Oo+g03J2Ax8O2Vlf76yjeguZHctlvtunFGLGthhQmEtMIGqlU4G+VZTx/ZlNm8iipOUOILf2EyB55QuSxBC5k5/t1eLnXLlRSwXQljday8hVlU=",
       "sign_type": "RSA2"
     },
-    "resourceType": "手机APP支付",
+    "resource": "手机APP支付",
     "results": {
       "validated": "false"
     },
-    "urlParams": "",
+    "uriVariables": "",
     "url": "/alipay/checkClientResult"
   },
   {
-    "httpMethod": "GET",
+    "method": "GET",
     "name": "收货点",
     "desc": "",
     "headers": {
@@ -125,7 +125,7 @@
       "lat": "30.04728",
       "lng": "103.83516"
     },
-    "resourceType": "手机APP公共",
+    "resource": "手机APP公共",
     "results": {
       "id": 1,
       "name": "伊藤洋华堂（眉山店）",
@@ -137,11 +137,11 @@
         "lng": 103.835434
       }
     },
-    "urlParams": "",
+    "uriVariables": "",
     "url": "/receivingSpaces"
   },
   {
-    "httpMethod": "GET",
+    "method": "GET",
     "name": "配送范围",
     "desc": "",
     "headers": {
@@ -151,7 +151,7 @@
       "lat": "30.04728",
       "lng": "103.83516"
     },
-    "resourceType": "手机APP公共",
+    "resource": "手机APP公共",
     "results": {
       "id": 1,
       "name": "\u4f0a\u85e4\u6d0b\u534e\u5802\uff08\u7709\u5c71\u5e97\uff09",
@@ -170,11 +170,11 @@
         "name": "\u7070"
       }
     },
-    "urlParams": "",
+    "uriVariables": "",
     "url": "/mapAreas"
   },
   {
-    "httpMethod": "POST",
+    "method": "POST",
     "name": "我要投诉",
     "desc": "",
     "headers": {
@@ -185,7 +185,7 @@
       "waybillId&": "1",
       "text&": "我要投诉"
     },
-    "resourceType": "手机APP订单",
+    "resource": "手机APP订单",
     "results": {
       "id": 1774,
       "waybillId": 1,
@@ -197,11 +197,11 @@
       "resolved": false,
       "createdDate": 1487302834686
     },
-    "urlParams": "",
+    "uriVariables": "",
     "url": "/complaints"
   },
   {
-    "httpMethod": "DELETE",
+    "method": "DELETE",
     "name": "删除订单",
     "desc": "",
     "headers": {
@@ -210,38 +210,40 @@
     "params": {
       "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339"
     },
-    "resourceType": "手机APP订单",
+    "resource": "手机APP订单",
     "results": {
     },
-    "urlParams": {
+    "uriVariables": {
       "id": "1"
     },
     "url": "/waybills/self/{id}"
   },
   {
-    "httpMethod": "GET",
+    "method": "GET",
     "name": "省市区数据",
     "desc": "",
     "params": {
     },
-    "resourceType": "手机APP公共",
+    "resource": "手机APP公共",
     "results": {
       "list": [
         {
           "id": 110000,
           "name": "北京",
-          "children": [{
-            "id": 110101,
-            "name": "东城区",
-            "children": []
-          }]
+          "children": [
+            {
+              "id": 110101,
+              "name": "东城区",
+              "children": []
+            }
+          ]
         }
       ]
     },
     "url": "/place.json"
   },
   {
-    "httpMethod": "GET",
+    "method": "GET",
     "name": "订单轨迹",
     "desc": "",
     "headers": {
@@ -250,7 +252,7 @@
     "params": {
       "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339"
     },
-    "resourceType": "手机APP订单",
+    "resource": "手机APP订单",
     "results": {
       "route": {
         "lat": 30.048832,
@@ -263,13 +265,13 @@
       "w_lng": 103.839111,
       "deliveryTime": "2017-01-01 16:36 ~ 22:00"
     },
-    "urlParams": {
+    "uriVariables": {
       "id": "108"
     },
     "url": "/waybills/self/{id}/route"
   },
   {
-    "httpMethod": "GET",
+    "method": "GET",
     "name": "物流状态",
     "desc": "",
     "headers": {
@@ -278,7 +280,7 @@
     "params": {
       "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339"
     },
-    "resourceType": "手机APP订单",
+    "resource": "手机APP订单",
     "results": {
       "id": 1,
       "distributionName": "\u5434\u5927",
@@ -298,13 +300,13 @@
       },
       "deliveryTime": "2016-12-24 10:17 ~ 22:00"
     },
-    "urlParams": {
+    "uriVariables": {
       "id": "1"
     },
     "url": "/waybills/self/{id}/detail"
   },
   {
-    "httpMethod": "GET",
+    "method": "GET",
     "name": "个人订单详情",
     "desc": "",
     "headers": {
@@ -313,7 +315,7 @@
     "params": {
       "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339"
     },
-    "resourceType": "手机APP订单",
+    "resource": "手机APP订单",
     "results": {
       "id": 1,
       "sysNo": "YT20161230120202",
@@ -338,13 +340,13 @@
       "queryStatus": 2,
       "deliveryTime": "2016-12-24 10:17 ~ 22:00"
     },
-    "urlParams": {
+    "uriVariables": {
       "id": "1"
     },
     "url": "/waybills/self/{id}"
   },
   {
-    "httpMethod": "GET",
+    "method": "GET",
     "name": "我的订单",
     "desc": "",
     "headers": {
@@ -357,7 +359,7 @@
       "page": "",
       "size": ""
     },
-    "resourceType": "手机APP订单",
+    "resource": "手机APP订单",
     "results": {
       "size": 20,
       "total": 98,
@@ -377,11 +379,11 @@
       ],
       "page": 1
     },
-    "urlParams": "",
+    "uriVariables": "",
     "url": "/waybills/self"
   },
   {
-    "httpMethod": "POST",
+    "method": "POST",
     "name": "生成测试验证码",
     "desc": "",
     "headers": {
@@ -390,16 +392,16 @@
     "params": {
       "tel": "18224060100"
     },
-    "resourceType": "测试时所用接口",
+    "resource": "测试时所用接口",
     "results": {
       "createdDate": 1486825570165,
       "code": "085215"
     },
-    "urlParams": "",
+    "uriVariables": "",
     "url": "/test/vCode"
   },
   {
-    "httpMethod": "PUT",
+    "method": "PUT",
     "name": "更新资料",
     "desc": "",
     "headers": {
@@ -416,7 +418,7 @@
       "qq": "9389349384",
       "email": "xxx@126.com"
     },
-    "resourceType": "手机APP用户",
+    "resource": "手机APP用户",
     "results": {
       "id": 3,
       "avatar": "http://192.168.1.110:8888/user/avatar/201702/6e11c3fd-2b8c-4b61-b2fb-662966e2b180.png",
@@ -434,7 +436,7 @@
     "url": "/users/self"
   },
   {
-    "httpMethod": "PUT",
+    "method": "PUT",
     "name": "修改手机号",
     "desc": "",
     "headers": {
@@ -447,7 +449,7 @@
       "password": "",
       "tel": ""
     },
-    "resourceType": "手机APP用户",
+    "resource": "手机APP用户",
     "results": {
       "id": 3,
       "avatar": "http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png",
@@ -465,7 +467,7 @@
     "url": "/users/self"
   },
   {
-    "httpMethod": "PUT",
+    "method": "PUT",
     "name": "修改密码",
     "desc": "",
     "headers": {
@@ -476,7 +478,7 @@
       "oldPassword": "",
       "password": ""
     },
-    "resourceType": "手机APP用户",
+    "resource": "手机APP用户",
     "results": {
       "id": 3,
       "avatar": "http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png",
@@ -494,7 +496,7 @@
     "url": "/users/self"
   },
   {
-    "httpMethod": "POST",
+    "method": "POST",
     "name": "注册",
     "desc": "",
     "headers": {
@@ -505,7 +507,7 @@
       "password": "",
       "tel": ""
     },
-    "resourceType": "手机APP用户",
+    "resource": "手机APP用户",
     "results": {
       "id": 3,
       "avatar": "http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png",
@@ -525,11 +527,11 @@
         "expiresIn": 1209599
       }
     },
-    "urlParams": "",
+    "uriVariables": "",
     "url": "/users"
   },
   {
-    "httpMethod": "GET",
+    "method": "GET",
     "name": "查看个人详情",
     "desc": "",
     "headers": {
@@ -538,7 +540,7 @@
     "params": {
       "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339"
     },
-    "resourceType": "手机APP用户",
+    "resource": "手机APP用户",
     "results": {
       "id": 3,
       "avatar": "http://192.168.1.110:8888/user/avatar/201702/6e11c3fd-2b8c-4b61-b2fb-662966e2b180.png",
@@ -556,7 +558,7 @@
     "url": "/users/self"
   },
   {
-    "httpMethod": "PUT",
+    "method": "PUT",
     "name": "找回密码",
     "desc": "",
     "headers": {
@@ -567,7 +569,7 @@
       "password": "",
       "code": ""
     },
-    "resourceType": "手机APP用户",
+    "resource": "手机APP用户",
     "results": {
       "id": 3,
       "avatar": "http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png",
@@ -587,11 +589,11 @@
         "expiresIn": 1209599
       }
     },
-    "urlParams": "",
+    "uriVariables": "",
     "url": "/users/password"
   },
   {
-    "httpMethod": "POST",
+    "method": "POST",
     "name": "注册/绑定新手机号发送验证码",
     "desc": "",
     "headers": {
@@ -600,13 +602,13 @@
     "params": {
       "tel": "18224060100"
     },
-    "resourceType": "手机APP用户",
+    "resource": "手机APP用户",
     "results": {},
-    "urlParams": "",
+    "uriVariables": "",
     "url": "/cellVerifyCodes"
   },
   {
-    "httpMethod": "POST",
+    "method": "POST",
     "name": "验证验证码",
     "desc": "成功返回204",
     "headers": {
@@ -616,13 +618,13 @@
       "tel": "18224060100",
       "code": ""
     },
-    "resourceType": "手机APP用户",
+    "resource": "手机APP用户",
     "results": {},
-    "urlParams": "",
+    "uriVariables": "",
     "url": "/cellVerifyCodes/verify"
   },
   {
-    "httpMethod": "POST",
+    "method": "POST",
     "name": "找回密码发送验证码",
     "desc": "",
     "headers": {
@@ -631,13 +633,13 @@
     "params": {
       "tel": "18224060100"
     },
-    "resourceType": "手机APP用户",
+    "resource": "手机APP用户",
     "results": {},
-    "urlParams": "",
+    "uriVariables": "",
     "url": "/cellVerifyCodes/password"
   },
   {
-    "httpMethod": "POST",
+    "method": "POST",
     "name": "登录",
     "headers": {
       "sign": ""
@@ -646,7 +648,7 @@
       "tel": "18224060100",
       "password": "1a4e06591ef41cc4b3c6e8b232b23e5a"
     },
-    "resourceType": "手机APP用户",
+    "resource": "手机APP用户",
     "results": {
       "id": 3,
       "avatar": "http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png",
@@ -666,14 +668,14 @@
         "expiresIn": 1209599
       }
     },
-    "urlParams": "",
+    "uriVariables": "",
     "url": "/user/accessToken"
   },
   {
-    "httpMethod": "GET",
+    "method": "GET",
     "name": "检查版本号",
     "params": {},
-    "resourceType": "手持端基本",
+    "resource": "手持端基本",
     "results": {
       "id": 1,
       "versionCode": 1,
@@ -684,13 +686,13 @@
     "url": "/clientVersions"
   },
   {
-    "httpMethod": "POST",
+    "method": "POST",
     "name": "登录",
     "params": {
       "jobNumber": "KD001",
       "password": "8b27556d786634bb2f4d40602d02977e"
     },
-    "resourceType": "手持端用户",
+    "resource": "手持端用户",
     "results": {
       "id": 3,
       "jobNumber": "KD001",
@@ -711,18 +713,18 @@
     "url": "/login"
   },
   {
-    "httpMethod": "GET",
+    "method": "GET",
     "name": "登出",
     "params": {
       "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891"
     },
-    "resourceType": "手持端用户",
+    "resource": "手持端用户",
     "results": [
     ],
     "url": "/logout"
   },
   {
-    "httpMethod": "PUT",
+    "method": "PUT",
     "name": "修改密码",
     "desc": "",
     "params": {
@@ -731,13 +733,13 @@
       "oldPassword": "",
       "password": ""
     },
-    "resourceType": "手持端用户",
+    "resource": "手持端用户",
     "results": {
     },
     "url": "/sysUsers/password"
   },
   {
-    "httpMethod": "PUT",
+    "method": "PUT",
     "name": "修改个人信息",
     "desc": "修改后更新客户端token",
     "params": {
@@ -746,7 +748,7 @@
       "idCard": "",
       "tel^": ""
     },
-    "resourceType": "手持端用户",
+    "resource": "手持端用户",
     "results": {
       "id": 3,
       "jobNumber": "KD001",
@@ -765,12 +767,12 @@
     "url": "/sysUsers/self"
   },
   {
-    "httpMethod": "GET",
+    "method": "GET",
     "name": "查看个人信息",
     "params": {
       "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891"
     },
-    "resourceType": "手持端用户",
+    "resource": "手持端用户",
     "results": {
       "id": 3,
       "jobNumber": "KD001",
@@ -786,14 +788,14 @@
     "url": "/sysUsers/self"
   },
   {
-    "httpMethod": "GET",
+    "method": "GET",
     "name": "当前订单",
     "params": {
       "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891",
       "page": "",
       "size": ""
     },
-    "resourceType": "手持端订单",
+    "resource": "手持端订单",
     "results": {
       "size": 13,
       "total": 13,
@@ -814,14 +816,14 @@
     "url": "/waybills/current"
   },
   {
-    "httpMethod": "GET",
+    "method": "GET",
     "name": "历史订单",
     "params": {
       "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891",
       "page": "",
       "size": ""
     },
-    "resourceType": "手持端订单",
+    "resource": "手持端订单",
     "results": {
       "size": 13,
       "total": 13,
@@ -842,7 +844,7 @@
     "url": "/waybills/history"
   },
   {
-    "httpMethod": "POST",
+    "method": "POST",
     "name": "订单接单",
     "params": {
       "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891",
@@ -851,13 +853,13 @@
       "lng": "103.84297",
       "address": ""
     },
-    "resourceType": "手持端订单",
+    "resource": "手持端订单",
     "results": [
     ],
     "url": "/waybills/takeOrder"
   },
   {
-    "httpMethod": "POST",
+    "method": "POST",
     "name": "到货处理",
     "params": {
       "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891",
@@ -868,18 +870,18 @@
       "text": "",
       "arriveStatus": ""
     },
-    "resourceType": "手持端订单",
+    "resource": "手持端订单",
     "results": [
     ],
     "url": "/waybills/arrive"
   },
   {
-    "httpMethod": "GET",
+    "method": "GET",
     "name": "订单详情",
     "params": {
       "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891"
     },
-    "resourceType": "手持端订单",
+    "resource": "手持端订单",
     "results": {
       "id": 1,
       "sysNo": "YT20161230120202",
@@ -909,18 +911,18 @@
         }
       ]
     },
-    "urlParams": {
+    "uriVariables": {
       "id": "1"
     },
     "url": "/waybills/{id}"
   },
   {
-    "httpMethod": "GET",
+    "method": "GET",
     "name": "订单状态",
     "params": {
       "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891"
     },
-    "resourceType": "手持端订单",
+    "resource": "手持端订单",
     "results": {
       "list": [
         {
@@ -938,19 +940,19 @@
         }
       ]
     },
-    "urlParams": {
+    "uriVariables": {
       "id": "1"
     },
     "url": "/waybills/{id}/detail"
   },
   {
-    "httpMethod": "GET",
+    "method": "GET",
     "name": "订单号查单",
     "params": {
       "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891",
       "goodsNo": ""
     },
-    "resourceType": "手持端订单",
+    "resource": "手持端订单",
     "results": {
       "id": 6,
       "sysNo": "YT20161223123312",
@@ -985,13 +987,13 @@
     "url": "/waybills/goodsNo"
   },
   {
-    "httpMethod": "GET",
+    "method": "GET",
     "name": "订单号查位置",
     "params": {
       "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891",
       "goodsNo": ""
     },
-    "resourceType": "手持端订单",
+    "resource": "手持端订单",
     "results": {
       "lat": "30.072456",
       "lng": "103.84297"
@@ -999,14 +1001,14 @@
     "url": "/waybills/location"
   },
   {
-    "httpMethod": "POST",
+    "method": "POST",
     "name": "更新订单轨迹",
     "params": {
       "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891",
       "lat&": "30.072456",
       "lng&": "103.84297"
     },
-    "resourceType": "手持端订单",
+    "resource": "手持端订单",
     "results": {},
     "url": "/waybills/route"
   }
