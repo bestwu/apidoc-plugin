@@ -383,18 +383,19 @@ class MDTask extends DefaultTask {
         }
         def size = result.size()
         if (size > 1)
-            throw new RuntimeException('存在多个未区分属性说明：' + StringEscapeUtils.unescapeJava(JsonOutput.toJson(result)))
+            throw new RuntimeException("id:${name}存在多个未区分属性说明：${StringEscapeUtils.unescapeJava(JsonOutput.toJson(result))}")
         if (size == 1) {
             origin = result[0]
         } else {
+            def type = getFieldType(value)
             result = fields.findAll {
-                if (!it.id && it.name == name && it.type.contains(getFieldType(value))) {
+                if (!it.id && it.name == name && it.type.contains(type)) {
                     return it
                 }
             }
             size = result.size()
             if (size > 1)
-                throw new RuntimeException('存在多个未区分属性说明：' + StringEscapeUtils.unescapeJava(JsonOutput.toJson(result)))
+                throw new RuntimeException("name:${name},type:${type}存在多个未区分属性说明：${StringEscapeUtils.unescapeJava(JsonOutput.toJson(result))}")
             if (size == 1) {
                 origin = result[0]
             } else {
@@ -405,7 +406,7 @@ class MDTask extends DefaultTask {
                 }
                 size = result.size()
                 if (size > 1)
-                    throw new RuntimeException('存在多个未区分属性说明：' + StringEscapeUtils.unescapeJava(JsonOutput.toJson(result)))
+                    throw new RuntimeException("name:${name}存在多个未区分属性说明：${StringEscapeUtils.unescapeJava(JsonOutput.toJson(result))}")
                 if (size == 1) {
                     origin = result[0]
                 }
