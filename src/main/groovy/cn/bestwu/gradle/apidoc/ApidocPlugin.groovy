@@ -21,6 +21,8 @@ class ApidocPlugin implements Plugin<Project> {
                 project.task('mddoc', type: MDTask, description: '') {
                     def inputDir = project.file(project.apidoc.input)
                     def outputDir = project.file(project.apidoc.output + '/md')
+                    if (!outputDir.exists())
+                        outputDir.mkdirs()
                     inputs.files inputDir.listFiles(new FileFilter() {
                         @Override
                         boolean accept(File pathname) {
