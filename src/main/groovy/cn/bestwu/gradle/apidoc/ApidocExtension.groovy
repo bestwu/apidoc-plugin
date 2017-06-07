@@ -13,7 +13,7 @@ class ApidocExtension {
     @Input
     String defaultHost = ''
     @Input
-    String input = 'src/main/resources/_t'
+    String[] paths = ['_t']
     @Input
-    String output = 'src/main/resources/_t'
+    String sourcePath='src/main/resources'
 }

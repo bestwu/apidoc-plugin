@@ -8,6 +8,7 @@ version '1.0'
 
 apidoc {
     defaultHost 'http://127.0.0.1'
+    paths = ['_t', 'test']
 }
 
 sourceCompatibility = 1.7

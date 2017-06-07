@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="renderer" content="webkit"/>
+  <meta name="apple-touch-fullscreen" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>手机APP公共</title>
+  <link rel="stylesheet" type="text/css" href="apidoc.css"/></head>
+<body>
+<div mdin class="catalog">
+<ul>
+  <li>
+  <p><a href="index.html">系统介绍</a></p></li>
+  <li>
+  <p><a href="接口授权说明.html">接口授权说明</a></p></li>
+  <li><a href="签名算法.html">签名算法</a></li>
+</ul>
+<hr/>
+<ul>
+  <li><a href="手机APP支付.html">1 手机APP支付</a>
+    <ul>
+      <li><a href="手机APP支付.html#1.1我的钱包">1.1 我的钱包</a></li>
+      <li><a href="手机APP支付.html#1.2充值">1.2 充值</a></li>
+      <li><a href="手机APP支付.html#1.3alipay客户端结果验签">1.3 alipay客户端结果验签</a></li>
+    </ul>
+  </li>
+</ul>
+<hr/>
+<ul>
+  <li><a href="手机APP公共.html">2 手机APP公共</a>
+    <ul>
+      <li><a href="手机APP公共.html#2.1省市区数据">2.1 省市区数据</a></li>
+      <li><a href="手机APP公共.html#2.2配送范围">2.2 配送范围</a></li>
+      <li><a href="手机APP公共.html#2.3收货点">2.3 收货点</a></li>
+    </ul>
+  </li>
+</ul>
+<hr/>
+<ul>
+  <li><a href="手机APP订单.html">3 手机APP订单</a>
+    <ul>
+      <li><a href="手机APP订单.html#3.1我的订单">3.1 我的订单</a></li>
+      <li><a href="手机APP订单.html#3.2个人订单详情">3.2 个人订单详情</a></li>
+      <li><a href="手机APP订单.html#3.3物流状态">3.3 物流状态</a></li>
+      <li><a href="手机APP订单.html#3.4订单轨迹">3.4 订单轨迹</a></li>
+      <li><a href="手机APP订单.html#3.5删除订单">3.5 删除订单</a></li>
+      <li><a href="手机APP订单.html#3.6我要投诉">3.6 我要投诉</a></li>
+      <li><a href="手机APP订单.html#3.7我的投诉">3.7 我的投诉</a></li>
+    </ul>
+  </li>
+</ul>
+<hr/>
+<ul>
+  <li><a href="手机APP用户.html">4 手机APP用户</a>
+    <ul>
+      <li><a href="手机APP用户.html#4.1登录">4.1 登录</a></li>
+      <li><a href="手机APP用户.html#4.2注册/绑定新手机号发送验证码">4.2 注册/绑定新手机号发送验证码</a></li>
+      <li><a href="手机APP用户.html#4.3找回密码发送验证码">4.3 找回密码发送验证码</a></li>
+      <li><a href="手机APP用户.html#4.4验证验证码">4.4 验证验证码</a></li>
+      <li><a href="手机APP用户.html#4.5注册">4.5 注册</a></li>
+      <li><a href="手机APP用户.html#4.6查看个人详情">4.6 查看个人详情</a></li>
+      <li><a href="手机APP用户.html#4.7更新资料">4.7 更新资料</a></li>
+      <li><a href="手机APP用户.html#4.8修改手机号">4.8 修改手机号</a></li>
+      <li><a href="手机APP用户.html#4.9修改密码">4.9 修改密码</a></li>
+      <li><a href="手机APP用户.html#4.10找回密码">4.10 找回密码</a></li>
+    </ul>
+  </li>
+</ul>
+<hr/>
+<ul>
+  <li><a href="测试时所用接口.html">5 测试时所用接口</a>
+    <ul>
+      <li>
+      <p><a href="测试时所用接口.html#5.1生成测试验证码">5.1 生成测试验证码</a></p></li>
+    </ul>
+  </li>
+</ul>
+<hr/>
+<ul>
+  <li><a href="手持端基本.html">6 手持端基本</a>
+    <ul>
+      <li>
+      <p><a href="手持端基本.html#6.1检查版本号">6.1 检查版本号</a></p></li>
+    </ul>
+  </li>
+</ul>
+<hr/>
+<ul>
+  <li><a href="手持端用户.html">7 手持端用户</a>
+    <ul>
+      <li><a href="手持端用户.html#7.1登录">7.1 登录</a></li>
+      <li><a href="手持端用户.html#7.2登出">7.2 登出</a></li>
+      <li><a href="手持端用户.html#7.3查看个人信息">7.3 查看个人信息</a></li>
+      <li><a href="手持端用户.html#7.4修改个人信息">7.4 修改个人信息</a></li>
+      <li><a href="手持端用户.html#7.5修改密码">7.5 修改密码</a></li>
+    </ul>
+  </li>
+</ul>
+<hr/>
+<ul>
+  <li><a href="手持端订单.html">8 手持端订单</a>
+    <ul>
+      <li><a href="手持端订单.html#8.1当前订单">8.1 当前订单</a></li>
+      <li><a href="手持端订单.html#8.2历史订单">8.2 历史订单</a></li>
+      <li><a href="手持端订单.html#8.3订单详情">8.3 订单详情</a></li>
+      <li><a href="手持端订单.html#8.4订单状态">8.4 订单状态</a></li>
+      <li><a href="手持端订单.html#8.5订单号查单">8.5 订单号查单</a></li>
+      <li><a href="手持端订单.html#8.6订单号查位置">8.6 订单号查位置</a></li>
+      <li><a href="手持端订单.html#8.7订单接单">8.7 订单接单</a></li>
+      <li><a href="手持端订单.html#8.8到货处理">8.8 到货处理</a></li>
+      <li><a href="手持端订单.html#8.9更新订单轨迹">8.9 更新订单轨迹</a></li>
+    </ul>
+  </li>
+</ul>
+<hr/></div>
+<div mdin class="content">
+<h3><a href="#2-手机app公共" name="2-手机app公共">2 手机APP公共</a></h3>
+<h4><a href='#2.1省市区数据' name='2.1省市区数据'>2.1 省市区数据</a></h4>
+<h6><a href="#接口地址" name="接口地址">接口地址</a></h6>
+<p><a href="http://127.0.0.1/place.json">http://127.0.0.1/place.json</a></p>
+<h6><a href="#请求方法" name="请求方法">请求方法</a></h6>
+<p>GET</p>
+<h6><a href="#请求参数" name="请求参数">请求参数</a></h6>
+<p>无</p>
+<h6><a href="#响应参数" name="响应参数">响应参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th title="名称">名称</th>
+      <th title="类型">类型</th>
+      <th title="描述">描述</th>
+      <th title="示例值">示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="list">list </td>
+      <td title="Array">Array </td>
+      <td title="内容">内容 </td>
+      <td title="}]">[{"id":110000,"name":"北京","children":[{"id":110101,"name":"东城区","children":[]}]}] </td>
+    </tr>
+    <tr>
+      <td title="id">id </td>
+      <td title="Long">Long </td>
+      <td title="主键ID">主键ID </td>
+      <td title="110000">110000 </td>
+    </tr>
+    <tr>
+      <td title="name">name </td>
+      <td title="String(100)">String(100) </td>
+      <td title="名称">名称 </td>
+      <td title="北京">北京 </td>
+    </tr>
+    <tr>
+      <td title="children">children </td>
+      <td title="Array">Array </td>
+      <td title="子对象">子对象 </td>
+      <td title="}]">[{"id":110101,"name":"东城区","children":[]}] </td>
+    </tr>
+    <tr>
+      <td title="id">id </td>
+      <td title="Long">Long </td>
+      <td title="主键ID">主键ID </td>
+      <td title="110101">110101 </td>
+    </tr>
+    <tr>
+      <td title="name">name </td>
+      <td title="String(100)">String(100) </td>
+      <td title="名称">名称 </td>
+      <td title="东城区">东城区 </td>
+    </tr>
+    <tr>
+      <td title="children">children </td>
+      <td title="Array">Array </td>
+      <td title="子对象">子对象 </td>
+      <td title="-">- </td>
+    </tr>
+  </tbody>
+</table>
+<h6><a href="#响应示例" name="响应示例">响应示例</a></h6>
+<pre><code class="json">{
+    &quot;list&quot;: [
+        {
+            &quot;id&quot;: 110000,
+            &quot;name&quot;: &quot;北京&quot;,
+            &quot;children&quot;: [
+                {
+                    &quot;id&quot;: 110101,
+                    &quot;name&quot;: &quot;东城区&quot;,
+                    &quot;children&quot;: [
+                        
+                    ]
+                }
+            ]
+        }
+    ]
+}
+</code></pre>
+<hr/>
+<h4><a href='#2.2配送范围' name='2.2配送范围'>2.2 配送范围</a></h4>
+<h6><a href="#接口地址" name="接口地址">接口地址</a></h6>
+<p><a href="http://127.0.0.1/mapAreas">http://127.0.0.1/mapAreas</a></p>
+<h6><a href="#请求方法" name="请求方法">请求方法</a></h6>
+<p>GET</p>
+<h6><a href="#请求头参数" name="请求头参数">请求头参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th title="名称">名称</th>
+      <th title="类型">类型</th>
+      <th title="是否必填">是否必填</th>
+      <th title="描述">描述</th>
+      <th title="示例值">示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="sign">sign </td>
+      <td title="String">String </td>
+      <td title="是">是 </td>
+      <td title="接口签名签名算法">接口签名 <a href='签名算法.html' target='_blank'>签名算法</a> </td>
+      <td title="-">- </td>
+    </tr>
+  </tbody>
+</table>
+<h6><a href="#请求参数" name="请求参数">请求参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th title="名称">名称</th>
+      <th title="类型">类型</th>
+      <th title="是否必填">是否必填</th>
+      <th title="描述">描述</th>
+      <th title="默认值">默认值</th>
+      <th title="示例值">示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="lat">lat </td>
+      <td title="Double">Double </td>
+      <td title="否">否 </td>
+      <td title="纬度">纬度 </td>
+      <td title="-">- </td>
+      <td title="30.04728">30.04728 </td>
+    </tr>
+    <tr>
+      <td title="lng">lng </td>
+      <td title="Double">Double </td>
+      <td title="否">否 </td>
+      <td title="经度">经度 </td>
+      <td title="-">- </td>
+      <td title="103.83516">103.83516 </td>
+    </tr>
+  </tbody>
+</table>
+<h6><a href="#响应参数" name="响应参数">响应参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th title="名称">名称</th>
+      <th title="类型">类型</th>
+      <th title="描述">描述</th>
+      <th title="示例值">示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="id">id </td>
+      <td title="Long">Long </td>
+      <td title="主键ID">主键ID </td>
+      <td title="1">1 </td>
+    </tr>
+    <tr>
+      <td title="name">name </td>
+      <td title="String(100)">String(100) </td>
+      <td title="名称">名称 </td>
+      <td title="伊藤洋华堂（眉山店）">伊藤洋华堂（眉山店） </td>
+    </tr>
+    <tr>
+      <td title="address">address </td>
+      <td title="String(200)">String(200) </td>
+      <td title="地址">地址 </td>
+      <td title="眉山市东坡区环湖中路雕像国际广场 伊藤洋华堂">眉山市东坡区环湖中路雕像国际广场 伊藤洋华堂 </td>
+    </tr>
+    <tr>
+      <td title="lng">lng </td>
+      <td title="Double">Double </td>
+      <td title="公司所在经度">公司所在经度 </td>
+      <td title="103.835434">103.835434 </td>
+    </tr>
+    <tr>
+      <td title="lat">lat </td>
+      <td title="Double">Double </td>
+      <td title="公司所在纬度">公司所在纬度 </td>
+      <td title="30.047301">30.047301 </td>
+    </tr>
+    <tr>
+      <td title="mapZoom">mapZoom </td>
+      <td title="String(20)">String(20) </td>
+      <td title="地图缩放级别">地图缩放级别 </td>
+      <td title="13">13 </td>
+    </tr>
+    <tr>
+      <td title="mapAreas">mapAreas </td>
+      <td title="Array">Array </td>
+      <td title="地图范围">地图范围 </td>
+      <td title="{&quot;id&quot;:8,&quot;color&quot;:&quot;#9a9a9a&quot;,&quot;path&quot;:{&quot;lat&quot;:30.02651,&quot;lng&quot;:103.867385},&quot;name&quot;:&quot;灰&quot;}">{"id":8,"color":"#9a9a9a","path":{"lat":30.02651,"lng":103.867385},"name":"灰"} </td>
+    </tr>
+    <tr>
+      <td title="id">id </td>
+      <td title="Long">Long </td>
+      <td title="主键ID">主键ID </td>
+      <td title="8">8 </td>
+    </tr>
+    <tr>
+      <td title="color">color </td>
+      <td title="String(20)">String(20) </td>
+      <td title="颜色">颜色 </td>
+      <td title="#9a9a9a">#9a9a9a </td>
+    </tr>
+    <tr>
+      <td title="path">path </td>
+      <td title="String">String </td>
+      <td title="路径">路径 </td>
+      <td title="{&quot;lat&quot;:30.02651,&quot;lng&quot;:103.867385}">{"lat":30.02651,"lng":103.867385} </td>
+    </tr>
+    <tr>
+      <td title="lat">lat </td>
+      <td title="Double">Double </td>
+      <td title="纬度">纬度 </td>
+      <td title="30.02651">30.02651 </td>
+    </tr>
+    <tr>
+      <td title="lng">lng </td>
+      <td title="Double">Double </td>
+      <td title="经度">经度 </td>
+      <td title="103.867385">103.867385 </td>
+    </tr>
+    <tr>
+      <td title="name">name </td>
+      <td title="String(100)">String(100) </td>
+      <td title="名称">名称 </td>
+      <td title="灰">灰 </td>
+    </tr>
+  </tbody>
+</table>
+<h6><a href="#响应示例" name="响应示例">响应示例</a></h6>
+<pre><code class="json">{
+    &quot;id&quot;: 1,
+    &quot;name&quot;: &quot;伊藤洋华堂（眉山店）&quot;,
+    &quot;address&quot;: &quot;眉山市东坡区环湖中路雕像国际广场 伊藤洋华堂&quot;,
+    &quot;lng&quot;: 103.835434,
+    &quot;lat&quot;: 30.047301,
+    &quot;mapZoom&quot;: &quot;13&quot;,
+    &quot;mapAreas&quot;: {
+        &quot;id&quot;: 8,
+        &quot;color&quot;: &quot;#9a9a9a&quot;,
+        &quot;path&quot;: {
+            &quot;lat&quot;: 30.02651,
+            &quot;lng&quot;: 103.867385
+        },
+        &quot;name&quot;: &quot;灰&quot;
+    }
+}
+</code></pre>
+<hr/>
+<h4><a href='#2.3收货点' name='2.3收货点'>2.3 收货点</a></h4>
+<h6><a href="#接口地址" name="接口地址">接口地址</a></h6>
+<p><a href="http://127.0.0.1/receivingSpaces">http://127.0.0.1/receivingSpaces</a></p>
+<h6><a href="#请求方法" name="请求方法">请求方法</a></h6>
+<p>GET</p>
+<h6><a href="#请求头参数" name="请求头参数">请求头参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th title="名称">名称</th>
+      <th title="类型">类型</th>
+      <th title="是否必填">是否必填</th>
+      <th title="描述">描述</th>
+      <th title="示例值">示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="sign">sign </td>
+      <td title="String">String </td>
+      <td title="是">是 </td>
+      <td title="接口签名签名算法">接口签名 <a href='签名算法.html' target='_blank'>签名算法</a> </td>
+      <td title="-">- </td>
+    </tr>
+  </tbody>
+</table>
+<h6><a href="#请求参数" name="请求参数">请求参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th title="名称">名称</th>
+      <th title="类型">类型</th>
+      <th title="是否必填">是否必填</th>
+      <th title="描述">描述</th>
+      <th title="默认值">默认值</th>
+      <th title="示例值">示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="lat">lat </td>
+      <td title="Double">Double </td>
+      <td title="否">否 </td>
+      <td title="纬度">纬度 </td>
+      <td title="-">- </td>
+      <td title="30.04728">30.04728 </td>
+    </tr>
+    <tr>
+      <td title="lng">lng </td>
+      <td title="Double">Double </td>
+      <td title="否">否 </td>
+      <td title="经度">经度 </td>
+      <td title="-">- </td>
+      <td title="103.83516">103.83516 </td>
+    </tr>
+  </tbody>
+</table>
+<h6><a href="#响应参数" name="响应参数">响应参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th title="名称">名称</th>
+      <th title="类型">类型</th>
+      <th title="描述">描述</th>
+      <th title="示例值">示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="id">id </td>
+      <td title="Long">Long </td>
+      <td title="主键ID">主键ID </td>
+      <td title="1">1 </td>
+    </tr>
+    <tr>
+      <td title="name">name </td>
+      <td title="String(100)">String(100) </td>
+      <td title="名称">名称 </td>
+      <td title="伊藤洋华堂（眉山店）">伊藤洋华堂（眉山店） </td>
+    </tr>
+    <tr>
+      <td title="receivingSpaces">receivingSpaces </td>
+      <td title="Array">Array </td>
+      <td title="送货点">送货点 </td>
+      <td title="{&quot;id&quot;:1,&quot;floor&quot;:5,&quot;address&quot;:&quot;服务台旁&quot;,&quot;lat&quot;:30.047301,&quot;lng&quot;:103.835434}">{"id":1,"floor":5,"address":"服务台旁","lat":30.047301,"lng":103.835434} </td>
+    </tr>
+    <tr>
+      <td title="id">id </td>
+      <td title="Long">Long </td>
+      <td title="主键ID">主键ID </td>
+      <td title="1">1 </td>
+    </tr>
+    <tr>
+      <td title="floor">floor </td>
+      <td title="Int">Int </td>
+      <td title="楼层">楼层 </td>
+      <td title="5">5 </td>
+    </tr>
+    <tr>
+      <td title="address">address </td>
+      <td title="String(200)">String(200) </td>
+      <td title="地址">地址 </td>
+      <td title="服务台旁">服务台旁 </td>
+    </tr>
+    <tr>
+      <td title="lat">lat </td>
+      <td title="Double">Double </td>
+      <td title="纬度">纬度 </td>
+      <td title="30.047301">30.047301 </td>
+    </tr>
+    <tr>
+      <td title="lng">lng </td>
+      <td title="Double">Double </td>
+      <td title="经度">经度 </td>
+      <td title="103.835434">103.835434 </td>
+    </tr>
+  </tbody>
+</table>
+<h6><a href="#响应示例" name="响应示例">响应示例</a></h6>
+<pre><code class="json">{
+    &quot;id&quot;: 1,
+    &quot;name&quot;: &quot;伊藤洋华堂（眉山店）&quot;,
+    &quot;receivingSpaces&quot;: {
+        &quot;id&quot;: 1,
+        &quot;floor&quot;: 5,
+        &quot;address&quot;: &quot;服务台旁&quot;,
+        &quot;lat&quot;: 30.047301,
+        &quot;lng&quot;: 103.835434
+    }
+}
+</code></pre>
+<hr/></div>
+<div class="topAnchor">
+  <a href="#">
+    <span></span>
+  </a>
+</div>
+</body>
+</html>

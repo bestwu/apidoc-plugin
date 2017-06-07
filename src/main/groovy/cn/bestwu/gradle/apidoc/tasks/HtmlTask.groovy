@@ -1,9 +1,6 @@
 package cn.bestwu.gradle.apidoc.tasks
 
 import org.gradle.api.DefaultTask
-import org.gradle.api.tasks.Input
-import org.gradle.api.tasks.InputDirectory
-import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
 import org.jsoup.Jsoup
 import org.pegdown.*
@@ -17,15 +14,18 @@ import org.pegdown.plugins.ToHtmlSerializerPlugin
  */
 class HtmlTask extends DefaultTask {
 
-    @Input
-    String encoding = 'UTF-8'
-    @InputDirectory
-    File input
-    @OutputDirectory
-    File output
+    String encoding
 
     @TaskAction
     run() {
+        encoding = project.apidoc.encoding
+        project.apidoc.paths.each { path ->
+            def sourcePath = project.apidoc.sourcePath + '/' + path
+            doHtmlTask(project.file(sourcePath + '/md'), project.file(sourcePath + '/html'))
+        }
+    }
+
+    def doHtmlTask(File input, File output) {
         if (!output.exists()) {
             output.mkdirs()
         }

@@ -6,7 +6,6 @@ import groovy.json.JsonSlurper
 import groovy.json.StringEscapeUtils
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
-import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
 
 /**
@@ -15,20 +14,22 @@ import org.gradle.api.tasks.TaskAction
  * @author Peter Wu
  */
 class MDTask extends DefaultTask {
-
-    @Input
-    String encoding = 'UTF-8'
+    String encoding
     @Input
     String apiHost = ''
-    File input
-    @OutputDirectory
-    File output
 
     @TaskAction
     run() {
-        def mdOutput = output
-        if (!mdOutput.exists()) {
-            mdOutput.mkdirs()
+        encoding = project.apidoc.encoding
+        project.apidoc.paths.each { path ->
+            def sourcePath = project.apidoc.sourcePath + '/' + path
+            doMdTask(project.file(sourcePath), project.file(sourcePath + '/md'))
+        }
+    }
+
+    def doMdTask(File input, File output) {
+        if (!output.exists()) {
+            output.mkdirs()
         }
         def slurper = new JsonSlurper()
 
@@ -37,7 +38,7 @@ class MDTask extends DefaultTask {
         def apis = new OrderedJsonParserUsingCharacterSource().parse(jsonFilter(new File(input, "api.json")))
 
         def fields = slurper.parseText(jsonFilter(new File(input, "field.json")))
-        def catalogFile = new File(mdOutput, "index.md")
+        def catalogFile = new File(output, "index.md")
         def readme = new File(input, "README.md")
         def catalogOut = new StringWriter()
         catalogOut.println "- [系统介绍](index.md)"
@@ -82,7 +83,7 @@ class MDTask extends DefaultTask {
             })
         }
         extraFiles.each { file ->
-            new File(mdOutput, file.name).withPrintWriter(encoding) { out ->
+            new File(output, file.name).withPrintWriter(encoding) { out ->
                 printFile(out, catalog, {
                     out.println file.text
                 }
@@ -94,7 +95,7 @@ class MDTask extends DefaultTask {
             tree, i ->
                 i++
                 def treeName = tree.text
-                new File(mdOutput, "${treeName}.md").withPrintWriter(encoding) { out ->
+                new File(output, "${treeName}.md").withPrintWriter(encoding) { out ->
                     printFile(out, catalog, {
                         out.println "### ${i} ${treeName}"
                         out.println ''
@@ -108,6 +109,8 @@ class MDTask extends DefaultTask {
                                     api ->
                                         api.resource == treeName && api.name == leafName
                                 })
+                                if (api == null)
+                                    throw new Exception("未找到[${treeName}#${leafName}]接口")
                                 out.println "###### 接口地址"
                                 out.println ''
                                 out.println "[${apiHost + api.url}](${apiHost + api.url})"
@@ -134,8 +137,6 @@ class MDTask extends DefaultTask {
                     })
                 }
         }
-
-
     }
 
     static printFile(out, catalog, closure) {

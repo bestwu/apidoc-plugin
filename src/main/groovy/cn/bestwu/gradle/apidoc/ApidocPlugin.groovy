@@ -19,46 +19,51 @@ class ApidocPlugin implements Plugin<Project> {
             project.extensions.create('apidoc', ApidocExtension)
             afterEvaluate {
                 project.task('mddoc', type: MDTask, description: '') {
-                    def inputDir = project.file(project.apidoc.input)
-                    def outputDir = project.file(project.apidoc.output + '/md')
-                    if (!outputDir.exists())
-                        outputDir.mkdirs()
-                    inputs.files inputDir.listFiles(new FileFilter() {
-                        @Override
-                        boolean accept(File pathname) {
-                            return pathname != outputDir && pathname != project.file(project.apidoc.output + '/html')
-                        }
-                    })
-
-                    input inputDir
-                    output outputDir
+                    project.apidoc.paths.each { path ->
+                        def sourcePath = project.apidoc.sourcePath + '/' + path
+                        def inputDir = project.file(sourcePath)
+                        def outputDir = project.file(sourcePath + '/md')
+                        if (!outputDir.exists())
+                            outputDir.mkdirs()
+                        inputs.files inputDir.listFiles(new FileFilter() {
+                            @Override
+                            boolean accept(File pathname) {
+                                return pathname != outputDir && pathname != project.file(sourcePath + '/html')
+                            }
+                        })
+                        outputs.dir outputDir
+                    }
                     apiHost project.apidoc.apiHost == '' ? project.apidoc.defaultHost : project.apidoc.apiHost
-                    encoding project.apidoc.encoding
                 }
                 project.task('htmldoc', dependsOn: project.mddoc, type: HtmlTask, description: '') {
-                    input project.file(project.apidoc.output + '/md')
-                    output project.file(project.apidoc.output + '/html')
-                    encoding project.apidoc.encoding
+                    project.apidoc.paths.each { path ->
+                        def sourcePath = project.apidoc.sourcePath + '/' + path
+                        inputs.dir sourcePath + '/md'
+                        outputs.dir sourcePath + '/html'
+                    }
                 }
                 project.task('alphaMddoc', type: MDTask, description: '') {
-                    def inputDir = project.file(project.apidoc.input)
-                    def outputDir = project.file(project.apidoc.output + '/md')
-                    inputs.files inputDir.listFiles(new FileFilter() {
-                        @Override
-                        boolean accept(File pathname) {
-                            return pathname != outputDir && pathname != project.file(project.apidoc.output + '/html')
-                        }
-                    })
+                    project.apidoc.paths.each { path ->
+                        def sourcePath = project.apidoc.sourcePath + '/' + path
+                        def inputDir = project.file(sourcePath)
+                        def outputDir = project.file(sourcePath + '/md')
+                        inputs.files inputDir.listFiles(new FileFilter() {
+                            @Override
+                            boolean accept(File pathname) {
+                                return pathname != outputDir && pathname != project.file(sourcePath + '/html')
+                            }
+                        })
 
-                    input inputDir
-                    output outputDir
+                        outputs.dir outputDir
+                    }
                     apiHost project.apidoc.defaultHost
-                    encoding project.apidoc.encoding
                 }
-                project.task('alphaHtmldoc', type: HtmlTask, description: '') {
-                    input project.file(project.apidoc.output + '/md')
-                    output project.file(project.apidoc.output + '/html')
-                    encoding project.apidoc.encoding
+                project.task('alphaHtmldoc', dependsOn: project.alphaMddoc, type: HtmlTask, description: '') {
+                    project.apidoc.paths.each { path ->
+                        def sourcePath = project.apidoc.sourcePath + '/' + path
+                        inputs.dir sourcePath + '/md'
+                        outputs.dir sourcePath + '/html'
+                    }
                     doFirst {
                         alphaMddoc.execute()
                     }
