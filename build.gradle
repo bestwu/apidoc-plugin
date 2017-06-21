@@ -11,6 +11,10 @@ targetCompatibility = 1.7
 
 [compileJava, javadoc, compileTestJava]*.options*.encoding = 'UTF-8'
 
+repositories {
+    jcenter()
+}
+
 dependencies {
     compile gradleApi()
     compile 'org.pegdown:pegdown:1.6.0'
