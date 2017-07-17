@@ -33,6 +33,7 @@ class ApidocPlugin implements Plugin<Project> {
                         })
                         outputs.dir outputDir
                     }
+                    cover project.apidoc.cover
                     apiHost project.apidoc.apiHost == '' ? project.apidoc.defaultHost : project.apidoc.apiHost
                 }
                 project.task('htmldoc', dependsOn: project.mddoc, type: HtmlTask, description: '') {
@@ -56,6 +57,7 @@ class ApidocPlugin implements Plugin<Project> {
 
                         outputs.dir outputDir
                     }
+                    cover project.apidoc.cover
                     apiHost project.apidoc.defaultHost
                 }
                 project.task('alphaHtmldoc', dependsOn: project.alphaMddoc, type: HtmlTask, description: '') {

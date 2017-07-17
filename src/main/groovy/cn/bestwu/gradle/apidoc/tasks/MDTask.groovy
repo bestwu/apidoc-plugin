@@ -17,6 +17,8 @@ class MDTask extends DefaultTask {
     String encoding
     @Input
     String apiHost = ''
+    @Input
+    boolean cover = true
 
     @TaskAction
     run() {
@@ -95,47 +97,54 @@ class MDTask extends DefaultTask {
             tree, i ->
                 i++
                 def treeName = tree.text
-                new File(output, "${treeName}.md").withPrintWriter(encoding) { out ->
-                    printFile(out, catalog, {
-                        out.println "### ${i} ${treeName}"
-                        out.println ''
-                        tree.children.eachWithIndex() {
-                            leaf, m ->
-                                m++
-                                def leafName = leaf.text
-                                out.println "#### <a href='#${i}.${m}${leafName}' name='${i}.${m}${leafName}'>${i}.${m} ${leafName}</a>"
-                                out.println ''
-                                def api = apis.find({
-                                    api ->
-                                        api.resource == treeName && api.name == leafName
-                                })
-                                if (api == null)
-                                    throw new Exception("未找到[${treeName}#${leafName}]接口")
-                                out.println "###### 接口地址"
-                                out.println ''
-                                out.println "[${apiHost + api.url}](${apiHost + api.url})"
-                                out.println ''
-                                out.println "###### 请求方法"
-                                out.println "${api.method}"
-                                out.println ''
-                                if (api.desc) {
-                                    out.println "###### 说明"
-                                    out.println "${api.desc}"
+                def file = new File(output, "${treeName}.md")
+                if (!file.exists() || cover){
+                    logger.warn("生成：${treeName}.md")
+                    file.withPrintWriter(encoding) { out ->
+                        printFile(out, catalog, {
+                            out.println "### ${i} ${treeName}"
+                            out.println ''
+                            tree.children.eachWithIndex() {
+                                leaf, m ->
+                                    m++
+                                    def leafName = leaf.text
+                                    out.println "#### <a href='#${i}.${m}${leafName}' name='${i}.${m}${leafName}'>${i}.${m} ${leafName}</a>"
                                     out.println ''
-                                }
-
-                                if (api.version && api.version.class == ArrayList.class) {
-                                    api.version.each {
-                                        fillDesc(out, api, fields, it)
+                                    def api = apis.find({
+                                        api ->
+                                            api.resource == treeName && api.name == leafName
+                                    })
+                                    if (api == null)
+                                        throw new Exception("未找到[${treeName}#${leafName}]接口")
+                                    out.println "###### 接口地址"
+                                    out.println ''
+                                    out.println "[${apiHost + api.url}](${apiHost + api.url})"
+                                    out.println ''
+                                    out.println "###### 请求方法"
+                                    out.println "${api.method}"
+                                    out.println ''
+                                    if (api.desc) {
+                                        out.println "###### 说明"
+                                        out.println "${api.desc}"
+                                        out.println ''
                                     }
-                                } else
-                                    fillDesc(out, api, fields, null)
 
-                                out.println ''
-                                out.println '---'
-                        }
-                    })
+                                    if (api.version && api.version.class == ArrayList.class) {
+                                        api.version.each {
+                                            fillDesc(out, api, fields, it)
+                                        }
+                                    } else
+                                        fillDesc(out, api, fields, null)
+
+                                    out.println ''
+                                    out.println '---'
+                            }
+                        })
+                    }
+                }else{
+                    logger.warn("${treeName}.md已存在")
                 }
+
         }
     }
 

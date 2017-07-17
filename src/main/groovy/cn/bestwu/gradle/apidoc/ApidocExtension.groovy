@@ -15,5 +15,7 @@ class ApidocExtension {
     @Input
     String[] paths = ['_t']
     @Input
+    boolean cover=true
+    @Input
     String sourcePath='src/main/resources'
 }
