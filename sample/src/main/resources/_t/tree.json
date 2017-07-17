@@ -3,204 +3,31 @@
     "children": [
       {
         "leaf": true,
-        "text": "我的钱包"
+        "text": "新增"
       },
       {
         "leaf": true,
-        "text": "充值"
-      },
+        "text": "修改到期状态"},
       {
         "leaf": true,
-        "text": "alipay客户端结果验签"
+        "text": "租赁续约确认"
       }
     ],
     "expanded": true,
-    "text": "手机APP支付"
+    "text": "道闸租赁"
   },
   {
     "children": [
+
       {
         "leaf": true,
-        "text": "省市区数据"
-      },
+        "text": "租赁订单续约"},
       {
         "leaf": true,
-        "text": "配送范围"
-      },
-      {
-        "leaf": true,
-        "text": "收货点"
+        "text": "删除数据"
       }
     ],
     "expanded": true,
-    "text": "手机APP公共"
-  },
-  {
-    "children": [
-      {
-        "leaf": true,
-        "text": "我的订单"
-      },
-      {
-        "leaf": true,
-        "text": "个人订单详情"
-      },
-      {
-        "leaf": true,
-        "text": "物流状态"
-      },
-      {
-        "leaf": true,
-        "text": "订单轨迹"
-      },
-      {
-        "leaf": true,
-        "text": "删除订单"
-      },
-      {
-        "leaf": true,
-        "text": "我要投诉"
-      },
-      {
-        "leaf": true,
-        "text": "我的投诉"
-      }
-    ],
-    "expanded": true,
-    "text": "手机APP订单"
-  },
-  {
-    "children": [
-      {
-        "leaf": true,
-        "text": "登录"
-      },
-      {
-        "leaf": true,
-        "text": "注册/绑定新手机号发送验证码"
-      },
-      {
-        "leaf": true,
-        "text": "找回密码发送验证码"
-      },
-      {
-        "leaf": true,
-        "text": "验证验证码"
-      },
-      {
-        "leaf": true,
-        "text": "注册"
-      },
-      {
-        "leaf": true,
-        "text": "查看个人详情"
-      },
-      {
-        "leaf": true,
-        "text": "更新资料"
-      },
-      {
-        "leaf": true,
-        "text": "修改手机号"
-      },
-      {
-        "leaf": true,
-        "text": "修改密码"
-      },
-      {
-        "leaf": true,
-        "text": "找回密码"
-      }
-    ],
-    "expanded": true,
-    "text": "手机APP用户"
-  },
-  {
-    "children": [
-      {
-        "leaf": true,
-        "text": "生成测试验证码"
-      }
-    ],
-    "expanded": true,
-    "text": "测试时所用接口"
-  },
-  {
-    "children": [
-      {
-        "leaf": true,
-        "text": "检查版本号"
-      }
-    ],
-    "expanded": true,
-    "text": "手持端基本"
-  },
-  {
-    "children": [
-      {
-        "leaf": true,
-        "text": "登录"
-      },
-      {
-        "leaf": true,
-        "text": "登出"
-      },
-      {
-        "leaf": true,
-        "text": "查看个人信息"
-      },
-      {
-        "leaf": true,
-        "text": "修改个人信息"
-      },
-      {
-        "leaf": true,
-        "text": "修改密码"
-      }
-    ],
-    "expanded": true,
-    "text": "手持端用户"
-  },
-  {
-    "children": [
-      {
-        "leaf": true,
-        "text": "当前订单"
-      },
-      {
-        "leaf": true,
-        "text": "历史订单"
-      },
-      {
-        "leaf": true,
-        "text": "订单详情"
-      },
-      {
-        "leaf": true,
-        "text": "订单状态"
-      },
-      {
-        "leaf": true,
-        "text": "订单号查单"
-      },
-      {
-        "leaf": true,
-        "text": "订单号查位置"
-      },
-      {
-        "leaf": true,
-        "text": "订单接单"
-      },
-      {
-        "leaf": true,
-        "text": "到货处理"
-      },
-      {
-        "leaf": true,
-        "text": "更新订单轨迹"
-      }
-    ],
-    "expanded": true,
-    "text": "手持端订单"
+    "text": "手机APP租赁"
   }
 ]

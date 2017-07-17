@@ -1,1015 +1,150 @@
 [
   {
-    "method": "GET",
-    "name": "我的投诉",
-    "desc": "",
-    "headers": {
-      "sign": ""
-    },
-    "params": {
-      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339",
-      "page": "",
-      "size": ""
-    },
-    "resource": "手机APP订单",
-    "results": {
-      "size": 7,
-      "total": 7,
-      "pages": 1,
-      "list": [
-        {
-          "id": 1691,
-          "waybillSysNo": "YT20170109170317",
-          "text": "东西坏的",
-          "c_note": [
-            {
-              "createdDate": 1487746147569,
-              "ct_note": "给你退",
-              "sysUserId": 1,
-              "sysUserNo": "KF001"
-            }
-          ],
-          "resolved": true,
-          "createdDate": 1483953433584
-        }
-      ],
-      "page": 1
-    },
-    "uriVariables": "",
-    "url": "/complaints"
-  },
-  {
-    "method": "GET",
-    "name": "我的钱包",
-    "desc": "",
-    "headers": {
-      "sign": ""
-    },
-    "params": {
-      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339",
-      "page": "",
-      "size": ""
-    },
-    "resource": "手机APP支付",
-    "results": {
-      "money": 100,
-      "size": 2,
-      "total": 2,
-      "pages": 1,
-      "list": [
-        {
-          "subject": "\u94b1\u5305\u5145\u503c",
-          "createdDate": 1487726987744,
-          "totalAmount": 100
-        },
-        {
-          "subject": "\u94b1\u5305\u5145\u503c",
-          "createdDate": 1487726987744,
-          "totalAmount": 100
-        }
-      ],
-      "page": 1
-    },
-    "uriVariables": "",
-    "url": "/wallets"
-  },
-  {
     "method": "POST",
-    "name": "充值",
-    "desc": "",
-    "headers": {
-      "sign": ""
-    },
-    "params": {
-      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339",
-      "money": "1",
-      "payment": "2"
-    },
-    "resource": "手机APP支付",
-    "results": {
-      "money": 1,
-      "payment": 2,
-      "orderInfo": "app_id=2016112103042572&biz_content=%7B%22out_trade_no%22%3A%22201702220929471%22%2C%22total_amount%22%3A%220.01%22%2C%22subject%22%3A%22%E9%92%B1%E5%8C%85%E5%85%85%E5%80%BC%22%2C%22body%22%3A%22%E9%92%B1%E5%8C%85%E5%85%85%E5%80%BC%22%2C%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22seller_id%22%3A%222088421595009690%22%7D&charset=UTF-8&method=alipay.trade.app.pay&notify_url=http%3A%2F%2F127.0.0.1%3A8080%2Fmobile%2Fnotifies%2Falipay&sign_type=RSA2&timestamp=2017-02-22+09%3A29%3A48&version=1.0&sign=lzMHOpwJIFdGMW8n4KIC%2FH9yUcP6w6SRmMMYtnn1o7QP2cMKdjizQIAd%2BddMKQpGVG2nOscTJ7cIiKkOk1rPe8C3Hb6HD6%2BVjIwK78bSCoM5rRI5hngQc6OMAuf52NlbtnNO8iJb6SQViWSP5TWDtYj9IRUPOyVB1bVD44Zw4QQ%3D"
-    },
-    "uriVariables": "",
-    "url": "/wallets/charge"
-  },
-  {
-    "method": "GET",
-    "name": "alipay客户端结果验签",
-    "desc": "",
-    "headers": {
-      "sign": ""
-    },
-    "params": {
-      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339",
-      "alipay_trade_app_pay_response": "{\"code\":\"10000\",\"msg\":\"Success\",\"total_amount\":\"9.00\",\"app_id\":\"2014072300007148\",\"trade_no\":\"2014112400001000340011111118\",\"seller_id\":\"2088111111116894\",\"out_trade_no\":\"70501111111S001111119\"}",
-      "a_sign": "toffPr9RgL1FuP7BWg3q1JvvG9B0oaP23cqad2ih+cMCaixeEBB0ocwqC8OA4Oo+g03J2Ax8O2Vlf76yjeguZHctlvtunFGLGthhQmEtMIGqlU4G+VZTx/ZlNm8iipOUOILf2EyB55QuSxBC5k5/t1eLnXLlRSwXQljday8hVlU=",
-      "sign_type": "RSA2"
-    },
-    "resource": "手机APP支付",
-    "results": {
-      "validated": "false"
-    },
-    "uriVariables": "",
-    "url": "/alipay/checkClientResult"
-  },
-  {
-    "method": "GET",
-    "name": "收货点",
-    "desc": "",
-    "headers": {
-      "sign": ""
-    },
-    "params": {
-      "lat": "30.04728",
-      "lng": "103.83516"
-    },
-    "resource": "手机APP公共",
-    "results": {
-      "id": 1,
-      "name": "伊藤洋华堂（眉山店）",
-      "receivingSpaces": {
-        "id": 1,
-        "floor": 5,
-        "address": "服务台旁",
-        "lat": 30.047301,
-        "lng": 103.835434
-      }
-    },
-    "uriVariables": "",
-    "url": "/receivingSpaces"
-  },
-  {
-    "method": "GET",
-    "name": "配送范围",
-    "desc": "",
-    "headers": {
-      "sign": ""
-    },
-    "params": {
-      "lat": "30.04728",
-      "lng": "103.83516"
-    },
-    "resource": "手机APP公共",
-    "results": {
-      "id": 1,
-      "name": "\u4f0a\u85e4\u6d0b\u534e\u5802\uff08\u7709\u5c71\u5e97\uff09",
-      "address": "\u7709\u5c71\u5e02\u4e1c\u5761\u533a\u73af\u6e56\u4e2d\u8def\u96d5\u50cf\u56fd\u9645\u5e7f\u573a \u4f0a\u85e4\u6d0b\u534e\u5802",
-      "c_lng": 103.835434,
-      "c_lat": 30.047301,
-      "mapZoom": "13",
-      "logo": "http://192.168.1.110:8888/logo/ytlogo.png",
-      "mapAreas": {
-        "id": 8,
-        "color": "#9a9a9a",
-        "path": {
-          "lat": 30.02651,
-          "lng": 103.867385
-        },
-        "name": "\u7070"
-      }
-    },
-    "uriVariables": "",
-    "url": "/mapAreas"
-  },
-  {
-    "method": "POST",
-    "name": "我要投诉",
-    "desc": "",
-    "headers": {
-      "sign": ""
-    },
-    "params": {
-      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339",
-      "waybillId&": "1",
-      "text&": "我要投诉"
-    },
-    "resource": "手机APP订单",
-    "results": {
-      "id": 1774,
-      "waybillId": 1,
-      "waybillSysNo": "YT20161230120202",
-      "userId": 3,
-      "userName": "ddddd",
-      "userTel": "18224060100",
-      "text": "\u6211\u8981\u6295\u8bc9",
-      "resolved": false,
-      "createdDate": 1487302834686
-    },
-    "uriVariables": "",
-    "url": "/complaints"
-  },
-  {
-    "method": "DELETE",
-    "name": "删除订单",
-    "desc": "",
-    "headers": {
-      "sign": ""
-    },
-    "params": {
-      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339"
-    },
-    "resource": "手机APP订单",
-    "results": {
-    },
-    "uriVariables": {
-      "id": "1"
-    },
-    "url": "/waybills/self/{id}"
-  },
-  {
-    "method": "GET",
-    "name": "省市区数据",
+    "name": "新增",
     "desc": "",
     "params": {
+      "ui_id":["132"],
+      "dtype":["2"],
+      "pi_id":["36"],
+      "area_code":["510107"],
+      "money":["100","100"],
+      "unit_price":["10"],
+      "month_num":["10"],
+      "starttime":["1496994372529"],
+      "endtime":["1496994372929"],
+      "car_code":["川A12348"],
+      "permit_time":["8：00-23：00"],
+      "pay_source":["0"],
+      "rent_type":["1"],
+      "ctime":["1496994372529"],
+      "client_order_id":["201707131357000001"],
+      "client_rule_id":["201707131357100000"],
+      "sign":["63644bb8e725ddcf437cc08e8a6e1fe2"]
     },
-    "resource": "手机APP公共",
+    "resource": "道闸租赁",
     "results": {
-      "list": [
-        {
-          "id": 110000,
-          "name": "北京",
-          "children": [
-            {
-              "id": 110101,
-              "name": "东城区",
-              "children": []
-            }
-          ]
-        }
-      ]
-    },
-    "url": "/place.json"
-  },
-  {
-    "method": "GET",
-    "name": "订单轨迹",
-    "desc": "",
-    "headers": {
-      "sign": ""
-    },
-    "params": {
-      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339"
-    },
-    "resource": "手机APP订单",
-    "results": {
-      "route": {
-        "lat": 30.048832,
-        "lng": 103.839111
+      "data": {
+        "allege_state": 0,
+        "area_code": "510107",
+        "car_code": "川A12348",
+        "client_order_id": "201707131357000001",
+        "client_rule_id": "201707131357100000",
+        "ctime": 1500275163231,
+        "defer_state": 2,
+        "endtime": 1496994372929,
+        "father_order_id": "",
+        "flag": 1,
+        "is_del": 0,
+        "is_expire": 0,
+        "money": 100,
+        "month_num": 10,
+        "mq_state": 0,
+        "note": "创建租赁订单流水",
+        "pay_source": 0,
+        "pay_state": 1,
+        "permit_time": "8：00-23：00",
+        "pi_id": 36,
+        "pi_name": "天府三街停车场",
+        "pu_id": 0,
+        "pu_nd": "",
+        "rd_id": 1,
+        "rent_order_id": "510107200000036420170717150603Qm",
+        "rent_type": 1,
+        "son_order_id": "",
+        "starttime": 1496994372529,
+        "stime": 1500275163231,
+        "ui_id": 132,
+        "ui_nd": "2017041209396912",
+        "unit_price": 10,
+        "up_orderid": "",
+        "utime": 1500275163231
       },
-      "sysUserName": "杨森",
-      "sysUserTel": "18224060100",
-      "w_id": 108,
-      "w_lat": 30.048646,
-      "w_lng": 103.839111,
-      "deliveryTime": "2017-01-01 16:36 ~ 22:00"
-    },
-    "uriVariables": {
-      "id": "108"
-    },
-    "url": "/waybills/self/{id}/route"
-  },
-  {
-    "method": "GET",
-    "name": "物流状态",
-    "desc": "",
-    "headers": {
-      "sign": ""
-    },
-    "params": {
-      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339"
-    },
-    "resource": "手机APP订单",
-    "results": {
-      "id": 1,
-      "distributionName": "\u5434\u5927",
-      "distributionTel": "18224060100",
-      "details": {
-        "id": 67,
-        "createdDate": 1482808721748,
-        "status": 8,
-        "notes": [
-          {
-            "text": "1",
-            "createdDate": 1482808721748,
-            "sysUserJobNumber": "GL001",
-            "sysUserName": "\u5f20\u5175"
-          }
-        ]
-      },
-      "deliveryTime": "2016-12-24 10:17 ~ 22:00"
-    },
-    "uriVariables": {
-      "id": "1"
-    },
-    "url": "/waybills/self/{id}/detail"
-  },
-  {
-    "method": "GET",
-    "name": "个人订单详情",
-    "desc": "",
-    "headers": {
-      "sign": ""
-    },
-    "params": {
-      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339"
-    },
-    "resource": "手机APP订单",
-    "results": {
-      "id": 1,
-      "sysNo": "YT20161230120202",
-      "goodsNo": "718000872251",
-      "distributionName": "\u5434\u5927",
-      "distributionTel": "18224060100",
-      "consigneeName": "\u5434\u52c7",
-      "consigneeTel": "182****0100",
-      "consigneeAddress": "\u7709\u5c71\u7ea2\u8c46\u56edA\u533a1\u680b4\u53f7",
-      "status": 1,
-      "createdDate": 1482463020055,
-      "goodses": [
-        {
-          "id": 1,
-          "categoryName": "\u98df\u54c1\u996e\u6599",
-          "goodsName": "\u4f11\u95f2\u96f6\u98df",
-          "goodsNum": 1
-        }
-      ],
-      "deliveryTimeDesc": "\u5f53\u65e5\u9001\u8fbe",
-      "logisticsCompany": "\u6211\u7684\u4f0a\u5bb6",
-      "queryStatus": 2,
-      "deliveryTime": "2016-12-24 10:17 ~ 22:00"
-    },
-    "uriVariables": {
-      "id": "1"
-    },
-    "url": "/waybills/self/{id}"
-  },
-  {
-    "method": "GET",
-    "name": "我的订单",
-    "desc": "",
-    "headers": {
-      "sign": ""
-    },
-    "params": {
-      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339",
-      "type": "",
-      "keyword": "",
-      "page": "",
-      "size": ""
-    },
-    "resource": "手机APP订单",
-    "results": {
-      "size": 20,
-      "total": 98,
-      "pages": 5,
-      "list": [
-        {
-          "id": 174,
-          "sysNo": "YT20170122102902",
-          "goodsNo": "718000872251",
-          "status": 0,
-          "createdDate": 1485052172929,
-          "goodsNum": 2,
-          "logo": "http://192.168.1.110:8888/logo/ytlogo.png",
-          "companyName": "伊藤洋华堂（眉山店）",
-          "queryStatus": 1
-        }
-      ],
-      "page": 1
+      "errorcode": "",
+      "errormsg": "道闸租赁续约新增成功",
+      "errorno": "0"
     },
     "uriVariables": "",
-    "url": "/waybills/self"
-  },
+    "url": "/rentdeferadd.php"
+  } ,
   {
     "method": "POST",
-    "name": "生成测试验证码",
+    "name": "修改到期状态",
     "desc": "",
-    "headers": {
-      "sign": ""
-    },
-    "params": {
-      "tel": "18224060100"
-    },
-    "resource": "测试时所用接口",
-    "results": {
-      "createdDate": 1486825570165,
-      "code": "085215"
-    },
+    "params":{
+      "ui_id":["132"],
+      "dtype":["2"],
+      "area_code":["510107"],
+      "pi_id":["36"],
+      "car_code":["川A12348"],
+      "expire_state":["1"],
+      "sign":["b7405f776197af4e4b2428742aff1383"]
+    } ,
+    "resource": "道闸租赁",
+    "results": {"data":"","errorcode":"","errormsg":"操作成功","errorno":"0"},
     "uriVariables": "",
-    "url": "/test/vCode"
-  },
-  {
-    "method": "PUT",
-    "name": "更新资料",
-    "desc": "",
-    "headers": {
-      "sign": ""
-    },
-    "params": {
-      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339",
-      "avatar": "",
-      "name": "",
-      "region": "武侯区",
-      "city": "成都市",
-      "address": "XX路",
-      "sex": 1,
-      "qq": "9389349384",
-      "email": "xxx@126.com"
-    },
-    "resource": "手机APP用户",
-    "results": {
-      "id": 3,
-      "avatar": "http://192.168.1.110:8888/user/avatar/201702/6e11c3fd-2b8c-4b61-b2fb-662966e2b180.png",
-      "name": "ddddd",
-      "lastLoginDate": 1488271046932,
-      "lastLoginIp": "127.0.0.1",
-      "tel": "18224060100",
-      "address": "XX\u8def",
-      "city": "\u6210\u90fd\u5e02",
-      "region": "\u6b66\u4faf\u533a",
-      "sex": 1,
-      "qq": "9389349384",
-      "email": "xxx@126.com"
-    },
-    "url": "/users/self"
-  },
-  {
-    "method": "PUT",
-    "name": "修改手机号",
-    "desc": "",
-    "headers": {
-      "sign": ""
-    },
-    "params": {
-      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339",
-      "code": "",
-      "oldPassword": "",
-      "password": "",
-      "tel": ""
-    },
-    "resource": "手机APP用户",
-    "results": {
-      "id": 3,
-      "avatar": "http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png",
-      "name": "sdfsfsdf",
-      "lastLoginDate": 1486954741739,
-      "lastLoginIp": "127.0.0.1",
-      "tel": "18224060100",
-      "address": "XXX\u8def",
-      "city": "\u6210\u90fd",
-      "region": "\u6b66\u4faf",
-      "sex": 1,
-      "qq": "9389349384",
-      "email": "xxx@126.com"
-    },
-    "url": "/users/self"
-  },
-  {
-    "method": "PUT",
-    "name": "修改密码",
-    "desc": "",
-    "headers": {
-      "sign": ""
-    },
-    "params": {
-      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339",
-      "oldPassword": "",
-      "password": ""
-    },
-    "resource": "手机APP用户",
-    "results": {
-      "id": 3,
-      "avatar": "http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png",
-      "name": "sdfsfsdf",
-      "lastLoginDate": 1486954741739,
-      "lastLoginIp": "127.0.0.1",
-      "tel": "18224060100",
-      "address": "XXX\u8def",
-      "city": "\u6210\u90fd",
-      "region": "\u6b66\u4faf",
-      "sex": 1,
-      "qq": "9389349384",
-      "email": "xxx@126.com"
-    },
-    "url": "/users/self"
-  },
+    "url": "/updateisexpire.php"
+  } ,
   {
     "method": "POST",
-    "name": "注册",
+    "name": "租赁续约确认",
     "desc": "",
-    "headers": {
-      "sign": ""
-    },
-    "params": {
-      "code": "",
-      "password": "",
-      "tel": ""
-    },
-    "resource": "手机APP用户",
-    "results": {
-      "id": 3,
-      "avatar": "http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png",
-      "name": "sdfsfsdf",
-      "lastLoginDate": 1486954741739,
-      "lastLoginIp": "127.0.0.1",
-      "tel": "18224060100",
-      "address": "XXX\u8def",
-      "city": "\u6210\u90fd",
-      "region": "\u6b66\u4faf",
-      "sex": 1,
-      "qq": "9389349384",
-      "email": "xxx@126.com",
-      "accessToken": {
-        "accessToken": "53cd7efb-7517-4b03-b4e6-1a8325f58a08",
-        "expiration": 1488164341846,
-        "expiresIn": 1209599
-      }
-    },
+    "params":{
+      "ui_id":["132"],
+      "dtype":["2"],
+      "area_code":["510107"],
+      "pi_id":["36"],
+      "car_code":["川A12348"],
+      "rent_order_id":["510107200000036420170717150603Qm"],
+      "client_order_id":["201707131357000001"],
+      "endtime":["1496994372929"],
+      "sign":["b7405f776197af4e4b2428742aff1383"]
+    } ,
+    "resource": "道闸租赁",
+    "results": {"data":"","errorcode":"","errormsg":"道闸租赁续租确认成功","errorno":"0"},
     "uriVariables": "",
-    "url": "/users"
-  },
-  {
-    "method": "GET",
-    "name": "查看个人详情",
-    "desc": "",
-    "headers": {
-      "sign": ""
-    },
-    "params": {
-      "accessToken": "fecb84d4-eac7-4e75-b21f-f97a52e83339"
-    },
-    "resource": "手机APP用户",
-    "results": {
-      "id": 3,
-      "avatar": "http://192.168.1.110:8888/user/avatar/201702/6e11c3fd-2b8c-4b61-b2fb-662966e2b180.png",
-      "name": "ddddd",
-      "lastLoginDate": 1488271046932,
-      "lastLoginIp": "127.0.0.1",
-      "tel": "18224060100",
-      "address": "XX\u8def",
-      "city": "\u6210\u90fd\u5e02",
-      "region": "\u6b66\u4faf\u533a",
-      "sex": 1,
-      "qq": "9389349384",
-      "email": "xxx@126.com"
-    },
-    "url": "/users/self"
-  },
-  {
-    "method": "PUT",
-    "name": "找回密码",
-    "desc": "",
-    "headers": {
-      "sign": ""
-    },
-    "params": {
-      "tel": "18224060100",
-      "password": "",
-      "code": ""
-    },
-    "resource": "手机APP用户",
-    "results": {
-      "id": 3,
-      "avatar": "http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png",
-      "name": "sdfsfsdf",
-      "lastLoginDate": 1486954741739,
-      "lastLoginIp": "127.0.0.1",
-      "tel": "18224060100",
-      "address": "XXX\u8def",
-      "city": "\u6210\u90fd",
-      "region": "\u6b66\u4faf",
-      "sex": 1,
-      "qq": "9389349384",
-      "email": "xxx@126.com",
-      "accessToken": {
-        "accessToken": "53cd7efb-7517-4b03-b4e6-1a8325f58a08",
-        "expiration": 1488164341846,
-        "expiresIn": 1209599
-      }
-    },
-    "uriVariables": "",
-    "url": "/users/password"
-  },
+    "url": "/rentdefersure.php"
+  } ,
   {
     "method": "POST",
-    "name": "注册/绑定新手机号发送验证码",
-    "desc": "",
-    "headers": {
-      "sign": ""
-    },
-    "params": {
-      "tel": "18224060100"
-    },
-    "resource": "手机APP用户",
-    "results": {},
-    "uriVariables": "",
-    "url": "/cellVerifyCodes"
-  },
-  {
-    "method": "POST",
-    "name": "验证验证码",
-    "desc": "成功返回204",
-    "headers": {
-      "sign": ""
-    },
-    "params": {
-      "tel": "18224060100",
-      "code": ""
-    },
-    "resource": "手机APP用户",
-    "results": {},
-    "uriVariables": "",
-    "url": "/cellVerifyCodes/verify"
-  },
-  {
-    "method": "POST",
-    "name": "找回密码发送验证码",
-    "desc": "",
-    "headers": {
-      "sign": ""
-    },
-    "params": {
-      "tel": "18224060100"
-    },
-    "resource": "手机APP用户",
-    "results": {},
-    "uriVariables": "",
-    "url": "/cellVerifyCodes/password"
-  },
-  {
-    "method": "POST",
-    "name": "登录",
-    "headers": {
-      "sign": ""
-    },
-    "params": {
-      "tel": "18224060100",
-      "password": "1a4e06591ef41cc4b3c6e8b232b23e5a"
-    },
-    "resource": "手机APP用户",
-    "results": {
-      "id": 3,
-      "avatar": "http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png",
-      "name": "sdfsfsdf",
-      "lastLoginDate": 1486954741739,
-      "lastLoginIp": "127.0.0.1",
-      "tel": "18224060100",
-      "address": "XXX\u8def",
-      "city": "\u6210\u90fd",
-      "region": "\u6b66\u4faf",
-      "sex": 1,
-      "qq": "9389349384",
-      "email": "xxx@126.com",
-      "accessToken": {
-        "accessToken": "53cd7efb-7517-4b03-b4e6-1a8325f58a08",
-        "expiration": 1488164341846,
-        "expiresIn": 1209599
-      }
-    },
-    "uriVariables": "",
-    "url": "/user/accessToken"
-  },
-  {
-    "method": "GET",
-    "name": "检查版本号",
-    "params": {},
-    "resource": "手持端基本",
-    "results": {
-      "id": 1,
-      "versionCode": 1,
-      "versionName": "1.0",
-      "text": "\u66f4\u65b0\u66f4\u65b0",
-      "isForce": false
-    },
-    "url": "/clientVersions"
-  },
-  {
-    "method": "POST",
-    "name": "登录",
-    "params": {
-      "jobNumber": "KD001",
-      "password": "8b27556d786634bb2f4d40602d02977e"
-    },
-    "resource": "手持端用户",
-    "results": {
-      "id": 3,
-      "jobNumber": "KD001",
-      "name": "\u5218\u540d",
-      "createdDate": 1482411971918,
-      "lastModifiedDate": 1486538177218,
-      "lastLogoutDate": 1483945745377,
-      "lastLoginDate": 1486538177218,
-      "lastLoginIp": "127.0.0.1",
-      "tel": "18224060100",
-      "accessToken": {
-        "accessToken": "5abd2a1b-549a-4063-a9db-5c3d6fbefac9",
-        "expiration": 1487747777343,
-        "needAddInfo": false,
-        "expiresIn": 1209600
-      }
-    },
-    "url": "/login"
-  },
-  {
-    "method": "GET",
-    "name": "登出",
-    "params": {
-      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891"
-    },
-    "resource": "手持端用户",
-    "results": [
-    ],
-    "url": "/logout"
-  },
-  {
-    "method": "PUT",
-    "name": "修改密码",
+    "name": "租赁订单续约",
     "desc": "",
     "params": {
-      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891",
-      "jobNumber": "",
-      "oldPassword": "",
-      "password": ""
+      "ui_id":["132"],
+      "ui_nd":["1"],
+      "dtype":["2"],
+      "rd_id":["3"],
+      "pi_id":["36"],
+      "area_code":["510107"],
+      "month_num":["1"],
+      "client_ruleid":["d425aa1dcb1a444fbfa9a32ebafa30ea"],
+      "car_code":["川A12348"],
+      "permit_time":["8：00-23：00"],
+      "pay_source":["2"],
+      "rent_type":["1"],
+      "sign":["9a3b04abfd6af613c8b9e988c2661479"]
     },
-    "resource": "手持端用户",
-    "results": {
-    },
-    "url": "/sysUsers/password"
-  },
-  {
-    "method": "PUT",
-    "name": "修改个人信息",
-    "desc": "修改后更新客户端token",
-    "params": {
-      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891",
-      "name": "",
-      "idCard": "",
-      "tel^": ""
-    },
-    "resource": "手持端用户",
-    "results": {
-      "id": 3,
-      "jobNumber": "KD001",
-      "createdDate": 1482411971918,
-      "lastModifiedDate": 1486538177218,
-      "lastLogoutDate": 1483945745377,
-      "lastLoginDate": 1486538177218,
-      "lastLoginIp": "127.0.0.1",
-      "accessToken": {
-        "accessToken": "820261be-bb1a-4143-adc8-cc92bb436796",
-        "expiration": 1487749011058,
-        "needAddInfo": false,
-        "expiresIn": 1209599
-      }
-    },
-    "url": "/sysUsers/self"
-  },
-  {
-    "method": "GET",
-    "name": "查看个人信息",
-    "params": {
-      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891"
-    },
-    "resource": "手持端用户",
-    "results": {
-      "id": 3,
-      "jobNumber": "KD001",
-      "name": "\u5218\u540d",
-      "createdDate": 1482411971918,
-      "lastModifiedDate": 1486538177218,
-      "lastLogoutDate": 1483945745377,
-      "lastLoginDate": 1486538177218,
-      "lastLoginIp": "127.0.0.1",
-      "tel": "18224060100",
-      "companyName": "\u7709\u5c71\u5e97"
-    },
-    "url": "/sysUsers/self"
-  },
-  {
-    "method": "GET",
-    "name": "当前订单",
-    "params": {
-      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891",
-      "page": "",
-      "size": ""
-    },
-    "resource": "手持端订单",
-    "results": {
-      "size": 13,
-      "total": 13,
-      "pages": 1,
-      "list": [
-        {
-          "id": 3,
-          "goodsNo": "718000872243",
-          "consigneeName": "\u8d75\u56fd\u67f1",
-          "consigneeTel": "18224060100",
-          "consigneeAddress": "\u4e3d\u666f\u56ed3\u671f",
-          "status": 2,
-          "finished": false
-        }
-      ],
-      "page": 1
-    },
-    "url": "/waybills/current"
-  },
-  {
-    "method": "GET",
-    "name": "历史订单",
-    "params": {
-      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891",
-      "page": "",
-      "size": ""
-    },
-    "resource": "手持端订单",
-    "results": {
-      "size": 13,
-      "total": 13,
-      "pages": 1,
-      "list": [
-        {
-          "id": 3,
-          "goodsNo": "718000872243",
-          "consigneeName": "\u8d75\u56fd\u67f1",
-          "consigneeTel": "18224060100",
-          "consigneeAddress": "\u4e3d\u666f\u56ed3\u671f",
-          "status": 2,
-          "finished": false
-        }
-      ],
-      "page": 1
-    },
-    "url": "/waybills/history"
-  },
+    "resource": "手机APP租赁",
+    "results": {"data":{"allege_state":0,"area_code":"510107","car_code":"川A12348","client_order_id":"","client_rule_id":"d425aa1dcb1a444fbfa9a32ebafa30ea","ctime":1500271460630,"defer_state":1,"endtime":1499586372000,"father_order_id":"","flag":2,"is_del":0,"is_expire":0,"money":10,"month_num":1,"mq_state":0,"note":"APP续租租赁信息","pay_source":2,"pay_state":0,"permit_time":"8：00-23：00","pi_id":36,"pi_name":"天府三街停车场","pu_id":0,"pu_nd":"","rd_id":40,"rent_order_id":"5101072000000364201707171404206h","rent_type":1,"son_order_id":"","starttime":1496994372000,"stime":1500271460630,"ui_id":132,"ui_nd":"1","unit_price":10,"up_orderid":"","utime":1500271460630},"errorcode":"","errormsg":"租赁订单续约新增成功","errorno":"0"},
+    "uriVariables": "",
+    "url": "/rentOrderDefer.php"} ,
   {
     "method": "POST",
-    "name": "订单接单",
-    "params": {
-      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891",
-      "id": "",
-      "lat": "30.072456",
-      "lng": "103.84297",
-      "address": ""
-    },
-    "resource": "手持端订单",
-    "results": [
-    ],
-    "url": "/waybills/takeOrder"
-  },
-  {
-    "method": "POST",
-    "name": "到货处理",
-    "params": {
-      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891",
-      "goodsNo": "",
-      "lat": "30.072456",
-      "lng": "103.84297",
-      "address": "",
-      "text": "",
-      "arriveStatus": ""
-    },
-    "resource": "手持端订单",
-    "results": [
-    ],
-    "url": "/waybills/arrive"
-  },
-  {
-    "method": "GET",
-    "name": "订单详情",
-    "params": {
-      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891"
-    },
-    "resource": "手持端订单",
-    "results": {
-      "id": 1,
-      "sysNo": "YT20161230120202",
-      "goodsNo": "718000872251",
-      "distributionName": "\u5434\u5927",
-      "distributionTel": "18224060100",
-      "distributionDate": 1484318047501,
-      "eta": 0,
-      "consigneeName": "\u5434\u52c7",
-      "consigneeTel": "18583768030",
-      "consigneeAddress": "\u7709\u5c71\u7ea2\u8c46\u56edA\u533a1\u680b4\u53f7",
-      "consignorName": "\u5f20\u4f1f",
-      "consignorTel": "18819295194",
-      "consignorAddress": "\u7709\u5c71\u5e02\u4e1c\u5761\u533a\u73af\u6e56\u4e2d\u8def\u96d5\u50cf\u56fd\u9645\u5e7f\u573a \u4f0a\u85e4\u6d0b\u534e\u5802",
-      "status": 1,
-      "finished": false,
-      "area": "\u9ec4",
-      "note": "111111111111",
-      "billCopy": "http://127.0.0.1:8888/image/1.png",
-      "weight": 6000,
-      "goodses": [
-        {
-          "id": 3,
-          "categoryName": "\u98df\u54c1\u996e\u6599",
-          "goodsName": "\u9762\u5305",
-          "goodsNum": 1
-        }
-      ]
-    },
-    "uriVariables": {
-      "id": "1"
-    },
-    "url": "/waybills/{id}"
-  },
-  {
-    "method": "GET",
-    "name": "订单状态",
-    "params": {
-      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891"
-    },
-    "resource": "手持端订单",
-    "results": {
-      "list": [
-        {
-          "id": 67,
-          "createdDate": 1482808721748,
-          "status": 8,
-          "notes": [
-            {
-              "text": "1",
-              "createdDate": 1482808721748,
-              "sysUserJobNumber": "GL001",
-              "sysUserName": "\u5f20\u5175"
-            }
-          ]
-        }
-      ]
-    },
-    "uriVariables": {
-      "id": "1"
-    },
-    "url": "/waybills/{id}/detail"
-  },
-  {
-    "method": "GET",
-    "name": "订单号查单",
-    "params": {
-      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891",
-      "goodsNo": ""
-    },
-    "resource": "手持端订单",
-    "results": {
-      "id": 6,
-      "sysNo": "YT20161223123312",
-      "goodsNo": "718000872269",
-      "distributionName": "\u6768\u68ee",
-      "distributionTel": "18224060100",
-      "distributionDate": 1482467676252,
-      "eta": 0,
-      "finishTime": 1482467691267,
-      "consigneeName": "\u7530\u7530",
-      "consigneeTel": "17780533682",
-      "consigneeAddress": "\u82b1\u8bed\u82d1",
-      "consignorName": "\u7530\u7530",
-      "consignorTel": "17780533682",
-      "consignorAddress": "\u7709\u5c71\u5e02\u4e1c\u5761\u533a\u73af\u6e56\u4e2d\u8def\u96d5\u50cf\u56fd\u9645\u5e7f\u573a \u4f0a\u85e4\u6d0b\u534e\u5802",
-      "status": 5,
-      "finished": false,
-      "area": "\u84dd",
-      "note": "111111111111",
-      "billCopy": "http://127.0.0.1:8888/image/1.png",
-      "oldWaybillSysNo": "YT20161223122107",
-      "weight": 6000,
-      "goodses": [
-        {
-          "id": 18,
-          "categoryName": "\u4e2d\u5916\u540d\u9152",
-          "goodsName": "\u6d0b\u9152",
-          "goodsNum": 1
-        }
-      ]
-    },
-    "url": "/waybills/goodsNo"
-  },
-  {
-    "method": "GET",
-    "name": "订单号查位置",
-    "params": {
-      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891",
-      "goodsNo": ""
-    },
-    "resource": "手持端订单",
-    "results": {
-      "lat": "30.072456",
-      "lng": "103.84297"
-    },
-    "url": "/waybills/location"
-  },
-  {
-    "method": "POST",
-    "name": "更新订单轨迹",
-    "params": {
-      "accessToken": "aaae9397-2ace-4bbe-b6cb-f1b362d8f891",
-      "lat&": "30.072456",
-      "lng&": "103.84297"
-    },
-    "resource": "手持端订单",
-    "results": {},
-    "url": "/waybills/route"
+    "name": "删除数据",
+    "desc": "",
+    "params":{
+      "ui_id":["132"],
+      "ui_nd":["1"],
+      "dtype":["2"],
+      "pi_id":["36"],
+      "area_code":["510107"],
+      "car_code":["川A11111"],
+      "rd_id":["3"],
+      "sign":["9a3b04abfd6af613c8b9e988c2661479"]
+    } ,
+    "resource": "手机APP租赁",
+    "results":{"data":"","errorcode":"","errormsg":"操作成功","errorno":"0"} ,
+    "uriVariables": "",
+    "url": "/rentdeferdel.php"
   }
 ]

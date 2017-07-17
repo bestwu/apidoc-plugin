@@ -1,14 +1,15 @@
 plugins {
     id 'java'
-    id 'cn.bestwu.apidoc' version '1.2.0'
+    id 'cn.bestwu.apidoc' version '1.2.1'
 }
 
 group 'cn.bestwu.gradle'
 version '1.0'
 
 apidoc {
-    defaultHost 'http://127.0.0.1'
-    paths = ['_t', 'test']
+    defaultHost 'http://app.qc-wbo.com/v1'
+    paths = ['_t']
+    cover = false
 }
 
 sourceCompatibility = 1.7
