@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="renderer" content="webkit"/>
+  <meta name="apple-touch-fullscreen" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>car</title>
+  <link rel="stylesheet" type="text/css" href="apidoc.css"/></head>
+<body>
+<p>###APP ：： 1.车牌管理模块</p>
+<p>####1.1-&gt;用户添加或者删除绑定车牌号</p>
+<table>
+  <thead>
+    <tr>
+      <th title="参数名称">参数名称</th>
+      <th title="值描述">值描述</th>
+      <th title="是否可空">是否可空</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="act">act</td>
+      <td title="1:添加车牌 2：删除车牌">1:添加车牌 2：删除车牌 </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="car_code">car_code</td>
+      <td title="车牌号">车牌号</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="sign">sign</td>
+      <td title="MD5数字签名(dtype+ui_id+car_code+act)按参数的首字母升序顺序进行组装">MD5数字签名(dtype+ui_id+car_code+act)按参数的首字母升序顺序进行组装</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p>####请求路径</p>
+<p><a href="http://139.224.29.103/v1/bindcar.php">http://139.224.29.103/v1/bindcar.php</a></p>
+<p>######返回结果</p>
+<pre><code>{
+    &quot;data&quot;: &quot;&quot;,
+    &quot;errormsg&quot;: &quot;绑定成功&quot;,
+    &quot;errorno&quot;: &quot;0&quot;
+}
+</code></pre>
+<p>####1.2-&gt;用户更新车辆信息</p>
+<table>
+  <thead>
+    <tr>
+      <th title="参数名称">参数名称</th>
+      <th title="值描述">值描述</th>
+      <th title="是否可空">是否可空</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="uc_id">uc_id</td>
+      <td title="表主键ID">表主键ID</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="长整型">长整型</td>
+    </tr>
+    <tr>
+      <td title="car_code">car_code</td>
+      <td title="车牌号">车牌号</td>
+      <td title="是">是</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="lience">lience</td>
+      <td title="行驶证照片">行驶证照片</td>
+      <td title="是">是</td>
+      <td title="无">无 </td>
+      <td title="文件">文件</td>
+    </tr>
+    <tr>
+      <td title="run_code">run_code</td>
+      <td title="行驶证号码">行驶证号码</td>
+      <td title="是">是</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="car_brand">car_brand</td>
+      <td title="车辆品牌">车辆品牌</td>
+      <td title="是">是</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="uc_color">uc_color</td>
+      <td title="车辆颜色:0 未定 1：黑色 2：白色 3：银色 4：金色 5：红色 6 ：黄色 7：绿色 8：蓝色 9：橙色 10：灰色">车辆颜色:0 未定 1：黑色 2：白色 3：银色 4：金色 5：红色 6 ：黄色 7：绿色 8：蓝色 9：橙色 10：灰色</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="sign">sign</td>
+      <td title="MD5数字签名(dtype+ui_id)按参数的首字母升序顺序进行组装">MD5数字签名(dtype+ui_id)按参数的首字母升序顺序进行组装</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p>####请求路径</p>
+<p><a href="http://139.224.29.103/v1/update_car.php">http://139.224.29.103/v1/update_car.php</a></p>
+<p>######返回结果</p>
+<pre><code>{
+    &quot;data&quot;: {
+        &quot;car_brand&quot;: &quot;东风&quot;,
+        &quot;car_code&quot;: &quot;川A4M99B&quot;,
+        &quot;ctime&quot;: 1470710253000,
+        &quot;is_default&quot;: 0,
+        &quot;note&quot;: &quot;&quot;,
+        &quot;run_url&quot;: &quot;http://139.224.29.103/file/img/lience/2016/0fbd30b39ae04e029c3b3a14f0d4b4f0.jpg&quot;,
+        &quot;uc_color&quot;: 8,
+        &quot;uc_id&quot;: 1,
+        &quot;ui_id&quot;: 1,
+        &quot;utime&quot;: 1470710253000
+    },
+    &quot;errormsg&quot;: &quot;更新用户车辆信息成功&quot;,
+    &quot;errorno&quot;: &quot;0&quot;
+}
+</code></pre>
+<p>####1.3-&gt;读取用户绑定的车牌号</p>
+<table>
+  <thead>
+    <tr>
+      <th title="参数名称">参数名称</th>
+      <th title="值描述">值描述</th>
+      <th title="是否可空">是否可空</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="sign">sign</td>
+      <td title="MD5数字签名(dtype+ui_id)按参数的首字母升序顺序进行组装">MD5数字签名(dtype+ui_id)按参数的首字母升序顺序进行组装</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p>####请求路径</p>
+<p><a href="http://139.224.29.103/v1/read_bindcar.php">http://139.224.29.103/v1/read_bindcar.php</a></p>
+<p>######返回结果</p>
+<pre><code>{
+    &quot;data&quot;: [
+        {
+            &quot;car_brand&quot;: &quot;&quot;,
+            &quot;car_code&quot;: &quot;川A4M99B&quot;,
+            &quot;ctime&quot;: 1470710253000,
+            &quot;is_default&quot;: 0,
+            &quot;note&quot;: &quot;&quot;,
+            &quot;run_url&quot;: &quot;&quot;,
+            &quot;uc_color&quot;: 0,
+            &quot;uc_id&quot;: 1,
+            &quot;ui_id&quot;: 1,
+            &quot;utime&quot;: 1470710253000
+        },
+        {
+            &quot;car_brand&quot;: &quot;&quot;,
+            &quot;car_code&quot;: &quot;辽JQQ360&quot;,
+            &quot;ctime&quot;: 1470902325000,
+            &quot;is_default&quot;: 0,
+            &quot;note&quot;: &quot;&quot;,
+            &quot;run_url&quot;: &quot;&quot;,
+            &quot;uc_color&quot;: 0,
+            &quot;uc_id&quot;: 2,
+            &quot;ui_id&quot;: 1,
+            &quot;utime&quot;: 1470902325000
+        }
+    ],
+    &quot;errormsg&quot;: &quot;读取用户绑定的车牌号成功&quot;,
+    &quot;errorno&quot;: &quot;0&quot;
+}
+</code></pre>
+<p>#########返回字段说明</p>
+<table>
+  <thead>
+    <tr>
+      <th title="名称">名称</th>
+      <th title="值描述">值描述</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="is_default">is_default</td>
+      <td title="是否是默认车牌号选定:0 ：不是 1：是默认车牌">是否是默认车牌号选定 : 0 ：不是 1：是默认车牌</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="run_url">run_url</td>
+      <td title="行驶证照片">行驶证照片</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="uc_color">uc_color</td>
+      <td title="车辆颜色:0 未定 1：黑色 2：白色 3：银色 4：金色 5：红色 6 ：黄色 7：绿色 8：蓝色 9：橙色 10：灰色">车辆颜色:0 未定 1：黑色 2：白色 3：银色 4：金色 5：红色 6 ：黄色 7：绿色 8：蓝色 9：橙色 10：灰色</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="car_brand">car_brand</td>
+      <td title="车辆品牌">车辆品牌</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="uc_id">uc_id</td>
+      <td title="表主键ID">表主键ID</td>
+      <td title="无">无 </td>
+      <td title="长整型">长整型</td>
+    </tr>
+  </tbody>
+</table>
+<p>####1.4-&gt;获取用户优惠券列表</p>
+<table>
+  <thead>
+    <tr>
+      <th title="参数名称">参数名称</th>
+      <th title="值描述">值描述</th>
+      <th title="是否可空">是否可空</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="sign">sign</td>
+      <td title="MD5数字签名(dtype+ui_id)按参数的首字母升序顺序进行组装">MD5数字签名(dtype+ui_id)按参数的首字母升序顺序进行组装</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p>####请求路径</p>
+<p><a href="http://139.224.29.103/v1/read_mycoupon.php">http://139.224.29.103/v1/read_mycoupon.php</a></p>
+<p>######返回结果</p>
+<pre><code>{
+    &quot;data&quot;: [
+        {
+            &quot;upc_id&quot;: 1,
+            &quot;ui_id&quot;: 1,
+            &quot;pc_id&quot;: 1,
+            &quot;money&quot;: 2,
+            &quot;discount&quot;: 0,
+            &quot;high_money&quot;: 5,
+            &quot;upc_type&quot;: 0,
+            &quot;end_time&quot;: 1470719517000,
+            &quot;upc_state&quot;: 0,
+            &quot;ctime&quot;: 1470805921000,
+            &quot;utime&quot;: 1470805924000,
+            &quot;is_effect&quot;: 0
+        }
+    ],
+    &quot;errormsg&quot;: &quot;获取成功&quot;,
+    &quot;errorno&quot;: &quot;0&quot;
+}
+</code></pre>
+<p>#########返回字段说明<br/>|名称|描述|类型|<br/>|----|----|---|<br/>|upc_id|主键ID|long|<br/>|ui_id|主键ID|long|<br/>|pc_id|停车优惠券表主键ID|long|<br/>|money|优惠券金额|int|<br/>|discount|折扣券折数|double|<br/>|high_money|最高抵扣金额|int|<br/>|upc_type|优惠券类型0:金额券1：折扣券|int|<br/>|end_time|有效期|java.util.Date|<br/>|upc_state|使用状态0：未使用1：已使用|int|<br/>|ctime|创建时间|java.util.Date|<br/>|utime|更新时间|java.util.Date|<br/>|note|备注|String|<br/>|send_unit|赠送单位(0:吾泊平台1：龙支付)|int|<br/>|ai_id|活动ID（活动表主键ID）|long|</p>
+<p>####1.5-&gt;读取用户预约下单普通车位,需要的订单准备数据</p>
+<table>
+  <thead>
+    <tr>
+      <th title="参数名称">参数名称</th>
+      <th title="值描述">值描述</th>
+      <th title="是否可空">是否可空</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="pi_id">pi_id</td>
+      <td title="场地主键ID">场地主键ID </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="长整型">长整型</td>
+    </tr>
+    <tr>
+      <td title="car_code">car_code</td>
+      <td title="辽JQQ360 车牌号">辽JQQ360 车牌号</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="area_code">area_code</td>
+      <td title="省市区区域代码 四川省 成都市 龙泉驿区 510112">省市区区域代码 四川省 成都市 龙泉驿区 510112 </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="sign">sign</td>
+      <td title="MD5数字签名(dtype+ui_id+pi_id)按参数的首字母升序顺序进行组装">MD5数字签名(dtype+ui_id+pi_id)按参数的首字母升序顺序进行组装</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p>####请求路径</p>
+<p><a href="http://139.224.29.103/v1/read_expect_order.php">http://139.224.29.103/v1/read_expect_order.php</a></p>
+<p>######返回结果</p>
+<pre><code>{
+    &quot;data&quot;: {
+        &quot;car_code_color&quot;: 0,
+        &quot;car_displacement&quot;: &quot;1.6T&quot;,
+        &quot;car_type&quot;: 1,
+        &quot;charging&quot;: 120,
+        &quot;charging_time&quot;: 60,
+        &quot;ctime&quot;: 1470710308000,
+        &quot;is_default&quot;: 0,
+        &quot;is_time_bucket&quot;: 0,
+        &quot;month_price&quot;: 15000,
+        &quot;month_time&quot;: 30,
+        &quot;note&quot;: &quot;&quot;,
+        &quot;permit_time&quot;: &quot;17:00-08:30&quot;,
+        &quot;pi_id&quot;: 1,
+        &quot;rcr_discount&quot;: 0,
+        &quot;rcr_id&quot;: 1,
+        &quot;rcr_md5&quot;: &quot;&quot;,
+        &quot;rcr_state&quot;: 0,
+        &quot;rcr_type&quot;: 0,
+        &quot;start_price&quot;: 500,
+        &quot;start_time&quot;: 180,
+        &quot;time_bucket&quot;: &quot;白天 9：00-12：00 每小时2元&quot;,
+        &quot;timeout_info&quot;: &quot;首停2小时3元，之后1元/小时&quot;,
+        &quot;utime&quot;: 1470710308000
+    },
+    &quot;errormsg&quot;: &quot;停车场收费规则信息成功&quot;,
+    &quot;errorno&quot;: &quot;0&quot;
+}
+</code></pre>
+<p>#########返回字段说明</p>
+<table>
+  <thead>
+    <tr>
+      <th title="名称">名称</th>
+      <th title="值描述">值描述</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="pi_id">pi_id</td>
+      <td title="停车场主键ID">停车场主键ID</td>
+      <td title="无">无 </td>
+      <td title="长整型">长整型</td>
+    </tr>
+    <tr>
+      <td title="start_price">start_price</td>
+      <td title="起步价（RMB 单位 分）">起步价（RMB 单位 分）</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="charging">charging</td>
+      <td title="计费价(RMB 单位分)">计费价(RMB 单位分)</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="charging_time">charging_time</td>
+      <td title="计费量纲时长（单位 分钟）">计费量纲时长（单位 分钟）</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="month_price">month_price</td>
+      <td title="包月价格(单位分)">包月价格(单位分)</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="month_time">month_time</td>
+      <td title="包月时长(天)">包月时长(天)</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="permit_time">permit_time</td>
+      <td title="准入时间段17:00-08:30">准入时间段17:00-08:30</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="timeout_info">timeout_info</td>
+      <td title="超时费率(首停2小时3元，之后1元/小时)">超时费率(首停2小时3元，之后1元/小时) </td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="rcr_type">rcr_type</td>
+      <td title="停车类型 0：普通车位停车 1：时间段包月停车">停车类型 0：普通车位停车 1：时间段包月停车 </td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="rcr_state">rcr_state</td>
+      <td title="是否有效 0：有效 1：无效">是否有效 0：有效 1：无效 </td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="rcr_discount">rcr_discount</td>
+      <td title="是否可以使用优费券:0： 可以使用 1：无法使用">是否可以使用优费券 : 0： 可以使用 1：无法使用</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="car_displacement">car_displacement</td>
+      <td title="车辆排量">车辆排量</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="car_type">car_type</td>
+      <td title="车牌类型:车牌类型 0：未知车牌:、1：蓝牌小汽车、2：:黑牌小汽车、3：单排黄牌、4：双排黄牌、 5： 警车车牌、6：武警车牌、7：个性化车牌、8：单 排军车牌、9：双排军车牌、10：使馆车牌、11： 香港进出中国大陆车牌、12：农用车牌、13：教 练车牌、14：澳门进出中国大陆车牌、15：双层 武警车牌、16：武警总队车牌、17：双层武警总 队车牌">车牌类型:车牌类型 0：未知车牌:、1：蓝牌小汽车、2：: 黑牌小汽车、3：单排黄牌、4：双排黄牌、 5： 警车车牌、6：武警车牌、7：个性化车牌、8：单 排军车牌、9：双排军车牌、10：使馆车牌、11： 香港进出中国大陆车牌、12：农用车牌、13：教 练车牌、14：澳门进出中国大陆车牌、15：双层 武警车牌、16：武警总队车牌、17：双层武警总 队车牌</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="car_code_color">car_code_color</td>
+      <td title="车牌颜色 0：未知、1：蓝色、2：黄色、3：白色、 4：黑色、5：绿色">车牌颜色 0：未知、1：蓝色、2：黄色、3：白色、 4：黑色、5：绿色</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="is_time_bucket">is_time_bucket</td>
+      <td title="是否按时间段收费 0:不按时间段收费 1：按时间段收费">是否按时间段收费 0:不按时间段收费 1：按时间段收费</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="time_bucket">time_bucket</td>
+      <td title="时间段收费 例如：白天 9：00-12：00 每小时2元">时间段收费 例如：白天 9：00-12：00 每小时2元</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p>####1.6-&gt;扫码赠送优惠券--用户使用吾泊APP扫码功能，扫描朋友的代金卷二维码</p>
+<p>#<font color="red" size = "6px">注意事项：</font><br/><font color="#4590a3" size = "6px"><br/>二维码规则：Rcode@ui_id=1&amp;upc_id=1000<br/>Rcode:表示事件名称<br/>@：表示分隔符<br/>ui_id=1&amp;upc_id=1000：表示内容<br/></font></p>
+<table>
+  <thead>
+    <tr>
+      <th title="参数名称">参数名称</th>
+      <th title="值描述">值描述</th>
+      <th title="是否可空">是否可空</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="from_ui_id">from_ui_id</td>
+      <td title="优惠券原属用户ID">优惠券原属用户ID</td>
+      <td title="无">无 </td>
+      <td title="长整型">长整型</td>
+    </tr>
+    <tr>
+      <td title="upc_id">upc_id</td>
+      <td title="用户优惠券主键ID">用户优惠券主键ID</td>
+      <td title="无">无 </td>
+      <td title="长整型">长整型</td>
+    </tr>
+    <tr>
+      <td title="sign">sign</td>
+      <td title="MD5数字签名(dtype+ui_id+from_ui_id+upc_id)按参数的首字母升序顺序进行组装">MD5数字签名(dtype+ui_id+from_ui_id+upc_id)按参数的首字母升序顺序进行组装</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p>####请求路径</p>
+<p><a href="http://139.224.29.103/v1/give_coupon.php">http://139.224.29.103/v1/give_coupon.php</a></p>
+<p>######返回结果</p>
+<pre><code>{
+    &quot;data&quot;:&quot;&quot;,
+    &quot;errorcode&quot;: &quot;&quot;,
+    &quot;errormsg&quot;: &quot;赠送成功&quot;,
+    &quot;errorno&quot;: &quot;0&quot;
+}
+</code></pre>
+<p>####1.7-&gt;~~获取PDA或者道闸的对应的车是否是逃逸车辆或者未交费车辆（APP，道闸）~~</p>
+<table>
+  <thead>
+    <tr>
+      <th title="参数名称">参数名称</th>
+      <th title="值描述">值描述</th>
+      <th title="是否可空">是否可空</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="pi_id">pi_id</td>
+      <td title="停车场ID">停车场ID </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="长整型">长整型</td>
+    </tr>
+    <tr>
+      <td title="car_code">car_code</td>
+      <td title="车牌号">车牌号</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="area_code">area_code</td>
+      <td title="省市区区域代码">省市区区域代码 </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="type">type</td>
+      <td title="是检查 逃逸逃逸车辆 还是 未支付车辆 0：默认检查逃逸车辆 1：检查未支付车辆">是检查 逃逸逃逸车辆 还是 未支付车辆 0：默认检查逃逸车辆 1：检查未支付车辆</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="sign">sign</td>
+      <td title="MD5数字签名(dtype+pi_id+area_code+type)按参数的首字母升序顺序进行组装">MD5数字签名(dtype+pi_id+area_code+type)按参数的首字母升序顺序进行组装</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p>####请求路径</p>
+<p><a href="http://139.224.29.103/v1/pda_check_escape_car.php">http://139.224.29.103/v1/pda_check_escape_car.php</a></p>
+<p>######返回结果 情况1<br/> {<br/> "data": "",<br/> "errorcode": "",<br/> "errormsg": "不是未交费车辆",<br/> "errorno": "0"<br/> }</p>
+<p>######返回结果 情况2<br/> {<br/> "data": [{<br/> "address_name": "英郡1期",<br/> "allege_state": 0,<br/> "area_code": "510107",<br/> "arrive_time": 1483426880000,<br/> "cancel_state": 0,<br/> "car_code": "川EC0091",<br/> "charging": 1,<br/> "charging_time": 60,<br/> "ctime": 1483426880000,<br/> "discount_money": 0,<br/> "discount_name": "",<br/> "discount_type": 0,<br/> "expect_info": "",<br/> "expect_money": 0,<br/> "expect_state": 0,<br/> "expect_time": 0,<br/> "final_time": 0,<br/> "free_minute": 0,<br/> "id": 1665,<br/> "is_cash": 0,<br/> "is_del": 0,<br/> "is_expect_deduct": 0,<br/> "is_expect_outtime": 0,<br/> "is_free_minute": 0,<br/> "is_open": 0,<br/> "<br/> ": 0,<br/> "lat": 30.544615,<br/> "leave_time": 1483426880000,<br/> "lng": 104.072689,<br/> "money": 0,<br/> "my_order": "2017010315013636",<br/> "note": "",<br/> "open_time": 1483426880000,<br/> "order_type": 0,<br/> "other_order": "",<br/> "park_type": 1,<br/> "pay_source": 0,<br/> "pay_type": 0,<br/> "phone_type": 0,<br/> "pi_id": 2,<br/> "pi_name": "英俊一期",<br/> "pp_state": 0,<br/> "pp_versioncode": "",<br/> "pu_id": 1,<br/> "pu_nd": "20161227141900",<br/> "scan_time": 1483426880000,<br/> "start_price": 2,<br/> "start_time": 120,<br/> "ui_id": 62,<br/> "upc_id": 0,<br/> "utime": 1483426880000<br/> }],<br/> "errorcode": "",<br/> "errormsg": "是未交费车辆",<br/> "errorno": "0"<br/> }</p>
+</body>
+</html>

@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="renderer" content="webkit"/>
+  <meta name="apple-touch-fullscreen" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>order</title>
+  <link rel="stylesheet" type="text/css" href="apidoc.css"/></head>
+<body>
+<p>###APP :: 1.订单管理模块</p>
+<p>####1.1-&gt;普通车位-用户预约下单</p>
+<table>
+  <thead>
+    <tr>
+      <th title="参数名称">参数名称</th>
+      <th title="值描述">值描述</th>
+      <th title="是否可空">是否可空</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="pi_id">pi_id</td>
+      <td title="场地主键ID">场地主键ID</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="长整型">长整型</td>
+    </tr>
+    <tr>
+      <td title="pay_type">pay_type</td>
+      <td title="支付类型 0:手动输入密码支付1：快捷支付（服务器可以请求第三方直接扣款）">支付类型 0:手动输入密码支付1：快捷支付（服务器可以请求第三方直接扣款）</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="car_code">car_code</td>
+      <td title="车牌号辽JQQ360">车牌号辽JQQ360 </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="pp_versioncode">pp_versioncode</td>
+      <td title="当前APPSDK版本号 （内部升级版本代号）">当前APPSDK版本号 （内部升级版本代号） </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="expect_info">expect_info</td>
+      <td title="预约提示信息">预约提示信息 </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="expect_money">expect_money</td>
+      <td title="预约价格（ 单位分）">预约价格（ 单位分） </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="expect_time">expect_time</td>
+      <td title="预约时间 单位分钟">预约时间 单位分钟 </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="area_code">area_code</td>
+      <td title="省市区区域代码 四川省 成都市 龙泉驿区510112">省市区区域代码 四川省 成都市 龙泉驿区510112 </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="sign">sign</td>
+      <td title="MD5数字签名(dtype+ui_id+car_code)按参数的首字母升序顺序进行组装">MD5数字签名(dtype+ui_id+car_code)按参数的首字母升序顺序进行组装</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p>####请求路径</p>
+<p><a href="http://139.224.29.103/v1/expect_order.php">http://139.224.29.103/v1/expect_order.php</a></p>
+<p>######返回结果</p>
+<pre><code>{
+    &quot;data&quot;: {
+        &quot;address_name&quot;: &quot;英郡1期&quot;,
+        &quot;allege_state&quot;: 0,
+        &quot;area_code&quot;: &quot;510107&quot;,
+        &quot;arrive_time&quot;: 1483426880000,
+        &quot;cancel_state&quot;: 0,
+        &quot;car_code&quot;: &quot;川EC0091&quot;,
+        &quot;charging&quot;: 1,
+        &quot;charging_time&quot;: 60,
+        &quot;ctime&quot;: 1483426880000,
+        &quot;discount_money&quot;: 0,
+        &quot;discount_name&quot;: &quot;&quot;,
+        &quot;discount_type&quot;: 0,
+        &quot;expect_info&quot;: &quot;&quot;,
+        &quot;expect_money&quot;: 0,
+        &quot;expect_state&quot;: 0,
+        &quot;expect_time&quot;: 0,
+        &quot;final_time&quot;: 0,
+        &quot;free_minute&quot;: 0,
+        &quot;id&quot;: 1665,
+        &quot;is_cash&quot;: 0,
+        &quot;is_del&quot;: 0,
+        &quot;is_expect_deduct&quot;: 0,
+        &quot;is_expect_outtime&quot;: 0,
+        &quot;is_free_minute&quot;: 0,
+        &quot;is_open&quot;: 0,
+        &quot;
+        &quot;: 0,
+        &quot;lat&quot;: 30.544615,
+        &quot;leave_time&quot;: 1483426880000,
+        &quot;lng&quot;: 104.072689,
+        &quot;money&quot;: 0,
+        &quot;my_order&quot;: &quot;2017010315013636&quot;,
+        &quot;note&quot;: &quot;&quot;,
+        &quot;open_time&quot;: 1483426880000,
+        &quot;order_type&quot;: 0,
+        &quot;other_order&quot;: &quot;&quot;,
+        &quot;park_type&quot;: 1,
+        &quot;pay_source&quot;: 0,
+        &quot;pay_type&quot;: 0,
+        &quot;phone_type&quot;: 0,
+        &quot;pi_id&quot;: 2,
+        &quot;pi_name&quot;: &quot;英俊一期&quot;,
+        &quot;pp_state&quot;: 0,
+        &quot;pp_versioncode&quot;: &quot;&quot;,
+        &quot;pu_id&quot;: 1,
+        &quot;pu_nd&quot;: &quot;20161227141900&quot;,
+        &quot;scan_time&quot;: 1483426880000,
+        &quot;start_price&quot;: 2,
+        &quot;start_time&quot;: 120,
+        &quot;ui_id&quot;: 62,
+        &quot;upc_id&quot;: 0,
+        &quot;utime&quot;: 1483426880000
+    },
+     &quot;errormsg&quot;: &quot;查询附近的停车场信息成功&quot;,
+    &quot;errorno&quot;: &quot;0&quot;
+}
+</code></pre>
+<p>########返回结果的错误信息情况：<br/>|参数|错误代码|类型|错误描述|<br/>|----|----|---|---|<br/>|errorcode|1|字符串|用户钱包余额不足|</p>
+<p>#########返回字段说明<br/>|名称|描述|类型|<br/>|----|----|---|<br/>|id|主键ID|long|<br/>|pi_id|支付停车场主键ID|long|<br/>|ui_id|用户ID|long|<br/>|car_code|用户支付车牌号|String|<br/>|money|支付金额（单位分）|int|<br/>|pp_state|支付状态0:未支付1：已经支付|int|<br/>|ctime|下单时间|java.util.Date|<br/>|utime|更新支付状态时间|java.util.Date|<br/>|pay_source|支付类型1:支付宝2：微信3：银联4：钱包5:龙支付|int|<br/>|my_order|我们的订单号|String|<br/>|other_order|第三方的支付单号|String|<br/>|pay_type|支付类型0:手动输入密码支付1：快捷支付（服务器可以请求第三方直接扣款）|int|<br/>|pp_versioncode|当前APPSDK版本号（内部升级版本代号）|String|<br/>|phone_type|手机类型0:android1：IOS|int|<br/>|order_type|下单类型0:普通下单1：预约下单2：租赁包月订单|int|<br/>|allege_state|申述状态0:未申述1：申述中2：申述失败3：申述成功|int|<br/>|expect_time|预约时长(单位分钟|int|<br/>|arrive_time|到场时间|java.util.Date|<br/>|leave_time|离场时间|java.util.Date|<br/>|expect_money|预定价格|int|<br/>|expect_info|预定提示信息|String|<br/>|area_code|省市县编号|String|<br/>|is_expect_outtime|是否预约已经超时0：未超时1：已经超时|int|<br/>|is_expect_deduct|是否已经扣除预约超时钱0：已锁定扣款金额1：已经扣款成功2：已解绑锁定金额|int|<br/>|start_price|起步价（RMB单位分）|int|<br/>|start_time|起步时长(分钟)|int|<br/>|charging|计费价(RMB单位分)每小时2元|int|<br/>|charging_time|计费单位时长(分钟)例如：每小时2元那么就是1小时|int|<br/>|is_del|删除状态0:正常1：假删除|int|<br/>|upc_id|用户优惠券表主键ID|long|<br/>|discount_money|抵扣优惠金额（单位分）|long|<br/>|note|备注|String|<br/>|discount_name|抵扣优惠券名称|String|<br/>|discount_type|优惠券类型0:金额券1：折扣券|int|<br/>|final_time|结算时计费时长（单位分钟）|int|<br/>|address_name|停车场地点名称|String|<br/>|cancel_state|订单关闭状态0:没有关闭1：已经关闭2：订单异常（停车场心跳时间段内断开或者道闸手动开闸）3：异步数据上传（网络异常）|int|<br/>|is_open|是否开闸0:未开闸1：已开闸|int|<br/>|open_time|开闸时间|java.util.Date|<br/>|is_cash|是否现金支付0：在线支付1：现金支付2：免费支付3:免费车类型4：包月车类型5：租赁车类型|int|<br/>|park_type|停车场类型0：道闸停车场1：占道车场2：露天立体车库停车场|int|<br/>|scan_time|是否可以停车缴费时间（摄像头是否扫描到了：仅限道闸停车使用）|java.util.Date|<br/>|pi_name|停车场名称|String|<br/>|is_over|订单是否完成或者逃逸(0:没有完成1：完成2：车辆逃逸3：未交费)|int|<br/>|free_minute|多少分钟之内进出免费|int|<br/>|is_free_minute|多少分钟之内进出免费是否开启0:不开启1：开启|int|<br/>|pu_id|商户主键ID|long|<br/>|pu_nd|商户编号|String|<br/>|lng|场地经度|double|<br/>|lat|场地纬度|double|<br/>|expect_state|预约状态0:未预约1：预约中2：预约成功3：预约失败4：取消预约中5：取消预约成功6：取消预约失败|int|<br/>|ui_nd|用户唯一标识uuid|String|<br/>|ai_id|活动ID|long|<br/>|ai_money|活动优惠金额（单位分）|int|<br/>|ai_effect|活动优惠是否生效（0：没有1：生效）|int|<br/>|ui_tel|用户电话号码|String|</p>
+<p>####1.2-&gt;下单租赁包月车位</p>
+<table>
+  <thead>
+    <tr>
+      <th title="参数名称">参数名称</th>
+      <th title="值描述">值描述</th>
+      <th title="是否可空">是否可空</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="pi_id">pi_id</td>
+      <td title="场地主键ID">场地主键ID</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="长整型">长整型</td>
+    </tr>
+    <tr>
+      <td title="pay_type">pay_type</td>
+      <td title="支付类型 0:手动输入密码支付1：快捷支付（服务器可以请求第三方直接扣款）">支付类型 0:手动输入密码支付1：快捷支付（服务器可以请求第三方直接扣款）</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="car_code">car_code</td>
+      <td title="车牌号辽JQQ360">车牌号辽JQQ360 </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="pp_versioncode">pp_versioncode</td>
+      <td title="当前APPSDK版本号 （内部升级版本代号）">当前APPSDK版本号 （内部升级版本代号） </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="month_num">month_num</td>
+      <td title="包月租凭月数">包月租凭月数 </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="month_info">month_info</td>
+      <td title="包月提示信息(准入时段 18:00-08:00，300元/月)">包月提示信息(准入时段 18:00-08:00，300元/月)</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="area_code">area_code</td>
+      <td title="省市区区域代码 四川省 成都市 龙泉驿区510112">省市区区域代码 四川省 成都市 龙泉驿区510112 </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="permit_time">permit_time</td>
+      <td title="准入时间段（17:00-08:30）">准入时间段（17:00-08:30） </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="is_24hours">is_24hours</td>
+      <td title="是否是24小时包月 0:不是24小时包月 1：是24小时包月">是否是24小时包月 0:不是24小时包月 1：是24小时包月 </td>
+      <td title="是">是</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="upc_id">upc_id</td>
+      <td title="用户优惠券表主键ID">用户优惠券表主键ID</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="长整型">长整型</td>
+    </tr>
+    <tr>
+      <td title="pay_source">pay_source</td>
+      <td title="支付类型 1:支付宝 2：微信 3：银联 4：钱包 5:龙支付">支付类型 1:支付宝 2：微信 3：银联 4：钱包 5:龙支付</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="orderid">orderid</td>
+      <td title="普通停车订单ID">普通停车订单ID</td>
+      <td title="是">是</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="sign">sign</td>
+      <td title="MD5数字签名(dtype+ui_id+car_code)按参数的首字母升序顺序进行组装">MD5数字签名(dtype+ui_id+car_code)按参数的首字母升序顺序进行组装</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p>####请求路径</p>
+<p><a href="http://139.224.29.103/v1/pay_rent_order.php">http://139.224.29.103/v1/pay_rent_order.php</a></p>
+<p>######返回结果</p>
+<pre><code>{
+    &quot;data&quot;:       {
+        &quot;address_name&quot;: &quot;成都市天华路88号&quot;,
+        &quot;allege_state&quot;: 0,
+        &quot;area_code&quot;: &quot;510107&quot;,
+        &quot;arrive_time&quot;: 1483423410000,
+        &quot;base_rate&quot;: &quot;&quot;,
+        &quot;cancel_state&quot;: 0,
+        &quot;car_code&quot;: &quot;川A42575&quot;,
+        &quot;ctime&quot;: 1483423410000,
+        &quot;discount_money&quot;: 0,
+        &quot;discount_name&quot;: &quot;&quot;,
+        &quot;discount_type&quot;: 0,
+        &quot;end_time&quot;: 1486101810000,
+        &quot;final_time&quot;: 0,
+        &quot;id&quot;: 6,
+        &quot;is_24hours&quot;: 0,
+        &quot;is_cash&quot;: 0,
+        &quot;is_del&quot;: 0,
+        &quot;is_expire&quot;: 0,
+        &quot;is_open&quot;: 0,
+        &quot;is_over&quot;: 0,
+        &quot;lat&quot;: 30.547829,
+        &quot;lng&quot;: 104.072388,
+        &quot;money&quot;: 3,
+        &quot;month_info&quot;: &quot;准入时段 14:17-22:12，0.03元/月&quot;,
+        &quot;month_num&quot;: 1,
+        &quot;my_order&quot;: &quot;2017010314036620&quot;,
+        &quot;note&quot;: &quot;用户租赁下单&quot;,
+        &quot;open_time&quot;: 1483423410000,
+        &quot;order_type&quot;: 2,
+        &quot;other_order&quot;: &quot;&quot;,
+        &quot;outtime_charge_minute&quot;: 0,
+        &quot;outtime_charge_money&quot;: 0,
+        &quot;outtime_minute&quot;: 0,
+        &quot;outtime_money&quot;: 0,
+        &quot;outtime_other_order&quot;: &quot;&quot;,
+        &quot;outtime_paystate&quot;: 0,
+        &quot;outtime_paytime&quot;: 1483423410000,
+        &quot;outtime_rate&quot;: &quot;&quot;,
+        &quot;outtime_start_minute&quot;: 0,
+        &quot;outtime_start_price&quot;: 0,
+        &quot;outtime_time&quot;: 1483423410000,
+        &quot;park_type&quot;: 0,
+        &quot;pay_source&quot;: 4,
+        &quot;pay_type&quot;: 0,
+        &quot;permit_time&quot;: &quot;14:17-22:12&quot;,
+        &quot;phone_type&quot;: 0,
+        &quot;pi_id&quot;: 1,
+        &quot;pi_name&quot;: &quot;英郡二期&quot;,
+        &quot;pp_state&quot;: 1,
+        &quot;pp_versioncode&quot;: &quot;1&quot;,
+        &quot;pu_id&quot;: 1,
+        &quot;pu_nd&quot;: &quot;20161227141900&quot;,
+        &quot;rent_state&quot;: 0,
+        &quot;scan_time&quot;: 1483423410000,
+        &quot;start_time&quot;: 1483423410000,
+        &quot;temp_money&quot;: 0,
+        &quot;ui_id&quot;: 51,
+        &quot;upc_id&quot;: 0,
+        &quot;utime&quot;: 1483423410000
+    },
+     &quot;errormsg&quot;: &quot;查询附近的停车场信息成功&quot;,
+    &quot;errorno&quot;: &quot;0&quot;
+}
+</code></pre>
+<p>#########返回字段说明<br/>|名称|描述|类型|<br/>|----|----|---|<br/>|id|主键ID|long|<br/>|pi_id|支付停车场主键ID|long|<br/>|ui_id|用户ID|long|<br/>|car_code|用户支付车牌号|String|<br/>|money|支付金额（单位分）|int|<br/>|pp_state|支付状态0:未支付1：已经支付|int|<br/>|ctime|下单时间|java.util.Date|<br/>|utime|更新支付状态时间|java.util.Date|<br/>|month_num|包月租凭月数|int|<br/>|pay_source|支付类型1:支付宝2：微信3：银联4：钱包5:龙支付|int|<br/>|my_order|我们的订单号|String|<br/>|other_order|第三方的支付单号|String|<br/>|pay_type|支付类型0:手动输入密码支付1：快捷支付（服务器可以请求第三方直接扣款）|int|<br/>|pp_versioncode|当前APPSDK版本号（内部升级版本代号）|String|<br/>|phone_type|手机类型0:android1：IOS|int|<br/>|order_type|下单类型0:普通下单1：预约下单2：租赁包月订单|int|<br/>|start_time|启始时间|java.util.Date|<br/>|end_time|到期时间|java.util.Date|<br/>|month_info|包月提示信息|String|<br/>|allege_state|申述状态0:未申述1：申述中2：申述失败3：申述成功|int|<br/>|area_code|省市县编号|String|<br/>|is_del|删除状态0:正常1：假删除|int|<br/>|upc_id|用户优惠券表主键ID|long|<br/>|discount_money|抵扣优惠金额（单位分）|long|<br/>|note|备注|String|<br/>|discount_name|抵扣优惠券名称|String|<br/>|discount_type|优惠券类型0:金额券1：折扣券|int|<br/>|final_time|结算时计费时长（单位分钟）|int|<br/>|address_name|停车场地点名称|String|<br/>|base_rate|基础费率（300元/月）|String|<br/>|outtime_rate|超时费率(首停2小时3元，之后1元/小时)|String|<br/>|outtime_money|超时金额|int|<br/>|outtime_time|超时结算时间（2016-08-1012：00：00）|java.util.Date|<br/>|outtime_minute|超时时长（单位分钟）|int|<br/>|outtime_start_price|超时起步价|int|<br/>|outtime_start_minute|超时起步量纲时长（单位分钟）|int|<br/>|outtime_charge_money|超时计费价格（单位分）|int|<br/>|outtime_charge_minute|超时计费量纲时长（单位分钟）|int|<br/>|outtime_other_order|超时第三方支付订单号|String|<br/>|outtime_paytime|超时缴费时间|java.util.Date|<br/>|outtime_paystate|超时缴费状态0:未缴费1：已经缴费|int|<br/>|permit_time|准入时间段（17:00-08:30）|String|<br/>|is_24hours|是否是24小时包月0:不是24小时包月1：是24小时包月|int|<br/>|is_open|是否开闸0:未开闸1：已开闸|int|<br/>|open_time|开闸时间|java.util.Date|<br/>|is_cash|是否现金支付0：在线支付1：现金支付|int|<br/>|park_type|停车场类型0：道闸停车场1：占道车场2：露天立体车库停车场|int|<br/>|scan_time|是否可以停车缴费时间（摄像头是否扫描到了：仅限道闸停车使用）|java.util.Date|<br/>|arrive_time|该次入库的到达时间|java.util.Date|<br/>|temp_money|临停费用累计|long|<br/>|pi_name|停车场名称|String|<br/>|is_over|订单是否完成或者逃逸(0:没有完成1：完成2：车辆逃逸3：未交费)|int|<br/>|cancel_state|订单关闭状态 0:没有关闭 1：已经关闭 2：订单异常|int|<br/>|pu_id|商户主键ID|long|<br/>|pu_nd|商户编号|String|<br/>|lng|场地经度|double|<br/>|lat|场地纬度|double|<br/>|is_expire|是否已到期（0：没有到期1：已经到期）|int|<br/>|rent_state|租赁状态0:待支付 1：租赁中2：租赁成功3：租赁失败--解绑租赁金额|int|<br/>|ui_nd|用户唯一标识uuid|String|<br/>|ai_id|活动ID|long|<br/>|ai_money|活动优惠金额（单位分）|int|<br/>|ai_effect|活动优惠是否生效（0：没有1：生效）|int|</p>
+<p>####1.3-&gt;用户停车缴费读取订单---缴费出库</p>
+<table>
+  <thead>
+    <tr>
+      <th title="参数名称">参数名称</th>
+      <th title="值描述">值描述</th>
+      <th title="是否可空">是否可空</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="orderid">orderid</td>
+      <td title="订单号">订单号</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="sign">sign</td>
+      <td title="MD5数字签名(dtype+ui_id+orderid)按参数的首字母升序顺序进行组装">MD5数字签名(dtype+ui_id+orderid)按参数的首字母升序顺序进行组装</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p>####请求路径</p>
+<p><a href="http://139.224.29.103/v1/read_pay_order.php">http://139.224.29.103/v1/read_pay_order.php</a></p>
+<p>######返回结果</p>
+<pre><code>{
+&quot;data&quot;: {
+    &quot;discount_money&quot;:100 表示 有随机立免金额--优惠金额 单位分
+    &quot;is_show&quot;: 0,
+    &quot;coupon&quot;: &quot;&quot;,
+    &quot;pay_park&quot;: {
+        &quot;address_name&quot;: &quot;泸州市江阳区慈善路139号&quot;,
+        &quot;allege_state&quot;: 0,
+        &quot;area_code&quot;: &quot;510502&quot;,
+        &quot;arrive_time&quot;: 1486448943000,
+        &quot;cancel_state&quot;: 2,
+        &quot;car_code&quot;: &quot;川EX6G33&quot;,
+        &quot;charging&quot;: 100,
+        &quot;charging_time&quot;: 60,
+        &quot;ctime&quot;: 1486448943000,
+        &quot;discount_money&quot;: 0,
+        &quot;discount_name&quot;: &quot;&quot;,
+        &quot;discount_type&quot;: 0,
+        &quot;expect_info&quot;: &quot;&quot;,
+        &quot;expect_money&quot;: 0,
+        &quot;expect_state&quot;: 0,
+        &quot;expect_time&quot;: 0,
+        &quot;final_time&quot;: 154,
+        &quot;free_minute&quot;: 0,
+        &quot;id&quot;: 7533,
+        &quot;is_cash&quot;: 1,
+        &quot;is_del&quot;: 0,
+        &quot;is_expect_deduct&quot;: 0,
+        &quot;is_expect_outtime&quot;: 0,
+        &quot;is_free_minute&quot;: 0,
+        &quot;is_open&quot;: 0,
+        &quot;is_over&quot;: 0,
+        &quot;lat&quot;: 28.89002,
+        &quot;leave_time&quot;: 1486448943000,
+        &quot;lng&quot;: 105.453094,
+        &quot;money&quot;: 800,
+        &quot;my_order&quot;: &quot;2017020714290427&quot;,
+        &quot;note&quot;: &quot;&quot;,
+        &quot;open_time&quot;: 1486448943000,
+        &quot;order_type&quot;: 0,
+        &quot;other_order&quot;: &quot;&quot;,
+        &quot;park_type&quot;: 0,
+        &quot;pay_source&quot;: 0,
+        &quot;pay_type&quot;: 0,
+        &quot;phone_type&quot;: 0,
+        &quot;pi_id&quot;: 161,
+        &quot;pi_name&quot;: &quot;泸州重百地下停车场&quot;,
+        &quot;pp_state&quot;: 1,
+        &quot;pp_versioncode&quot;: &quot;&quot;,
+        &quot;pu_id&quot;: 3,
+        &quot;pu_nd&quot;: &quot;20170117150118&quot;,
+        &quot;scan_time&quot;: 1486448943000,
+        &quot;start_price&quot;: 600,
+        &quot;start_time&quot;: 60,
+        &quot;ui_id&quot;: 0,
+        &quot;ui_nd&quot;: &quot;&quot;,
+        &quot;upc_id&quot;: 0,
+        &quot;utime&quot;: 1486457652000
+    }
+},
+&quot;errorcode&quot;: &quot;&quot;,
+&quot;errormsg&quot;: &quot;用户停车缴费读取订单成功&quot;,
+&quot;errorno&quot;: &quot;0&quot;
+</code></pre>
+<p>}</p>
+<p>#########返回字段说明</p>
+<p>####coupon:<br/>|名称|值描述|限制长度|参数类型|<br/>|--------|----|--------|-------|<br/>| upc_state| 使用状态 0：未使用 1：已使用| 无 |整型|<br/>| discount| 折扣券折数| 无 |浮点数|<br/>| high_money| 最高抵扣金额| 无 |整型|<br/>| upc_type| 优惠券类型 0:金额券 1：折扣券| 无 |整型|<br/>| pc_id| 停车优惠券类型表主键ID| 无 |长整型|<br/>| upc_id| 用户优惠券表主键ID| 无 |长整型|</p>
+<p>####pay_park:</p>
+<p>#########返回字段说明<br/>|名称|描述|类型|<br/>|----|----|---|<br/>|id|主键ID|long|<br/>|pi_id|支付停车场主键ID|long|<br/>|ui_id|用户ID|long|<br/>|car_code|用户支付车牌号|String|<br/>|money|支付金额（单位分）|int|<br/>|pp_state|支付状态0:未支付1：已经支付|int|<br/>|ctime|下单时间|java.util.Date|<br/>|utime|更新支付状态时间|java.util.Date|<br/>|pay_source|支付类型1:支付宝2：微信3：银联4：钱包5:龙支付|int|<br/>|my_order|我们的订单号|String|<br/>|other_order|第三方的支付单号|String|<br/>|pay_type|支付类型0:手动输入密码支付1：快捷支付（服务器可以请求第三方直接扣款）|int|<br/>|pp_versioncode|当前APPSDK版本号（内部升级版本代号）|String|<br/>|phone_type|手机类型0:android1：IOS|int|<br/>|order_type|下单类型0:普通下单1：预约下单2：租赁包月订单|int|<br/>|allege_state|申述状态0:未申述1：申述中2：申述失败3：申述成功|int|<br/>|expect_time|预约时长(单位分钟|int|<br/>|arrive_time|到场时间|java.util.Date|<br/>|leave_time|离场时间|java.util.Date|<br/>|expect_money|预定价格|int|<br/>|expect_info|预定提示信息|String|<br/>|area_code|省市县编号|String|<br/>|is_expect_outtime|是否预约已经超时0：未超时1：已经超时|int|<br/>|is_expect_deduct|是否已经扣除预约超时钱0：已锁定扣款金额1：已经扣款成功2：已解绑锁定金额|int|<br/>|start_price|起步价（RMB单位分）|int|<br/>|start_time|起步时长(分钟)|int|<br/>|charging|计费价(RMB单位分)每小时2元|int|<br/>|charging_time|计费单位时长(分钟)例如：每小时2元那么就是1小时|int|<br/>|is_del|删除状态0:正常1：假删除|int|<br/>|upc_id|用户优惠券表主键ID|long|<br/>|discount_money|抵扣优惠金额（单位分）|long|<br/>|note|备注|String|<br/>|discount_name|抵扣优惠券名称|String|<br/>|discount_type|优惠券类型0:金额券1：折扣券|int|<br/>|final_time|结算时计费时长（单位分钟）|int|<br/>|address_name|停车场地点名称|String|<br/>|cancel_state|订单关闭状态0:没有关闭1：已经关闭2：订单异常（停车场心跳时间段内断开或者道闸手动开闸）3：异步数据上传（网络异常）|int|<br/>|is_open|是否开闸0:未开闸1：已开闸|int|<br/>|open_time|开闸时间|java.util.Date|<br/>|is_cash|是否现金支付0：在线支付1：现金支付2：免费支付3:免费车类型4：包月车类型5：租赁车类型|int|<br/>|park_type|停车场类型0：道闸停车场1：占道车场2：露天立体车库停车场|int|<br/>|scan_time|是否可以停车缴费时间（摄像头是否扫描到了：仅限道闸停车使用）|java.util.Date|<br/>|pi_name|停车场名称|String|<br/>|is_over|订单是否完成或者逃逸(0:没有完成1：完成2：车辆逃逸3：未交费)|int|<br/>|free_minute|多少分钟之内进出免费|int|<br/>|is_free_minute|多少分钟之内进出免费是否开启0:不开启1：开启|int|<br/>|pu_id|商户主键ID|long|<br/>|pu_nd|商户编号|String|<br/>|lng|场地经度|double|<br/>|lat|场地纬度|double|<br/>|expect_state|预约状态0:未预约1：预约中2：预约成功3：预约失败4：取消预约中5：取消预约成功6：取消预约失败|int|<br/>|ui_nd|用户唯一标识uuid|String|<br/>|ai_id|活动ID|long|<br/>|ai_money|活动优惠金额（单位分）|int|<br/>|ai_effect|活动优惠是否生效（0：没有1：生效）|int|<br/>|ui_tel|用户电话号码|String|</p>
+<p>####1.4-&gt;用户普通停车位直接正式付款下单(对应E泊 停车缴费)</p>
+<table>
+  <thead>
+    <tr>
+      <th title="参数名称">参数名称</th>
+      <th title="值描述">值描述</th>
+      <th title="是否可空">是否可空</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="orderid">orderid</td>
+      <td title="普通停车订单ID">普通停车订单ID</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="upc_id">upc_id</td>
+      <td title="用户优惠券表主键ID">用户优惠券表主键ID</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="长整型">长整型</td>
+    </tr>
+    <tr>
+      <td title="pay_source">pay_source</td>
+      <td title="支付类型 1:支付宝 2：微信 3：银联 4：钱包 5:龙支付">支付类型 1:支付宝 2：微信 3：银联 4：钱包 5:龙支付</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="sign">sign</td>
+      <td title="MD5数字签名(dtype+ui_id+orderid)按参数的首字母升序顺序进行组装">MD5数字签名(dtype+ui_id+orderid)按参数的首字母升序顺序进行组装</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p>####请求路径</p>
+<p><a href="http://139.224.29.103/v1/pay_order.php">http://139.224.29.103/v1/pay_order.php</a></p>
+<p>######返回结果<br/> {<br/> "data": {<br/> "address_name": "英郡1期",<br/> "allege_state": 0,<br/> "area_code": "510107",<br/> "arrive_time": 1483426880000,<br/> "cancel_state": 0,<br/> "car_code": "川EC0091",<br/> "charging": 1,<br/> "charging_time": 60,<br/> "ctime": 1483426880000,<br/> "discount_money": 0,<br/> "discount_name": "",<br/> "discount_type": 0,<br/> "expect_info": "",<br/> "expect_money": 0,<br/> "expect_state": 0,<br/> "expect_time": 0,<br/> "final_time": 0,<br/> "free_minute": 0,<br/> "id": 1665,<br/> "is_cash": 0,<br/> "is_del": 0,<br/> "is_expect_deduct": 0,<br/> "is_expect_outtime": 0,<br/> "is_free_minute": 0,<br/> "is_open": 0,<br/> "is_over": 0,<br/> "lat": 30.544615,<br/> "leave_time": 1483426880000,<br/> "lng": 104.072689,<br/> "money": 0,<br/> "my_order": "2017010315013636",<br/> "note": "",<br/> "open_time": 1483426880000,<br/> "order_type": 0,<br/> "other_order": "",<br/> "park_type": 1,<br/> "pay_source": 0,<br/> "pay_type": 0,<br/> "phone_type": 0,<br/> "pi_id": 2,<br/> "pi_name": "英俊一期",<br/> "pp_state": 0,<br/> "pp_versioncode": "",<br/> "pu_id": 1,<br/> "pu_nd": "20161227141900",<br/> "scan_time": 1483426880000,<br/> "start_price": 2,<br/> "start_time": 120,<br/> "ui_id": 62,<br/> "upc_id": 0,<br/> "utime": 1483426880000<br/> },<br/> "errormsg": "用户停车缴费下单信息更新成功",<br/> "errorno": "0"<br/> }</p>
+<p>#########返回字段说明<br/>|名称|描述|类型|<br/>|----|----|---|<br/>|id|主键ID|long|<br/>|pi_id|支付停车场主键ID|long|<br/>|ui_id|用户ID|long|<br/>|car_code|用户支付车牌号|String|<br/>|money|支付金额（单位分）|int|<br/>|pp_state|支付状态0:未支付1：已经支付|int|<br/>|ctime|下单时间|java.util.Date|<br/>|utime|更新支付状态时间|java.util.Date|<br/>|pay_source|支付类型1:支付宝2：微信3：银联4：钱包5:龙支付|int|<br/>|my_order|我们的订单号|String|<br/>|other_order|第三方的支付单号|String|<br/>|pay_type|支付类型0:手动输入密码支付1：快捷支付（服务器可以请求第三方直接扣款）|int|<br/>|pp_versioncode|当前APPSDK版本号（内部升级版本代号）|String|<br/>|phone_type|手机类型0:android1：IOS|int|<br/>|order_type|下单类型0:普通下单1：预约下单2：租赁包月订单|int|<br/>|allege_state|申述状态0:未申述1：申述中2：申述失败3：申述成功|int|<br/>|expect_time|预约时长(单位分钟|int|<br/>|arrive_time|到场时间|java.util.Date|<br/>|leave_time|离场时间|java.util.Date|<br/>|expect_money|预定价格|int|<br/>|expect_info|预定提示信息|String|<br/>|area_code|省市县编号|String|<br/>|is_expect_outtime|是否预约已经超时0：未超时1：已经超时|int|<br/>|is_expect_deduct|是否已经扣除预约超时钱0：已锁定扣款金额1：已经扣款成功2：已解绑锁定金额|int|<br/>|start_price|起步价（RMB单位分）|int|<br/>|start_time|起步时长(分钟)|int|<br/>|charging|计费价(RMB单位分)每小时2元|int|<br/>|charging_time|计费单位时长(分钟)例如：每小时2元那么就是1小时|int|<br/>|is_del|删除状态0:正常1：假删除|int|<br/>|upc_id|用户优惠券表主键ID|long|<br/>|discount_money|抵扣优惠金额（单位分）|long|<br/>|note|备注|String|<br/>|discount_name|抵扣优惠券名称|String|<br/>|discount_type|优惠券类型0:金额券1：折扣券|int|<br/>|final_time|结算时计费时长（单位分钟）|int|<br/>|address_name|停车场地点名称|String|<br/>|cancel_state|订单关闭状态0:没有关闭1：已经关闭2：订单异常（停车场心跳时间段内断开或者道闸手动开闸）3：异步数据上传（网络异常）|int|<br/>|is_open|是否开闸0:未开闸1：已开闸|int|<br/>|open_time|开闸时间|java.util.Date|<br/>|is_cash|是否现金支付0：在线支付1：现金支付2：免费支付3:免费车类型4：包月车类型5：租赁车类型|int|<br/>|park_type|停车场类型0：道闸停车场1：占道车场2：露天立体车库停车场|int|<br/>|scan_time|是否可以停车缴费时间（摄像头是否扫描到了：仅限道闸停车使用）|java.util.Date|<br/>|pi_name|停车场名称|String|<br/>|is_over|订单是否完成或者逃逸(0:没有完成1：完成2：车辆逃逸3：未交费)|int|<br/>|free_minute|多少分钟之内进出免费|int|<br/>|is_free_minute|多少分钟之内进出免费是否开启0:不开启1：开启|int|<br/>|pu_id|商户主键ID|long|<br/>|pu_nd|商户编号|String|<br/>|lng|场地经度|double|<br/>|lat|场地纬度|double|<br/>|expect_state|预约状态0:未预约1：预约中2：预约成功3：预约失败4：取消预约中5：取消预约成功6：取消预约失败|int|<br/>|ui_nd|用户唯一标识uuid|String|<br/>|ai_id|活动ID|long|<br/>|ai_money|活动优惠金额（单位分）|int|<br/>|ai_effect|活动优惠是否生效（0：没有1：生效）|int|<br/>|ui_tel|用户电话号码|String|</p>
+<p>####1.5-&gt;读取用户预约下单普通车位 需要的订单准备数据</p>
+<table>
+  <thead>
+    <tr>
+      <th title="参数名称">参数名称</th>
+      <th title="值描述">值描述</th>
+      <th title="是否可空">是否可空</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="pi_id">pi_id</td>
+      <td title="场地主键ID">场地主键ID</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="长整型">长整型</td>
+    </tr>
+    <tr>
+      <td title="area_code">area_code</td>
+      <td title="省市区区域代码 四川省 成都市 龙泉驿区510112">省市区区域代码 四川省 成都市 龙泉驿区510112 </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="sign">sign</td>
+      <td title="MD5数字签名(dtype+ui_id+pi_id)按参数的首字母升序顺序进行组装">MD5数字签名(dtype+ui_id+pi_id)按参数的首字母升序顺序进行组装</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p>####请求路径</p>
+<p><a href="http://139.224.29.103/v1/read_expect_order.php">http://139.224.29.103/v1/read_expect_order.php</a></p>
+<p>######返回结果</p>
+<pre><code>{
+    &quot;data&quot;:  {
+        &quot;address_name&quot;: &quot;英郡1期&quot;,
+        &quot;allege_state&quot;: 0,
+        &quot;area_code&quot;: &quot;510107&quot;,
+        &quot;arrive_time&quot;: 1483426880000,
+        &quot;cancel_state&quot;: 0,
+        &quot;car_code&quot;: &quot;川EC0091&quot;,
+        &quot;charging&quot;: 1,
+        &quot;charging_time&quot;: 60,
+        &quot;ctime&quot;: 1483426880000,
+        &quot;discount_money&quot;: 0,
+        &quot;discount_name&quot;: &quot;&quot;,
+        &quot;discount_type&quot;: 0,
+        &quot;expect_info&quot;: &quot;&quot;,
+        &quot;expect_money&quot;: 0,
+        &quot;expect_state&quot;: 0,
+        &quot;expect_time&quot;: 0,
+        &quot;final_time&quot;: 0,
+        &quot;free_minute&quot;: 0,
+        &quot;id&quot;: 1665,
+        &quot;is_cash&quot;: 0,
+        &quot;is_del&quot;: 0,
+        &quot;is_expect_deduct&quot;: 0,
+        &quot;is_expect_outtime&quot;: 0,
+        &quot;is_free_minute&quot;: 0,
+        &quot;is_open&quot;: 0,
+        &quot;is_over&quot;: 0,
+        &quot;lat&quot;: 30.544615,
+        &quot;leave_time&quot;: 1483426880000,
+        &quot;lng&quot;: 104.072689,
+        &quot;money&quot;: 0,
+        &quot;my_order&quot;: &quot;2017010315013636&quot;,
+        &quot;note&quot;: &quot;&quot;,
+        &quot;open_time&quot;: 1483426880000,
+        &quot;order_type&quot;: 0,
+        &quot;other_order&quot;: &quot;&quot;,
+        &quot;park_type&quot;: 1,
+        &quot;pay_source&quot;: 0,
+        &quot;pay_type&quot;: 0,
+        &quot;phone_type&quot;: 0,
+        &quot;pi_id&quot;: 2,
+        &quot;pi_name&quot;: &quot;英俊一期&quot;,
+        &quot;pp_state&quot;: 0,
+        &quot;pp_versioncode&quot;: &quot;&quot;,
+        &quot;pu_id&quot;: 1,
+        &quot;pu_nd&quot;: &quot;20161227141900&quot;,
+        &quot;scan_time&quot;: 1483426880000,
+        &quot;start_price&quot;: 2,
+        &quot;start_time&quot;: 120,
+        &quot;ui_id&quot;: 62,
+        &quot;upc_id&quot;: 0,
+        &quot;utime&quot;: 1483426880000
+    },
+    &quot;errormsg&quot;: &quot;停车场收费规则信息成功&quot;,
+    &quot;errorno&quot;: &quot;0&quot;
+}
+</code></pre>
+<p>#########返回字段说明<br/>|名称|描述|类型|<br/>|----|----|---|<br/>|id|主键ID|long|<br/>|pi_id|支付停车场主键ID|long|<br/>|ui_id|用户ID|long|<br/>|car_code|用户支付车牌号|String|<br/>|money|支付金额（单位分）|int|<br/>|pp_state|支付状态0:未支付1：已经支付|int|<br/>|ctime|下单时间|java.util.Date|<br/>|utime|更新支付状态时间|java.util.Date|<br/>|pay_source|支付类型1:支付宝2：微信3：银联4：钱包5:龙支付|int|<br/>|my_order|我们的订单号|String|<br/>|other_order|第三方的支付单号|String|<br/>|pay_type|支付类型0:手动输入密码支付1：快捷支付（服务器可以请求第三方直接扣款）|int|<br/>|pp_versioncode|当前APPSDK版本号（内部升级版本代号）|String|<br/>|phone_type|手机类型0:android1：IOS|int|<br/>|order_type|下单类型0:普通下单1：预约下单2：租赁包月订单|int|<br/>|allege_state|申述状态0:未申述1：申述中2：申述失败3：申述成功|int|<br/>|expect_time|预约时长(单位分钟|int|<br/>|arrive_time|到场时间|java.util.Date|<br/>|leave_time|离场时间|java.util.Date|<br/>|expect_money|预定价格|int|<br/>|expect_info|预定提示信息|String|<br/>|area_code|省市县编号|String|<br/>|is_expect_outtime|是否预约已经超时0：未超时1：已经超时|int|<br/>|is_expect_deduct|是否已经扣除预约超时钱0：已锁定扣款金额1：已经扣款成功2：已解绑锁定金额|int|<br/>|start_price|起步价（RMB单位分）|int|<br/>|start_time|起步时长(分钟)|int|<br/>|charging|计费价(RMB单位分)每小时2元|int|<br/>|charging_time|计费单位时长(分钟)例如：每小时2元那么就是1小时|int|<br/>|is_del|删除状态0:正常1：假删除|int|<br/>|upc_id|用户优惠券表主键ID|long|<br/>|discount_money|抵扣优惠金额（单位分）|long|<br/>|note|备注|String|<br/>|discount_name|抵扣优惠券名称|String|<br/>|discount_type|优惠券类型0:金额券1：折扣券|int|<br/>|final_time|结算时计费时长（单位分钟）|int|<br/>|address_name|停车场地点名称|String|<br/>|cancel_state|订单关闭状态0:没有关闭1：已经关闭2：订单异常（停车场心跳时间段内断开或者道闸手动开闸）3：异步数据上传（网络异常）|int|<br/>|is_open|是否开闸0:未开闸1：已开闸|int|<br/>|open_time|开闸时间|java.util.Date|<br/>|is_cash|是否现金支付0：在线支付1：现金支付2：免费支付3:免费车类型4：包月车类型5：租赁车类型|int|<br/>|park_type|停车场类型0：道闸停车场1：占道车场2：露天立体车库停车场|int|<br/>|scan_time|是否可以停车缴费时间（摄像头是否扫描到了：仅限道闸停车使用）|java.util.Date|<br/>|pi_name|停车场名称|String|<br/>|is_over|订单是否完成或者逃逸(0:没有完成1：完成2：车辆逃逸3：未交费)|int|<br/>|free_minute|多少分钟之内进出免费|int|<br/>|is_free_minute|多少分钟之内进出免费是否开启0:不开启1：开启|int|<br/>|pu_id|商户主键ID|long|<br/>|pu_nd|商户编号|String|<br/>|lng|场地经度|double|<br/>|lat|场地纬度|double|<br/>|expect_state|预约状态0:未预约1：预约中2：预约成功3：预约失败4：取消预约中5：取消预约成功6：取消预约失败|int|<br/>|ui_nd|用户唯一标识uuid|String|<br/>|ai_id|活动ID|long|<br/>|ai_money|活动优惠金额（单位分）|int|<br/>|ai_effect|活动优惠是否生效（0：没有1：生效）|int|<br/>|ui_tel|用户电话号码|String|</p>
+<p>####1.6-&gt;读取停车场租赁详情</p>
+<table>
+  <thead>
+    <tr>
+      <th title="参数名称">参数名称</th>
+      <th title="值描述">值描述</th>
+      <th title="是否可空">是否可空</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="pi_id">pi_id</td>
+      <td title="场地主键ID">场地主键ID</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="长整型">长整型</td>
+    </tr>
+    <tr>
+      <td title="area_code">area_code</td>
+      <td title="省市区区域代码 四川省 成都市 龙泉驿区510112">省市区区域代码 四川省 成都市 龙泉驿区510112 </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="sign">sign</td>
+      <td title="MD5数字签名(dtype+ui_id+pi_id)按参数的首字母升序顺序进行组装">MD5数字签名(dtype+ui_id+pi_id)按参数的首字母升序顺序进行组装</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p>####请求路径</p>
+<p><a href="http://139.224.29.103/v1/read_parkrent_info.php">http://139.224.29.103/v1/read_parkrent_info.php</a></p>
+<p>######返回结果<br/> {<br/> "data": {<br/> "rule": {<br/> "area_code": "510122",<br/> "car_code_color": 1,<br/> "car_displacement": "1.6T",<br/> "car_type": 1,<br/> "charging": 120,<br/> "charging_time": 60,<br/> "ctime": 1470971498000,<br/> "is_default": 0,<br/> "is_time_bucket": 0,<br/> "month_price": 15000,<br/> "month_time": 30,<br/> "note": "",<br/> "permit_time": "17:00-08:30",<br/> "pi_id": 1,<br/> "rcr_discount": 0,<br/> "rcr_id": 2,<br/> "rcr_md5": "",<br/> "rcr_state": 0,<br/> "rcr_type": 1,<br/> "start_price": 500,<br/> "start_time": 180,<br/> "time_bucket": "白天 9：00-12：00 每小时2元",<br/> "timeout_info": "首停2小时3元，之后1元/小时",<br/> "utime": 1470971498000<br/> },<br/> "park_info": {<br/> "address_name": "天府三街地铁A出口",<br/> "allow_expect_time": 0,<br/> "allow_revoke_time": 0,<br/> "area_code": "0",<br/> "camera_info": "罗技Pro C920",<br/> "carport_space": 93,<br/> "carport_total": 100,<br/> "carport_yet": 7,<br/> "copy_linkman_name": "张小强",<br/> "copy_linkman_tel": "15882345447",<br/> "ctime": 1470296969000,<br/> "department": "四川乐库斯",<br/> "enter_camera_num": 1,<br/> "enter_num": 1,<br/> "exit_camera_num": 1,<br/> "exit_num": 1,<br/> "expect_money": 0,<br/> "hlc_enter_num": 1,<br/> "hlc_exit_num": 1,<br/> "lat": 30.547776,<br/> "linkman_name": "敬小虎",<br/> "linkman_tel": "15882345446",<br/> "lng": 104.067138,<br/> "moth_car_num": 0,<br/> "note": "",<br/> "park_type": 0,<br/> "pi_id": 1,<br/> "pi_name": "四川乐库斯",<br/> "pi_phone": "028-85960236",<br/> "rent_info": "准入时段 17:00-08:30，150元/月",<br/> "time_car_num": 0,<br/> "timeout_info": "首停3小时5元，之后每小时1元",<br/> "utime": 1470296969000<br/> },<br/> "coupon": [<br/> {<br/> "upc_id": 1,<br/> "ui_id": 1,<br/> "pc_id": 1,<br/> "money": 2,<br/> "discount": 0,<br/> "high_money": 5,<br/> "upc_type": 0,<br/> "end_time": 1472188317000,<br/> "upc_state": 0,<br/> "ctime": 1470805921000,<br/> "utime": 1470805924000<br/> }<br/> ]<br/> },<br/> "errormsg": "读取停车场租赁详情成功",<br/> "errorno": "0"<br/> }</p>
+<p>####1.7-&gt;获取我的订单 （1：临时停车订单 2： 租赁订单）</p>
+<table>
+  <thead>
+    <tr>
+      <th title="参数名称">参数名称</th>
+      <th title="值描述">值描述</th>
+      <th title="是否可空">是否可空</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="type">type</td>
+      <td title="获取订单类型 0:普通停车订单 1：租赁停车订单">获取订单类型 0:普通停车订单 1：租赁停车订单</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="car_code">car_code</td>
+      <td title="车牌号">车牌号 </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="area_code">area_code</td>
+      <td title="省市区区域代码 四川省 成都市 龙泉驿区510112">省市区区域代码 四川省 成都市 龙泉驿区510112 </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="page">page</td>
+      <td title="页数">页数</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="size">size</td>
+      <td title="每页条数">每页条数</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="sign">sign</td>
+      <td title="MD5数字签名(dtype+ui_id)按参数的首字母升序顺序进行组装">MD5数字签名(dtype+ui_id)按参数的首字母升序顺序进行组装</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p>####请求路径</p>
+<p><a href="http://139.224.29.103/v1/my_order.php">http://139.224.29.103/v1/my_order.php</a></p>
+<p>######返回结果<br/> {<br/> "data": [<br/> {<br/> "address_name": "英郡1期",<br/> "allege_state": 0,<br/> "area_code": "510107",<br/> "arrive_time": 1483426880000,<br/> "cancel_state": 0,<br/> "car_code": "川EC0091",<br/> "charging": 1,<br/> "charging_time": 60,<br/> "ctime": 1483426880000,<br/> "discount_money": 0,<br/> "discount_name": "",<br/> "discount_type": 0,<br/> "expect_info": "",<br/> "expect_money": 0,<br/> "expect_state": 0,<br/> "expect_time": 0,<br/> "final_time": 0,<br/> "free_minute": 0,<br/> "id": 1665,<br/> "is_cash": 0,<br/> "is_del": 0,<br/> "is_expect_deduct": 0,<br/> "is_expect_outtime": 0,<br/> "is_free_minute": 0,<br/> "is_open": 0,<br/> "is_over": 0,<br/> "lat": 30.544615,<br/> "leave_time": 1483426880000,<br/> "lng": 104.072689,<br/> "money": 0,<br/> "my_order": "2017010315013636",<br/> "note": "",<br/> "open_time": 1483426880000,<br/> "order_type": 0,<br/> "other_order": "",<br/> "park_type": 1,<br/> "pay_source": 0,<br/> "pay_type": 0,<br/> "phone_type": 0,<br/> "pi_id": 2,<br/> "pi_name": "英俊一期",<br/> "pp_state": 0,<br/> "pp_versioncode": "",<br/> "pu_id": 1,<br/> "pu_nd": "20161227141900",<br/> "scan_time": 1483426880000,<br/> "start_price": 2,<br/> "start_time": 120,<br/> "ui_id": 62,<br/> "upc_id": 0,<br/> "utime": 1483426880000<br/> }<br/> ],<br/> "errorcode": "",<br/> "errormsg": "普通停车订单",<br/> "errorno": "0"<br/> }</p>
+<pre><code>{
+    &quot;data&quot;: [
+        {
+        &quot;address_name&quot;: &quot;成都市天华路88号&quot;,
+        &quot;allege_state&quot;: 0,
+        &quot;area_code&quot;: &quot;510107&quot;,
+        &quot;arrive_time&quot;: 1483423410000,
+        &quot;base_rate&quot;: &quot;&quot;,
+        &quot;cancel_state&quot;: 0,
+        &quot;car_code&quot;: &quot;川A42575&quot;,
+        &quot;ctime&quot;: 1483423410000,
+        &quot;discount_money&quot;: 0,
+        &quot;discount_name&quot;: &quot;&quot;,
+        &quot;discount_type&quot;: 0,
+        &quot;end_time&quot;: 1486101810000,
+        &quot;final_time&quot;: 0,
+        &quot;id&quot;: 6,
+        &quot;is_24hours&quot;: 0,
+        &quot;is_cash&quot;: 0,
+        &quot;is_del&quot;: 0,
+        &quot;is_expire&quot;: 0,
+        &quot;is_open&quot;: 0,
+        &quot;is_over&quot;: 0,
+        &quot;lat&quot;: 30.547829,
+        &quot;lng&quot;: 104.072388,
+        &quot;money&quot;: 3,
+        &quot;month_info&quot;: &quot;准入时段 14:17-22:12，0.03元/月&quot;,
+        &quot;month_num&quot;: 1,
+        &quot;my_order&quot;: &quot;2017010314036620&quot;,
+        &quot;note&quot;: &quot;用户租赁下单&quot;,
+        &quot;open_time&quot;: 1483423410000,
+        &quot;order_type&quot;: 2,
+        &quot;other_order&quot;: &quot;&quot;,
+        &quot;outtime_charge_minute&quot;: 0,
+        &quot;outtime_charge_money&quot;: 0,
+        &quot;outtime_minute&quot;: 0,
+        &quot;outtime_money&quot;: 0,
+        &quot;outtime_other_order&quot;: &quot;&quot;,
+        &quot;outtime_paystate&quot;: 0,
+        &quot;outtime_paytime&quot;: 1483423410000,
+        &quot;outtime_rate&quot;: &quot;&quot;,
+        &quot;outtime_start_minute&quot;: 0,
+        &quot;outtime_start_price&quot;: 0,
+        &quot;outtime_time&quot;: 1483423410000,
+        &quot;park_type&quot;: 0,
+        &quot;pay_source&quot;: 4,
+        &quot;pay_type&quot;: 0,
+        &quot;permit_time&quot;: &quot;14:17-22:12&quot;,
+        &quot;phone_type&quot;: 0,
+        &quot;pi_id&quot;: 1,
+        &quot;pi_name&quot;: &quot;英郡二期&quot;,
+        &quot;pp_state&quot;: 1,
+        &quot;pp_versioncode&quot;: &quot;1&quot;,
+        &quot;pu_id&quot;: 1,
+        &quot;pu_nd&quot;: &quot;20161227141900&quot;,
+        &quot;rent_state&quot;: 0,
+        &quot;scan_time&quot;: 1483423410000,
+        &quot;start_time&quot;: 1483423410000,
+        &quot;temp_money&quot;: 0,
+        &quot;ui_id&quot;: 51,
+        &quot;upc_id&quot;: 0,
+        &quot;utime&quot;: 1483423410000
+    }
+    ],
+    &quot;errorcode&quot;: &quot;&quot;,
+    &quot;errormsg&quot;: &quot;租赁停车订单&quot;,
+    &quot;errorno&quot;: &quot;0&quot;
+}
+</code></pre>
+<p>#########返回字段说明----普通订单<br/>|名称|描述|类型|<br/>|----|----|---|<br/>|id|主键ID|long|<br/>|pi_id|支付停车场主键ID|long|<br/>|ui_id|用户ID|long|<br/>|car_code|用户支付车牌号|String|<br/>|money|支付金额（单位分）|int|<br/>|pp_state|支付状态0:未支付1：已经支付|int|<br/>|ctime|下单时间|java.util.Date|<br/>|utime|更新支付状态时间|java.util.Date|<br/>|pay_source|支付类型1:支付宝2：微信3：银联4：钱包5:龙支付|int|<br/>|my_order|我们的订单号|String|<br/>|other_order|第三方的支付单号|String|<br/>|pay_type|支付类型0:手动输入密码支付1：快捷支付（服务器可以请求第三方直接扣款）|int|<br/>|pp_versioncode|当前APPSDK版本号（内部升级版本代号）|String|<br/>|phone_type|手机类型0:android1：IOS|int|<br/>|order_type|下单类型0:普通下单1：预约下单2：租赁包月订单|int|<br/>|allege_state|申述状态0:未申述1：申述中2：申述失败3：申述成功|int|<br/>|expect_time|预约时长(单位分钟|int|<br/>|arrive_time|到场时间|java.util.Date|<br/>|leave_time|离场时间|java.util.Date|<br/>|expect_money|预定价格|int|<br/>|expect_info|预定提示信息|String|<br/>|area_code|省市县编号|String|<br/>|is_expect_outtime|是否预约已经超时0：未超时1：已经超时|int|<br/>|is_expect_deduct|是否已经扣除预约超时钱0：已锁定扣款金额1：已经扣款成功2：已解绑锁定金额|int|<br/>|start_price|起步价（RMB单位分）|int|<br/>|start_time|起步时长(分钟)|int|<br/>|charging|计费价(RMB单位分)每小时2元|int|<br/>|charging_time|计费单位时长(分钟)例如：每小时2元那么就是1小时|int|<br/>|is_del|删除状态0:正常1：假删除|int|<br/>|upc_id|用户优惠券表主键ID|long|<br/>|discount_money|抵扣优惠金额（单位分）|long|<br/>|note|备注|String|<br/>|discount_name|抵扣优惠券名称|String|<br/>|discount_type|优惠券类型0:金额券1：折扣券|int|<br/>|final_time|结算时计费时长（单位分钟）|int|<br/>|address_name|停车场地点名称|String|<br/>|cancel_state|订单关闭状态0:没有关闭1：已经关闭2：订单异常（停车场心跳时间段内断开或者道闸手动开闸）3：异步数据上传（网络异常）|int|<br/>|is_open|是否开闸0:未开闸1：已开闸|int|<br/>|open_time|开闸时间|java.util.Date|<br/>|is_cash|是否现金支付0：在线支付1：现金支付2：免费支付3:免费车类型4：包月车类型5：租赁车类型|int|<br/>|park_type|停车场类型0：道闸停车场1：占道车场2：露天立体车库停车场|int|<br/>|scan_time|是否可以停车缴费时间（摄像头是否扫描到了：仅限道闸停车使用）|java.util.Date|<br/>|pi_name|停车场名称|String|<br/>|is_over|订单是否完成或者逃逸(0:没有完成1：完成2：车辆逃逸3：未交费)|int|<br/>|free_minute|多少分钟之内进出免费|int|<br/>|is_free_minute|多少分钟之内进出免费是否开启0:不开启1：开启|int|<br/>|pu_id|商户主键ID|long|<br/>|pu_nd|商户编号|String|<br/>|lng|场地经度|double|<br/>|lat|场地纬度|double|<br/>|expect_state|预约状态0:未预约1：预约中2：预约成功3：预约失败4：取消预约中5：取消预约成功6：取消预约失败|int|<br/>|ui_nd|用户唯一标识uuid|String|<br/>|ai_id|活动ID|long|<br/>|ai_money|活动优惠金额（单位分）|int|<br/>|ai_effect|活动优惠是否生效（0：没有1：生效）|int|<br/>|ui_tel|用户电话号码|String|</p>
+<p>#########返回字段说明----租赁订单<br/>|名称|描述|类型|<br/>|----|----|---|<br/>|id|主键ID|long|<br/>|pi_id|支付停车场主键ID|long|<br/>|ui_id|用户ID|long|<br/>|car_code|用户支付车牌号|String|<br/>|money|支付金额（单位分）|int|<br/>|pp_state|支付状态0:未支付1：已经支付|int|<br/>|ctime|下单时间|java.util.Date|<br/>|utime|更新支付状态时间|java.util.Date|<br/>|month_num|包月租凭月数|int|<br/>|pay_source|支付类型1:支付宝2：微信3：银联4：钱包5:龙支付|int|<br/>|my_order|我们的订单号|String|<br/>|other_order|第三方的支付单号|String|<br/>|pay_type|支付类型0:手动输入密码支付1：快捷支付（服务器可以请求第三方直接扣款）|int|<br/>|pp_versioncode|当前APPSDK版本号（内部升级版本代号）|String|<br/>|phone_type|手机类型0:android1：IOS|int|<br/>|order_type|下单类型0:普通下单1：预约下单2：租赁包月订单|int|<br/>|start_time|启始时间|java.util.Date|<br/>|end_time|到期时间|java.util.Date|<br/>|month_info|包月提示信息|String|<br/>|allege_state|申述状态0:未申述1：申述中2：申述失败3：申述成功|int|<br/>|area_code|省市县编号|String|<br/>|is_del|删除状态0:正常1：假删除|int|<br/>|upc_id|用户优惠券表主键ID|long|<br/>|discount_money|抵扣优惠金额（单位分）|long|<br/>|note|备注|String|<br/>|discount_name|抵扣优惠券名称|String|<br/>|discount_type|优惠券类型0:金额券1：折扣券|int|<br/>|final_time|结算时计费时长（单位分钟）|int|<br/>|address_name|停车场地点名称|String|<br/>|base_rate|基础费率（300元/月）|String|<br/>|outtime_rate|超时费率(首停2小时3元，之后1元/小时)|String|<br/>|outtime_money|超时金额|int|<br/>|outtime_time|超时结算时间（2016-08-1012：00：00）|java.util.Date|<br/>|outtime_minute|超时时长（单位分钟）|int|<br/>|outtime_start_price|超时起步价|int|<br/>|outtime_start_minute|超时起步量纲时长（单位分钟）|int|<br/>|outtime_charge_money|超时计费价格（单位分）|int|<br/>|outtime_charge_minute|超时计费量纲时长（单位分钟）|int|<br/>|outtime_other_order|超时第三方支付订单号|String|<br/>|outtime_paytime|超时缴费时间|java.util.Date|<br/>|outtime_paystate|超时缴费状态0:未缴费1：已经缴费|int|<br/>|permit_time|准入时间段（17:00-08:30）|String|<br/>|is_24hours|是否是24小时包月0:不是24小时包月1：是24小时包月|int|<br/>|is_open|是否开闸0:未开闸1：已开闸|int|<br/>|open_time|开闸时间|java.util.Date|<br/>|is_cash|是否现金支付0：在线支付1：现金支付|int|<br/>|park_type|停车场类型0：道闸停车场1：占道车场2：露天立体车库停车场|int|<br/>|scan_time|是否可以停车缴费时间（摄像头是否扫描到了：仅限道闸停车使用）|java.util.Date|<br/>|arrive_time|该次入库的到达时间|java.util.Date|<br/>|temp_money|临停费用累计|long|<br/>|pi_name|停车场名称|String|<br/>|is_over|订单是否完成或者逃逸(0:没有完成1：完成2：车辆逃逸3：未交费)|int|<br/>|cancel_state|订单关闭状态 0:没有关闭 1：已经关闭 2：订单异常|int|<br/>|pu_id|商户主键ID|long|<br/>|pu_nd|商户编号|String|<br/>|lng|场地经度|double|<br/>|lat|场地纬度|double|<br/>|is_expire|是否已到期（0：没有到期1：已经到期）|int|<br/>|rent_state|租赁状态0：待支付 1：租赁中2：租赁成功3：租赁失败--解绑租赁金额|int|<br/>|ui_nd|用户唯一标识uuid|String|<br/>|ai_id|活动ID|long|<br/>|ai_money|活动优惠金额（单位分）|int|<br/>|ai_effect|活动优惠是否生效（0：没有1：生效）|int|</p>
+<p>####1.7.1-&gt;获取我的某条订单 （1：临时停车订单 2： 租赁订单）</p>
+<table>
+  <thead>
+    <tr>
+      <th title="参数名称">参数名称</th>
+      <th title="值描述">值描述</th>
+      <th title="是否可空">是否可空</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="type">type</td>
+      <td title="获取订单类型 0:普通停车订单 1：租赁停车订单">获取订单类型 0:普通停车订单 1：租赁停车订单</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="orderid">orderid</td>
+      <td title="订单号">订单号 </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="sign">sign</td>
+      <td title="MD5数字签名(dtype+ui_id+type+orderid)按参数的首字母升序顺序进行组装">MD5数字签名(dtype+ui_id+type+orderid)按参数的首字母升序顺序进行组装</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p>####请求路径</p>
+<p><a href="http://139.224.29.103/v1/my_one_order.php">http://139.224.29.103/v1/my_one_order.php</a></p>
+<p>######返回结果<br/> {<br/> "data":<br/> {<br/> "address_name": "英郡1期",<br/> "allege_state": 0,<br/> "area_code": "510107",<br/> "arrive_time": 1483426880000,<br/> "cancel_state": 0,<br/> "car_code": "川EC0091",<br/> "charging": 1,<br/> "charging_time": 60,<br/> "ctime": 1483426880000,<br/> "discount_money": 0,<br/> "discount_name": "",<br/> "discount_type": 0,<br/> "expect_info": "",<br/> "expect_money": 0,<br/> "expect_state": 0,<br/> "expect_time": 0,<br/> "final_time": 0,<br/> "free_minute": 0,<br/> "id": 1665,<br/> "is_cash": 0,<br/> "is_del": 0,<br/> "is_expect_deduct": 0,<br/> "is_expect_outtime": 0,<br/> "is_free_minute": 0,<br/> "is_open": 0,<br/> "is_over": 0,<br/> "lat": 30.544615,<br/> "leave_time": 1483426880000,<br/> "lng": 104.072689,<br/> "money": 0,<br/> "my_order": "2017010315013636",<br/> "note": "",<br/> "open_time": 1483426880000,<br/> "order_type": 0,<br/> "other_order": "",<br/> "park_type": 1,<br/> "pay_source": 0,<br/> "pay_type": 0,<br/> "phone_type": 0,<br/> "pi_id": 2,<br/> "pi_name": "英俊一期",<br/> "pp_state": 0,<br/> "pp_versioncode": "",<br/> "pu_id": 1,<br/> "pu_nd": "20161227141900",<br/> "scan_time": 1483426880000,<br/> "start_price": 2,<br/> "start_time": 120,<br/> "ui_id": 62,<br/> "upc_id": 0,<br/> "utime": 1483426880000<br/> }<br/> ,<br/> "errorcode": "",<br/> "errormsg": "普通停车订单",<br/> "errorno": "0"<br/> }</p>
+<pre><code>{
+    &quot;data&quot;:
+        {
+        &quot;address_name&quot;: &quot;成都市天华路88号&quot;,
+        &quot;allege_state&quot;: 0,
+        &quot;area_code&quot;: &quot;510107&quot;,
+        &quot;arrive_time&quot;: 1483423410000,
+        &quot;base_rate&quot;: &quot;&quot;,
+        &quot;cancel_state&quot;: 0,
+        &quot;car_code&quot;: &quot;川A42575&quot;,
+        &quot;ctime&quot;: 1483423410000,
+        &quot;discount_money&quot;: 0,
+        &quot;discount_name&quot;: &quot;&quot;,
+        &quot;discount_type&quot;: 0,
+        &quot;end_time&quot;: 1486101810000,
+        &quot;final_time&quot;: 0,
+        &quot;id&quot;: 6,
+        &quot;is_24hours&quot;: 0,
+        &quot;is_cash&quot;: 0,
+        &quot;is_del&quot;: 0,
+        &quot;is_expire&quot;: 0,
+        &quot;is_open&quot;: 0,
+        &quot;is_over&quot;: 0,
+        &quot;lat&quot;: 30.547829,
+        &quot;lng&quot;: 104.072388,
+        &quot;money&quot;: 3,
+        &quot;month_info&quot;: &quot;准入时段 14:17-22:12，0.03元/月&quot;,
+        &quot;month_num&quot;: 1,
+        &quot;my_order&quot;: &quot;2017010314036620&quot;,
+        &quot;note&quot;: &quot;用户租赁下单&quot;,
+        &quot;open_time&quot;: 1483423410000,
+        &quot;order_type&quot;: 2,
+        &quot;other_order&quot;: &quot;&quot;,
+        &quot;outtime_charge_minute&quot;: 0,
+        &quot;outtime_charge_money&quot;: 0,
+        &quot;outtime_minute&quot;: 0,
+        &quot;outtime_money&quot;: 0,
+        &quot;outtime_other_order&quot;: &quot;&quot;,
+        &quot;outtime_paystate&quot;: 0,
+        &quot;outtime_paytime&quot;: 1483423410000,
+        &quot;outtime_rate&quot;: &quot;&quot;,
+        &quot;outtime_start_minute&quot;: 0,
+        &quot;outtime_start_price&quot;: 0,
+        &quot;outtime_time&quot;: 1483423410000,
+        &quot;park_type&quot;: 0,
+        &quot;pay_source&quot;: 4,
+        &quot;pay_type&quot;: 0,
+        &quot;permit_time&quot;: &quot;14:17-22:12&quot;,
+        &quot;phone_type&quot;: 0,
+        &quot;pi_id&quot;: 1,
+        &quot;pi_name&quot;: &quot;英郡二期&quot;,
+        &quot;pp_state&quot;: 1,
+        &quot;pp_versioncode&quot;: &quot;1&quot;,
+        &quot;pu_id&quot;: 1,
+        &quot;pu_nd&quot;: &quot;20161227141900&quot;,
+        &quot;rent_state&quot;: 0,
+        &quot;scan_time&quot;: 1483423410000,
+        &quot;start_time&quot;: 1483423410000,
+        &quot;temp_money&quot;: 0,
+        &quot;ui_id&quot;: 51,
+        &quot;upc_id&quot;: 0,
+        &quot;utime&quot;: 1483423410000
+    },
+    &quot;errorcode&quot;: &quot;&quot;,
+    &quot;errormsg&quot;: &quot;租赁停车订单&quot;,
+    &quot;errorno&quot;: &quot;0&quot;
+}
+</code></pre>
+<p>#########返回字段说明----普通订单<br/>|名称|描述|类型|<br/>|----|----|---|<br/>|id|主键ID|long|<br/>|pi_id|支付停车场主键ID|long|<br/>|ui_id|用户ID|long|<br/>|car_code|用户支付车牌号|String|<br/>|money|支付金额（单位分）|int|<br/>|pp_state|支付状态0:未支付1：已经支付|int|<br/>|ctime|下单时间|java.util.Date|<br/>|utime|更新支付状态时间|java.util.Date|<br/>|pay_source|支付类型1:支付宝2：微信3：银联4：钱包5:龙支付|int|<br/>|my_order|我们的订单号|String|<br/>|other_order|第三方的支付单号|String|<br/>|pay_type|支付类型0:手动输入密码支付1：快捷支付（服务器可以请求第三方直接扣款）|int|<br/>|pp_versioncode|当前APPSDK版本号（内部升级版本代号）|String|<br/>|phone_type|手机类型0:android1：IOS|int|<br/>|order_type|下单类型0:普通下单1：预约下单2：租赁包月订单|int|<br/>|allege_state|申述状态0:未申述1：申述中2：申述失败3：申述成功|int|<br/>|expect_time|预约时长(单位分钟|int|<br/>|arrive_time|到场时间|java.util.Date|<br/>|leave_time|离场时间|java.util.Date|<br/>|expect_money|预定价格|int|<br/>|expect_info|预定提示信息|String|<br/>|area_code|省市县编号|String|<br/>|is_expect_outtime|是否预约已经超时0：未超时1：已经超时|int|<br/>|is_expect_deduct|是否已经扣除预约超时钱0：已锁定扣款金额1：已经扣款成功2：已解绑锁定金额|int|<br/>|start_price|起步价（RMB单位分）|int|<br/>|start_time|起步时长(分钟)|int|<br/>|charging|计费价(RMB单位分)每小时2元|int|<br/>|charging_time|计费单位时长(分钟)例如：每小时2元那么就是1小时|int|<br/>|is_del|删除状态0:正常1：假删除|int|<br/>|upc_id|用户优惠券表主键ID|long|<br/>|discount_money|抵扣优惠金额（单位分）|long|<br/>|note|备注|String|<br/>|discount_name|抵扣优惠券名称|String|<br/>|discount_type|优惠券类型0:金额券1：折扣券|int|<br/>|final_time|结算时计费时长（单位分钟）|int|<br/>|address_name|停车场地点名称|String|<br/>|cancel_state|订单关闭状态0:没有关闭1：已经关闭2：订单异常（停车场心跳时间段内断开或者道闸手动开闸）3：异步数据上传（网络异常）|int|<br/>|is_open|是否开闸0:未开闸1：已开闸|int|<br/>|open_time|开闸时间|java.util.Date|<br/>|is_cash|是否现金支付0：在线支付1：现金支付2：免费支付3:免费车类型4：包月车类型5：租赁车类型|int|<br/>|park_type|停车场类型0：道闸停车场1：占道车场2：露天立体车库停车场|int|<br/>|scan_time|是否可以停车缴费时间（摄像头是否扫描到了：仅限道闸停车使用）|java.util.Date|<br/>|pi_name|停车场名称|String|<br/>|is_over|订单是否完成或者逃逸(0:没有完成1：完成2：车辆逃逸3：未交费)|int|<br/>|free_minute|多少分钟之内进出免费|int|<br/>|is_free_minute|多少分钟之内进出免费是否开启0:不开启1：开启|int|<br/>|pu_id|商户主键ID|long|<br/>|pu_nd|商户编号|String|<br/>|lng|场地经度|double|<br/>|lat|场地纬度|double|<br/>|expect_state|预约状态0:未预约1：预约中2：预约成功3：预约失败4：取消预约中5：取消预约成功6：取消预约失败|int|<br/>|ui_nd|用户唯一标识uuid|String|<br/>|ai_id|活动ID|long|<br/>|ai_money|活动优惠金额（单位分）|int|<br/>|ai_effect|活动优惠是否生效（0：没有1：生效）|int|<br/>|ui_tel|用户电话号码|String|</p>
+<p>#########返回字段说明----租赁订单<br/>|名称|描述|类型|<br/>|----|----|---|<br/>|id|主键ID|long|<br/>|pi_id|支付停车场主键ID|long|<br/>|ui_id|用户ID|long|<br/>|car_code|用户支付车牌号|String|<br/>|money|支付金额（单位分）|int|<br/>|pp_state|支付状态0:未支付1：已经支付|int|<br/>|ctime|下单时间|java.util.Date|<br/>|utime|更新支付状态时间|java.util.Date|<br/>|month_num|包月租凭月数|int|<br/>|pay_source|支付类型1:支付宝2：微信3：银联4：钱包5:龙支付|int|<br/>|my_order|我们的订单号|String|<br/>|other_order|第三方的支付单号|String|<br/>|pay_type|支付类型0:手动输入密码支付1：快捷支付（服务器可以请求第三方直接扣款）|int|<br/>|pp_versioncode|当前APPSDK版本号（内部升级版本代号）|String|<br/>|phone_type|手机类型0:android1：IOS|int|<br/>|order_type|下单类型0:普通下单1：预约下单2：租赁包月订单|int|<br/>|start_time|启始时间|java.util.Date|<br/>|end_time|到期时间|java.util.Date|<br/>|month_info|包月提示信息|String|<br/>|allege_state|申述状态0:未申述1：申述中2：申述失败3：申述成功|int|<br/>|area_code|省市县编号|String|<br/>|is_del|删除状态0:正常1：假删除|int|<br/>|upc_id|用户优惠券表主键ID|long|<br/>|discount_money|抵扣优惠金额（单位分）|long|<br/>|note|备注|String|<br/>|discount_name|抵扣优惠券名称|String|<br/>|discount_type|优惠券类型0:金额券1：折扣券|int|<br/>|final_time|结算时计费时长（单位分钟）|int|<br/>|address_name|停车场地点名称|String|<br/>|base_rate|基础费率（300元/月）|String|<br/>|outtime_rate|超时费率(首停2小时3元，之后1元/小时)|String|<br/>|outtime_money|超时金额|int|<br/>|outtime_time|超时结算时间（2016-08-1012：00：00）|java.util.Date|<br/>|outtime_minute|超时时长（单位分钟）|int|<br/>|outtime_start_price|超时起步价|int|<br/>|outtime_start_minute|超时起步量纲时长（单位分钟）|int|<br/>|outtime_charge_money|超时计费价格（单位分）|int|<br/>|outtime_charge_minute|超时计费量纲时长（单位分钟）|int|<br/>|outtime_other_order|超时第三方支付订单号|String|<br/>|outtime_paytime|超时缴费时间|java.util.Date|<br/>|outtime_paystate|超时缴费状态0:未缴费1：已经缴费|int|<br/>|permit_time|准入时间段（17:00-08:30）|String|<br/>|is_24hours|是否是24小时包月0:不是24小时包月1：是24小时包月|int|<br/>|is_open|是否开闸0:未开闸1：已开闸|int|<br/>|open_time|开闸时间|java.util.Date|<br/>|is_cash|是否现金支付0：在线支付1：现金支付|int|<br/>|park_type|停车场类型0：道闸停车场1：占道车场2：露天立体车库停车场|int|<br/>|scan_time|是否可以停车缴费时间（摄像头是否扫描到了：仅限道闸停车使用）|java.util.Date|<br/>|arrive_time|该次入库的到达时间|java.util.Date|<br/>|temp_money|临停费用累计|long|<br/>|pi_name|停车场名称|String|<br/>|is_over|订单是否完成或者逃逸(0:没有完成1：完成2：车辆逃逸3：未交费)|int|<br/>|cancel_state|订单关闭状态 0:没有关闭 1：已经关闭 2：订单异常|int|<br/>|pu_id|商户主键ID|long|<br/>|pu_nd|商户编号|String|<br/>|lng|场地经度|double|<br/>|lat|场地纬度|double|<br/>|is_expire|是否已到期（0：没有到期1：已经到期）|int|<br/>|rent_state|租赁状态0：待支付 1：租赁中2：租赁成功3：租赁失败--解绑租赁金额|int|<br/>|ui_nd|用户唯一标识uuid|String|<br/>|ai_id|活动ID|long|<br/>|ai_money|活动优惠金额（单位分）|int|<br/>|ai_effect|活动优惠是否生效（0：没有1：生效）|int|</p>
+<p>####1.8-&gt;用户取消预约订单-或-关闭租赁订单</p>
+<table>
+  <thead>
+    <tr>
+      <th title="参数名称">参数名称</th>
+      <th title="值描述">值描述</th>
+      <th title="是否可空">是否可空</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="type">type</td>
+      <td title="0：普通车位 1：租赁车位">0：普通车位 1：租赁车位</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="orderid">orderid</td>
+      <td title="我们的订单号">我们的订单号 </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="pi_id">pi_id</td>
+      <td title="停车场主键ID">停车场主键ID</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="长整型">长整型</td>
+    </tr>
+    <tr>
+      <td title="area_code">area_code</td>
+      <td title="省市区区域代码 四川省 成都市 龙泉驿区510112">省市区区域代码 四川省 成都市 龙泉驿区510112 </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="sign">sign</td>
+      <td title="MD5数字签名(dtype+ui_id+orderid+type)按参数的首字母升序顺序进行组装">MD5数字签名(dtype+ui_id+orderid+type)按参数的首字母升序顺序进行组装</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p>####请求路径</p>
+<p><a href="http://139.224.29.103/v1/cancel_order.php">http://139.224.29.103/v1/cancel_order.php</a></p>
+<p>######返回结果---预约订单取消<br/> {<br/> "data": {<br/> "address_name": "英郡1期",<br/> "allege_state": 0,<br/> "area_code": "510107",<br/> "arrive_time": 1483426880000,<br/> "cancel_state": 0,<br/> "car_code": "川EC0091",<br/> "charging": 1,<br/> "charging_time": 60,<br/> "ctime": 1483426880000,<br/> "discount_money": 0,<br/> "discount_name": "",<br/> "discount_type": 0,<br/> "expect_info": "",<br/> "expect_money": 0,<br/> "expect_state": 0,<br/> "expect_time": 0,<br/> "final_time": 0,<br/> "free_minute": 0,<br/> "id": 1665,<br/> "is_cash": 0,<br/> "is_del": 0,<br/> "is_expect_deduct": 0,<br/> "is_expect_outtime": 0,<br/> "is_free_minute": 0,<br/> "is_open": 0,<br/> "is_over": 0,<br/> "lat": 30.544615,<br/> "leave_time": 1483426880000,<br/> "lng": 104.072689,<br/> "money": 0,<br/> "my_order": "2017010315013636",<br/> "note": "",<br/> "open_time": 1483426880000,<br/> "order_type": 0,<br/> "other_order": "",<br/> "park_type": 1,<br/> "pay_source": 0,<br/> "pay_type": 0,<br/> "phone_type": 0,<br/> "pi_id": 2,<br/> "pi_name": "英俊一期",<br/> "pp_state": 0,<br/> "pp_versioncode": "",<br/> "pu_id": 1,<br/> "pu_nd": "20161227141900",<br/> "scan_time": 1483426880000,<br/> "start_price": 2,<br/> "start_time": 120,<br/> "ui_id": 62,<br/> "upc_id": 0,<br/> "utime": 1483426880000<br/> },<br/> "errormsg": "取消预约订单成功",<br/> "errorno": "0"<br/> }</p>
+<p>######返回结果---租赁订单关闭<br/> {<br/> "data":"",<br/> "errormsg": "关闭订单成功",<br/> "errorno": "0"<br/> }</p>
+<p>####1.9-&gt;用户删除订单</p>
+<table>
+  <thead>
+    <tr>
+      <th title="参数名称">参数名称</th>
+      <th title="值描述">值描述</th>
+      <th title="是否可空">是否可空</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="type">type</td>
+      <td title="0：普通车位 1：租赁车位">0：普通车位 1：租赁车位</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="orderid">orderid</td>
+      <td title="我们的订单号">我们的订单号 </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="pi_id">pi_id</td>
+      <td title="停车场主键ID">停车场主键ID</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="长整型">长整型</td>
+    </tr>
+    <tr>
+      <td title="area_code">area_code</td>
+      <td title="省市区区域代码 四川省 成都市 龙泉驿区510112">省市区区域代码 四川省 成都市 龙泉驿区510112 </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="sign">sign</td>
+      <td title="MD5数字签名(dtype+ui_id+orderid+type)按参数的首字母升序顺序进行组装">MD5数字签名(dtype+ui_id+orderid+type)按参数的首字母升序顺序进行组装</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p>####请求路径</p>
+<p><a href="http://139.224.29.103/v1/delete_order.php">http://139.224.29.103/v1/delete_order.php</a></p>
+<p>######返回结果<br/> {<br/> "data": "",<br/> "errormsg": "删除订单成功",<br/> "errorno": "0"<br/> }</p>
+<p>####2.0-&gt;获取我的账户出入记录</p>
+<table>
+  <thead>
+    <tr>
+      <th title="参数名称">参数名称</th>
+      <th title="值描述">值描述</th>
+      <th title="是否可空">是否可空</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="type">type</td>
+      <td title="获取虚拟币行为类型 0:消耗和充值 1：消耗 2：充值">获取虚拟币行为类型 0:消耗和充值 1：消耗 2：充值</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="page">page</td>
+      <td title="页数">页数</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="size">size</td>
+      <td title="每页条数">每页条数</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="sign">sign</td>
+      <td title="MD5数字签名(dtype+ui_id)按参数的首字母升序顺序进行组装">MD5数字签名(dtype+ui_id)按参数的首字母升序顺序进行组装</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p>####请求路径</p>
+<p><a href="http://139.224.29.103/v1/vc_record.php">http://139.224.29.103/v1/vc_record.php</a></p>
+<p>######返回结果<br/> {<br/> "data": [<br/> {<br/> "act_type": 0,<br/> "ctime": 1473302542000,<br/> "id": 1,<br/> "is_add": 0,<br/> "money": 30000,<br/> "note": "",<br/> "order_id": "f52a2b9448744c324df1473302542135",<br/> "order_type": 1,下单类型 0: 普通下单 1：预约下单 2：租赁包月订单<br/> "state": 1,<br/> "ui_id": 1，<br/> "act_name":"钱包支付"<br/> }<br/> ],<br/> "errorcode": "",<br/> "errormsg": "全部的出入记录",<br/> "errorno": "0"<br/> }</p>
+<p>#########返回字段说明<br/>|名称|值描述|限制长度|参数类型|<br/>|--------|----|--------|-------|<br/>| id| 主键ID| 无 |长整型|<br/>| order_id| 订单ID| 无 |字符串|<br/>| ui_id| 用户ID| 无 |长整型|<br/>| order_type| 下单类型 0: 普通下单 1：预约下单 2：租赁包月订单| 无 |整型|<br/>| money| 交易金额（单位 分）| 无 |整型|<br/>| state| 处理状态 0：未处理 1：已处理| 无 |整型|<br/>| ctime| 下单时间| 无 |datetime|<br/>| is_add| 增加还是减少 0：减少 1：增加| 无 |整型|<br/>|act_name|事件名称|String|</p>
+<p>####2.1-&gt;用户申诉退费</p>
+<table>
+  <thead>
+    <tr>
+      <th title="参数名称">参数名称</th>
+      <th title="值描述">值描述</th>
+      <th title="是否可空">是否可空</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="pi_id">pi_id</td>
+      <td title="停车场主键ID">停车场主键ID</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="um_money">um_money</td>
+      <td title="退款金额(单位 分)">退款金额(单位 分)</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="order_id">order_id</td>
+      <td title="订单ID">订单ID</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="car_code">car_code</td>
+      <td title="车牌号(第一期：车牌号---对应一个人)">车牌号 (第一期：车牌号---对应一个人)</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="is_rent">is_rent</td>
+      <td title="是否是租赁订单 0：临停订单 1：预约临停订单 2：租赁包月订单 3:租赁续租">是否是租赁订单 0：临停订单 1：预约临停订单 2：租赁包月订单 3:租赁续租</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="area_code">area_code</td>
+      <td title="省市县编号">省市县编号</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="type">type</td>
+      <td title="申诉类型 0：物管收费和APP显示不符 1：物管记时和APP记时不符 2：车辆未入库却显示已入库 3：车辆入驻的停车场名称和APP显示名称不符 4：车辆已出库显示未出库 5：物管收取预约费 6:物管未提供预约车位 7:其他">申诉类型 0：物管收费和APP显示不符 1：物管记时和APP记时不符 2：车辆未入库却显示已入库 3：车辆入驻的停车场名称和APP显示名称不符 4：车辆已出库显示未出库 5：物管收取预约费 6: 物管未提供预约车位 7:其他</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="content">content</td>
+      <td title="申诉原因">申诉原因</td>
+      <td title="是">是</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="sign">sign</td>
+      <td title="MD5数字签名(dtype+ui_id+car_code)按参数的首字母升序顺序进行组装">MD5数字签名(dtype+ui_id+car_code)按参数的首字母升序顺序进行组装</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p>####请求路径</p>
+<p><a href="http://139.224.29.103/v1/usermoneyback.php">http://139.224.29.103/v1/usermoneyback.php</a></p>
+<p>######返回结果<br/> {<br/> "data": "",<br/> "errorcode": "",<br/> "errormsg": "用户申述成功",<br/> "errorno": "0"<br/> }</p>
+<p>####2.1.2-&gt;获取订单审核状态信息</p>
+<table>
+  <thead>
+    <tr>
+      <th title="参数名称">参数名称</th>
+      <th title="值描述">值描述</th>
+      <th title="是否可空">是否可空</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="order_id">order_id</td>
+      <td title="订单ID">订单ID</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="is_rent">is_rent</td>
+      <td title="是否是租赁订单 0：临停订单 1：预约临停订单 2：租赁包月订单">是否是租赁订单 0：临停订单 1：预约临停订单 2：租赁包月订单</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="sign">sign</td>
+      <td title="MD5数字签名(dtype+ui_id+order_id)按参数的首字母升序顺序进行组装">MD5数字签名(dtype+ui_id+order_id)按参数的首字母升序顺序进行组装</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p>####请求路径</p>
+<p><a href="http://139.224.29.103/v1/read_usermoneyback.php">http://139.224.29.103/v1/read_usermoneyback.php</a></p>
+<p>######返回结果<br/> {<br/> "data": {<br/> "admin_userid": 0,<br/> "area_code": "510101",<br/> "car_code": "川AQQ123",<br/> "check_content": "",<br/> "check_state": 0,<br/> "content": "",<br/> "ctime": 1479368332000,<br/> "is_rent": 1,<br/> "note": "",<br/> "order_id": "2016111709558435",<br/> "pi_id": 17,<br/> "run_url": "",<br/> "type": 2,<br/> "ui_id": 4,<br/> "um_id": 28,<br/> "um_money": 400,<br/> "um_state": 0,<br/> "utime": 1479368332000<br/> },<br/> "errorcode": "",<br/> "errormsg": "获取成功",<br/> "errorno": "0"<br/> }</p>
+<p>#####返回结果情况<br/>|字段|描述|<br/>|--------|------|<br/>|um_id|主键ID|<br/>|ui_id|用户ID|<br/>|order_id|停车下订单ID|<br/>|pi_id|场地表主键ID<br/>|ctime|创建时间|<br/>|utime|更新时间|<br/>|um_money|退款金额(单位分)|<br/>|car_code|退款车牌号|<br/>|run_url|用户行驶证图片|<br/>|um_state|退款状态0：未退款1：已退款|<br/>|check_state|审核状态0：未审核1：审核未通过2:审核通过|<br/>|admin_userid|审核人后台管理表主键ID|<br/>|area_code|区域地址编码|<br/>|type|申诉类型0：临停扣款问题1：预约超时扣费问题2：其它|<br/>|content|申诉原因|<br/>|is_rent|是否是租赁订单0：临停订单1：预约临停订单2：租赁包月订单|<br/>|check_content|审核结果|</p>
+<p>#第三方支付下单接口</p>
+<p>####2.2-&gt;建行龙支付WEB下单</p>
+<table>
+  <thead>
+    <tr>
+      <th title="参数名称">参数名称</th>
+      <th title="值描述">值描述</th>
+      <th title="是否可空">是否可空</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="pay_type">pay_type</td>
+      <td title="支付类型 1:支付宝 2：微信 3：银联 4：钱包 5:龙支付">支付类型 1:支付宝 2：微信 3：银联 4：钱包 5:龙支付</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="pay_price">pay_price</td>
+      <td title="充值金额 单位 分">充值金额 单位 分 </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="version">version</td>
+      <td title="当前APP版本编号">当前APP版本编号</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="subject">subject</td>
+      <td title="商品名称">商品名称</td>
+      <td title="是">是</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="system_type">system_type</td>
+      <td title="操作系统类型（IOS Android web） 1:android 2:IOS 3:web 4:PDA">操作系统类型（IOS Android web） 1:android 2:IOS 3:web 4:PDA</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="t">t</td>
+      <td title="时间戳ms">时间戳ms</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="长整型">长整型</td>
+    </tr>
+    <tr>
+      <td title="token">token</td>
+      <td title="用户授权码(用户基本信息里面有 当为PDA的时候传递&quot;&quot;)">用户授权码(用户基本信息里面有 当为PDA的时候传递"")</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="show_url">show_url</td>
+      <td title="收银台页面上，商品展示的超链接，必填">收银台页面上，商品展示的超链接，必填</td>
+      <td title="是">是</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="return_url">return_url</td>
+      <td title="页面跳转同步通知页面路径">页面跳转同步通知页面路径</td>
+      <td title="是">是</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="type">type</td>
+      <td title="是支付 还是 充值 1：充值 2：普通订单支付 3：租赁订单支付">是支付 还是 充值 1：充值 2：普通订单支付 3：租赁订单支付</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="orderid">orderid</td>
+      <td title="付款支付停车订单ID 如果多个 中间逗号分割 例如（a123,b123,c123）">付款支付停车订单ID 如果多个 中间逗号分割 例如（a123,b123,c123）</td>
+      <td title="是">是</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="sign">sign</td>
+      <td title="MD5数字签名(dtype+ui_id+pay_type+pay_price+t+token)按参数的首字母升序顺序进行组装">MD5数字签名(dtype+ui_id+pay_type+pay_price+t+token)按参数的首字母升序顺序进行组装</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p>####请求路径</p>
+<p><a href="http://139.224.29.103/v1/lzf_charge.php">http://139.224.29.103/v1/lzf_charge.php</a></p>
+<p>######注意事项<br/>当act_type = 1：代表用户充值 建行龙支付 下单的时候拼接地址中的 remark1=1<br/>当act_type=2 ： 代表用户APP支付普通订单扣款 建行龙支付 下单的时候拼接地址中的 remark1=2<br/>当act_type=3: 代表用户APP支付租赁订单扣款 建行龙支付 下单的时候拼接地址中的 remark1=3</p>
+<p>当type=1 时候 orderid 可以不传递该参数<br/>当type=2 时候 orderid 代表临停停车订单<br/>当type=3 时候 orderid 代表租赁订单</p>
+<p>######返回结果<br/> {<br/> "data": {<br/> "act_type": 1,<br/> "ctime": 1479384712688,<br/> "etime": 1479384712688,<br/> "id": 2,<br/> "ip": "",<br/> "money": 1,<br/> "note": "",<br/> "order_id": "2016111720113718",<br/> "referer": "",<br/> "return_url": "",<br/> "state": 0,<br/> "subject": "",<br/> "system_type": 0,<br/> "transaction_id": "",<br/> "type": 4,<br/> "ui_id": 4,<br/> "ui_nd": "2016090910294823",<br/> "utime": 1479384712688,<br/> "version_code": 1，<br/> "pub":adsdad1231231233sadsad<br/> },<br/> "errorcode": "",<br/> "errormsg": "下单成功",<br/> "errorno": "0"<br/> }</p>
+<p>#########返回字段说明</p>
+<table>
+  <thead>
+    <tr>
+      <th title="名称">名称</th>
+      <th title="值描述">值描述</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="order_id">order_id</td>
+      <td title="订单ID">订单ID</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="pub">pub</td>
+      <td title="建行龙支付公钥后30位">建行龙支付公钥后30位</td>
+      <td title="30">30 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="subject">subject</td>
+      <td title="商品名称">商品名称</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p>####2.3-&gt;支付宝APP充值下单</p>
+<table>
+  <thead>
+    <tr>
+      <th title="参数名称">参数名称</th>
+      <th title="值描述">值描述</th>
+      <th title="是否可空">是否可空</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="pay_type">pay_type</td>
+      <td title="支付类型 1:支付宝 2：微信 3：银联 4：钱包 5:龙支付">支付类型 1:支付宝 2：微信 3：银联 4：钱包 5:龙支付</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="pay_price">pay_price</td>
+      <td title="充值金额 单位 分">充值金额 单位 分 </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="version">version</td>
+      <td title="当前APP版本编号">当前APP版本编号</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="subject">subject</td>
+      <td title="商品名称">商品名称</td>
+      <td title="是">是</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="system_type">system_type</td>
+      <td title="操作系统类型（IOS Android web） 1:android 2:IOS 3:web 4:PDA">操作系统类型（IOS Android web） 1:android 2:IOS 3:web 4:PDA</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="t">t</td>
+      <td title="时间戳ms">时间戳ms</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="长整型">长整型</td>
+    </tr>
+    <tr>
+      <td title="token">token</td>
+      <td title="用户授权码(用户基本信息里面有)当为PDA的时候传递&quot;&quot;">用户授权码(用户基本信息里面有) 当为PDA的时候传递""</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="show_url">show_url</td>
+      <td title="收银台页面上，商品展示的超链接，必填">收银台页面上，商品展示的超链接，必填</td>
+      <td title="是">是</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="return_url">return_url</td>
+      <td title="页面跳转同步通知页面路径">页面跳转同步通知页面路径</td>
+      <td title="是">是</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="type">type</td>
+      <td title="是支付 还是 充值 1：充值 2：普通订单支付 3：租赁订单支付">是支付 还是 充值 1：充值 2：普通订单支付 3：租赁订单支付</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="orderid">orderid</td>
+      <td title="付款支付停车订单ID 如果多个 中间逗号分割 例如（a123,b123,c123）">付款支付停车订单ID 如果多个 中间逗号分割 例如（a123,b123,c123）</td>
+      <td title="是">是</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="sign">sign</td>
+      <td title="MD5数字签名(dtype+ui_id+pay_type+pay_price+t+token)按参数的首字母升序顺序进行组装">MD5数字签名(dtype+ui_id+pay_type+pay_price+t+token)按参数的首字母升序顺序进行组装</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p>####请求路径</p>
+<p><a href="http://139.224.29.103/v1/zfb_charge.php">http://139.224.29.103/v1/zfb_charge.php</a></p>
+<p>####注意事项<br/>当type=1 时候 orderid 可以不传递该参数<br/>当type=2 时候 orderid 代表临停停车订单<br/>当type=3 时候 orderid 代表租赁订单</p>
+<p>######返回结果<br/> {<br/> "data": {<br/> "act_type": 1,<br/> "ctime": 1479384712688,<br/> "etime": 1479384712688,<br/> "id": 2,<br/> "ip": "",<br/> "money": 1,<br/> "note": "",<br/> "order_id": "2016111720113718",<br/> "referer": "",<br/> "return_url": "",<br/> "state": 0,<br/> "subject": "",<br/> "system_type": 0,<br/> "transaction_id": "",<br/> "type": 4,<br/> "ui_id": 4,<br/> "ui_nd": "2016090910294823",<br/> "utime": 1479384712688,<br/> "version_code": 1，<br/> "orderInfo":adsdad1231231233sadsad,<br/> "sign":"asdsadasdasdasda",<br/> "timestamp":"2016-07-29 16:55:53"<br/> },<br/> "errorcode": "",<br/> "errormsg": "下单成功",<br/> "errorno": "0"<br/> }</p>
+<p>####2.4-&gt;微信APP充值下单</p>
+<table>
+  <thead>
+    <tr>
+      <th title="参数名称">参数名称</th>
+      <th title="值描述">值描述</th>
+      <th title="是否可空">是否可空</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="pay_type">pay_type</td>
+      <td title="支付类型 1:支付宝 2：微信 3：银联 4：钱包 5:龙支付">支付类型 1:支付宝 2：微信 3：银联 4：钱包 5:龙支付</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="pay_price">pay_price</td>
+      <td title="充值金额 单位 分">充值金额 单位 分 </td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="version">version</td>
+      <td title="当前APP版本编号">当前APP版本编号</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="subject">subject</td>
+      <td title="商品名称">商品名称</td>
+      <td title="是">是</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="system_type">system_type</td>
+      <td title="操作系统类型（IOS Android web） 1:android 2:IOS 3:web 4:PDA">操作系统类型（IOS Android web） 1:android 2:IOS 3:web 4:PDA</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="t">t</td>
+      <td title="时间戳ms">时间戳ms</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="长整型">长整型</td>
+    </tr>
+    <tr>
+      <td title="token">token</td>
+      <td title="用户授权码(用户基本信息里面有)当为PDA的时候传递&quot;&quot;">用户授权码(用户基本信息里面有) 当为PDA的时候传递""</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="show_url">show_url</td>
+      <td title="收银台页面上，商品展示的超链接，必填">收银台页面上，商品展示的超链接，必填</td>
+      <td title="是">是</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="return_url">return_url</td>
+      <td title="页面跳转同步通知页面路径">页面跳转同步通知页面路径</td>
+      <td title="是">是</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="type">type</td>
+      <td title="是支付 还是 充值 1：充值 2：普通订单支付 3：租赁订单支付">是支付 还是 充值 1：充值 2：普通订单支付 3：租赁订单支付</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="整型">整型</td>
+    </tr>
+    <tr>
+      <td title="orderid">orderid</td>
+      <td title="付款支付停车订单ID 如果多个 中间逗号分割 例如（a123,b123,c123）">付款支付停车订单ID 如果多个 中间逗号分割 例如（a123,b123,c123）</td>
+      <td title="是">是</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="sign">sign</td>
+      <td title="MD5数字签名(dtype+ui_id+pay_type+pay_price+t+token)按参数的首字母升序顺序进行组装">MD5数字签名(dtype+ui_id+pay_type+pay_price+t+token)按参数的首字母升序顺序进行组装</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p>####请求路径</p>
+<p><a href="http://139.224.29.103/v1/weixin_charge.php">http://139.224.29.103/v1/weixin_charge.php</a></p>
+<p>####注意事项<br/>当type=1 时候 orderid 可以不传递该参数<br/>当type=2 时候 orderid 代表临停停车订单<br/>当type=3 时候 orderid 代表租赁订单</p>
+<p>######返回结果<br/> {<br/> "data": {<br/> "utime": 1488852301307,<br/> "ui_nd": "2017030114385872",<br/> "car_order_id": "",<br/> "subject": "吾泊微信充值",<br/> "tel": "15882345446",<br/> "state": 0,<br/> "type": 2,<br/> "order_id": "2017030710057483",<br/> "ctime": 1488852301307,<br/> "transaction_id": "",<br/> "version_code": 1,<br/> "ip": "127.0.0.1",<br/> "return_url": "",<br/> "sign": "6515280066BDD08B8E5D2ED8950C4933",<br/> "orderInfo": {<br/> "sign": "6515280066BDD08B8E5D2ED8950C4933",<br/> "timestamp": "1488852301307",<br/> "noncestr": "qdAaAZI1f9WtNfcCVhCTMChIXLFoUzp9",<br/> "partnerid": "1426571202",<br/> "prepayid": "wx20170307100503580bf3f85f0736305710",<br/> "package": "Sign=WXPay",<br/> "appid": "wxa8c52369cd7047b5"<br/> },<br/> "timestamp": "2017-03-07 10:05:03",<br/> "id": 279,<br/> "system_type": 1,<br/> "etime": 1488852301307,<br/> "act_type": 1,<br/> "money": 1,<br/> "referer": "",<br/> "ui_id": 92,<br/> "note": ""<br/> },<br/> "errorcode": "",<br/> "errormsg": "微信充值成功",<br/> "errorno": "0"<br/> }</p>
+</body>
+</html>
