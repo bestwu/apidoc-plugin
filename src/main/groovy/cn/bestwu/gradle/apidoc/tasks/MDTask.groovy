@@ -33,6 +33,7 @@ class MDTask extends DefaultTask {
         if (!output.exists()) {
             output.mkdirs()
         }
+
         def slurper = new JsonSlurper()
 
         def trees = slurper.parseText(jsonFilter(new File(input, 'tree.json')))
@@ -43,7 +44,8 @@ class MDTask extends DefaultTask {
         def catalogFile = new File(output, "index.md")
         def readme = new File(input, "README.md")
         def catalogOut = new StringWriter()
-        catalogOut.println "- [系统介绍](index.md)"
+        if (readme.exists())
+            catalogOut.println "- [系统介绍](index.md)"
         catalogOut.println ''
         def extraFiles = input.listFiles(new FileFilter() {
             @Override
@@ -75,14 +77,14 @@ class MDTask extends DefaultTask {
                 catalogOut.println '---'
         }
         def catalog = catalogOut.toString()
-        catalogFile.withPrintWriter(encoding) { out ->
-            printFile(out, catalog, {
-                if (readme.exists()) {
+        if (readme.exists()) {
+            catalogFile.withPrintWriter(encoding) { out ->
+                printFile(out, catalog, {
                     out.println readme.text
                     out.println ''
                     out.println '---'
-                }
-            })
+                })
+            }
         }
         extraFiles.each { file ->
             new File(output, file.name).withPrintWriter(encoding) { out ->
@@ -98,9 +100,16 @@ class MDTask extends DefaultTask {
                 i++
                 def treeName = tree.text
                 def file = new File(output, "${treeName}.md")
-                if (!file.exists() || cover){
+                if (!file.exists() || cover) {
                     logger.warn("生成：${treeName}.md")
                     file.withPrintWriter(encoding) { out ->
+                        def field = new File(input, "field/${treeName}.json")
+                        def tempfields = []
+                        tempfields.addAll(fields)
+                        if (field.exists()) {
+                            tempfields.addAll(slurper.parseText(jsonFilter(field)))
+                        }
+
                         printFile(out, catalog, {
                             out.println "### ${i} ${treeName}"
                             out.println ''
@@ -131,17 +140,17 @@ class MDTask extends DefaultTask {
 
                                     if (api.version && api.version.class == ArrayList.class) {
                                         api.version.each {
-                                            fillDesc(out, api, fields, it)
+                                            fillDesc(out, api, tempfields, it)
                                         }
                                     } else
-                                        fillDesc(out, api, fields, null)
+                                        fillDesc(out, api, tempfields, null)
 
                                     out.println ''
                                     out.println '---'
                             }
                         })
                     }
-                }else{
+                } else {
                     logger.warn("${treeName}.md已存在")
                 }
 
@@ -290,6 +299,11 @@ class MDTask extends DefaultTask {
             } else {
                 name = k
             }
+            def tempDesc = null
+            if (v instanceof Map) {
+                tempDesc = v['desc']
+                v = v['value']
+            }
 
             def field = findField(fields, name, v)
 
@@ -316,6 +330,11 @@ class MDTask extends DefaultTask {
             if (field.tempValue == null || '' == field.tempValue || '-' == field.tempValue)
                 field.tempValue = '\\-'
 
+            if (getFieldType(field.tempValue) == 'Array' && field.tempValue.size() == 1)
+                field.tempValue = field.tempValue[0]
+
+            if (tempDesc != null)
+                field.desc = tempDesc
             flds.add(field)
         }
         return flds

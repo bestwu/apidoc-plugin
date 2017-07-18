@@ -8,8 +8,8 @@ version '1.0'
 
 apidoc {
     defaultHost 'http://app.qc-wbo.com/v1'
-    paths = ['_t']
-    cover = false
+    paths = ['APP']
+//    cover = false
 }
 
 sourceCompatibility = 1.7
