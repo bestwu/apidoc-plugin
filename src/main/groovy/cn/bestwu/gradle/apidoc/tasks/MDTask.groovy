@@ -41,59 +41,6 @@ class MDTask extends DefaultTask {
         def apis = new OrderedJsonParserUsingCharacterSource().parse(jsonFilter(new File(input, "api.json")))
 
         def fields = slurper.parseText(jsonFilter(new File(input, "field.json")))
-        def catalogFile = new File(output, "index.md")
-        def readme = new File(input, "README.md")
-        def catalogOut = new StringWriter()
-        if (readme.exists())
-            catalogOut.println "- [系统介绍](index.md)"
-        catalogOut.println ''
-        def extraFiles = input.listFiles(new FileFilter() {
-            @Override
-            boolean accept(File pathname) {
-                def name = pathname.name
-                def accept = name.endsWith('.md') && name != 'README.md'
-                if (accept) {
-                    catalogOut.println "- [${name.replace('.md', '')}](${name})"
-                }
-                return accept
-            }
-        })
-        catalogOut.println ''
-        catalogOut.println '---'
-        catalogOut.println ''
-        trees.eachWithIndex() {
-            tree, i ->
-                i++
-                def treeName = tree.text
-                catalogOut.println "- [${i} ${treeName}](${treeName}.md)"
-                catalogOut.println ''
-                tree.children.eachWithIndex() {
-                    leaf, m ->
-                        m++
-                        def leafName = leaf.text
-                        catalogOut.println "\t- [${i}.${m} ${leafName}](${treeName}.md#${i}.${m}${leafName})"
-                }
-                catalogOut.println ''
-                catalogOut.println '---'
-        }
-        def catalog = catalogOut.toString()
-        if (readme.exists()) {
-            catalogFile.withPrintWriter(encoding) { out ->
-                printFile(out, catalog, {
-                    out.println readme.text
-                    out.println ''
-                    out.println '---'
-                })
-            }
-        }
-        extraFiles.each { file ->
-            new File(output, file.name).withPrintWriter(encoding) { out ->
-                printFile(out, catalog, {
-                    out.println file.text
-                }
-                )
-            }
-        }
 
         trees.eachWithIndex() {
             tree, i ->
@@ -110,14 +57,14 @@ class MDTask extends DefaultTask {
                             tempfields.addAll(slurper.parseText(jsonFilter(field)))
                         }
 
-                        printFile(out, catalog, {
+                        printFile(out, {
                             out.println "### ${i} ${treeName}"
                             out.println ''
                             tree.children.eachWithIndex() {
                                 leaf, m ->
                                     m++
                                     def leafName = leaf.text
-                                    out.println "#### <a href='#${i}.${m}${leafName}' name='${i}.${m}${leafName}'>${i}.${m} ${leafName}</a>"
+                                    out.println "#### ${i}.${m} ${leafName}"
                                     out.println ''
                                     def api = apis.find({
                                         api ->
@@ -157,21 +104,21 @@ class MDTask extends DefaultTask {
         }
     }
 
-    static printFile(out, catalog, closure) {
-        out.println "<div mdin class=\"catalog\">"
-        out.println ''
-        out.println catalog
-        out.println "</div>"
-        out.println "<div mdin class=\"content\">"
-        out.println ''
+    static printFile(out, closure) {
+//        out.println "<div mdin class=\"catalog\">"
+//        out.println ''
+//        out.println catalog
+//        out.println "</div>"
+//        out.println "<div mdin class=\"content\">"
+//        out.println ''
         closure.call()
-        out.println ''
-        out.println "</div>"
-        out.println "<div class=\"topAnchor\">\n" +
-                "  <a href=\"#\">\n" +
-                "    <span></span>\n" +
-                "  </a>\n" +
-                "</div>"
+//        out.println ''
+//        out.println "</div>"
+//        out.println "<div class=\"topAnchor\">\n" +
+//                "  <a href=\"#\">\n" +
+//                "    <span></span>\n" +
+//                "  </a>\n" +
+//                "</div>"
     }
 
     def fillDesc(out, api, fields, version) {

@@ -8,7 +8,7 @@ version '1.0'
 
 apidoc {
     defaultHost 'http://app.qc-wbo.com/v1'
-    paths = ['APP']
+    paths = ['test']
 //    cover = false
 }
 
