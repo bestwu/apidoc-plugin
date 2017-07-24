@@ -7,7 +7,7 @@
   <meta name="apple-touch-fullscreen" content="yes"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>接口授权说明</title>
+  <title>11 手持端基本</title>
   <style type="text/css">
     body {
       margin: 0;
@@ -429,45 +429,69 @@
 </ul>
 <hr/></div>
 <div class="content">
-<h4><a href="#接口授权说明" name="接口授权说明">接口授权说明</a></h4>
-<ul>
-  <li>接口参数中有“accessToken”表示须传授权码。</li>
-</ul>
-<h5><a href="#accesstoken的获取" name="accesstoken的获取">accessToken的获取</a></h5>
-<ul>
-  <li>
-  <p>登录、注册、找回密码接口将返回授权信息，expiration，expiresIn客户端可不关注。</p>
-  <pre><code class="json">  {
-    &quot;accessToken&quot;: &quot;53cd7efb-7517-4b03-b4e6-1a8325f58a08&quot;,
-    &quot;expiration&quot;: 1488164341846,
-    &quot;expiresIn&quot;: 1209599
-  }
-</code></pre></li>
-</ul>
-<h4><a href="#accesstoken-的使用" name="accesstoken-的使用">accessToken 的使用</a></h4>
-<ul>
-  <li>支持request.header、request.querystring、request.form等方式传递</li>
-</ul>
-<p>例子：</p>
-<pre><code class="foo"><br/>Accept: application/json;version=1.0.b
-Accept-Language: zh-CN,en-US;q=0.5
-Accept-Encoding: gzip, deflate
-sign: MTQ2Mjc3MjY2NTg4MjowMzkzMzk4MDQzYTVmYTFmMTY4ZDdlZTczNDA3ZDBjMg==
-
-或
-
-http://www.xxx.com?access_token=c788a252-8f42-4229-943c-0544268e9c65
-
+<h3><a href="#11-手持端基本" name="11-手持端基本">11 手持端基本</a></h3>
+<h4><a href="#11-1-检查版本号" name="11-1-检查版本号">11.1 检查版本号</a></h4>
+<h6><a href="#接口地址" name="接口地址">接口地址</a></h6>
+<p><a href="http://app.qc-wbo.com/v1/clientVersions">http://app.qc-wbo.com/v1/clientVersions</a></p>
+<h6><a href="#请求方法" name="请求方法">请求方法</a></h6>
+<p>GET</p>
+<h6><a href="#请求参数" name="请求参数">请求参数</a></h6>
+<p>无</p>
+<h6><a href="#响应参数" name="响应参数">响应参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th title="名称">名称</th>
+      <th title="类型">类型</th>
+      <th title="描述">描述</th>
+      <th title="示例值">示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="id">id </td>
+      <td title="Long">Long </td>
+      <td title="主键ID">主键ID </td>
+      <td title="1">1 </td>
+    </tr>
+    <tr>
+      <td title="versionCode">versionCode </td>
+      <td title="Int">Int </td>
+      <td title="版本号">版本号 </td>
+      <td title="1">1 </td>
+    </tr>
+    <tr>
+      <td title="versionName">versionName </td>
+      <td title="String(50)">String(50) </td>
+      <td title="版本名称">版本名称 </td>
+      <td title="1.0">1.0 </td>
+    </tr>
+    <tr>
+      <td title="text">text </td>
+      <td title="String">String </td>
+      <td title="说明">说明 </td>
+      <td title="更新更新">更新更新 </td>
+    </tr>
+    <tr>
+      <td title="isForce">isForce </td>
+      <td title="Boolean">Boolean </td>
+      <td title="是否强制更新">是否强制更新 </td>
+      <td title="false">false </td>
+    </tr>
+  </tbody>
+</table>
+<h6><a href="#响应示例" name="响应示例">响应示例</a></h6>
+<pre><code class="json">{
+    &quot;id&quot;: 1,
+    &quot;versionCode&quot;: 1,
+    &quot;versionName&quot;: &quot;1.0&quot;,
+    &quot;text&quot;: &quot;更新更新&quot;,
+    &quot;isForce&quot;: false
+}
 </code></pre>
-<h4><a href="#登录过期" name="登录过期">登录过期</a></h4>
-<ul>
-  <li>
-  <p>调用接口返回HTTP状态码为401，表示“accessToken”过期，客户端须跳转到登录界面重新登录，以获取新的“accessToken”。</p></li>
-  <li>
-  <p>接口正常返回HTTP状态码为200、201或204。所有接口返回的状态码意义遵守HTTP协议规范。</p></li>
-</ul></div>
+<hr/></div>
 <div class="topAnchor">
-  <a id="topAnchor" href="接口授权说明.html#接口授权说明">
+  <a id="topAnchor" href="11-手持端基本.html#11-手持端基本">
     <span></span>
   </a>
 </div>
@@ -476,7 +500,7 @@ http://www.xxx.com?access_token=c788a252-8f42-4229-943c-0544268e9c65
   function changeMargin() {
     var docWidth = document.body.clientWidth;
     if (docWidth >= 800) {
-      document.getElementById("topAnchor").setAttribute("href", "接口授权说明.html#接口授权说明")
+      document.getElementById("topAnchor").setAttribute("href", "11-手持端基本.html#11-手持端基本")
     } else {
       document.getElementById("topAnchor").setAttribute("href", "index.html")
     }

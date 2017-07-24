@@ -19,5 +19,7 @@ repositories {
 }
 
 dependencies {
+    testCompile group: 'cn.bestwu.gradle', name: 'apidoc-plugin', version: '1.2.1'
+    testCompile gradleApi()
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
