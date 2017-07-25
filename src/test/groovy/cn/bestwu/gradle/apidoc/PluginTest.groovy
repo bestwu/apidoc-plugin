@@ -14,9 +14,9 @@ class PluginTest {
     @Test
     void test() throws Exception {
         def l = '#### 响应参数 ####', reg = / *(#+).*#?/
-        System.err.println(l.matches(reg))
-        System.err.println(l.replaceAll(reg, '$1').length())
-        System.err.println(l.replaceAll(/ *#+ *(.*?) *#*/, '$1'))
+        println(l.matches(reg))
+        println(l.replaceAll(reg, '$1').length())
+        println(l.replaceAll(/ *#+ *(.*?) *#*/, '$1'))
 //        Project project = ProjectBuilder.builder().build()
 //        def apidocPlugin = new ApidocPlugin()
 //        project.plugins.add(apidocPlugin)
@@ -31,7 +31,7 @@ class PluginTest {
     void findField() throws Exception {
         def file = new File("D:\\Repositories\\bestwu\\apidoc-plugin\\sample\\src\\main\\resources\\_t\\field.json")
         def json = new JsonSlurper().parseText(jsonFilter(file))
-        System.err.println(MDTask.findField(json, 'note', 'String'))
+        println(MDTask.findField(json, 'note', 'String'))
     }
 
     @Test

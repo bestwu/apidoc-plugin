@@ -24,17 +24,17 @@ class MDGenerator {
 
         def file = new File(output, "${fileName}.md")
         if (!file.exists() || cover) {
-            System.err.println("生成：${fileName}.md")
+            println("生成：${fileName}.md")
             file.withPrintWriter(encoding) { out ->
                 generateFile(out, i, apis, tree, fields, apiHost)
             }
         } else if (file.exists() && !cover) {
-            System.err.println("追加：${fileName}.md")
+            println("追加：${fileName}.md")
             file.withWriterAppend(encoding, { out ->
                 generateFile(out, i, apis, tree, fields, apiHost)
             })
         } else {
-            System.err.println("${fileName}.md已存在")
+            println("${fileName}.md已存在")
         }
 
     }
