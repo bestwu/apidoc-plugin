@@ -40,6 +40,12 @@ class ApidocPlugin implements Plugin<Project> {
                     project.apidoc.paths.each { path ->
                         def sourcePath = project.apidoc.sourcePath + '/' + path
                         inputs.dir sourcePath + '/md'
+                        inputs.files project.file(sourcePath).listFiles(new FileFilter() {
+                            @Override
+                            boolean accept(File file) {
+                                return file.name.endsWith('.md')
+                            }
+                        })
                         outputs.dir sourcePath + '/html'
                     }
                 }
@@ -64,6 +70,12 @@ class ApidocPlugin implements Plugin<Project> {
                     project.apidoc.paths.each { path ->
                         def sourcePath = project.apidoc.sourcePath + '/' + path
                         inputs.dir sourcePath + '/md'
+                        inputs.files project.file(sourcePath).listFiles(new FileFilter() {
+                            @Override
+                            boolean accept(File file) {
+                                return file.name.endsWith('.md')
+                            }
+                        })
                         outputs.dir sourcePath + '/html'
                     }
                     doFirst {

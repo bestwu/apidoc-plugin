@@ -16,53 +16,74 @@ class MDGenerator {
             output.mkdirs()
         }
         def treeName = tree.text
-        def fileName = "${i < 10 ? '0' + i : i}-${treeName}"
+        def fileName
+        if (i)
+            fileName = "${i < 10 ? '0' + i : i}-${treeName}"
+        else
+            fileName = treeName
+
         def file = new File(output, "${fileName}.md")
         if (!file.exists() || cover) {
             System.err.println("生成：${fileName}.md")
             file.withPrintWriter(encoding) { out ->
-                out.println "### ${i} ${treeName} ###"
-                out.println ''
-                tree.children.eachWithIndex() {
-                    leaf, m ->
-                        m++
-                        def leafName = leaf.text
-                        out.println "#### ${i}.${m} ${leafName} ####"
-                        out.println ''
-                        def api = apis.find({
-                            api ->
-                                api.resource == treeName && api.name == leafName
-                        })
-                        if (api == null)
-                            throw new Exception("未找到[${treeName}#${leafName}]接口")
-                        out.println "###### 接口地址 ######"
-                        out.println ''
-                        out.println "[${apiHost + api.url}](${apiHost + api.url})"
-                        out.println ''
-                        out.println "###### 请求方法 ######"
-                        out.println "${api.method}"
-                        out.println ''
-                        if (api.desc) {
-                            out.println "###### 说明 ######"
-                            out.println "${api.desc}"
-                            out.println ''
-                        }
-
-                        if (api.version && api.version.class == ArrayList.class) {
-                            api.version.each {
-                                fillDesc(out, api, fields, it)
-                            }
-                        } else
-                            fillDesc(out, api, fields, null)
-
-                        out.println ''
-                        out.println '---'
-                }
+                generateFile(out, i, apis, tree, fields, apiHost)
             }
+        } else if (file.exists() && !cover) {
+            System.err.println("追加：${fileName}.md")
+            file.withWriterAppend(encoding, { out ->
+                generateFile(out, i, apis, tree, fields, apiHost)
+            })
         } else {
             System.err.println("${fileName}.md已存在")
         }
 
+    }
+
+    private static void generateFile(out, i, apis, tree, fields, apiHost) {
+        def treeName = tree.text
+        if (i)
+            out.println "### ${i} ${treeName} ###"
+        else
+            out.println "### ${treeName} ###"
+        out.println ''
+        tree.children.eachWithIndex() {
+            leaf, m ->
+                m++
+                def leafName = leaf.text
+                if (i)
+                    out.println "#### ${i}.${m} ${leafName} ####"
+                else
+                    out.println "#### ${m} ${leafName} ####"
+                out.println ''
+                def api = apis.find({
+                    api ->
+                        api.resource == treeName && api.name == leafName
+                })
+                if (api == null)
+                    throw new Exception("未找到[${treeName}#${leafName}]接口")
+                out.println "###### 接口地址 ######"
+                out.println ''
+                out.println "[${apiHost + api.url}](${apiHost + api.url})"
+                out.println ''
+                out.println "###### 请求方法 ######"
+                out.println "${api.method}"
+                out.println ''
+                if (api.desc) {
+                    out.println "###### 说明 ######"
+                    out.println "${api.desc}"
+                    out.println ''
+                }
+
+                if (api.version && api.version.class == ArrayList.class) {
+                    api.version.each {
+                        fillDesc(out, api, fields, it)
+                    }
+                } else
+                    fillDesc(out, api, fields, null)
+
+                out.println ''
+                out.println '---'
+        }
     }
 
 

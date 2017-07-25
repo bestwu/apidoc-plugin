@@ -8,6 +8,7 @@ import org.pegdown.ast.TableColumnNode
 import org.pegdown.ast.TextNode
 import org.pegdown.plugins.PegDownPlugins
 import org.pegdown.plugins.ToHtmlSerializerPlugin
+
 /**
  * 生成接口文档
  *
@@ -15,33 +16,27 @@ import org.pegdown.plugins.ToHtmlSerializerPlugin
  */
 class HtmlGenerator {
 
-    static generate(File input, File output, encoding) {
+    static generate(File input, File output, encoding, File... extraFiles) {
         output.deleteDir()
         if (!output.exists()) {
             output.mkdirs()
         }
-        def mddir = new File(input, 'md')
-        def readme = new File(input, "README.md")
 
-        def extraFiles = input.listFiles(new FileFilter() {
-            @Override
-            boolean accept(File pathname) {
-                def name = pathname.name
-                return name.endsWith('.md') && name != 'README.md'
-            }
-        })
+        def readme = extraFiles.find { it.name == 'README.md' }
         def catalogOut = new StringWriter()
-        if (readme.exists())
+        if (readme)
             catalogOut.println "- [系统介绍](index.html)"
         catalogOut.println ''
         extraFiles.each { file ->
             def name = file.name
-            catalogOut.println "- [${name.replace('.md', '')}](${name.replace('.md', '.html')})"
+            if (name != 'README.md')
+                catalogOut.println "- [${name.replace('.md', '')}](${name.replace('.md', '.html')})"
         }
         catalogOut.println ''
         catalogOut.println '---'
         catalogOut.println ''
-        mddir.listFiles().sort().each {
+        def files = input.listFiles()
+        files.sort().each {
             def fileName = it.name.replace('.md', '')
             def link = "${fileName.toLowerCase().replaceAll(/^0?(.*)$/, '$1')}"
             catalogOut.println "- [${fileName.replaceAll(/^0?(.*)$/, '$1').replace('-', ' ')}](${fileName}.html#$link)"
@@ -63,27 +58,16 @@ class HtmlGenerator {
 
         def catalog = catalogOut.toString()
 
-        def catalogFile = new File(mddir, "index.md")
-        if (readme.exists()) {
-            catalogFile.withPrintWriter(encoding) { out ->
-                out.println readme.text
-                out.println ''
-                out.println '---'
-            }
-        }
-        extraFiles.each { file ->
-            new File(mddir, file.name).withPrintWriter(encoding) { out ->
-                out.println file.text
-            }
-        }
-        mddir.listFiles().each {
-            markdown2html(catalog, it, new File(output, "${it.name}.html".replace('.md', '')), encoding)
+        def listOfFiles = files.toList()
+        listOfFiles.addAll(extraFiles)
+        listOfFiles.each {
+            markdown2html(catalog, it, new File(output, "${it.name == 'README.md' ? 'index' : it.name.replace('.md', '')}.html"), encoding)
         }
     }
 
     static markdown2html(catalog, inFile, outFile, encoding) {
         def fileName = inFile.name.replace('.md', ''), title = fileName.replaceAll(/^0?(.*)$/, '$1').replace('-', ' ')
-        if ('index' == title) {
+        if ('README' == title) {
             title = '接口文档'
         }
         def header = '<!DOCTYPE html>\n' +
@@ -363,8 +347,8 @@ class HtmlGenerator {
         }
     }
 
-    static class MdProcessor extends org.pegdown.PegDownProcessor {
-        public MdProcessor(int options) {
+    static class MdProcessor extends PegDownProcessor {
+       public MdProcessor(int options) {
             super(options, PegDownProcessor.DEFAULT_MAX_PARSING_TIME, PegDownPlugins.NONE);
         }
 
