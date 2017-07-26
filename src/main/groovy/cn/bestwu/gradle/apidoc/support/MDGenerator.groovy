@@ -1,7 +1,6 @@
 package cn.bestwu.gradle.apidoc.support
 
 import groovy.json.JsonOutput
-import groovy.json.StringEscapeUtils
 
 /**
  * 生成MD接口文档
@@ -313,7 +312,7 @@ class MDGenerator {
     static getFieldType(value) {
         if (value instanceof Map)
             return 'Object'
-        if (value instanceof Collection)
+        if (value instanceof Collection || value.class.isArray())
             return 'Array'
         return value.class.simpleName
     }
