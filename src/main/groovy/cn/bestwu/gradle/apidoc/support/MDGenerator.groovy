@@ -9,7 +9,23 @@ import groovy.json.JsonOutput
  */
 class MDGenerator {
 
+    /**
+     * 严格模式字段解析
+     */
+    static strict = true
 
+    /**
+     * 生成文档
+     * @param i
+     * @param tree
+     * @param apis
+     * @param fields
+     * @param output
+     * @param apiHost
+     * @param cover
+     * @param encoding
+     * @return
+     */
     static generate(i, tree, apis, fields, output, apiHost, cover, encoding) {
         if (!output.exists()) {
             output.mkdirs()
@@ -37,7 +53,15 @@ class MDGenerator {
         }
 
     }
-
+    /**
+     * 生成文件
+     * @param out
+     * @param i
+     * @param apis
+     * @param tree
+     * @param fields
+     * @param apiHost
+     */
     private static void generateFile(out, i, apis, tree, fields, apiHost) {
         def treeName = tree.text
         if (i)
@@ -85,7 +109,14 @@ class MDGenerator {
         }
     }
 
-
+    /**
+     * 填充文档
+     * @param out
+     * @param api
+     * @param fields
+     * @param version
+     * @return
+     */
     static fillDesc(out, api, fields, version) {
         def headers = api.headers
         def uriVariables = api.uriVariables
@@ -161,12 +192,12 @@ class MDGenerator {
             out.println '```'
         }
     }
-/**
- * 转换结果示例
- * @param fields
- * @param results
- * @return
- */
+    /**
+     * 转换结果示例
+     * @param fields
+     * @param results
+     * @return
+     */
     static convertResults(fields, results) {
         if (results instanceof Collection) {
             def convertedResults = []
@@ -190,12 +221,12 @@ class MDGenerator {
             return convertedResults
         }
     }
-/**
- * 参数字段
- * @param fields
- * @param param
- * @return
- */
+    /**
+     * 参数字段
+     * @param fields
+     * @param param
+     * @return
+     */
     static getParamFields(fields, param) {
         if (!param)
             return null
@@ -251,12 +282,12 @@ class MDGenerator {
         }
         return flds
     }
-/**
- * 响应结果字段
- * @param fields
- * @param result
- * @return
- */
+    /**
+     * 响应结果字段
+     * @param fields
+     * @param result
+     * @return
+     */
     static getResultFields(fields, result) {
         if (!result)
             return null
@@ -331,9 +362,9 @@ class MDGenerator {
             }
         }
         def size = result.size()
-        if (size > 1)
+        if (strict && size > 1)
             throw new RuntimeException("id:${name}存在多个未区分属性说明：${UnescapeUnicodeUtil.unescapeUnicode(JsonOutput.toJson(result))}")
-        if (size == 1) {
+        if (size > 0) {
             origin = result[0]
         } else {
             def type = getFieldType(value)
@@ -343,9 +374,9 @@ class MDGenerator {
                 }
             }
             size = result.size()
-            if (size > 1)
+            if (strict && size > 1)
                 throw new RuntimeException("name:${name},type:${type}存在多个未区分属性说明：${UnescapeUnicodeUtil.unescapeUnicode(JsonOutput.toJson(result))}")
-            if (size == 1) {
+            if (size > 0) {
                 origin = result[0]
             } else {
                 result = fields.findAll {
@@ -354,9 +385,9 @@ class MDGenerator {
                     }
                 }
                 size = result.size()
-                if (size > 1)
+                if (strict && size > 1)
                     throw new RuntimeException("name:${name}存在多个未区分属性说明：${UnescapeUnicodeUtil.unescapeUnicode(JsonOutput.toJson(result))}")
-                if (size == 1) {
+                if (size > 0) {
                     origin = result[0]
                 }
             }
@@ -370,12 +401,12 @@ class MDGenerator {
 
         return field
     }
-/**
- * 复制属性
- * @param source
- * @param target
- * @return
- */
+    /**
+     * 复制属性
+     * @param source
+     * @param target
+     * @return
+     */
     static copyProperties(source, target) {
         source.each { key, value ->
             target[key] = value
