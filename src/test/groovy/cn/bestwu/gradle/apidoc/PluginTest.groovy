@@ -1,9 +1,9 @@
 package cn.bestwu.gradle.apidoc
 
+import cn.bestwu.gradle.apidoc.support.UnescapeUnicodeUtil
 import cn.bestwu.gradle.apidoc.tasks.MDTask
 import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
-import groovy.json.StringEscapeUtils
 import org.junit.Test
 
 /**
@@ -47,7 +47,7 @@ class PluginTest {
             j.add(get)
         }
         file.withPrintWriter('UTF-8') { out ->
-            out.println StringEscapeUtils.unescapeJava(JsonOutput.prettyPrint(JsonOutput.toJson(j)))
+            out.println UnescapeUnicodeUtil.unescapeUnicode(JsonOutput.prettyPrint(JsonOutput.toJson(j)))
         }
     }
 

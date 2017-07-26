@@ -158,7 +158,7 @@ class MDGenerator {
             out.println "###### 响应示例 ######"
             out.println ''
             out.println '```json'
-            out.println StringEscapeUtils.unescapeJava(JsonOutput.prettyPrint(JsonOutput.toJson(convertResults(fields, results))))
+            out.println UnescapeUnicodeUtil.unescapeUnicode(JsonOutput.prettyPrint(JsonOutput.toJson(convertResults(fields, results))))
             out.println '```'
         }
     }
@@ -275,7 +275,7 @@ class MDGenerator {
                 v = field.value
             }
             if (v instanceof Map)
-                field.tempValue = StringEscapeUtils.unescapeJava(JsonOutput.toJson(convertResults(fields, v)).replace('[', '\\['))
+                field.tempValue = UnescapeUnicodeUtil.unescapeUnicode(JsonOutput.toJson(convertResults(fields, v)).replace('[', '\\['))
             else if (v instanceof Collection) {
                 def list
                 if (v.size() >= 1) {
@@ -284,7 +284,7 @@ class MDGenerator {
                 } else {
                     list = []
                 }
-                field.tempValue = StringEscapeUtils.unescapeJava(JsonOutput.toJson(convertResults(fields, list)).replace('[', '\\['))
+                field.tempValue = UnescapeUnicodeUtil.unescapeUnicode(JsonOutput.toJson(convertResults(fields, list)).replace('[', '\\['))
             } else
                 field.tempValue = v
 
@@ -333,7 +333,7 @@ class MDGenerator {
         }
         def size = result.size()
         if (size > 1)
-            throw new RuntimeException("id:${name}存在多个未区分属性说明：${StringEscapeUtils.unescapeJava(JsonOutput.toJson(result))}")
+            throw new RuntimeException("id:${name}存在多个未区分属性说明：${UnescapeUnicodeUtil.unescapeUnicode(JsonOutput.toJson(result))}")
         if (size == 1) {
             origin = result[0]
         } else {
@@ -345,7 +345,7 @@ class MDGenerator {
             }
             size = result.size()
             if (size > 1)
-                throw new RuntimeException("name:${name},type:${type}存在多个未区分属性说明：${StringEscapeUtils.unescapeJava(JsonOutput.toJson(result))}")
+                throw new RuntimeException("name:${name},type:${type}存在多个未区分属性说明：${UnescapeUnicodeUtil.unescapeUnicode(JsonOutput.toJson(result))}")
             if (size == 1) {
                 origin = result[0]
             } else {
@@ -356,7 +356,7 @@ class MDGenerator {
                 }
                 size = result.size()
                 if (size > 1)
-                    throw new RuntimeException("name:${name}存在多个未区分属性说明：${StringEscapeUtils.unescapeJava(JsonOutput.toJson(result))}")
+                    throw new RuntimeException("name:${name}存在多个未区分属性说明：${UnescapeUnicodeUtil.unescapeUnicode(JsonOutput.toJson(result))}")
                 if (size == 1) {
                     origin = result[0]
                 }
