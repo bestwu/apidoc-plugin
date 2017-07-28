@@ -2,10 +2,7 @@ package cn.bestwu.gradle.apidoc.support
 
 import org.jsoup.Jsoup
 import org.pegdown.*
-import org.pegdown.ast.RootNode
-import org.pegdown.ast.TableCellNode
-import org.pegdown.ast.TableColumnNode
-import org.pegdown.ast.TextNode
+import org.pegdown.ast.*
 import org.pegdown.plugins.PegDownPlugins
 import org.pegdown.plugins.ToHtmlSerializerPlugin
 
@@ -38,7 +35,7 @@ class HtmlGenerator {
         def files = input.listFiles()
         files.sort().each {
             def fileName = it.name.replace('.md', '')
-            def link = "${fileName.toLowerCase().replaceAll(/^0?(.*)$/, '$1')}"
+            def link = "${getAnchor(fileName).replaceAll(/^0?(.*)$/, '$1')}"
             catalogOut.println "- [${fileName.replaceAll(/^0?(.*)$/, '$1').replace('-', ' ')}](${fileName}.html#$link)"
 //            catalogOut.println "- <a href=\"${fileName}.html#$link\" name=\"$link\">${fileName.replaceAll(/^0?(.*)$/, '$1').replace('-', ' ')}</a>"
             catalogOut.println ''
@@ -47,7 +44,7 @@ class HtmlGenerator {
                 if (l.matches(reg) && l.replaceAll(reg, '$1').length() <= 4) {
                     def name = l.replaceAll(/^ *#+ *(.*?) *#*$/, '$1')
                     if (name != fileName.replaceAll(/^0?(.*)$/, '$1').replace('-', ' ')) {
-                        catalogOut.println "\t- [${name}](${fileName}.html#${name.toLowerCase().replace('.', '-').replace(' ', '-')})"
+                        catalogOut.println "\t- [${name}](${fileName}.html#${getAnchor(name)})"
 //                        catalogOut.println "\t- <a href=\"${fileName}.html#${name.toLowerCase().replace('.', '-').replace(' ', '-')}\" name=\"${name.toLowerCase().replace('.', '-').replace(' ', '-')}\">$name</a>"
                     }
                 }
@@ -63,6 +60,10 @@ class HtmlGenerator {
         listOfFiles.each {
             markdown2html(catalog, it, new File(output, "${it.name == 'README.md' ? 'index' : it.name.replace('.md', '')}.html"), encoding)
         }
+    }
+
+    private static String getAnchor(String name) {
+        new AnchorLinkNode(name).getName()
     }
 
     static markdown2html(catalog, inFile, outFile, encoding) {
