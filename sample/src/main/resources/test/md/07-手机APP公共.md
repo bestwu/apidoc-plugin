@@ -18,10 +18,10 @@ GET
 
 |名称|类型|描述|示例值|
 |---|---|---|---|
-| list | Array | 内容 | [{"id":110000,"name":"北京","children":[{"id":110101,"name":"东城区","children":[]}]}] |
+| list | Array | 内容 | \[{"id":110000,"name":"北京","children":\[{"id":110101,"name":"东城区","children":\[]}]}] |
 | id | Long | 主键ID | 110000 |
 | name | String(100) | 名称 | 北京 |
-| children | Array | 子对象 | [{"id":110101,"name":"东城区","children":[]}] |
+| children | Array | 子对象 | \[{"id":110101,"name":"东城区","children":\[]}] |
 | id | Long | 主键ID | 110101 |
 | name | String(100) | 名称 | 东城区 |
 | children | Array | 子对象 | \- |
@@ -30,21 +30,15 @@ GET
 
 ```json
 {
-    "list": [
-        {
-            "id": 110000,
-            "name": "北京",
-            "children": [
-                {
-                    "id": 110101,
-                    "name": "东城区",
-                    "children": [
-                        
-                    ]
-                }
-            ]
-        }
-    ]
+  "list": [{
+    "id": 110000,
+    "name": "北京",
+    "children": [{
+      "id": 110101,
+      "name": "东城区",
+      "children": []
+    }]
+  }]
 }
 ```
 
@@ -63,7 +57,7 @@ GET
 
 |名称|类型|是否必填|描述|示例值|
 |---|---|---|---|---|
-| sign | String | 是 | 接口签名 <a href='签名算法.md' target='_blank'>签名算法</a> | \- |
+| sign | String | 是 | 接口签名 <a href='html/签名算法.html' target='_blank'>签名算法</a> | \- |
 
 ###### 请求参数 ######
 
@@ -82,6 +76,7 @@ GET
 | lng | Double | 公司所在经度 | 103.835434 |
 | lat | Double | 公司所在纬度 | 30.047301 |
 | mapZoom | String(20) | 地图缩放级别 | 13 |
+| logo | String(250) | 公司logo | http://192.168.1.110:8888/logo/ytlogo.png |
 | mapAreas | Array | 地图范围 | {"id":8,"color":"#9a9a9a","path":{"lat":30.02651,"lng":103.867385},"name":"灰"} |
 | id | Long | 主键ID | 8 |
 | color | String(20) | 颜色 | #9a9a9a |
@@ -94,21 +89,22 @@ GET
 
 ```json
 {
-    "id": 1,
-    "name": "伊藤洋华堂（眉山店）",
-    "address": "眉山市东坡区环湖中路雕像国际广场 伊藤洋华堂",
-    "lng": 103.835434,
-    "lat": 30.047301,
-    "mapZoom": "13",
-    "mapAreas": {
-        "id": 8,
-        "color": "#9a9a9a",
-        "path": {
-            "lat": 30.02651,
-            "lng": 103.867385
-        },
-        "name": "灰"
-    }
+  "id": 1,
+  "name": "伊藤洋华堂（眉山店）",
+  "address": "眉山市东坡区环湖中路雕像国际广场 伊藤洋华堂",
+  "lng": 103.835434,
+  "lat": 30.047301,
+  "mapZoom": "13",
+  "logo": "http://192.168.1.110:8888/logo/ytlogo.png",
+  "mapAreas": {
+    "id": 8,
+    "color": "#9a9a9a",
+    "path": {
+      "lat": 30.02651,
+      "lng": 103.867385
+    },
+    "name": "灰"
+  }
 }
 ```
 
@@ -127,7 +123,7 @@ GET
 
 |名称|类型|是否必填|描述|示例值|
 |---|---|---|---|---|
-| sign | String | 是 | 接口签名 <a href='签名算法.md' target='_blank'>签名算法</a> | \- |
+| sign | String | 是 | 接口签名 <a href='html/签名算法.html' target='_blank'>签名算法</a> | \- |
 
 ###### 请求参数 ######
 
@@ -153,15 +149,15 @@ GET
 
 ```json
 {
+  "id": 1,
+  "name": "伊藤洋华堂（眉山店）",
+  "receivingSpaces": {
     "id": 1,
-    "name": "伊藤洋华堂（眉山店）",
-    "receivingSpaces": {
-        "id": 1,
-        "floor": 5,
-        "address": "服务台旁",
-        "lat": 30.047301,
-        "lng": 103.835434
-    }
+    "floor": 5,
+    "address": "服务台旁",
+    "lat": 30.047301,
+    "lng": 103.835434
+  }
 }
 ```
 

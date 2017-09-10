@@ -14,7 +14,7 @@ GET
 
 |名称|类型|是否必填|描述|示例值|
 |---|---|---|---|---|
-| sign | String | 是 | 接口签名 <a href='签名算法.md' target='_blank'>签名算法</a> | \- |
+| sign | String | 是 | 接口签名 <a href='html/签名算法.html' target='_blank'>签名算法</a> | \- |
 
 ###### 请求参数 ######
 
@@ -32,7 +32,7 @@ GET
 | size | Int | 每页最大数量，默认20 | 2 |
 | total | Long | 总记录数 | 2 |
 | pages | Int | 总页数 | 1 |
-| list | Array | 内容 | [{"subject":"钱包充值","createdDate":1487726987744,"totalAmount":100}] |
+| list | Array | 内容 | \[{"subject":"钱包充值","createdDate":1487726987744,"totalAmount":100}] |
 | subject | String(250) | 交易说明 | 钱包充值 |
 | createdDate | Long | 创建时间（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1487726987744 |
 | totalAmount | Long | 交易金额（单元：分） | 100 |
@@ -42,23 +42,20 @@ GET
 
 ```json
 {
-    "money": 100,
-    "size": 2,
-    "total": 2,
-    "pages": 1,
-    "list": [
-        {
-            "subject": "钱包充值",
-            "createdDate": 1487726987744,
-            "totalAmount": 100
-        },
-        {
-            "subject": "钱包充值",
-            "createdDate": 1487726987744,
-            "totalAmount": 100
-        }
-    ],
-    "page": 1
+  "money": 100,
+  "size": 2,
+  "total": 2,
+  "pages": 1,
+  "list": [{
+    "subject": "钱包充值",
+    "createdDate": 1487726987744,
+    "totalAmount": 100
+  }, {
+    "subject": "钱包充值",
+    "createdDate": 1487726987744,
+    "totalAmount": 100
+  }],
+  "page": 1
 }
 ```
 
@@ -77,7 +74,7 @@ POST
 
 |名称|类型|是否必填|描述|示例值|
 |---|---|---|---|---|
-| sign | String | 是 | 接口签名 <a href='签名算法.md' target='_blank'>签名算法</a> | \- |
+| sign | String | 是 | 接口签名 <a href='html/签名算法.html' target='_blank'>签名算法</a> | \- |
 
 ###### 请求参数 ######
 
@@ -99,9 +96,9 @@ POST
 
 ```json
 {
-    "money": 1,
-    "payment": 2,
-    "orderInfo": "app_id=2016112103042572&biz_content=%7B%22out_trade_no%22%3A%22201702220929471%22%2C%22total_amount%22%3A%220.01%22%2C%22subject%22%3A%22%E9%92%B1%E5%8C%85%E5%85%85%E5%80%BC%22%2C%22body%22%3A%22%E9%92%B1%E5%8C%85%E5%85%85%E5%80%BC%22%2C%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22seller_id%22%3A%222088421595009690%22%7D&charset=UTF-8&method=alipay.trade.app.pay&notify_url=http%3A%2F%2F127.0.0.1%3A8080%2Fmobile%2Fnotifies%2Falipay&sign_type=RSA2&timestamp=2017-02-22+09%3A29%3A48&version=1.0&sign=lzMHOpwJIFdGMW8n4KIC%2FH9yUcP6w6SRmMMYtnn1o7QP2cMKdjizQIAd%2BddMKQpGVG2nOscTJ7cIiKkOk1rPe8C3Hb6HD6%2BVjIwK78bSCoM5rRI5hngQc6OMAuf52NlbtnNO8iJb6SQViWSP5TWDtYj9IRUPOyVB1bVD44Zw4QQ%3D"
+  "money": 1,
+  "payment": 2,
+  "orderInfo": "app_id=2016112103042572&biz_content=%7B%22out_trade_no%22%3A%22201702220929471%22%2C%22total_amount%22%3A%220.01%22%2C%22subject%22%3A%22%E9%92%B1%E5%8C%85%E5%85%85%E5%80%BC%22%2C%22body%22%3A%22%E9%92%B1%E5%8C%85%E5%85%85%E5%80%BC%22%2C%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22seller_id%22%3A%222088421595009690%22%7D&charset=UTF-8&method=alipay.trade.app.pay&notify_url=http%3A%2F%2F127.0.0.1%3A8080%2Fmobile%2Fnotifies%2Falipay&sign_type=RSA2&timestamp=2017-02-22+09%3A29%3A48&version=1.0&sign=lzMHOpwJIFdGMW8n4KIC%2FH9yUcP6w6SRmMMYtnn1o7QP2cMKdjizQIAd%2BddMKQpGVG2nOscTJ7cIiKkOk1rPe8C3Hb6HD6%2BVjIwK78bSCoM5rRI5hngQc6OMAuf52NlbtnNO8iJb6SQViWSP5TWDtYj9IRUPOyVB1bVD44Zw4QQ%3D"
 }
 ```
 
@@ -120,7 +117,7 @@ GET
 
 |名称|类型|是否必填|描述|示例值|
 |---|---|---|---|---|
-| sign | String | 是 | 接口签名 <a href='签名算法.md' target='_blank'>签名算法</a> | \- |
+| sign | String | 是 | 接口签名 <a href='html/签名算法.html' target='_blank'>签名算法</a> | \- |
 
 ###### 请求参数 ######
 
@@ -141,7 +138,7 @@ GET
 
 ```json
 {
-    "validated": "false"
+  "validated": "false"
 }
 ```
 

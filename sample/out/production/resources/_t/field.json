@@ -1,0 +1,289 @@
+[
+  {
+    "desc": "主键ID",
+    "name": "rd_id",
+    "nullable": false,
+    "type": "Long",
+    "value": ""
+  },
+  {
+    "desc": "错误信息",
+    "name": "errormsg",
+    "nullable": false,
+    "type": "String",
+    "value": ""
+  },
+  {
+    "desc": "错误代码 0：正确  1：有错误",
+    "name": "errorno",
+    "nullable": false,
+    "type": "Int",
+    "value": ""
+  },
+  {
+    "desc": "签名",
+    "name": "sign",
+    "nullable": false,
+    "type": "String",
+    "value": ""
+  },
+  {
+    "desc": "当errorno=0的时候 区分错误类别 例如：0: 用户不存在 1:用户余额不足",
+    "name": "errorcode",
+    "nullable": false,
+    "type": "Int",
+    "value": ""
+  },
+  {
+    "desc": "数据",
+    "name": "data",
+    "nullable": false,
+    "type": "String",
+    "value": ""
+  },
+  {
+    "desc": "从什么地方发出的请求（0:android 1:ios 2:PDA 3: web 4:道闸 5：MEPOS 6：地磁设备android板）",
+    "name": "dtype",
+    "nullable": true,
+    "type": "Int",
+    "value": ""
+  },
+  {
+    "desc": "租赁订单号",
+    "name": "rent_order_id",
+    "nullable": true,
+    "type": "String(80)",
+    "value": "''"
+  },
+  {
+    "desc": "停车场主键ID",
+    "name": "pi_id",
+    "nullable": true,
+    "type": "Long",
+    "value": "'0'"
+  },
+  {
+    "desc": "停车场地址编码",
+    "name": "area_code",
+    "nullable": true,
+    "type": "String(30)",
+    "value": "''"
+  },
+  {
+    "desc": "停车场名称",
+    "name": "pi_name",
+    "nullable": true,
+    "type": "String(80)",
+    "value": "''"
+  },
+  {
+    "desc": "租赁续期金额（单位 分）",
+    "name": "money",
+    "nullable": true,
+    "type": "Int",
+    "value": "'0'"
+  },
+  {
+    "desc": "租赁每个月单价（单位分）",
+    "name": "unit_price",
+    "nullable": true,
+    "type": "Int",
+    "value": "'0'"
+  },
+  {
+    "desc": "开始时间",
+    "name": "starttime",
+    "nullable": true,
+    "type": "Long",
+    "value": ""
+  },
+  {
+    "desc": "到期时间",
+    "name": "endtime",
+    "nullable": true,
+    "type": "Long",
+    "value": ""
+  },
+  {
+    "desc": "续约月份个数",
+    "name": "month_num",
+    "nullable": true,
+    "type": "Int",
+    "value": "'0'"
+  },
+  {
+    "desc": "客户端创建时间",
+    "name": "ctime",
+    "nullable": true,
+    "type": "Long",
+    "value": ""
+  },
+  {
+    "desc": "服务器端接收时间",
+    "name": "stime",
+    "nullable": true,
+    "type": "Long",
+    "value": ""
+  },
+  {
+    "desc": "更新时间",
+    "name": "utime",
+    "nullable": true,
+    "type": "Long",
+    "value": ""
+  },
+  {
+    "desc": "用户主键ID",
+    "name": "ui_id",
+    "nullable": true,
+    "type": "Long",
+    "value": "'0'"
+  },
+  {
+    "desc": "用户ND",
+    "name": "ui_nd",
+    "nullable": true,
+    "type": "String(80)",
+    "value": "''"
+  },
+  {
+    "desc": "用户车牌号",
+    "name": "car_code",
+    "nullable": true,
+    "type": "String(80)",
+    "value": "''"
+  },
+  {
+    "desc": "商户主键ID",
+    "name": "pu_id",
+    "nullable": true,
+    "type": "Long",
+    "value": "'0'"
+  },
+  {
+    "desc": "商户ND",
+    "name": "pu_nd",
+    "nullable": true,
+    "type": "String(80)",
+    "value": "''"
+  },
+  {
+    "desc": "允许时间段（8：00-23：00）",
+    "name": "permit_time",
+    "nullable": true,
+    "type": "String(80)",
+    "value": "''"
+  },
+  {
+    "desc": "支付状态（0：未支付 1：支付成功  2：支付失败）",
+    "name": "pay_state",
+    "nullable": true,
+    "type": "Int",
+    "value": "'0'"
+  },
+  {
+    "desc": "续约状态（0：未续约  1：续约中  2：续约成功 3：续约失败   4：续约超时失败-退款钱包）",
+    "name": "defer_state",
+    "nullable": true,
+    "type": "Int",
+    "value": "'0'"
+  },
+  {
+    "desc": "平台支付流水单号",
+    "name": "up_orderid",
+    "nullable": true,
+    "type": "String(80)",
+    "value": "''"
+  },
+  {
+    "desc": "续约来源（0：未知 1：道闸  2：线上）",
+    "name": "flag",
+    "nullable": true,
+    "type": "Int",
+    "value": "'0'"
+  },
+  {
+    "desc": "支付类型 0：现金 1:支付宝  2：微信  3：银联  4：钱包 5:龙支付  6:ETC快捷支付",
+    "name": "pay_source",
+    "nullable": true,
+    "type": "Int",
+    "value": "'0'"
+  },
+  {
+    "desc": "是否MQ推送（0：没有 1：推送成功  2：推送失败  ）",
+    "name": "mq_state",
+    "nullable": true,
+    "type": "Int",
+    "value": "'0'"
+  },
+  {
+    "desc": "租赁类型（0：普通时间段  1：早半天  2：晚半天  3：全天）",
+    "name": "rent_type",
+    "nullable": true,
+    "type": "Int",
+    "value": "'0'"
+  },
+  {
+    "desc": "是否逻辑删除(0:正常 1：删除)",
+    "name": "is_del",
+    "nullable": true,
+    "type": "Int",
+    "value": "'0'"
+  },
+  {
+    "desc": "备注",
+    "name": "note",
+    "nullable": true,
+    "type": "String(100)",
+    "value": "''"
+  },
+  {
+    "desc": "父亲订单（父订单）ID",
+    "name": "father_order_id",
+    "nullable": true,
+    "type": "String(80)",
+    "value": "''"
+  },
+  {
+    "desc": "子续约订单ID",
+    "name": "son_order_id",
+    "nullable": true,
+    "type": "String(80)",
+    "value": "''"
+  },
+  {
+    "desc": "是否已经到期（0：未到期 1：已经到期）",
+    "name": "is_expire",
+    "nullable": true,
+    "type": "Int",
+    "value": "'0'"
+  },
+  {
+    "desc": "客户端的租赁订单号",
+    "name": "client_order_id",
+    "nullable": true,
+    "type": "String(80)",
+    "value": "''"
+  },
+  {
+    "desc": "客户端的规则ID",
+    "name": "client_rule_id",
+    "nullable": true,
+    "type": "String(80)",
+    "value": "''"
+  },
+  {
+    "desc": "客户端的规则ID",
+    "name": "client_ruleid",
+    "nullable": true,
+    "type": "String(80)",
+    "value": "''"
+  },
+  {
+    "desc": "申述状态 0:未申述 1：申述中  2：申述失败 3：申述成功",
+    "name": "allege_state",
+    "nullable": true,
+    "type": "Int",
+    "value": "'0'"
+  }
+]

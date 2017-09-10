@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="renderer" content="webkit"/>
+  <meta name="apple-touch-fullscreen" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>rent_defer_app</title>
+  <link rel="stylesheet" type="text/css" href="apidoc.css"/></head>
+<body>
+<p>###道闸：： 1.租赁续租管理模块--APP</p>
+<p>#####测试的时候前缀：http://139.224.29.103:8091</p>
+<p>####1.1-&gt;用户根据车牌号查询租赁信息--(目前只处理租赁)</p>
+<table>
+  <thead>
+    <tr>
+      <th title="参数名称">参数名称</th>
+      <th title="值描述">值描述</th>
+      <th title="是否可空">是否可空</th>
+      <th title="限制长度">限制长度</th>
+      <th title="参数类型">参数类型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="car_code">car_code</td>
+      <td title="用户车牌号">用户车牌号</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+    <tr>
+      <td title="sign">sign</td>
+      <td title="MD5数字签名(dtype+ui_id)按参数的首字母升序顺序进行组装">MD5数字签名(dtype+ui_id)按参数的首字母升序顺序进行组装</td>
+      <td title="否">否</td>
+      <td title="无">无 </td>
+      <td title="字符串">字符串</td>
+    </tr>
+  </tbody>
+</table>
+<p><font color=#0000ff size=6>注意事项</font></p>
+<p>####请求路径</p>
+<p><a href="http://139.224.29.103/v1/getParkRentInfoByCarcode.php">http://139.224.29.103/v1/getParkRentInfoByCarcode.php</a></p>
+<p>######返回结果</p>
+<pre><code>{
+    &quot;data&quot;: [
+        {
+            &quot;area_code&quot;: &quot;510107&quot;,
+            &quot;car_code&quot;: &quot;川EU4535&quot;,
+            &quot;client_rule_id&quot;: &quot;&quot;,
+            &quot;endtime&quot;: 1499915431000,
+            &quot;is_del&quot;: 0,
+            &quot;is_expire&quot;: 0,
+            &quot;note&quot;: &quot;&quot;,
+            &quot;permit_time&quot;: &quot;8：00-23：00&quot;,
+            &quot;pi_id&quot;: 1001,
+            &quot;pi_name&quot;: &quot;洪洋农贸市场地下车库&quot;,
+            &quot;rd_id&quot;: 1,
+            &quot;rent_type&quot;: 0,
+            &quot;starttime&quot;: 1499915428000,
+            &quot;stime&quot;: 1499915433000,
+            &quot;ui_id&quot;: 40,
+            &quot;ui_nd&quot;: &quot;2016121214247768&quot;,
+            &quot;unit_price&quot;: 1000,
+            &quot;utime&quot;: 1499915436000
+        }
+    ],
+    &quot;errorcode&quot;: &quot;&quot;,
+    &quot;errormsg&quot;: &quot;查询租赁信息成功&quot;,
+    &quot;errorno&quot;: &quot;0&quot;
+}
+</code></pre>
+<p>#########data 里面JSONarray 里面的单个JOSN对象返回字段说明<br/>|名称|描述|类型|<br/>|----|----|---|<br/>|rd_id|主键ID|long|<br/>|pi_id|停车场主键ID|long|<br/>|area_code|停车场地址编码|String|<br/>|pi_name|停车场名称|String|<br/>|unit_price|租赁每个月单价（单位分）|int|<br/>|starttime|开始时间|java.util.Date|<br/>|endtime|到期时间|java.util.Date|<br/>|stime|服务器端接收时间|java.util.Date|<br/>|utime|更新时间|java.util.Date|<br/>|ui_id|用户主键ID|long|<br/>|ui_nd|用户ND|String|<br/>|car_code|用户车牌号|String|<br/>|permit_time|允许时间段（8：00-23：00）|String|<br/>|rent_type|租赁类型（0：普通时间段1：早半天2：晚半天3：全天）|int|<br/>|is_del|是否逻辑删除(0:正常1：删除)|int|<br/>|is_expire|是否已经到期（0：未到期1：已经到期）|int|<br/>|note|备注|String|<br/>|client_rule_id|客户端的规则ID|String|</p>
+</body>
+</html>

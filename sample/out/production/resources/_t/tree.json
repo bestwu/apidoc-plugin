@@ -1,0 +1,33 @@
+[
+  {
+    "children": [
+      {
+        "leaf": true,
+        "text": "新增"
+      },
+      {
+        "leaf": true,
+        "text": "修改到期状态"},
+      {
+        "leaf": true,
+        "text": "租赁续约确认"
+      }
+    ],
+    "expanded": true,
+    "text": "道闸租赁"
+  },
+  {
+    "children": [
+
+      {
+        "leaf": true,
+        "text": "租赁订单续约"},
+      {
+        "leaf": true,
+        "text": "删除数据"
+      }
+    ],
+    "expanded": true,
+    "text": "手机APP租赁"
+  }
+]

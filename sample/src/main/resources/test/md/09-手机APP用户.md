@@ -14,7 +14,7 @@ POST
 
 |名称|类型|是否必填|描述|示例值|
 |---|---|---|---|---|
-| sign | String | 是 | 接口签名 <a href='签名算法.md' target='_blank'>签名算法</a> | \- |
+| sign | String | 是 | 接口签名 <a href='html/签名算法.html' target='_blank'>签名算法</a> | \- |
 
 ###### 请求参数 ######
 
@@ -28,6 +28,7 @@ POST
 |名称|类型|描述|示例值|
 |---|---|---|---|
 | id | Long | 主键ID | 3 |
+| avatar | File(250) | 头像 | http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png |
 | name | String(100) | 名称 | sdfsfsdf |
 | lastLoginDate | Long | 最后登录日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1486954741739 |
 | lastLoginIp | String(200) | 最后登录IP地址 | 127.0.0.1 |
@@ -47,22 +48,23 @@ POST
 
 ```json
 {
-    "id": 3,
-    "name": "sdfsfsdf",
-    "lastLoginDate": 1486954741739,
-    "lastLoginIp": "127.0.0.1",
-    "tel": "18224060100",
-    "address": "XXX路",
-    "city": "成都",
-    "region": "武侯",
-    "sex": 1,
-    "qq": "9389349384",
-    "email": "xxx@126.com",
-    "accessToken": {
-        "accessToken": "53cd7efb-7517-4b03-b4e6-1a8325f58a08",
-        "expiration": 1488164341846,
-        "expiresIn": 1209599
-    }
+  "id": 3,
+  "avatar": "http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png",
+  "name": "sdfsfsdf",
+  "lastLoginDate": 1486954741739,
+  "lastLoginIp": "127.0.0.1",
+  "tel": "18224060100",
+  "address": "XXX路",
+  "city": "成都",
+  "region": "武侯",
+  "sex": 1,
+  "qq": "9389349384",
+  "email": "xxx@126.com",
+  "accessToken": {
+    "accessToken": "53cd7efb-7517-4b03-b4e6-1a8325f58a08",
+    "expiration": 1488164341846,
+    "expiresIn": 1209599
+  }
 }
 ```
 
@@ -81,7 +83,7 @@ POST
 
 |名称|类型|是否必填|描述|示例值|
 |---|---|---|---|---|
-| sign | String | 是 | 接口签名 <a href='签名算法.md' target='_blank'>签名算法</a> | \- |
+| sign | String | 是 | 接口签名 <a href='html/签名算法.html' target='_blank'>签名算法</a> | \- |
 
 ###### 请求参数 ######
 
@@ -108,7 +110,7 @@ POST
 
 |名称|类型|是否必填|描述|示例值|
 |---|---|---|---|---|
-| sign | String | 是 | 接口签名 <a href='签名算法.md' target='_blank'>签名算法</a> | \- |
+| sign | String | 是 | 接口签名 <a href='html/签名算法.html' target='_blank'>签名算法</a> | \- |
 
 ###### 请求参数 ######
 
@@ -138,7 +140,7 @@ POST
 
 |名称|类型|是否必填|描述|示例值|
 |---|---|---|---|---|
-| sign | String | 是 | 接口签名 <a href='签名算法.md' target='_blank'>签名算法</a> | \- |
+| sign | String | 是 | 接口签名 <a href='html/签名算法.html' target='_blank'>签名算法</a> | \- |
 
 ###### 请求参数 ######
 
@@ -166,7 +168,7 @@ POST
 
 |名称|类型|是否必填|描述|示例值|
 |---|---|---|---|---|
-| sign | String | 是 | 接口签名 <a href='签名算法.md' target='_blank'>签名算法</a> | \- |
+| sign | String | 是 | 接口签名 <a href='html/签名算法.html' target='_blank'>签名算法</a> | \- |
 
 ###### 请求参数 ######
 
@@ -181,6 +183,7 @@ POST
 |名称|类型|描述|示例值|
 |---|---|---|---|
 | id | Long | 主键ID | 3 |
+| avatar | File(250) | 头像 | http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png |
 | name | String(100) | 名称 | sdfsfsdf |
 | lastLoginDate | Long | 最后登录日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1486954741739 |
 | lastLoginIp | String(200) | 最后登录IP地址 | 127.0.0.1 |
@@ -200,22 +203,23 @@ POST
 
 ```json
 {
-    "id": 3,
-    "name": "sdfsfsdf",
-    "lastLoginDate": 1486954741739,
-    "lastLoginIp": "127.0.0.1",
-    "tel": "18224060100",
-    "address": "XXX路",
-    "city": "成都",
-    "region": "武侯",
-    "sex": 1,
-    "qq": "9389349384",
-    "email": "xxx@126.com",
-    "accessToken": {
-        "accessToken": "53cd7efb-7517-4b03-b4e6-1a8325f58a08",
-        "expiration": 1488164341846,
-        "expiresIn": 1209599
-    }
+  "id": 3,
+  "avatar": "http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png",
+  "name": "sdfsfsdf",
+  "lastLoginDate": 1486954741739,
+  "lastLoginIp": "127.0.0.1",
+  "tel": "18224060100",
+  "address": "XXX路",
+  "city": "成都",
+  "region": "武侯",
+  "sex": 1,
+  "qq": "9389349384",
+  "email": "xxx@126.com",
+  "accessToken": {
+    "accessToken": "53cd7efb-7517-4b03-b4e6-1a8325f58a08",
+    "expiration": 1488164341846,
+    "expiresIn": 1209599
+  }
 }
 ```
 
@@ -234,7 +238,7 @@ GET
 
 |名称|类型|是否必填|描述|示例值|
 |---|---|---|---|---|
-| sign | String | 是 | 接口签名 <a href='签名算法.md' target='_blank'>签名算法</a> | \- |
+| sign | String | 是 | 接口签名 <a href='html/签名算法.html' target='_blank'>签名算法</a> | \- |
 
 ###### 请求参数 ######
 
@@ -247,6 +251,7 @@ GET
 |名称|类型|描述|示例值|
 |---|---|---|---|
 | id | Long | 主键ID | 3 |
+| avatar | File(250) | 头像 | http://192.168.1.110:8888/user/avatar/201702/6e11c3fd-2b8c-4b61-b2fb-662966e2b180.png |
 | name | String(100) | 名称 | ddddd |
 | lastLoginDate | Long | 最后登录日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1488271046932 |
 | lastLoginIp | String(200) | 最后登录IP地址 | 127.0.0.1 |
@@ -262,17 +267,18 @@ GET
 
 ```json
 {
-    "id": 3,
-    "name": "ddddd",
-    "lastLoginDate": 1488271046932,
-    "lastLoginIp": "127.0.0.1",
-    "tel": "18224060100",
-    "address": "XX路",
-    "city": "成都市",
-    "region": "武侯区",
-    "sex": 1,
-    "qq": "9389349384",
-    "email": "xxx@126.com"
+  "id": 3,
+  "avatar": "http://192.168.1.110:8888/user/avatar/201702/6e11c3fd-2b8c-4b61-b2fb-662966e2b180.png",
+  "name": "ddddd",
+  "lastLoginDate": 1488271046932,
+  "lastLoginIp": "127.0.0.1",
+  "tel": "18224060100",
+  "address": "XX路",
+  "city": "成都市",
+  "region": "武侯区",
+  "sex": 1,
+  "qq": "9389349384",
+  "email": "xxx@126.com"
 }
 ```
 
@@ -291,7 +297,7 @@ PUT
 
 |名称|类型|是否必填|描述|示例值|
 |---|---|---|---|---|
-| sign | String | 是 | 接口签名 <a href='签名算法.md' target='_blank'>签名算法</a> | \- |
+| sign | String | 是 | 接口签名 <a href='html/签名算法.html' target='_blank'>签名算法</a> | \- |
 
 ###### 请求参数 ######
 
@@ -312,6 +318,7 @@ PUT
 |名称|类型|描述|示例值|
 |---|---|---|---|
 | id | Long | 主键ID | 3 |
+| avatar | File(250) | 头像 | http://192.168.1.110:8888/user/avatar/201702/6e11c3fd-2b8c-4b61-b2fb-662966e2b180.png |
 | name | String(100) | 名称 | ddddd |
 | lastLoginDate | Long | 最后登录日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1488271046932 |
 | lastLoginIp | String(200) | 最后登录IP地址 | 127.0.0.1 |
@@ -327,17 +334,18 @@ PUT
 
 ```json
 {
-    "id": 3,
-    "name": "ddddd",
-    "lastLoginDate": 1488271046932,
-    "lastLoginIp": "127.0.0.1",
-    "tel": "18224060100",
-    "address": "XX路",
-    "city": "成都市",
-    "region": "武侯区",
-    "sex": 1,
-    "qq": "9389349384",
-    "email": "xxx@126.com"
+  "id": 3,
+  "avatar": "http://192.168.1.110:8888/user/avatar/201702/6e11c3fd-2b8c-4b61-b2fb-662966e2b180.png",
+  "name": "ddddd",
+  "lastLoginDate": 1488271046932,
+  "lastLoginIp": "127.0.0.1",
+  "tel": "18224060100",
+  "address": "XX路",
+  "city": "成都市",
+  "region": "武侯区",
+  "sex": 1,
+  "qq": "9389349384",
+  "email": "xxx@126.com"
 }
 ```
 
@@ -356,7 +364,7 @@ PUT
 
 |名称|类型|是否必填|描述|示例值|
 |---|---|---|---|---|
-| sign | String | 是 | 接口签名 <a href='签名算法.md' target='_blank'>签名算法</a> | \- |
+| sign | String | 是 | 接口签名 <a href='html/签名算法.html' target='_blank'>签名算法</a> | \- |
 
 ###### 请求参数 ######
 
@@ -373,6 +381,7 @@ PUT
 |名称|类型|描述|示例值|
 |---|---|---|---|
 | id | Long | 主键ID | 3 |
+| avatar | File(250) | 头像 | http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png |
 | name | String(100) | 名称 | sdfsfsdf |
 | lastLoginDate | Long | 最后登录日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1486954741739 |
 | lastLoginIp | String(200) | 最后登录IP地址 | 127.0.0.1 |
@@ -388,17 +397,18 @@ PUT
 
 ```json
 {
-    "id": 3,
-    "name": "sdfsfsdf",
-    "lastLoginDate": 1486954741739,
-    "lastLoginIp": "127.0.0.1",
-    "tel": "18224060100",
-    "address": "XXX路",
-    "city": "成都",
-    "region": "武侯",
-    "sex": 1,
-    "qq": "9389349384",
-    "email": "xxx@126.com"
+  "id": 3,
+  "avatar": "http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png",
+  "name": "sdfsfsdf",
+  "lastLoginDate": 1486954741739,
+  "lastLoginIp": "127.0.0.1",
+  "tel": "18224060100",
+  "address": "XXX路",
+  "city": "成都",
+  "region": "武侯",
+  "sex": 1,
+  "qq": "9389349384",
+  "email": "xxx@126.com"
 }
 ```
 
@@ -417,7 +427,7 @@ PUT
 
 |名称|类型|是否必填|描述|示例值|
 |---|---|---|---|---|
-| sign | String | 是 | 接口签名 <a href='签名算法.md' target='_blank'>签名算法</a> | \- |
+| sign | String | 是 | 接口签名 <a href='html/签名算法.html' target='_blank'>签名算法</a> | \- |
 
 ###### 请求参数 ######
 
@@ -432,6 +442,7 @@ PUT
 |名称|类型|描述|示例值|
 |---|---|---|---|
 | id | Long | 主键ID | 3 |
+| avatar | File(250) | 头像 | http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png |
 | name | String(100) | 名称 | sdfsfsdf |
 | lastLoginDate | Long | 最后登录日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1486954741739 |
 | lastLoginIp | String(200) | 最后登录IP地址 | 127.0.0.1 |
@@ -447,17 +458,18 @@ PUT
 
 ```json
 {
-    "id": 3,
-    "name": "sdfsfsdf",
-    "lastLoginDate": 1486954741739,
-    "lastLoginIp": "127.0.0.1",
-    "tel": "18224060100",
-    "address": "XXX路",
-    "city": "成都",
-    "region": "武侯",
-    "sex": 1,
-    "qq": "9389349384",
-    "email": "xxx@126.com"
+  "id": 3,
+  "avatar": "http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png",
+  "name": "sdfsfsdf",
+  "lastLoginDate": 1486954741739,
+  "lastLoginIp": "127.0.0.1",
+  "tel": "18224060100",
+  "address": "XXX路",
+  "city": "成都",
+  "region": "武侯",
+  "sex": 1,
+  "qq": "9389349384",
+  "email": "xxx@126.com"
 }
 ```
 
@@ -476,7 +488,7 @@ PUT
 
 |名称|类型|是否必填|描述|示例值|
 |---|---|---|---|---|
-| sign | String | 是 | 接口签名 <a href='签名算法.md' target='_blank'>签名算法</a> | \- |
+| sign | String | 是 | 接口签名 <a href='html/签名算法.html' target='_blank'>签名算法</a> | \- |
 
 ###### 请求参数 ######
 
@@ -491,6 +503,7 @@ PUT
 |名称|类型|描述|示例值|
 |---|---|---|---|
 | id | Long | 主键ID | 3 |
+| avatar | File(250) | 头像 | http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png |
 | name | String(100) | 名称 | sdfsfsdf |
 | lastLoginDate | Long | 最后登录日期（从1970年1月1日（UTC/GMT的午夜）开始所经过的毫秒数） | 1486954741739 |
 | lastLoginIp | String(200) | 最后登录IP地址 | 127.0.0.1 |
@@ -510,22 +523,23 @@ PUT
 
 ```json
 {
-    "id": 3,
-    "name": "sdfsfsdf",
-    "lastLoginDate": 1486954741739,
-    "lastLoginIp": "127.0.0.1",
-    "tel": "18224060100",
-    "address": "XXX路",
-    "city": "成都",
-    "region": "武侯",
-    "sex": 1,
-    "qq": "9389349384",
-    "email": "xxx@126.com",
-    "accessToken": {
-        "accessToken": "53cd7efb-7517-4b03-b4e6-1a8325f58a08",
-        "expiration": 1488164341846,
-        "expiresIn": 1209599
-    }
+  "id": 3,
+  "avatar": "http://127.0.0.1:8888/user/avatar/20170209/443b1de2-4e9b-485e-9f46-fd46e73ecf28.png",
+  "name": "sdfsfsdf",
+  "lastLoginDate": 1486954741739,
+  "lastLoginIp": "127.0.0.1",
+  "tel": "18224060100",
+  "address": "XXX路",
+  "city": "成都",
+  "region": "武侯",
+  "sex": 1,
+  "qq": "9389349384",
+  "email": "xxx@126.com",
+  "accessToken": {
+    "accessToken": "53cd7efb-7517-4b03-b4e6-1a8325f58a08",
+    "expiration": 1488164341846,
+    "expiresIn": 1209599
+  }
 }
 ```
 
