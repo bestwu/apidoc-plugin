@@ -208,7 +208,7 @@ object MDGenerator {
             return convertedResults
         } else if (results is JsonObject) {
             val convertedResults = JsonObject()
-            results.forEach { k, v ->
+            results.forEach { (k, v) ->
                 val field = findField(fields, k, v)
                 var value = v
                 if (v == null || "" == v) {
@@ -234,7 +234,7 @@ object MDGenerator {
         if (param == null || param.isEmpty())
             return listOf<JsonObject>()
         val flds = mutableListOf<JsonObject>()
-        param.forEach { k, v ->
+        param.forEach { (k, v) ->
             var nullable: Boolean? = null
             val name: String
             if (k.endsWith("&")) {
@@ -268,7 +268,7 @@ object MDGenerator {
 
             if ("" == field["desc"] || "-" == field["tempValue"])
                 field["desc"] = "\\-"
-            field["desc"] = (field.getOrDefault("desc", "") as String).replace("href=\"html/", "href=\"").replace(".html\"", ".md\"")
+            field["desc"] = (field.getOrElse("desc", { "" }) as String).replace("href=\"html/", "href=\"").replace(".html\"", ".md\"")
             if (null == field["value"] || "" == field["value"] || "-" == field["value"])
                 field["value"] = "\\-"
             if (null == field["tempValue"] || "" == field["tempValue"] || "-" == field["tempValue"])
@@ -301,7 +301,7 @@ object MDGenerator {
             }
             rs = result[0]
         }
-        (rs as JsonObject).forEach { k, v ->
+        (rs as JsonObject).forEach { (k, v) ->
             val field = findField(fields, k, v)
             var value = v
             if (v == null || "" == v || v is JsonObject && v.size == 0 || v is JsonArray<*> && v.size == 0) {
