@@ -12,7 +12,7 @@ class HtmlGeneratorTest {
     @Test
     fun generate() {
         val parentFile = File(MDGeneratorTest::class.java.getResource("/_t/tree.json").file).parentFile
-        HtmlGenerator.generate(File(parentFile,"md"),File(parentFile,"html"))
+        HtmlGenerator.call(File(parentFile,"md"),File(parentFile,"html"))
     }
 
 }

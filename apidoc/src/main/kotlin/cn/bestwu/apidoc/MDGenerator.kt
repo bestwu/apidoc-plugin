@@ -16,6 +16,41 @@ object MDGenerator {
      */
     val strict = true
 
+    @Suppress("UNCHECKED_CAST")
+    fun call(apidocExtension: ApidocExtension) {
+        apidocExtension.paths.forEach { path ->
+            val sourcePath = apidocExtension.sourcePath + "/" + path
+            val input = File(sourcePath)
+            val output = File(input, "md")
+            val cover = apidocExtension.cover
+            if (cover) {
+                output.deleteRecursively()
+            }
+            if (!output.exists()) {
+                output.mkdirs()
+            }
+
+            val parser = Parser()
+            val trees = parser.parse(File(input, "tree.json").inputStream()) as JsonArray<JsonObject>
+            val apis = parser.parse(File(input, "api.json").inputStream()) as JsonArray<JsonObject>
+            val fields = parser.parse(File(input, "field.json").inputStream()) as JsonArray<JsonObject>
+
+            trees.forEachIndexed { i, tree ->
+                val field = File(input, "field/${tree["text"]}.json")
+                val tempfields = JsonArray<JsonObject>()
+                tempfields.addAll(fields)
+                if (field.exists()) {
+                    tempfields.addAll(parser.parse(field.inputStream()) as JsonArray<JsonObject>)
+                }
+                val apiHost = if (apidocExtension.apiHost.isEmpty()) apidocExtension.defaultHost else apidocExtension.apiHost
+                MDGenerator.call(tree, apis, tempfields, output, apiHost, cover, i + 1)
+
+            }
+        }
+
+
+    }
+
     /**
      * 生成文档
      * @param i
@@ -26,7 +61,7 @@ object MDGenerator {
      * @param apiHost
      * @param cover
      */
-    fun generate(tree: JsonObject, apis: JsonArray<JsonObject>, fields: JsonArray<JsonObject>, output: File, apiHost: String, cover: Boolean = true, i: Int = -1) {
+    fun call(tree: JsonObject, apis: JsonArray<JsonObject>, fields: JsonArray<JsonObject>, output: File, apiHost: String, cover: Boolean = true, i: Int = -1) {
         if (!output.exists()) {
             output.mkdirs()
         }

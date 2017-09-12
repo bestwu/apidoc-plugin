@@ -17,7 +17,18 @@ import java.io.StringWriter
  */
 object HtmlGenerator {
 
-    fun generate(input: File, output: File, vararg extraFiles: File) {
+    fun call(apidocExtension: ApidocExtension) {
+        apidocExtension.paths.forEach {
+            val sourcePath = apidocExtension.sourcePath + "/" + it
+            val input = File(sourcePath)
+            val extraFiles = input.listFiles { file: File ->
+                file.name.endsWith(".md")
+            }
+            call(File(input, "md"), File(input, "html"), *extraFiles)
+        }
+    }
+
+    fun call(input: File, output: File, vararg extraFiles: File) {
         output.deleteRecursively()
         if (!output.exists()) {
             output.mkdirs()

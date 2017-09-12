@@ -20,7 +20,7 @@ class MDGeneratorTest {
         val apis = parser.parse(MDGeneratorTest::class.java.getResourceAsStream("/_t/api.json")) as JsonArray<JsonObject>
         val fields = parser.parse(MDGeneratorTest::class.java.getResourceAsStream("/_t/field.json")) as JsonArray<JsonObject>
         val parentFile = File(MDGeneratorTest::class.java.getResource("/_t/tree.json").file).parentFile
-        MDGenerator.generate(tree, apis, fields, File(parentFile,"md"), "http://127.0.0.1")
+        MDGenerator.call(tree, apis, fields, File(parentFile,"md"), "http://127.0.0.1")
     }
 
 }
