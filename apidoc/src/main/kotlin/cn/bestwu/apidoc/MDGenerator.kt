@@ -246,7 +246,7 @@ object MDGenerator {
             results.forEach { (k, v) ->
                 val field = findField(fields, k, v)
                 var value = v
-                if (v == null || "" == v) {
+                if (value == null || "" == v) {
                     value = field["value"]
                 }
                 if (value is JsonBase) {
@@ -283,9 +283,9 @@ object MDGenerator {
             }
             var tempDesc: String? = null
             var value: Any? = v
-            if (v is JsonObject) {
-                tempDesc = v["desc"] as String
-                value = v["value"]
+            if (value is JsonObject) {
+                tempDesc = value["desc"] as String
+                value = value["value"]
             }
 
             val field = findField(fields, name, value)
@@ -293,31 +293,26 @@ object MDGenerator {
             if (nullable == null) {
                 nullable = field.boolean("nullable") ?: true
             }
-
             field["nullableDesc"] = if (nullable) "否" else "是"
 
             if (value == null || "" == value) {
                 value = field["value"]
             }
             field["tempValue"] = value
-
-            if ("" == field["desc"] || "-" == field["tempValue"])
-                field["desc"] = "\\-"
-            field["desc"] = (field.getOrElse("desc", { "" }) as String).replace("href=\"html/", "href=\"").replace(".html\"", ".md\"")
-            if (null == field["value"] || "" == field["value"] || "-" == field["value"])
-                field["value"] = "\\-"
-            if (null == field["tempValue"] || "" == field["tempValue"] || "-" == field["tempValue"])
-                field["tempValue"] = "\\-"
-
             if (field["tempValue"] is JsonArray<*> && (field["tempValue"] as JsonArray<*>).size == 1)
                 field["tempValue"] = (field["tempValue"] as JsonArray<*>)[0]
 
             if (tempDesc != null)
                 field["desc"] = tempDesc
+            field["desc"] = (field.getOrElse("desc", { "" }) as String).replace("href=\"html/", "href=\"").replace(".html\"", ".md\"")
+
+            fillDefaultField(field)
+
             flds.add(field)
         }
         return flds
     }
+
 
     /**
      * 响应结果字段
@@ -339,7 +334,7 @@ object MDGenerator {
         (rs as JsonObject).forEach { (k, v) ->
             val field = findField(fields, k, v)
             var value = v
-            if (v == null || "" == v || v is JsonObject && v.size == 0 || v is JsonArray<*> && v.size == 0) {
+            if (value == null || "" == value || value is JsonObject && value.size == 0 || value is JsonArray<*> && value.size == 0) {
                 value = field["value"]
             }
             when (value) {
@@ -355,12 +350,7 @@ object MDGenerator {
                 else -> field["tempValue"] = value
             }
 
-            if ("" == field["desc"])
-                field["desc"] = "\\-"
-            if (field["value"] == null || "" == field["value"])
-                field["value"] = "\\-"
-            if (field["tempValue"] == null || "" == field["tempValue"])
-                field["tempValue"] = "\\-"
+            fillDefaultField(field)
 
             flds.add(field)
             if (value is JsonObject && value.size > 0) {
@@ -371,10 +361,24 @@ object MDGenerator {
     }
 
     /**
+     * 填充默认值
+     */
+    private fun fillDefaultField(field: JsonObject) {
+        if (null == field["desc"] || "" == field["desc"] || "-" == field["desc"])
+            field["desc"] = "\\-"
+        if (null == field["value"] || "" == field["value"] || "-" == field["value"])
+            field["value"] = "\\-"
+        if (null == field["type"] || "" == field["type"] || "-" == field["type"])
+            field["type"] = "\\-"
+        if (null == field["tempValue"] || "" == field["tempValue"] || "-" == field["tempValue"])
+            field["tempValue"] = "\\-"
+    }
+
+    /**
      * 转换字段类型
      * @param value
      */
-    fun getFieldType(value: Any?): String {
+    private fun getFieldType(value: Any?): String {
         if (value == null)
             return ""
         if (value is JsonObject)
