@@ -28,7 +28,7 @@ object HtmlGenerator {
         }
     }
 
-    fun call(input: File, output: File, vararg extraFiles: File) {
+    private fun call(input: File, output: File, vararg extraFiles: File) {
         output.deleteRecursively()
         if (!output.exists()) {
             output.mkdirs()
@@ -104,7 +104,7 @@ object HtmlGenerator {
                         val me = this
                         val tag = if (me.inTableHeader) "th" else "td"
                         val columns = me.currentTableNode.columns
-                        val column = columns.get(Math.min(me.currentTableColumn, columns.size - 1))
+                        val column = columns[Math.min(me.currentTableColumn, columns.size - 1)]
 
                         me.printer.println().print("<").print(tag).print(" title=\"")
                         var titleText = ""

@@ -64,7 +64,6 @@
       "errormsg": "道闸租赁续约新增成功",
       "errorno": "0"
     },
-    "uriVariables": "",
     "url": "/rentdeferadd.php"
   } ,
   {
@@ -82,7 +81,6 @@
     } ,
     "resource": "道闸租赁",
     "results": {"data":"","errorcode":"","errormsg":"操作成功","errorno":"0"},
-    "uriVariables": "",
     "url": "/updateisexpire.php"
   } ,
   {
@@ -102,7 +100,6 @@
     } ,
     "resource": "道闸租赁",
     "results": {"data":"","errorcode":"","errormsg":"道闸租赁续租确认成功","errorno":"0"},
-    "uriVariables": "",
     "url": "/rentdefersure.php"
   } ,
   {
@@ -126,7 +123,6 @@
     },
     "resource": "手机APP租赁",
     "results": {"data":{"allege_state":0,"area_code":"510107","car_code":"川A12348","client_order_id":"","client_rule_id":"d425aa1dcb1a444fbfa9a32ebafa30ea","ctime":1500271460630,"defer_state":1,"endtime":1499586372000,"father_order_id":"","flag":2,"is_del":0,"is_expire":0,"money":10,"month_num":1,"mq_state":0,"note":"APP续租租赁信息","pay_source":2,"pay_state":0,"permit_time":"8：00-23：00","pi_id":36,"pi_name":"天府三街停车场","pu_id":0,"pu_nd":"","rd_id":40,"rent_order_id":"5101072000000364201707171404206h","rent_type":1,"son_order_id":"","starttime":1496994372000,"stime":1500271460630,"ui_id":132,"ui_nd":"1","unit_price":10,"up_orderid":"","utime":1500271460630},"errorcode":"","errormsg":"租赁订单续约新增成功","errorno":"0"},
-    "uriVariables": "",
     "url": "/rentOrderDefer.php"} ,
   {
     "method": "POST",
@@ -144,7 +140,6 @@
     } ,
     "resource": "手机APP租赁",
     "results":{"data":"","errorcode":"","errormsg":"操作成功","errorno":"0"} ,
-    "uriVariables": "",
     "url": "/rentdeferdel.php"
   }
 ]

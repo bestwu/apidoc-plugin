@@ -1,92 +1,142 @@
 package cn.bestwu.apidoc
 
-import java.util.*
 
 /**
  *
  * @author Peter Wu
  * @since
  */
+private fun <A : Appendable> A.renderString(s: String): A {
+    append("\"")
 
-data class Api(
-        var method: String = "",
-        var name: String = "",
-        var desc: String = "",
-        var headers: Map<String, Array<String>> = mapOf(),
-        var params: Map<String, Any?> = mapOf(),
-        var results: Map<String, Any?> = mapOf(),
-        var resource: String = "",
-        var uriVariables: String = "",
-        var url: String = "",
-        var version: Array<String> = arrayOf(),
-        var extra: Map<String, Api>
-) {
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other !is Api) return false
+    (0 until s.length)
+            .map { s[it] }
+            .forEach {
+                when (it) {
+                    '"' -> append("\\").append(it)
+                    '\\' -> append(it).append(it)
+                    '\n' -> append("\\n")
+                    '\r' -> append("\\r")
+                    '\t' -> append("\\t")
+                    '\b' -> append("\\b")
+                    '\u000c' -> append("\\f")
+                    else -> {
+                        if (isPrintableUnicode(it)) {
+                            append("\\u")
+                            append(Integer.toHexString(it.toInt()).padStart(4, '0'))
+                        } else {
+                            append(it)
+                        }
+                    }
+                }
+            }
 
-        if (method != other.method) return false
-        if (name != other.name) return false
-        if (desc != other.desc) return false
-        if (params != other.params) return false
-        if (results != other.results) return false
-        if (resource != other.resource) return false
-        if (uriVariables != other.uriVariables) return false
-        if (url != other.url) return false
-        if (!Arrays.equals(version, other.version)) return false
+    append("\"")
+    return this
+}
 
-        return true
-    }
+private fun isPrintableUnicode(c: Char): Boolean = ((c in '\u0000'..'\u001F')
+        || (c in '\u007F'..'\u009F') || (c in '\u2000'..'\u20FF'))
 
-    override fun hashCode(): Int {
-        var result = method.hashCode()
-        result = 31 * result + name.hashCode()
-        result = 31 * result + desc.hashCode()
-        result = 31 * result + params.hashCode()
-        result = 31 * result + results.hashCode()
-        result = 31 * result + resource.hashCode()
-        result = 31 * result + uriVariables.hashCode()
-        result = 31 * result + url.hashCode()
-        result = 31 * result + Arrays.hashCode(version)
-        return result
+fun renderValue(value: Any?, result: Appendable, prettyPrint: Boolean, level: Int) {
+    when (value) {
+        is String -> result.renderString(value)
+        is Map<*, *> -> {
+            result.append("{")
+
+            var comma = false
+            for ((k, v) in value) {
+                if (comma) {
+                    result.append(",")
+                } else {
+                    comma = true
+                }
+
+                if (prettyPrint) {
+                    result.appendln()
+                    result.indent(level + 1)
+                }
+
+                result.append("\"").append(k.toString()).append("\":")
+                if (prettyPrint) {
+                    result.append(" ")
+                }
+
+                renderValue(v, result, prettyPrint, level + 1)
+            }
+
+            if (prettyPrint && value.isNotEmpty()) {
+                result.appendln()
+                result.indent(level)
+            }
+
+            result.append("}")
+        }
+        is List<*> -> {
+            result.append("[")
+
+            var comma = false
+            value.forEach {
+                if (comma) {
+                    result.append(",")
+                    if (prettyPrint) {
+                        result.append(" ")
+                    }
+                } else {
+                    comma = true
+                }
+
+                renderValue(it, result, prettyPrint, level)
+            }
+            result.append("]")
+        }
+        is Pair<*, *> -> renderValue(value.second, result.renderString(value.first.toString()).append(": "), prettyPrint, level)
+        else -> result.append(value.toString())
     }
 }
 
-data class Field(
-        var name: String = "",
-        var desc: String = "",
-        var nullable: Boolean = true,
-        var nullableDesc: String = "否",
-        var type: String = "String",
-        var tempValue: Any?,
-        var value:  Any?
-)
-
-data class Child(
-        var text: String = "",
-        var leaf: Boolean = true
-)
-
-data class Tree(
-        var children: Array<Child> = arrayOf(),
-        var text: String = "",
-        var expanded: Boolean = true
-) {
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other !is Tree) return false
-
-        if (!Arrays.equals(children, other.children)) return false
-        if (text != other.text) return false
-        if (expanded != other.expanded) return false
-
-        return true
-    }
-
-    override fun hashCode(): Int {
-        var result = Arrays.hashCode(children)
-        result = 31 * result + text.hashCode()
-        result = 31 * result + expanded.hashCode()
-        return result
-    }
+internal fun Any.toJsonString(prettyPrint: Boolean = false): String {
+    return StringBuilder().also { renderValue(this, it, prettyPrint, 0) }.toString()
 }
+
+data class Api(val map: MutableMap<String, Any?>) : MutableMap<String, Any?> by map {
+    var method: String  by map
+    var name: String  by map
+    var desc: String?  by map
+    var headers: Map<String, Any?>?  by map
+    var params: Map<String, Any?>?  by map
+    var results: Map<String, Any?>?  by map
+    var resource: String  by map
+    var uriVariables: Map<String, Any?>?  by map
+    var url: String  by map
+    var version: List<String>?  by map
+}
+
+data class Field(val map: MutableMap<String, Any?>) : MutableMap<String, Any?> by map {
+    var id: String? = map["name"] as String
+    val name: String by map
+    var desc: String? by map
+    var nullable: Boolean? by map
+    /**
+     * 是否必填
+     */
+    val nullableDesc: String
+        get() = if (nullable == null || nullable!!) "否" else "是"
+    var type: String? by map
+    var value: Any? by map
+    var tempValue: Any? = null
+}
+
+data class Child(val map: MutableMap<String, Any?>) : MutableMap<String, Any?> by map {
+    var text: String  by map
+    var leaf: Boolean  by map
+}
+
+data class Tree(val map: MutableMap<String, Any?>) : MutableMap<String, Any?> by map {
+    @Suppress("UNCHECKED_CAST")
+    var children: List<Child>? = (map["children"] as? List<MutableMap<String, Any?>>)?.map { Child(it) }
+    var text: String  by map
+    var expanded: Boolean  by map
+}
+
+
