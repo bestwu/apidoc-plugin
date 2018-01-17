@@ -20,31 +20,30 @@ object MDGenerator {
         apidocExtension.paths.forEach { path ->
             val sourcePath = apidocExtension.sourcePath + "/" + path
             val input = File(sourcePath)
-            val output = File(input, "md")
-            val cover = apidocExtension.cover
-            if (cover) {
-                output.deleteRecursively()
-            }
-            if (!output.exists()) {
-                output.mkdirs()
-            }
-
-            val parser = Parser()
-            val trees = parser.parse(File(input, "tree.json").inputStream()) as List<MutableMap<String, Any?>>
-            val apis = parser.parse(File(input, "api.json").inputStream()) as List<MutableMap<String, Any?>>
-            val fields = parser.parse(File(input, "field.json").inputStream()) as List<MutableMap<String, Any?>>
-
-            trees.forEachIndexed { i, treeMap ->
-                val tree = Tree(treeMap)
-                val field = File(input, "field/${tree.text}.json")
-                val tempfields = mutableListOf<MutableMap<String, Any?>>()
-                tempfields.addAll(fields)
-                if (field.exists()) {
-                    tempfields.addAll(parser.parse(field.inputStream()) as List<MutableMap<String, Any?>>)
+            if (input.exists()) {
+                val output = File(input, "md")
+                val cover = apidocExtension.cover
+                if (cover) {
+                    output.deleteRecursively()
                 }
-                val apiHost = if (apidocExtension.apiHost.isEmpty()) apidocExtension.defaultHost else apidocExtension.apiHost
-                MDGenerator.call(tree, apis.map { Api(it.withDefault { null }) }, tempfields.map { Field(it) }, output, apiHost, cover, i + 1)
 
+                val parser = Parser()
+                val trees = parser.parse(File(input, "tree.json").inputStream()) as List<MutableMap<String, Any?>>
+                val apis = parser.parse(File(input, "api.json").inputStream()) as List<MutableMap<String, Any?>>
+                val fields = parser.parse(File(input, "field.json").inputStream()) as List<MutableMap<String, Any?>>
+
+                trees.forEachIndexed { i, treeMap ->
+                    val tree = Tree(treeMap)
+                    val field = File(input, "field/${tree.text}.json")
+                    val tempfields = mutableListOf<MutableMap<String, Any?>>()
+                    tempfields.addAll(fields)
+                    if (field.exists()) {
+                        tempfields.addAll(parser.parse(field.inputStream()) as List<MutableMap<String, Any?>>)
+                    }
+                    val apiHost = if (apidocExtension.apiHost.isEmpty()) apidocExtension.defaultHost else apidocExtension.apiHost
+                    MDGenerator.call(tree, apis.map { Api(it.withDefault { null }) }, tempfields.map { Field(it) }, output, apiHost, cover, i + 1)
+
+                }
             }
         }
 
@@ -413,7 +412,7 @@ object MDGenerator {
         } else {
             val type = getFieldType(value)
             result = fields.filter {
-                it.id == null && it.name == name && it.type == type
+                it.id.isNullOrBlank() && it.name == name && it.type == type
             }
             size = result.size
             if (strict && size > 1)
@@ -422,7 +421,7 @@ object MDGenerator {
                 origin = result[0]
             } else {
                 result = fields.filter {
-                    it.id == null && it.name == name
+                    it.id.isNullOrBlank() && it.name == name
                 }
                 size = result.size
                 if (strict && size > 1)

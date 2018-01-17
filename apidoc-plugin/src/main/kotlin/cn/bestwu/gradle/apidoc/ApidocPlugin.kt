@@ -25,8 +25,6 @@ class ApidocPlugin : Plugin<Project> {
                     val sourcePath = apidocExtension.sourcePath + "/" + path
                     val inputDir = project.file(sourcePath)!!
                     val outputDir = project.file(sourcePath + "/md")
-                    if (!outputDir.exists())
-                        outputDir.mkdirs()
                     it.inputs.files(inputDir.listFiles { file: File ->
                         file != outputDir && file != project.file(sourcePath + "/html")
                     })

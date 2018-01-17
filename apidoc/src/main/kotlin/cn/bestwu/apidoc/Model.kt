@@ -113,7 +113,7 @@ data class Api(val map: MutableMap<String, Any?>) : MutableMap<String, Any?> by 
 }
 
 data class Field(val map: MutableMap<String, Any?>) : MutableMap<String, Any?> by map {
-    var id: String? = map["name"] as String
+    var id: String? = map["id"] as? String
     val name: String by map
     var desc: String? by map
     var nullable: Boolean? by map

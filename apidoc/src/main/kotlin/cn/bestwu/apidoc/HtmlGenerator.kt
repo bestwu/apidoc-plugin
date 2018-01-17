@@ -21,10 +21,12 @@ object HtmlGenerator {
         apidocExtension.paths.forEach {
             val sourcePath = apidocExtension.sourcePath + "/" + it
             val input = File(sourcePath)
-            val extraFiles = input.listFiles { file: File ->
-                file.name.endsWith(".md")
+            if (input.exists()) {
+                val extraFiles = input.listFiles { file: File ->
+                    file.name.endsWith(".md")
+                }
+                call(File(input, "md"), File(input, "html"), *extraFiles)
             }
-            call(File(input, "md"), File(input, "html"), *extraFiles)
         }
     }
 
