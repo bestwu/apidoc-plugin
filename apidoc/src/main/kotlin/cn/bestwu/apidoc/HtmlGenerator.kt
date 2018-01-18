@@ -55,7 +55,7 @@ object HtmlGenerator {
         catalogOut.appendln("---")
         catalogOut.appendln("")
 
-        val listOfFiles= mutableListOf<File>()
+        val listOfFiles = mutableListOf<File>()
         if (input.exists()) {
             val files = input.listFiles()
             files.sort()
@@ -99,8 +99,7 @@ object HtmlGenerator {
         }
         val catalogHtml = PegDownProcessor(Extensions.ALL_WITH_OPTIONALS xor Extensions.SMARTYPANTS).markdownToHtml(catalog)
         val content = MdProcessor(Extensions.ALL_WITH_OPTIONALS xor Extensions.SMARTYPANTS).markdownToHtml(inFile.readText().replace(".md", ".html"))
-        val anchor = "$fileName.html#${fileName.toLowerCase().replace(Regex("^0?(.*)$"), "$1")}"
-        outFile.writeText(HtmlGenerator::class.java.getResource("/template.html").readText().format(title, catalogHtml, content, anchor))
+        outFile.writeText(HtmlGenerator::class.java.getResource("/template.html").readText().format(title, catalogHtml, content))
         println("生成：$outFile")
     }
 

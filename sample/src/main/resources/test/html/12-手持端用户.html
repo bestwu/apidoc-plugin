@@ -245,7 +245,7 @@
 </head>
 <body>
 <div class="catalog">
-<h1><a href="#sample" name="sample">sample</a></h1>
+  <h1><a href="#sample" name="sample">sample</a></h1>
 <ul>
   <li>
   <p><a href="index.html">系统介绍</a></p></li>
@@ -403,7 +403,7 @@
 <hr/>
 </div>
 <div class="content">
-<h3><a href="#12-手持端用户" name="12-手持端用户">12 手持端用户</a></h3>
+  <h3><a href="#12-手持端用户" name="12-手持端用户">12 手持端用户</a></h3>
 <h4><a href="#12-1-登录" name="12-1-登录">12.1 登录</a></h4>
 <h6><a href="#接口地址" name="接口地址">接口地址</a></h6>
 <p><a href="http://app.qc-wbo.com/v1/login">http://app.qc-wbo.com/v1/login</a></p>
@@ -917,14 +917,17 @@
 <p>无</p>
 <hr/>
 </div>
+<div class="topAnchor">
+  <a id="topAnchor" href="#">
+    <span></span>
+  </a>
+</div>
 </body>
 <script type="text/javascript">
   function changeMargin() {
     var docWidth = document.body.clientWidth;
-    if (docWidth >= 800) {
-      document.getElementById("topAnchor").setAttribute("href", "12-手持端用户.html#12-手持端用户")
-    } else {
-      document.getElementById("topAnchor").setAttribute("href", "index.html")
+    if (docWidth < 800) {
+      document.getElementById("topAnchor").setAttribute("href", "index.html#")
     }
   }
 

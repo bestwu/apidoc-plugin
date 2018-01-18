@@ -245,7 +245,7 @@
 </head>
 <body>
 <div class="catalog">
-<h1><a href="#sample" name="sample">sample</a></h1>
+  <h1><a href="#sample" name="sample">sample</a></h1>
 <ul>
   <li>
   <p><a href="index.html">系统介绍</a></p></li>
@@ -403,7 +403,7 @@
 <hr/>
 </div>
 <div class="content">
-<h3><a href="#3-手机app支付" name="3-手机app支付">3 手机APP支付</a></h3>
+  <h3><a href="#3-手机app支付" name="3-手机app支付">3 手机APP支付</a></h3>
 <h4><a href="#3-1-我的钱包" name="3-1-我的钱包">3.1 我的钱包</a></h4>
 <h6><a href="#开发者" name="开发者">开发者</a></h6>
 <p>Peter Wu &lt;<a href="mailto:&#112;&#x69;&#x74;&#101;&#114;&#119;&#117;&#x40;&#111;&#117;&#116;&#x6c;&#111;&#111;&#x6b;&#46;&#x63;&#x6f;&#x6d;">&#112;&#x69;&#x74;&#101;&#114;&#119;&#117;&#x40;&#111;&#117;&#116;&#x6c;&#111;&#111;&#x6b;&#46;&#x63;&#x6f;&#x6d;</a> &gt;</p>
@@ -760,14 +760,17 @@
 </code></pre>
 <hr/>
 </div>
+<div class="topAnchor">
+  <a id="topAnchor" href="#">
+    <span></span>
+  </a>
+</div>
 </body>
 <script type="text/javascript">
   function changeMargin() {
     var docWidth = document.body.clientWidth;
-    if (docWidth >= 800) {
-      document.getElementById("topAnchor").setAttribute("href", "03-手机APP支付.html#3-手机app支付")
-    } else {
-      document.getElementById("topAnchor").setAttribute("href", "index.html")
+    if (docWidth < 800) {
+      document.getElementById("topAnchor").setAttribute("href", "index.html#")
     }
   }
 
