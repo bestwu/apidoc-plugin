@@ -102,6 +102,7 @@ internal fun Any.toJsonString(prettyPrint: Boolean = false): String {
 data class Api(val map: MutableMap<String, Any?>) : MutableMap<String, Any?> by map {
     var method: String  by map
     var name: String  by map
+    var author: String?  by map
     var desc: String?  by map
     var headers: Map<String, Any?>?  by map
     var params: Map<String, Any?>?  by map

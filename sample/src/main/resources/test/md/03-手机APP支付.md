@@ -2,6 +2,9 @@
 
 #### 3.1 我的钱包 ####
 
+###### 开发者 ######
+Peter Wu &lt;piterwu@outlook.com &gt;
+
 ###### 接口地址 ######
 
 [http://app.qc-wbo.com/v1/wallets](http://app.qc-wbo.com/v1/wallets)

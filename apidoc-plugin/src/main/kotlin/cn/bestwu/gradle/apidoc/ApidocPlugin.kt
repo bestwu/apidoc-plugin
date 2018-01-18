@@ -20,6 +20,9 @@ class ApidocPlugin : Plugin<Project> {
 
         project.afterEvaluate {
             val apidocExtension = project.extensions.findByType(ApidocExtension::class.java)
+            if (apidocExtension.projectName.isBlank()) {
+                apidocExtension.projectName = project.name
+            }
             project.tasks.create("mddoc", MDTask::class.java) {
                 apidocExtension.paths.forEach { path ->
                     val sourcePath = apidocExtension.sourcePath + "/" + path

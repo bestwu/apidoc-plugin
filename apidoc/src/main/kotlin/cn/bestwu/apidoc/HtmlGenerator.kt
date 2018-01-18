@@ -25,12 +25,12 @@ object HtmlGenerator {
                 val extraFiles = input.listFiles { file: File ->
                     file.name.endsWith(".md")
                 }
-                call(File(input, "md"), File(input, "html"), *extraFiles)
+                call(apidocExtension, File(input, "md"), File(input, "html"), *extraFiles)
             }
         }
     }
 
-    private fun call(input: File, output: File, vararg extraFiles: File) {
+    private fun call(apidocExtension: ApidocExtension, input: File, output: File, vararg extraFiles: File) {
         output.deleteRecursively()
         if (!output.exists()) {
             output.mkdirs()
@@ -38,6 +38,11 @@ object HtmlGenerator {
 
         val readme = extraFiles.find { it.name == "README.md" }
         val catalogOut = StringWriter()
+        val projectName = apidocExtension.projectName
+        if (projectName.isNotBlank()) {
+            catalogOut.appendln("# $projectName #")
+            catalogOut.appendln("")
+        }
         if (readme != null)
             catalogOut.appendln("- [系统介绍](index.html)")
         catalogOut.appendln("")

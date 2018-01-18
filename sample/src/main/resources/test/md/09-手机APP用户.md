@@ -125,15 +125,15 @@ POST
 ---
 #### 9.4 验证验证码 ####
 
+###### 说明 ######
+成功返回204
+
 ###### 接口地址 ######
 
 [http://app.qc-wbo.com/v1/cellVerifyCodes/verify](http://app.qc-wbo.com/v1/cellVerifyCodes/verify)
 
 ###### 请求方法 ######
 POST
-
-###### 说明 ######
-成功返回204
 
 
 ###### 请求头参数 ######

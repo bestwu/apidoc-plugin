@@ -10,38 +10,66 @@ import java.io.PrintWriter
  */
 object MDGenerator {
 
-    /**
-     * 严格模式字段解析
-     */
-    val strict = true
+    private var apidocExtension: ApidocExtension = ApidocExtension()
+    private var apis: List<Api> = emptyList()
+    private val apiHost: String
+        get() = if (apidocExtension.apiHost.isEmpty()) apidocExtension.defaultHost else apidocExtension.apiHost
 
     @Suppress("UNCHECKED_CAST")
     fun call(apidocExtension: ApidocExtension) {
+        this.apidocExtension = apidocExtension
         apidocExtension.paths.forEach { path ->
             val sourcePath = apidocExtension.sourcePath + "/" + path
             val input = File(sourcePath)
             if (input.exists()) {
                 val output = File(input, "md")
-                val cover = apidocExtension.cover
-                if (cover) {
+                if (apidocExtension.cover) {
                     output.deleteRecursively()
                 }
 
                 val parser = Parser()
                 val trees = parser.parse(File(input, "tree.json").inputStream()) as List<MutableMap<String, Any?>>
-                val apis = parser.parse(File(input, "api.json").inputStream()) as List<MutableMap<String, Any?>>
-                val fields = parser.parse(File(input, "field.json").inputStream()) as List<MutableMap<String, Any?>>
+                val apisMap = parser.parse(File(input, "api.json").inputStream()) as List<MutableMap<String, Any?>>
+                val fieldsMap = parser.parse(File(input, "field.json").inputStream()) as List<MutableMap<String, Any?>>
+
+                apis = apisMap.map { Api(it.withDefault { null }) }
 
                 trees.forEachIndexed { i, treeMap ->
                     val tree = Tree(treeMap)
                     val field = File(input, "field/${tree.text}.json")
                     val tempfields = mutableListOf<MutableMap<String, Any?>>()
-                    tempfields.addAll(fields)
+                    tempfields.addAll(fieldsMap)
                     if (field.exists()) {
                         tempfields.addAll(parser.parse(field.inputStream()) as List<MutableMap<String, Any?>>)
                     }
-                    val apiHost = if (apidocExtension.apiHost.isEmpty()) apidocExtension.defaultHost else apidocExtension.apiHost
-                    MDGenerator.call(tree, apis.map { Api(it.withDefault { null }) }, tempfields.map { Field(it) }, output, apiHost, cover, i + 1)
+
+                    val fields = tempfields.map { Field(it) }
+                    val j = i + 1
+
+                    if (!output.exists()) {
+                        output.mkdirs()
+                    }
+                    val treeName = tree.text
+                    val fileName: String
+                    fileName = if (j > -1)
+                        "${if (j < 10) "0" + j else j.toString()}-$treeName"
+                    else
+                        treeName
+
+                    val file = File(output, "$fileName.md")
+                    if (!file.exists() || MDGenerator.apidocExtension.cover) {
+                        println("生成：$file")
+                        file.printWriter().use { out ->
+                            generateFile(out, j, tree, fields)
+                        }
+                    } else if (file.exists() && !MDGenerator.apidocExtension.cover) {
+                        println("追加：$file")
+                        file.printWriter().use { out ->
+                            generateFile(out, j, tree, fields)
+                        }
+                    } else {
+                        println("$file 已存在")
+                    }
 
                 }
             }
@@ -50,54 +78,15 @@ object MDGenerator {
 
     }
 
-    /**
-     * 生成文档
-     * @param i
-     * @param tree
-     * @param apis
-     * @param fields
-     * @param output
-     * @param apiHost
-     * @param cover
-     */
-    private fun call(tree: Tree, apis: List<Api>, fields: List<Field>, output: File, apiHost: String, cover: Boolean = true, i: Int = -1) {
-        if (!output.exists()) {
-            output.mkdirs()
-        }
-        val treeName = tree.text
-        val fileName: String
-        fileName = if (i > -1)
-            "${if (i < 10) "0" + i else i.toString()}-$treeName"
-        else
-            treeName
-
-        val file = File(output, "$fileName.md")
-        if (!file.exists() || cover) {
-            println("生成：$file")
-            file.printWriter().use { out ->
-                generateFile(out, i, apis, tree, fields, apiHost)
-            }
-        } else if (file.exists() && !cover) {
-            println("追加：$file")
-            file.printWriter().use { out ->
-                generateFile(out, i, apis, tree, fields, apiHost)
-            }
-        } else {
-            println("$file 已存在")
-        }
-
-    }
 
     /**
      * 生成文件
      * @param out
      * @param i
-     * @param apis
      * @param tree
      * @param fields
-     * @param apiHost
      */
-    private fun generateFile(out: PrintWriter, i: Int, apis: List<Api>, tree: Tree, fields: List<Field>, apiHost: String) {
+    private fun generateFile(out: PrintWriter, i: Int, tree: Tree, fields: List<Field>) {
         val treeName = tree.text
         if (i > -1)
             out.println("### $i $treeName ###")
@@ -116,6 +105,20 @@ object MDGenerator {
             val api = apis.find({ api ->
                 api.resource == treeName && api.name == leafName
             }) ?: throw Exception("未找到[$treeName#$leafName]接口")
+
+            val author = if (api.author.isNullOrBlank()) apidocExtension.author else api.author
+            if (!author.isNullOrBlank()) {
+                out.println("###### 开发者 ######")
+                out.println(author!!.replace("<", "&lt;").replace(">", " &gt;"))
+                out.println()
+            }
+            val desc = api.desc
+            if (!desc.isNullOrBlank()) {
+                out.println("###### 说明 ######")
+                out.println("$desc")
+                out.println()
+            }
+
             out.println("###### 接口地址 ######")
             out.println()
             out.println("[${apiHost + api.url}](${apiHost + api.url})")
@@ -123,12 +126,6 @@ object MDGenerator {
             out.println("###### 请求方法 ######")
             out.println(api.method)
             out.println()
-            val desc = api.desc
-            if (!desc.isNullOrBlank()) {
-                out.println("###### 说明 ######")
-                out.println("$desc")
-                out.println()
-            }
 
             val version = api.version
             if (version is List<*>)
@@ -405,7 +402,7 @@ object MDGenerator {
         }
 
         var size = result.size
-        if (strict && size > 1)
+        if (apidocExtension.strict && size > 1)
             throw  RuntimeException("id:$name 存在多个未区分属性说明：${result.toJsonString(true)}")
         if (size > 0) {
             origin = result[0]
@@ -415,7 +412,7 @@ object MDGenerator {
                 it.id.isNullOrBlank() && it.name == name && it.type == type
             }
             size = result.size
-            if (strict && size > 1)
+            if (apidocExtension.strict && size > 1)
                 throw RuntimeException("name:$name,type:$type 存在多个未区分属性说明：${result.toJsonString(true)}")
             if (size > 0) {
                 origin = result[0]
@@ -424,7 +421,7 @@ object MDGenerator {
                     it.id.isNullOrBlank() && it.name == name
                 }
                 size = result.size
-                if (strict && size > 1)
+                if (apidocExtension.strict && size > 1)
                     throw RuntimeException("name:$name 存在多个未区分属性说明：${result.toJsonString(true)}")
                 if (size > 0) {
                     origin = result[0]

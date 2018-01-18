@@ -35,13 +35,13 @@
       ],
       "page": 1
     },
-    
     "url": "/complaints"
   },
   {
     "method": "GET",
     "name": "我的钱包",
     "desc": "",
+    "author": "Peter Wu <piterwu@outlook.com>",
     "headers": {
       "sign": ""
     },
@@ -70,7 +70,6 @@
       ],
       "page": 1
     },
-    
     "url": "/wallets"
   },
   {
@@ -91,7 +90,6 @@
       "payment": 2,
       "orderInfo": "app_id=2016112103042572&biz_content=%7B%22out_trade_no%22%3A%22201702220929471%22%2C%22total_amount%22%3A%220.01%22%2C%22subject%22%3A%22%E9%92%B1%E5%8C%85%E5%85%85%E5%80%BC%22%2C%22body%22%3A%22%E9%92%B1%E5%8C%85%E5%85%85%E5%80%BC%22%2C%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22seller_id%22%3A%222088421595009690%22%7D&charset=UTF-8&method=alipay.trade.app.pay&notify_url=http%3A%2F%2F127.0.0.1%3A8080%2Fmobile%2Fnotifies%2Falipay&sign_type=RSA2&timestamp=2017-02-22+09%3A29%3A48&version=1.0&sign=lzMHOpwJIFdGMW8n4KIC%2FH9yUcP6w6SRmMMYtnn1o7QP2cMKdjizQIAd%2BddMKQpGVG2nOscTJ7cIiKkOk1rPe8C3Hb6HD6%2BVjIwK78bSCoM5rRI5hngQc6OMAuf52NlbtnNO8iJb6SQViWSP5TWDtYj9IRUPOyVB1bVD44Zw4QQ%3D"
     },
-    
     "url": "/wallets/charge"
   },
   {
@@ -111,7 +109,6 @@
     "results": {
       "validated": "false"
     },
-    
     "url": "/alipay/checkClientResult"
   },
   {
@@ -137,7 +134,6 @@
         "lng": 103.835434
       }
     },
-    
     "url": "/receivingSpaces"
   },
   {
@@ -170,7 +166,6 @@
         "name": "\u7070"
       }
     },
-    
     "url": "/mapAreas"
   },
   {
@@ -197,7 +192,6 @@
       "resolved": false,
       "createdDate": 1487302834686
     },
-    
     "url": "/complaints"
   },
   {
@@ -379,7 +373,6 @@
       ],
       "page": 1
     },
-    
     "url": "/waybills/self"
   },
   {
@@ -397,7 +390,6 @@
       "createdDate": 1486825570165,
       "code": "085215"
     },
-    
     "url": "/test/vCode"
   },
   {
@@ -527,7 +519,6 @@
         "expiresIn": 1209599
       }
     },
-    
     "url": "/users"
   },
   {
@@ -589,7 +580,6 @@
         "expiresIn": 1209599
       }
     },
-    
     "url": "/users/password"
   },
   {
@@ -604,7 +594,6 @@
     },
     "resource": "手机APP用户",
     "results": {},
-    
     "url": "/cellVerifyCodes"
   },
   {
@@ -620,7 +609,6 @@
     },
     "resource": "手机APP用户",
     "results": {},
-    
     "url": "/cellVerifyCodes/verify"
   },
   {
@@ -635,7 +623,6 @@
     },
     "resource": "手机APP用户",
     "results": {},
-    
     "url": "/cellVerifyCodes/password"
   },
   {
@@ -668,7 +655,6 @@
         "expiresIn": 1209599
       }
     },
-    
     "url": "/user/accessToken"
   },
   {
