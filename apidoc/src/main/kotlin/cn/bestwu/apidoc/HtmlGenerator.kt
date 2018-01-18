@@ -54,31 +54,35 @@ object HtmlGenerator {
         catalogOut.appendln("")
         catalogOut.appendln("---")
         catalogOut.appendln("")
-        val files = input.listFiles()
-        files.sort()
-        files.forEach {
-            val fileName = it.name.replace(".md", "")
-            val link = getAnchor(fileName).replace(Regex("^0?(.*)$"), "$1")
-            catalogOut.appendln("- [${fileName.replace(Regex("^0?(.*)$"), "$1").replace("-", " ")}]($fileName.html#$link)")
+
+        val listOfFiles= mutableListOf<File>()
+        if (input.exists()) {
+            val files = input.listFiles()
+            files.sort()
+            listOfFiles.addAll(files)
+            files.forEach {
+                val fileName = it.name.replace(".md", "")
+                val link = getAnchor(fileName).replace(Regex("^0?(.*)$"), "$1")
+                catalogOut.appendln("- [${fileName.replace(Regex("^0?(.*)$"), "$1").replace("-", " ")}]($fileName.html#$link)")
 //            catalogOut.appendln("- <a href=\"${fileName}.html#$link\" name=\"$link\">${fileName.replace(/^0?(.*)$/, "$1").replace("-", " ")}</a>")
-            catalogOut.appendln("")
-            it.forEachLine { l ->
-                val reg = Regex("^ *(#+).*#?$")
-                if (l.matches(reg) && l.replace(reg, "$1").length <= 4) {
-                    val name = l.replace(Regex("^ *#+ *(.*?) *#*$"), "$1")
-                    if (name != fileName.replace(Regex("^0?(.*)$"), "$1").replace("-", " ")) {
-                        catalogOut.appendln("\t- [$name]($fileName.html#${getAnchor(name)})")
+                catalogOut.appendln("")
+                it.forEachLine { l ->
+                    val reg = Regex("^ *(#+).*#?$")
+                    if (l.matches(reg) && l.replace(reg, "$1").length <= 4) {
+                        val name = l.replace(Regex("^ *#+ *(.*?) *#*$"), "$1")
+                        if (name != fileName.replace(Regex("^0?(.*)$"), "$1").replace("-", " ")) {
+                            catalogOut.appendln("\t- [$name]($fileName.html#${getAnchor(name)})")
 //                        catalogOut.appendln("\t- <a href=\"${fileName}.html#${name.toLowerCase().replace(".", "-").replace(" ", "-")}\" name=\"${name.toLowerCase().replace(".", "-").replace(" ", "-")}\">$name</a>")
+                        }
                     }
                 }
+                catalogOut.appendln("")
+                catalogOut.appendln("---")
             }
-            catalogOut.appendln("")
-            catalogOut.appendln("---")
         }
 
         val catalog = catalogOut.toString()
 
-        val listOfFiles = files.toMutableList()
         listOfFiles.addAll(extraFiles)
         listOfFiles.forEach {
             markdown2html(catalog, it, File(output, "${if (it.name == "README.md") "index" else it.name.replace(".md", "")}.html"))

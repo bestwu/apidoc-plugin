@@ -26,6 +26,9 @@ object MDGenerator {
                 if (apidocExtension.cover) {
                     output.deleteRecursively()
                 }
+                if (!output.exists()) {
+                    output.mkdirs()
+                }
 
                 val parser = Parser()
                 val trees = parser.parse(File(input, "tree.json").inputStream()) as List<MutableMap<String, Any?>>
@@ -46,9 +49,6 @@ object MDGenerator {
                     val fields = tempfields.map { Field(it) }
                     val j = i + 1
 
-                    if (!output.exists()) {
-                        output.mkdirs()
-                    }
                     val treeName = tree.text
                     val fileName: String
                     fileName = if (j > -1)
