@@ -10,6 +10,7 @@ apidoc {
     defaultHost 'http://app.qc-wbo.com/v1'
     paths = ['test']
 //    cover = false
+    collapsible=false
 }
 
 sourceCompatibility = 1.7

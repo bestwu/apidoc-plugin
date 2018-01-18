@@ -40,7 +40,7 @@ object HtmlGenerator {
         val catalogOut = StringWriter()
         val projectName = apidocExtension.projectName
         if (projectName.isNotBlank()) {
-            catalogOut.appendln("# $projectName #")
+            catalogOut.appendln("# &nbsp;&nbsp;[$projectName](index.html) #")
             catalogOut.appendln("")
         }
         if (readme != null)
@@ -62,17 +62,18 @@ object HtmlGenerator {
             listOfFiles.addAll(files)
             files.forEach {
                 val fileName = it.name.replace(".md", "")
-                val link = getAnchor(fileName).replace(Regex("^0?(.*)$"), "$1")
-                catalogOut.appendln("- [${fileName.replace(Regex("^0?(.*)$"), "$1").replace("-", " ")}]($fileName.html#$link)")
-//            catalogOut.appendln("- <a href=\"${fileName}.html#$link\" name=\"$link\">${fileName.replace(/^0?(.*)$/, "$1").replace("-", " ")}</a>")
-                catalogOut.appendln("")
+                if (apidocExtension.collapsible) {
+                    catalogOut.appendln("- <a class=\"expanded\" onclick=\"onTitleClick(this);\" href=\"javascript:void(0);\"><i class=\"arrow\"></i>${fileName.replace(Regex("^0?(.*)$"), "$1").replace("-", " ")}</a>")
+                } else {
+                    catalogOut.appendln("- [${fileName.replace(Regex("^0?(.*)$"), "$1").replace("-", " ")}]($fileName.html#${getAnchor(fileName).replace(Regex("^0?(.*)$"), "$1")})")
+                }
+
                 it.forEachLine { l ->
                     val reg = Regex("^ *(#+).*#?$")
                     if (l.matches(reg) && l.replace(reg, "$1").length <= 4) {
                         val name = l.replace(Regex("^ *#+ *(.*?) *#*$"), "$1")
                         if (name != fileName.replace(Regex("^0?(.*)$"), "$1").replace("-", " ")) {
                             catalogOut.appendln("\t- [$name]($fileName.html#${getAnchor(name)})")
-//                        catalogOut.appendln("\t- <a href=\"${fileName}.html#${name.toLowerCase().replace(".", "-").replace(" ", "-")}\" name=\"${name.toLowerCase().replace(".", "-").replace(" ", "-")}\">$name</a>")
                         }
                     }
                 }

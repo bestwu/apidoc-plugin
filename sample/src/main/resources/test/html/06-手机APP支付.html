@@ -192,6 +192,24 @@
       white-space: nowrap;
     }
 
+    .collapsed .arrow {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin-right: 4px;
+      background-repeat: no-repeat;
+      background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAQAAAC1QeVaAAAABGdBTUEAALGPC/xhBQAAAAJiS0dEAP+Hj8y/AAAAB3RJTUUH4gETBRUpm1h9ewAAABBjYU52AAAB1QAAAJ8AAAE5AAAAd8bWB40AAAB0SURBVBjTxc2hDYAwFATQC6kgGJD8DagjqUGRLsAOMFnHYAsWqEAyxiGglIRWc+7+S+4DP0WcuEwTp6kZDu+mpG6HAgBm4FjENXMFoBwOAKDa7OgNDTVl1zQ0HP1m79nI/UNUz9fIH3pzggJPa5IuZpehVE7yZEJPmBmauAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxOC0wMS0xOFQyMToyMTo0MSswODowMIyyT+0AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTgtMDEtMThUMjE6MjE6NDErMDg6MDD97/dRAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAABJRU5ErkJggg==');
+    }
+
+    .expanded .arrow {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin-right: 4px;
+      background-repeat: no-repeat;
+      background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAOCAQAAABedl5ZAAAABGdBTUEAALGPC/xhBQAAAAJiS0dEAP+Hj8y/AAAAB3RJTUUH4gETBRUpm1h9ewAAABBjYU52AAAB1QAAAJ8AAAHIAAAASAXkU10AAACCSURBVBjTY2CgEEjOlzwvyY9VQvO/3n+ZCwhJJhhDiZ+LgZVBSJ/5IEwSLnWkSmoHA5okHPzX8N1u/N8YzVi4pNVziKTcQiQDGRgYGKTKv0kwMDAwCNxZOgXDjcb/jf/b3T7n8J8FrwRcVon/BwMDA/edCamGRxj/YLgPwyiEJKoEAD8oOC9sjnUSAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE4LTAxLTE4VDIxOjIxOjQxKzA4OjAwjLJP7QAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxOC0wMS0xOFQyMToyMTo0MSswODowMP3v91EAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAAElFTkSuQmCC');
+    }
+
     .topAnchor {
       display: block;
       position: fixed;
@@ -245,7 +263,7 @@
 </head>
 <body>
 <div class="catalog">
-  <h1><a href="#sample" name="sample">sample</a></h1>
+  <h1>&nbsp;&nbsp;<a href="index.html">sample</a></h1>
 <ul>
   <li>
   <p><a href="index.html">系统介绍</a></p></li>
@@ -358,8 +376,7 @@
 <ul>
   <li><a href="10-测试时所用接口.html#10-测试时所用接口">10 测试时所用接口</a>
     <ul>
-      <li>
-      <p><a href="10-测试时所用接口.html#10-1-生成测试验证码">10.1 生成测试验证码</a></p></li>
+      <li><a href="10-测试时所用接口.html#10-1-生成测试验证码">10.1 生成测试验证码</a></li>
     </ul>
   </li>
 </ul>
@@ -367,8 +384,7 @@
 <ul>
   <li><a href="11-手持端基本.html#11-手持端基本">11 手持端基本</a>
     <ul>
-      <li>
-      <p><a href="11-手持端基本.html#11-1-检查版本号">11.1 检查版本号</a></p></li>
+      <li><a href="11-手持端基本.html#11-1-检查版本号">11.1 检查版本号</a></li>
     </ul>
   </li>
 </ul>
@@ -406,7 +422,7 @@
   <h3><a href="#6-手机app支付" name="6-手机app支付">6 手机APP支付</a></h3>
 <h4><a href="#6-1-我的钱包" name="6-1-我的钱包">6.1 我的钱包</a></h4>
 <h6><a href="#开发者" name="开发者">开发者</a></h6>
-<p>Peter Wu &lt;<a href="mailto:p&#105;&#116;e&#x72;&#x77;&#x75;&#64;&#111;u&#116;&#108;&#x6f;o&#107;&#46;&#99;&#x6f;&#109;">p&#105;&#116;e&#x72;&#x77;&#x75;&#64;&#111;u&#116;&#108;&#x6f;o&#107;&#46;&#99;&#x6f;&#109;</a> &gt;</p>
+<p>Peter Wu &lt;<a href="mailto:&#x70;&#x69;&#116;e&#114;&#x77;&#x75;&#64;&#x6f;ut&#108;o&#x6f;&#107;&#x2e;&#x63;&#x6f;m">&#x70;&#x69;&#116;e&#114;&#x77;&#x75;&#64;&#x6f;ut&#108;o&#x6f;&#107;&#x2e;&#x63;&#x6f;m</a> &gt;</p>
 <h6><a href="#接口地址" name="接口地址">接口地址</a></h6>
 <p><a href="http://app.qc-wbo.com/v1/wallets">http://app.qc-wbo.com/v1/wallets</a></p>
 <h6><a href="#请求方法" name="请求方法">请求方法</a></h6>
@@ -776,4 +792,14 @@
 
   changeMargin();
   window.onresize = changeMargin;
+
+  function onTitleClick(e) {
+    if (e.className === "expanded") {
+      e.className = "collapsed";
+      e.nextElementSibling.setAttribute("style", "display: none");
+    } else {
+      e.className = "expanded";
+      e.nextElementSibling.removeAttribute("style");
+    }
+  }
 </script>

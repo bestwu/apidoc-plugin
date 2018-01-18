@@ -12,6 +12,10 @@ open class ApidocExtension(
         var paths: Array<String> = arrayOf("_t"),
         var cover: Boolean = true,
         /**
+         * 目录标题是否可折叠
+         */
+        var collapsible: Boolean = true,
+        /**
          * 严格模式字段解析
          */
         var strict: Boolean = true,
