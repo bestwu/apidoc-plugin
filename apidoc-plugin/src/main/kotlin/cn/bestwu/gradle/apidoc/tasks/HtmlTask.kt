@@ -14,6 +14,6 @@ open class HtmlTask : DefaultTask() {
 
     @TaskAction
     fun run() {
-        HtmlGenerator.call(project.extensions.findByType(ApidocExtension::class.java))
+        HtmlGenerator.call(project.extensions.findByType(ApidocExtension::class.java)!!)
     }
 }

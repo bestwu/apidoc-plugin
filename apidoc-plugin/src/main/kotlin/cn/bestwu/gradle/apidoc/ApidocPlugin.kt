@@ -19,7 +19,7 @@ class ApidocPlugin : Plugin<Project> {
         project.extensions.create("apidoc", ApidocExtension::class.java)
 
         project.afterEvaluate {
-            val apidocExtension = project.extensions.findByType(ApidocExtension::class.java)
+            val apidocExtension = project.extensions.findByType(ApidocExtension::class.java)!!
             if (apidocExtension.projectName.isBlank()) {
                 apidocExtension.projectName = project.name
             }

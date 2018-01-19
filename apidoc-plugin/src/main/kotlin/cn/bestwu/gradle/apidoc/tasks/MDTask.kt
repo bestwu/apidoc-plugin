@@ -14,7 +14,7 @@ open class MDTask : DefaultTask() {
 
     @TaskAction
     fun run() {
-        MDGenerator.call(project.extensions.findByType(ApidocExtension::class.java))
+        MDGenerator.call(project.extensions.findByType(ApidocExtension::class.java)!!)
     }
 
 
