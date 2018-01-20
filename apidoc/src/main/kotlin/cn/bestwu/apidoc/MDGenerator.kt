@@ -1,5 +1,7 @@
 package cn.bestwu.apidoc
 
+import com.beust.klaxon.Parser
+import com.beust.klaxon.renderValue
 import java.io.File
 import java.io.PrintWriter
 
@@ -433,4 +435,8 @@ object MDGenerator {
         }
         return Field(origin.map.toMutableMap().withDefault { null })
     }
+}
+
+internal fun Any.toJsonString(prettyPrint: Boolean = false): String {
+    return StringBuilder().also { renderValue(this, it, prettyPrint, false, 0) }.toString()
 }

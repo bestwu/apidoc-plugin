@@ -12,6 +12,7 @@ version = "0.0.2-SNAPSHOT"
 dependencies {
     compile("org.jetbrains.kotlin:kotlin-reflect:1.1.4-3")
     compile ("org.pegdown:pegdown:1.6.0")
+    compile("com.beust:klaxon:0.32")
 
     testCompile("org.jetbrains.kotlin:kotlin-test-junit")
 }
