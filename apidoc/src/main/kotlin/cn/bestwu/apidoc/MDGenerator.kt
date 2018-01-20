@@ -217,7 +217,8 @@ object MDGenerator {
             resultFields.forEach {
                 out.println("| ${it.name} | ${it.type} | ${it.desc} | ${it.tempValue} |")
             }
-
+        }
+        if (results != null) {
             out.println()
             out.println("###### 响应示例 ######")
             out.println()
@@ -331,31 +332,33 @@ object MDGenerator {
             }
             rs = result[0]
         }
-        @Suppress("UNCHECKED_CAST")
-        (rs as MutableMap<String, Any?>).forEach { (k, v) ->
-            val field = findField(fields, k, v)
-            var value = v
-            if (value == null || "" == value || value is MutableMap<*, *> && value.size == 0 || value is List<*> && value.size == 0) {
-                value = field.value
-            }
-            when (value) {
-                is MutableMap<*, *> -> field.tempValue = convertResults(fields, value)?.toJsonString()?.replace("[", "\\[")
-                is List<*> -> {
-                    val list = mutableListOf<Any?>()
-                    if (value.size >= 1) {
-                        value = value[0]
-                        list.add(value)
-                    }
-                    field.tempValue = convertResults(fields, list)?.toJsonString()?.replace("[", "\\[")
+        if (rs is MutableMap<*, *>) {
+            @Suppress("UNCHECKED_CAST")
+            (rs as MutableMap<String, Any?>).forEach { (k, v) ->
+                val field = findField(fields, k, v)
+                var value = v
+                if (value == null || "" == value || value is MutableMap<*, *> && value.size == 0 || value is List<*> && value.size == 0) {
+                    value = field.value
                 }
-                else -> field.tempValue = value
-            }
+                when (value) {
+                    is MutableMap<*, *> -> field.tempValue = convertResults(fields, value)?.toJsonString()?.replace("[", "\\[")
+                    is List<*> -> {
+                        val list = mutableListOf<Any?>()
+                        if (value.size >= 1) {
+                            value = value[0]
+                            list.add(value)
+                        }
+                        field.tempValue = convertResults(fields, list)?.toJsonString()?.replace("[", "\\[")
+                    }
+                    else -> field.tempValue = value
+                }
 
-            fillDefaultField(field)
+                fillDefaultField(field)
 
-            flds.add(field)
-            if (value is MutableMap<*, *> && value.size > 0) {
-                flds.addAll(getResultFields(fields, value))
+                flds.add(field)
+                if (value is MutableMap<*, *> && value.size > 0) {
+                    flds.addAll(getResultFields(fields, value))
+                }
             }
         }
         return flds

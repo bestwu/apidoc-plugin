@@ -12,7 +12,7 @@ data class Api(val map: MutableMap<String, Any?>) : MutableMap<String, Any?> by 
     var desc: String?  by map
     var headers: Map<String, Any?>?  by map
     var params: Map<String, Any?>?  by map
-    var results: Map<String, Any?>?  by map
+    var results: Any?  by map
     var resource: String  by map
     var uriVariables: Map<String, Any?>?  by map
     var url: String  by map
