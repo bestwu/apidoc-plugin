@@ -119,6 +119,7 @@ class ApiDocFilter(private var dbScriptProperties: DbScriptProperties, private v
                     api["resource"] = resource
                     api["url"] = url
                     api["desc"] = ""
+                    api["version"] = apidocProperties.version.toList()
                     api["uriVariables"] = uriVariables
 
                     val responseBody = responseToUse.responseBody
