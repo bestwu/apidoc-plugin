@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="renderer" content="webkit"/>
+  <meta name="apple-touch-fullscreen" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>1 waybill</title>
+  <style type="text/css">
+    body {
+      margin: 0;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      padding: 10px;
+      overflow: auto;
+      color: #444;
+      font-family: Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
+      font-size: 16px;
+      line-height: 1.5em
+    }
+
+    a {
+      outline: none;
+      color: #0645ad;
+      text-decoration: none;
+    }
+
+    a:visited {
+      color: #0645ad;
+    }
+
+    a:hover {
+      color: #06e;
+    }
+
+    a:active {
+      color: #faa700;
+    }
+
+    p {
+      margin: 1em 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: normal;
+      color: #111;
+      line-height: 1em;
+    }
+
+    h4, h5, h6 {
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: 2.5em;
+    }
+
+    h2 {
+      font-size: 2em;
+      border-bottom: 1px solid silver;
+      padding-bottom: 5px;
+    }
+
+    h3 {
+      font-size: 1.5em;
+    }
+
+    h4 {
+      font-size: 1.2em;
+    }
+
+    h5 {
+      font-size: 1em;
+    }
+
+    h6 {
+      font-size: 0.9em;
+    }
+
+    blockquote {
+      color: #666666;
+      margin: 0;
+      padding-left: 3em;
+      border-left: 0.5em #EEE solid;
+    }
+
+    hr {
+      display: block;
+      height: 2px;
+      border: 0;
+      border-top: 1px solid #aaa;
+      border-bottom: 1px solid #eee;
+      margin: 1em 0;
+      padding: 0;
+    }
+
+    pre, code {
+      color: #000;
+      font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+      font-size: 0.94em; /* 0.94 = 0.88 + (1.00 - 0.88) / 2 */
+      border-radius: 3px;
+      background-color: #F8F8F8;
+      border: 1px solid #CCC;
+    }
+
+    pre {
+      white-space: pre;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      padding: 5px;
+    }
+
+    pre code {
+      border: 0px !important;
+      background: transparent !important;
+      line-height: 1.3em;
+    }
+
+    code {
+      padding: 0 3px 0 3px;
+    }
+
+    sub, sup {
+      font-size: 75%;
+      line-height: 0;
+      position: relative;
+      vertical-align: baseline;
+    }
+
+    sup {
+      top: -0.5em;
+    }
+
+    sub {
+      bottom: -0.25em;
+    }
+
+    ul, ol {
+      margin: 1em 0;
+      padding: 0 0 0 2em;
+    }
+
+    li p:last-child {
+      margin: 0
+    }
+
+    dd {
+      margin: 0 0 0 2em;
+    }
+
+    img {
+      border: 0;
+      -ms-interpolation-mode: bicubic;
+      vertical-align: middle;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    td, th {
+      vertical-align: top;
+      padding: 4px 10px;
+      border: 1px solid #bbb;
+      max-width: 300px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    tr:nth-child(even) td, tr:nth-child(even) th {
+      background: #efefef;
+    }
+
+    tr:nth-child(odd) td:hover, tr:nth-child(odd) th:hover {
+      background: #efefef;
+    }
+
+    tr:nth-child(even) td:hover, tr:nth-child(even) th:hover {
+      background: white;
+    }
+
+    table th {
+      white-space: nowrap;
+    }
+
+    .collapsed .arrow {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin-right: 4px;
+      background-repeat: no-repeat;
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAQAAAC1QeVaAAAABGdBTUEAALGPC/xhBQAAAAJiS0dEAP+Hj8y/AAAAB3RJTUUH4gETBRUpm1h9ewAAABBjYU52AAAB1QAAAJ8AAAE5AAAAd8bWB40AAAB0SURBVBjTxc2hDYAwFATQC6kgGJD8DagjqUGRLsAOMFnHYAsWqEAyxiGglIRWc+7+S+4DP0WcuEwTp6kZDu+mpG6HAgBm4FjENXMFoBwOAKDa7OgNDTVl1zQ0HP1m79nI/UNUz9fIH3pzggJPa5IuZpehVE7yZEJPmBmauAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxOC0wMS0xOFQyMToyMTo0MSswODowMIyyT+0AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTgtMDEtMThUMjE6MjE6NDErMDg6MDD97/dRAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAABJRU5ErkJggg==');
+    }
+
+    .expanded .arrow {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin-right: 4px;
+      background-repeat: no-repeat;
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAOCAQAAABedl5ZAAAABGdBTUEAALGPC/xhBQAAAAJiS0dEAP+Hj8y/AAAAB3RJTUUH4gETBRUpm1h9ewAAABBjYU52AAAB1QAAAJ8AAAHIAAAASAXkU10AAACCSURBVBjTY2CgEEjOlzwvyY9VQvO/3n+ZCwhJJhhDiZ+LgZVBSJ/5IEwSLnWkSmoHA5okHPzX8N1u/N8YzVi4pNVziKTcQiQDGRgYGKTKv0kwMDAwCNxZOgXDjcb/jf/b3T7n8J8FrwRcVon/BwMDA/edCamGRxj/YLgPwyiEJKoEAD8oOC9sjnUSAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE4LTAxLTE4VDIxOjIxOjQxKzA4OjAwjLJP7QAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxOC0wMS0xOFQyMToyMTo0MSswODowMP3v91EAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAAElFTkSuQmCC');
+    }
+
+    .topAnchor {
+      display: block;
+      position: fixed;
+      z-index: 1001;
+      bottom: 10px;
+      right: 0;
+      margin: 0;
+      padding: 0;
+      background-color: #c9c9c9;
+    }
+
+    .topAnchor a {
+      display: block;
+      padding: 12px;
+      background: rgba(255, 255, 255, .5);
+    }
+
+    .topAnchor a span {
+      display: block;
+      width: 24px;
+      height: 24px;
+      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAQAAABKfvVzAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAHdElNRQfeAhkNNgFF8q46AAAAd0lEQVQ4y+2RoQ2AMBAADwGisjBPh2CLahzrgMEwAmuVYIogBFIa+iHB9eT/3ZuHzA8U0WlFC8xssiMlPQ5HTynVVzxelpz6xIRnTSWnPqDRjKnk0msAmvck1BNJQffQ70kXPkCxRPQrWVDhwmAj+pFYjOQjmc/sNUsv1+vGNvUAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTYtMDktMTdUMTU6MTk6NDErMDg6MDD2piBqAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE0LTAyLTI1VDEzOjU0OjAxKzA4OjAwtu6diAAAAE10RVh0c29mdHdhcmUASW1hZ2VNYWdpY2sgNy4wLjEtNiBRMTYgeDg2XzY0IDIwMTYtMDktMTcgaHR0cDovL3d3dy5pbWFnZW1hZ2ljay5vcmfd2aVOAAAAGHRFWHRUaHVtYjo6RG9jdW1lbnQ6OlBhZ2VzADGn/7svAAAAGHRFWHRUaHVtYjo6SW1hZ2U6OkhlaWdodAAxMjhDfEGAAAAAF3RFWHRUaHVtYjo6SW1hZ2U6OldpZHRoADEyONCNEd0AAAAZdEVYdFRodW1iOjpNaW1ldHlwZQBpbWFnZS9wbmc/slZOAAAAF3RFWHRUaHVtYjo6TVRpbWUAMTM5MzMwNzY0MWqa+K0AAAASdEVYdFRodW1iOjpTaXplADEuNjlLQvWCP7QAAABfdEVYdFRodW1iOjpVUkkAZmlsZTovLy9ob21lL3d3d3Jvb3Qvc2l0ZS93d3cuZWFzeWljb24ubmV0L2Nkbi1pbWcuZWFzeWljb24uY24vc3JjLzExMzc3LzExMzc3NDgucG5nniX3RQAAAABJRU5ErkJggg==");
+    }
+
+    @media (min-width: 800px) {
+      body {
+        padding-left: 0;
+        padding-top: 0;
+      }
+
+      .catalog {
+        position: fixed;
+        width: 24%;
+        height: 100%;
+
+        overflow: auto;
+        border-right: 1px solid #e5e5e5;
+        border-bottom: 0;
+        background-color: #ededed;
+      }
+
+      .content {
+        position: absolute;
+        left: 24%;
+        width: 74%;
+        height: 100%;
+        margin-left: 1%;
+        margin-right: 1%;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="catalog">
+  <hr/>
+<ul>
+  <li>
+    <a class="expanded" onclick="onTitleClick(this);" href="javascript:void(0);"><i class="arrow"></i>1 waybill</a>
+    <ul>
+      <li><a href="01-waybill.html#1-1-测试">1.1 测试</a></li>
+    </ul>
+  </li>
+</ul>
+<hr/>
+</div>
+<div class="content">
+  <h3><a href="#1-waybill" name="1-waybill">1 waybill</a></h3>
+<h4><a href="#1-1-测试" name="1-1-测试">1.1 测试</a></h4>
+<h6><a href="#接口地址" name="接口地址">接口地址</a></h6>
+<p><a href="http://127.0.0.1:8080/waybills/{path}">http://127.0.0.1:8080/waybills/{path}</a></p>
+<h6><a href="#请求方法" name="请求方法">请求方法</a></h6>
+<p>GET</p>
+<h6><a href="#请求头参数" name="请求头参数">请求头参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th title="名称">名称</th>
+      <th title="类型">类型</th>
+      <th title="是否必填">是否必填</th>
+      <th title="描述">描述</th>
+      <th title="示例值">示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="sign ">sign </td>
+      <td title="String ">String </td>
+      <td title="是 ">是 </td>
+      <td title="接口签名 <a href='html/签名算法.html' target='_blank'>签名算法</a> ">接口签名 <a href='html/签名算法.html' target='_blank'>签名算法</a> </td>
+      <td title="- ">- </td>
+    </tr>
+  </tbody>
+</table>
+<h6><a href="#url参数" name="url参数">URL参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th title="名称">名称</th>
+      <th title="类型">类型</th>
+      <th title="描述">描述</th>
+      <th title="示例值">示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="path ">path </td>
+      <td title="- ">- </td>
+      <td title="- ">- </td>
+      <td title="1 ">1 </td>
+    </tr>
+  </tbody>
+</table>
+<h6><a href="#请求参数" name="请求参数">请求参数</a></h6>
+<p>无</p>
+<h6><a href="#响应参数" name="响应参数">响应参数</a></h6>
+<table>
+  <thead>
+    <tr>
+      <th title="名称">名称</th>
+      <th title="类型">类型</th>
+      <th title="描述">描述</th>
+      <th title="示例值">示例值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td title="size ">size </td>
+      <td title="Int ">Int </td>
+      <td title="每页最大数量，默认20 ">每页最大数量，默认20 </td>
+      <td title="5 ">5 </td>
+    </tr>
+    <tr>
+      <td title="total ">total </td>
+      <td title="Long ">Long </td>
+      <td title="总记录数 ">总记录数 </td>
+      <td title="5 ">5 </td>
+    </tr>
+    <tr>
+      <td title="pages ">pages </td>
+      <td title="Int ">Int </td>
+      <td title="总页数 ">总页数 </td>
+      <td title="1 ">1 </td>
+    </tr>
+    <tr>
+      <td title="list ">list </td>
+      <td title="- ">- </td>
+      <td title="- ">- </td>
+      <td title="[{&quot;id&quot;:72,&quot;goodsNo&quot;:&quot;557646&quot;,&quot;consigneeName&quot;:&quot;赵国柱1&quot;,&quot;consigneeTel&quot;:&quot;18819295194&quot;,&quot;consigneeAddress&quot;:&quot;东坡区苏祠路13号逸静苑大门向南方向5米&quot;,&quot;status&quot;:1,&quot;finished&quot;:false}] ">[{"id":72,"goodsNo":"557646","consigneeName":"赵国柱1","consigneeTel":"18819295194","consigneeAddress":"东坡区苏祠路13号逸静苑大门向南方向5米","status":1,"finished":false}] </td>
+    </tr>
+    <tr>
+      <td title="id ">id </td>
+      <td title="Long ">Long </td>
+      <td title="主键ID ">主键ID </td>
+      <td title="72 ">72 </td>
+    </tr>
+    <tr>
+      <td title="goodsNo ">goodsNo </td>
+      <td title="String(100) ">String(100) </td>
+      <td title="货物运单号 ">货物运单号 </td>
+      <td title="557646 ">557646 </td>
+    </tr>
+    <tr>
+      <td title="consigneeName ">consigneeName </td>
+      <td title="String(100) ">String(100) </td>
+      <td title="收货人姓名 ">收货人姓名 </td>
+      <td title="赵国柱1 ">赵国柱1 </td>
+    </tr>
+    <tr>
+      <td title="consigneeTel ">consigneeTel </td>
+      <td title="String(100) ">String(100) </td>
+      <td title="收货人电话 ">收货人电话 </td>
+      <td title="18819295194 ">18819295194 </td>
+    </tr>
+    <tr>
+      <td title="consigneeAddress ">consigneeAddress </td>
+      <td title="String(250) ">String(250) </td>
+      <td title="收货人的地址 ">收货人的地址 </td>
+      <td title="东坡区苏祠路13号逸静苑大门向南方向5米 ">东坡区苏祠路13号逸静苑大门向南方向5米 </td>
+    </tr>
+    <tr>
+      <td title="status ">status </td>
+      <td title="Integer ">Integer </td>
+      <td title="状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） ">状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成） </td>
+      <td title="1 ">1 </td>
+    </tr>
+    <tr>
+      <td title="finished ">finished </td>
+      <td title="Boolean ">Boolean </td>
+      <td title="是否完成运单 ">是否完成运单 </td>
+      <td title="false ">false </td>
+    </tr>
+    <tr>
+      <td title="page ">page </td>
+      <td title="Int ">Int </td>
+      <td title="页码，从1开始，默认1 ">页码，从1开始，默认1 </td>
+      <td title="1 ">1 </td>
+    </tr>
+  </tbody>
+</table>
+<h6><a href="#响应示例" name="响应示例">响应示例</a></h6>
+<pre><code class="json">{
+  &quot;size&quot;: 5,
+  &quot;total&quot;: 5,
+  &quot;pages&quot;: 1,
+  &quot;list&quot;: [{
+    &quot;id&quot;: 72,
+    &quot;goodsNo&quot;: &quot;557646&quot;,
+    &quot;consigneeName&quot;: &quot;赵国柱1&quot;,
+    &quot;consigneeTel&quot;: &quot;18819295194&quot;,
+    &quot;consigneeAddress&quot;: &quot;东坡区苏祠路13号逸静苑大门向南方向5米&quot;,
+    &quot;status&quot;: 1,
+    &quot;finished&quot;: false
+  }, {
+    &quot;id&quot;: 12,
+    &quot;goodsNo&quot;: &quot;718000872266&quot;,
+    &quot;consigneeName&quot;: &quot;江涛&quot;,
+    &quot;consigneeTel&quot;: &quot;13684030501&quot;,
+    &quot;consigneeAddress&quot;: &quot;碧辉园&quot;,
+    &quot;status&quot;: 1,
+    &quot;finished&quot;: false
+  }, {
+    &quot;id&quot;: 71,
+    &quot;goodsNo&quot;: &quot;2222&quot;,
+    &quot;consigneeName&quot;: &quot;赵国柱1&quot;,
+    &quot;consigneeTel&quot;: &quot;18819295194&quot;,
+    &quot;consigneeAddress&quot;: &quot;东坡区文安路东二段与永和街交叉口东50米&quot;,
+    &quot;status&quot;: 1,
+    &quot;finished&quot;: false
+  }, {
+    &quot;id&quot;: 13,
+    &quot;goodsNo&quot;: &quot;1234&quot;,
+    &quot;consigneeName&quot;: &quot;江涛&quot;,
+    &quot;consigneeTel&quot;: &quot;13684030501&quot;,
+    &quot;consigneeAddress&quot;: &quot;眉山东站&quot;,
+    &quot;status&quot;: 1,
+    &quot;finished&quot;: true
+  }, {
+    &quot;id&quot;: 161,
+    &quot;goodsNo&quot;: &quot;718000872252&quot;,
+    &quot;consigneeName&quot;: &quot;SDF&quot;,
+    &quot;consigneeTel&quot;: &quot;18224060100&quot;,
+    &quot;consigneeAddress&quot;: &quot;湿地&quot;,
+    &quot;status&quot;: 1,
+    &quot;finished&quot;: true
+  }],
+  &quot;page&quot;: 1
+}
+</code></pre>
+<hr/>
+</div>
+<div class="topAnchor">
+  <a id="topAnchor" href="#">
+    <span></span>
+  </a>
+</div>
+</body>
+<script type="text/javascript">
+  function changeMargin() {
+    var docWidth = document.body.clientWidth;
+    if (docWidth < 800) {
+      document.getElementById("topAnchor").setAttribute("href", "index.html#")
+    }
+  }
+
+  changeMargin();
+  window.onresize = changeMargin;
+
+  function onTitleClick(e) {
+    if (e.className === "expanded") {
+      e.className = "collapsed";
+      e.nextElementSibling.setAttribute("style", "display: none");
+    } else {
+      e.className = "expanded";
+      e.nextElementSibling.removeAttribute("style");
+    }
+  }
+</script>

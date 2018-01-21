@@ -1,6 +1,8 @@
+# Created by .ignore support plugin (hsz.mobi)
+### wu template
 .gradle
 /build/
-!gradle/wrapper/gradle-wrapper.jar
+
 
 ### STS ###
 .apt_generated
@@ -9,6 +11,7 @@
 .project
 .settings
 .springBeans
+target
 
 ### IntelliJ IDEA ###
 .idea

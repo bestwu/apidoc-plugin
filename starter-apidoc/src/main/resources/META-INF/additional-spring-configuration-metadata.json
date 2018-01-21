@@ -1,0 +1,102 @@
+{
+  "properties": [
+    {
+      "name": "api.dbscript.url",
+      "type": "java.lang.String",
+      "sourceType": "cn.bestwu.apidoc.starter.DbScriptProperties",
+      "description": "脚本生成用到的数据库地址."
+    },
+    {
+      "name": "api.dbscript.username",
+      "type": "java.lang.String",
+      "sourceType": "cn.bestwu.apidoc.starter.DbScriptProperties",
+      "description": "脚本生成用到的数据库用户名.",
+      "defaultValue": "root"
+    },
+    {
+      "name": "api.dbscript.password",
+      "type": "java.lang.String",
+      "sourceType": "cn.bestwu.apidoc.starter.DbScriptProperties",
+      "description": "脚本生成用到的数据库密码.",
+      "defaultValue": "root"
+    },
+    {
+      "sourceType": "cn.bestwu.apidoc.starter.DbScriptProperties",
+      "name": "api.dbscript.db-class",
+      "defaultValue": "cn.bestwu.dbscript.db.MySqlDb",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "cn.bestwu.apidoc.starter.DbScriptProperties",
+      "name": "api.dbscript.driver-class",
+      "defaultValue": "com.mysql.jdbc.Driver",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "cn.bestwu.apidoc.starter.ApidocProperties",
+      "name": "api.apidoc.collapsible",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "目录标题是否可折叠."
+    },
+    {
+      "sourceType": "cn.bestwu.apidoc.starter.ApidocProperties",
+      "name": "api.apidoc.cover",
+      "defaultValue": true,
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "cn.bestwu.apidoc.starter.ApidocProperties",
+      "name": "api.apidoc.paths",
+      "type": "java.lang.String[]",
+      "defaultValue": [
+        "_t"
+      ]
+    },
+    {
+      "sourceType": "cn.bestwu.apidoc.starter.ApidocProperties",
+      "name": "api.apidoc.strict",
+      "defaultValue": true,
+      "description": "严格模式字段解析.",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "cn.bestwu.apidoc.starter.ApidocProperties",
+      "name": "api.apidoc.source-path",
+      "type": "java.lang.String",
+      "defaultValue": "src/main/resources"
+    }
+  ],
+  "hints": [
+    {
+      "name": "api.dbscript.db-class",
+      "providers": [
+        {
+          "name": "class-reference",
+          "parameters": {
+            "target": "cn.bestwu.dbscript.db.Db"
+          }
+        }
+      ]
+    },
+    {
+      "name": "api.dbscript.driver-class",
+      "providers": [
+        {
+          "name": "class-reference",
+          "parameters": {
+            "target": "java.sql.Driver"
+          }
+        }
+      ]
+    },
+    {
+      "name": "api.apidoc.handler-type-prefix",
+      "providers": [
+        {
+          "name": "class-reference"
+        }
+      ]
+    }
+  ]
+}

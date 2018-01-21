@@ -1,4 +1,5 @@
 rootProject.name='apidocplugin'
 include 'apidoc'
+include 'starter-apidoc'
 include 'apidoc-plugin'
 

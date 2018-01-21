@@ -1,0 +1,61 @@
+[{
+  "method": "GET",
+  "name": "测试",
+  "headers": {
+    "sign": ""
+  },
+  "params": {},
+  "resource": "waybill",
+  "url": "/waybills/{path}",
+  "desc": "",
+  "uriVariables": {
+    "path": "1"
+  },
+  "results": {
+    "size": 5,
+    "total": 5,
+    "pages": 1,
+    "list": [{
+      "id": 72,
+      "goodsNo": "557646",
+      "consigneeName": "赵国柱1",
+      "consigneeTel": "18819295194",
+      "consigneeAddress": "东坡区苏祠路13号逸静苑大门向南方向5米",
+      "status": 1,
+      "finished": false
+    }, {
+      "id": 12,
+      "goodsNo": "718000872266",
+      "consigneeName": "江涛",
+      "consigneeTel": "13684030501",
+      "consigneeAddress": "碧辉园",
+      "status": 1,
+      "finished": false
+    }, {
+      "id": 71,
+      "goodsNo": "2222",
+      "consigneeName": "赵国柱1",
+      "consigneeTel": "18819295194",
+      "consigneeAddress": "东坡区文安路东二段与永和街交叉口东50米",
+      "status": 1,
+      "finished": false
+    }, {
+      "id": 13,
+      "goodsNo": "1234",
+      "consigneeName": "江涛",
+      "consigneeTel": "13684030501",
+      "consigneeAddress": "眉山东站",
+      "status": 1,
+      "finished": true
+    }, {
+      "id": 161,
+      "goodsNo": "718000872252",
+      "consigneeName": "SDF",
+      "consigneeTel": "18224060100",
+      "consigneeAddress": "湿地",
+      "status": 1,
+      "finished": true
+    }],
+    "page": 1
+  }
+}]

@@ -1,0 +1,277 @@
+[{
+  "desc": "主键ID",
+  "name": "id",
+  "nullable": false,
+  "type": "Long",
+  "value": null
+}, {
+  "desc": "系统运单号",
+  "name": "sysNo",
+  "nullable": true,
+  "type": "String(100)",
+  "value": null
+}, {
+  "desc": "货物运单号",
+  "name": "goodsNo",
+  "nullable": true,
+  "type": "String(100)",
+  "value": null
+}, {
+  "desc": "寄货费用（单位：分）",
+  "name": "cost",
+  "nullable": true,
+  "type": "Long",
+  "value": null
+}, {
+  "desc": "配送人员姓名",
+  "name": "distributionName",
+  "nullable": true,
+  "type": "String(100)",
+  "value": null
+}, {
+  "desc": "配送人员联系电话",
+  "name": "distributionTel",
+  "nullable": true,
+  "type": "String(100)",
+  "value": null
+}, {
+  "desc": "开始配送时间（毫秒数）",
+  "name": "distributionDate",
+  "nullable": true,
+  "type": "Long",
+  "value": null
+}, {
+  "desc": "预计到达时间（毫秒数）",
+  "name": "eta",
+  "nullable": true,
+  "type": "Long",
+  "value": null
+}, {
+  "desc": "完成时间（毫秒数）",
+  "name": "finishTime",
+  "nullable": true,
+  "type": "Long",
+  "value": null
+}, {
+  "desc": "收货人姓名",
+  "name": "consigneeName",
+  "nullable": true,
+  "type": "String(100)",
+  "value": null
+}, {
+  "desc": "收货人电话",
+  "name": "consigneeTel",
+  "nullable": true,
+  "type": "String(100)",
+  "value": null
+}, {
+  "desc": "收货人的地址",
+  "name": "consigneeAddress",
+  "nullable": true,
+  "type": "String(250)",
+  "value": null
+}, {
+  "desc": "发货人姓名",
+  "name": "consignorName",
+  "nullable": true,
+  "type": "String(100)",
+  "value": null
+}, {
+  "desc": "发货人电话",
+  "name": "consignorTel",
+  "nullable": true,
+  "type": "String(100)",
+  "value": null
+}, {
+  "desc": "发货人地址",
+  "name": "consignorAddress",
+  "nullable": true,
+  "type": "String(250)",
+  "value": null
+}, {
+  "desc": "状态（0：等待配送，1：开始配送，2：中转，3：签收，4：其他成功情况，5：拒收，6：其他失败情况，7：收到退货，8：滞留，9：自提，10：生成新运单，11：其他，12：完成）",
+  "name": "status",
+  "nullable": false,
+  "type": "Integer",
+  "value": "0"
+}, {
+  "desc": "订单状态描述",
+  "name": "statusDesc",
+  "nullable": true,
+  "type": "String(200)",
+  "value": null
+}, {
+  "desc": "是否完成运单",
+  "name": "finished",
+  "nullable": true,
+  "type": "Boolean",
+  "value": "0"
+}, {
+  "desc": "所属公司",
+  "name": "companyId",
+  "nullable": false,
+  "type": "Long",
+  "value": null
+}, {
+  "desc": "所属区域",
+  "name": "area",
+  "nullable": true,
+  "type": "String(250)",
+  "value": null
+}, {
+  "desc": "下单时间（毫秒数）",
+  "name": "createdDate",
+  "nullable": true,
+  "type": "Long",
+  "value": null
+}, {
+  "desc": "上次修改时间（毫秒数）",
+  "name": "lastModifiedDate",
+  "nullable": true,
+  "type": "Long",
+  "value": null
+}, {
+  "desc": "制单人ID",
+  "name": "sysUserId",
+  "nullable": true,
+  "type": "Long",
+  "value": null
+}, {
+  "desc": "制单人工号",
+  "name": "sysUserJobNumber",
+  "nullable": true,
+  "type": "String(100)",
+  "value": null
+}, {
+  "desc": "配送人ID",
+  "name": "distributionId",
+  "nullable": true,
+  "type": "Long",
+  "value": null
+}, {
+  "desc": "配送人工号",
+  "name": "distributionJobNumber",
+  "nullable": true,
+  "type": "String(100)",
+  "value": null
+}, {
+  "desc": "配送地址纬度",
+  "name": "lat",
+  "nullable": true,
+  "type": "Double",
+  "value": null
+}, {
+  "desc": "配送地址经度",
+  "name": "lng",
+  "nullable": true,
+  "type": "Double",
+  "value": null
+}, {
+  "desc": "计划配送开始时间（毫秒数）",
+  "name": "plannedStartTime",
+  "nullable": true,
+  "type": "Long",
+  "value": null
+}, {
+  "desc": "计划配送结束时间（毫秒数）",
+  "name": "plannedEndTime",
+  "nullable": true,
+  "type": "Long",
+  "value": null
+}, {
+  "desc": "旧运单ID",
+  "name": "oldWaybillId",
+  "nullable": true,
+  "type": "Long",
+  "value": null
+}, {
+  "desc": "备注",
+  "name": "note",
+  "nullable": true,
+  "type": "String(250)",
+  "value": null
+}, {
+  "desc": "底单图片地址",
+  "name": "billCopy",
+  "nullable": true,
+  "type": "String",
+  "value": null
+}, {
+  "desc": "新运单ID",
+  "name": "newWaybillId",
+  "nullable": true,
+  "type": "Long",
+  "value": null
+}, {
+  "desc": "新运单系统单号",
+  "name": "newWaybillSysNo",
+  "nullable": true,
+  "type": "String(200)",
+  "value": null
+}, {
+  "desc": "旧运单系统单号",
+  "name": "oldWaybillSysNo",
+  "nullable": true,
+  "type": "String(200)",
+  "value": null
+}, {
+  "desc": "总重量（单位g）",
+  "name": "weight",
+  "nullable": true,
+  "type": "Integer",
+  "value": null
+}, {
+  "desc": "是否删除",
+  "name": "deleted",
+  "nullable": true,
+  "type": "Boolean",
+  "value": "0"
+}, {
+  "desc": "箱号",
+  "name": "caseNo",
+  "nullable": true,
+  "type": "String(20)",
+  "value": null
+}, {
+  "desc": "加箱费（单位：分）",
+  "name": "addCaseCost",
+  "nullable": true,
+  "type": "Integer",
+  "value": "0"
+}, {
+  "desc": "续重费（单位：分）",
+  "name": "renewalCost",
+  "nullable": true,
+  "type": "Integer",
+  "value": "0"
+}, {
+  "desc": "货值（单位：分）",
+  "name": "cargoValue",
+  "nullable": true,
+  "type": "Integer",
+  "value": "0"
+}, {
+  "desc": "续重费谁出（0：用户出，1：伊藤出）",
+  "name": "renewalType",
+  "nullable": true,
+  "type": "Integer",
+  "value": "0"
+}, {
+  "desc": "是否有轨迹信息",
+  "name": "hasRoute",
+  "nullable": false,
+  "type": "Boolean",
+  "value": "0"
+}, {
+  "desc": "货物数量",
+  "name": "goodsNum",
+  "nullable": true,
+  "type": "Integer",
+  "value": "0"
+}, {
+  "desc": "用户删除标记",
+  "name": "userDeleted",
+  "nullable": true,
+  "type": "Boolean",
+  "value": "0"
+}]
