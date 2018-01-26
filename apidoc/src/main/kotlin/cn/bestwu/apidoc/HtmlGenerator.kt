@@ -39,12 +39,13 @@ object HtmlGenerator {
         val readme = extraFiles.find { it.name == "README.md" }
         val catalogOut = StringWriter()
         val projectName = apidocExtension.projectName
-        if (projectName.isNotBlank()) {
-            catalogOut.appendln("# &nbsp;&nbsp;[$projectName](index.html) #")
-            catalogOut.appendln("")
-        }
-        if (readme != null)
+        if (readme != null) {
+            if (projectName.isNotBlank()) {
+                catalogOut.appendln("# &nbsp;&nbsp;[$projectName](index.html) #")
+                catalogOut.appendln("")
+            }
             catalogOut.appendln("- [系统介绍](index.html)")
+        }
         catalogOut.appendln("")
         extraFiles.forEach { file ->
             val name = file.name
@@ -111,6 +112,16 @@ object HtmlGenerator {
             try {
                 val astRoot = parseMarkdown(markdownSource)
                 return object : ToHtmlSerializer(linkRenderer, verbatimSerializerMap, plugins) {
+                    private var index = 0
+
+                    override fun visit(node: AnchorLinkNode) {
+                        if (!node.name.matches(Regex("\\d.*"))) {
+                            super.visit(AnchorLinkNode(index.toString() + node.name, node.name))
+                            index++
+                        } else
+                            super.visit(node)
+                    }
+
                     override fun visit(node: TableCellNode) {
                         val me = this
                         val tag = if (me.inTableHeader) "th" else "td"

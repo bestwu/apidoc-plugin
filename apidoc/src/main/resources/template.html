@@ -201,6 +201,14 @@
       background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAQAAAC1QeVaAAAABGdBTUEAALGPC/xhBQAAAAJiS0dEAP+Hj8y/AAAAB3RJTUUH4gETBRUpm1h9ewAAABBjYU52AAAB1QAAAJ8AAAE5AAAAd8bWB40AAAB0SURBVBjTxc2hDYAwFATQC6kgGJD8DagjqUGRLsAOMFnHYAsWqEAyxiGglIRWc+7+S+4DP0WcuEwTp6kZDu+mpG6HAgBm4FjENXMFoBwOAKDa7OgNDTVl1zQ0HP1m79nI/UNUz9fIH3pzggJPa5IuZpehVE7yZEJPmBmauAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxOC0wMS0xOFQyMToyMTo0MSswODowMIyyT+0AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTgtMDEtMThUMjE6MjE6NDErMDg6MDD97/dRAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAABJRU5ErkJggg==');
     }
 
+    .collapsed + ul {
+      display: none;
+    }
+
+    .expanded + ul {
+      display: flow;
+    }
+
     .expanded .arrow {
       display: inline-block;
       width: 14px;
@@ -289,10 +297,8 @@
   function onTitleClick(e) {
     if (e.className === "expanded") {
       e.className = "collapsed";
-      e.nextElementSibling.setAttribute("style", "display: none");
     } else {
       e.className = "expanded";
-      e.nextElementSibling.removeAttribute("style");
     }
   }
 </script>

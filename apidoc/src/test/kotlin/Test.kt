@@ -1,4 +1,3 @@
-
 import cn.bestwu.apidoc.ApidocExtension
 import cn.bestwu.apidoc.HtmlGenerator
 import cn.bestwu.apidoc.MDGenerator
@@ -16,7 +15,7 @@ class Test {
     @Before
     fun setUp() {
         val parentFile = File(Test::class.java.getResource("/_t").file).parentFile
-        apidocExtension = ApidocExtension("http://127.0.0.1", paths = arrayOf("_t"), sourcePath = parentFile.absolutePath)
+        apidocExtension = ApidocExtension("文档", apiHost = "http://127.0.0.1", paths = arrayOf("_t"), sourcePath = parentFile.absolutePath)
     }
 
     @Test
@@ -26,6 +25,7 @@ class Test {
 
     @Test
     fun generateHtml() {
+        MDGenerator.call(apidocExtension)
         HtmlGenerator.call(apidocExtension)
     }
 }

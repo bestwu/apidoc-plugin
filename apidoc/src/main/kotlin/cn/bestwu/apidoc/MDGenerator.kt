@@ -99,10 +99,12 @@ object MDGenerator {
             var m = index
             m++
             val leafName = leaf.text
-            if (i > -1)
-                out.println("#### $i.$m $leafName ####")
-            else
-                out.println("#### $m $leafName ####")
+            val indexLeafName =
+                    if (i > -1)
+                        "$i.$m $leafName"
+                    else
+                        "$m $leafName"
+            out.println("#### $indexLeafName ####")
             out.println()
             val api = apis.find({ api ->
                 api.resource == treeName && api.name == leafName
