@@ -24,7 +24,7 @@ dependencies {
     //util
     compile("cn.bestwu:common-lang:1.0.5")
 
-    compile("cn.bestwu:dbscript:0.0.2-SNAPSHOT")
+    compile("cn.bestwu:generator:0.0.1-SNAPSHOT")
     compile(project(":apidoc"))
 
     compileOnly("org.springframework.boot:spring-boot-configuration-processor")

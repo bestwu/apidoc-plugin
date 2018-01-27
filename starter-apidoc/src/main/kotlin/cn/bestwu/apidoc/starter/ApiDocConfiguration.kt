@@ -13,17 +13,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * @since 1.3.8
  */
 @Conditional(ApiDocConfiguration.ApiDocCondition::class)
-@EnableConfigurationProperties(DbScriptProperties::class, ApidocProperties::class)
+@EnableConfigurationProperties(GeneratorProperties::class, ApidocProperties::class)
 @Configuration
 class ApiDocConfiguration : WebMvcConfigurerAdapter() {
     @Autowired
-    private lateinit var dbScriptProperties: DbScriptProperties
+    private lateinit var generatorProperties: GeneratorProperties
     @Autowired
     private lateinit var apidocProperties: ApidocProperties
 
     @Bean
     fun apidocFilter(): ApiDocFilter {
-        return ApiDocFilter(dbScriptProperties, apidocProperties)
+        return ApiDocFilter(generatorProperties, apidocProperties)
     }
 
     override fun addInterceptors(registry: InterceptorRegistry) {

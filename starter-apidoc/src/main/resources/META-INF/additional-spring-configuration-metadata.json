@@ -1,41 +1,28 @@
 {
   "properties": [
     {
-      "sourceType": "cn.bestwu.apidoc.starter.DbScriptProperties",
-      "name": "api.dbscript.mybatis-type",
-      "type": "cn.bestwu.dbscript.MybatisType",
-      "defaultValue": "ANNOTATEDMAPPER"
-    },
-    {
-      "name": "api.dbscript.url",
+      "name": "api.generators.datasource.url",
       "type": "java.lang.String",
-      "sourceType": "cn.bestwu.apidoc.starter.DbScriptProperties",
+      "sourceType": "cn.bestwu.apidoc.starter.GeneratorProperties",
       "description": "脚本生成用到的数据库地址."
     },
     {
-      "name": "api.dbscript.username",
+      "name": "api.generators.datasource.username",
       "type": "java.lang.String",
-      "sourceType": "cn.bestwu.apidoc.starter.DbScriptProperties",
+      "sourceType": "cn.bestwu.apidoc.starter.GeneratorProperties",
       "description": "脚本生成用到的数据库用户名.",
       "defaultValue": "root"
     },
     {
-      "name": "api.dbscript.password",
+      "name": "api.generators.datasource.password",
       "type": "java.lang.String",
-      "sourceType": "cn.bestwu.apidoc.starter.DbScriptProperties",
+      "sourceType": "cn.bestwu.apidoc.starter.GeneratorProperties",
       "description": "脚本生成用到的数据库密码.",
       "defaultValue": "root"
     },
     {
-      "sourceType": "cn.bestwu.apidoc.starter.DbScriptProperties",
-      "name": "api.dbscript.db-class",
-      "defaultValue": "cn.bestwu.dbscript.db.MySqlDb",
-      "type": "java.lang.String"
-    },
-    {
-      "sourceType": "cn.bestwu.apidoc.starter.DbScriptProperties",
-      "name": "api.dbscript.driver-class",
-      "defaultValue": "com.mysql.jdbc.Driver",
+      "sourceType": "cn.bestwu.apidoc.starter.GeneratorProperties",
+      "name": "api.generators.datasource.driver-class",
       "type": "java.lang.String"
     },
     {
@@ -75,18 +62,7 @@
   ],
   "hints": [
     {
-      "name": "api.dbscript.db-class",
-      "providers": [
-        {
-          "name": "class-reference",
-          "parameters": {
-            "target": "cn.bestwu.dbscript.db.Db"
-          }
-        }
-      ]
-    },
-    {
-      "name": "api.dbscript.driver-class",
+      "name": "api.generators.datasource.driver-class",
       "providers": [
         {
           "name": "class-reference",

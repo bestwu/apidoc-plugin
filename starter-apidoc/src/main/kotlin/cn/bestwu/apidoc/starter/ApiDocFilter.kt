@@ -2,7 +2,7 @@ package cn.bestwu.apidoc.starter
 
 import cn.bestwu.apidoc.HtmlGenerator
 import cn.bestwu.apidoc.MDGenerator
-import cn.bestwu.dbscript.DbScripts
+import cn.bestwu.generator.Generators
 import com.beust.klaxon.JsonArray
 import com.beust.klaxon.JsonObject
 import com.beust.klaxon.Parser
@@ -28,14 +28,14 @@ import javax.servlet.http.HttpServletResponseWrapper
  * @author Peter Wu
  * @since 0.0.1
  */
-class ApiDocFilter(private var dbScriptProperties: DbScriptProperties, private var apidocProperties: ApidocProperties) : OncePerRequestFilter() {
+class ApiDocFilter(private var generatorProperties: GeneratorProperties, private var apidocProperties: ApidocProperties) : OncePerRequestFilter() {
 
     private val parser = Parser()
     private var objectMapper: ObjectMapper = ObjectMapper()
 
     init {
-        if (dbScriptProperties.path.isNullOrBlank()) {
-            dbScriptProperties.path = "${apidocProperties.sourcePath}/${apidocProperties.paths[0]}"
+        if (generatorProperties.path.isBlank()) {
+            generatorProperties.path = "${apidocProperties.sourcePath}/${apidocProperties.paths[0]}"
         }
     }
 
@@ -91,7 +91,7 @@ class ApiDocFilter(private var dbScriptProperties: DbScriptProperties, private v
 
                     //生成相应数据
 
-                    val path = dbScriptProperties.path
+                    val path = generatorProperties.path
                     val trees: JsonArray<JsonObject>
                     val apis: JsonArray<JsonObject>
 
@@ -173,10 +173,10 @@ class ApiDocFilter(private var dbScriptProperties: DbScriptProperties, private v
                     //field
                     if (ApiDoc.tableNames.isNotEmpty()) {
                         val fieldFile = File(path, "field/${if (resource.isBlank()) "" else "$resource.json"}")
-                        dbScriptProperties.scripts = arrayOf(DbScripts.fieldScript.path(fieldFile.absolutePath))
-                        dbScriptProperties.tableNames = ApiDoc.tableNames
+                        generatorProperties.generators = arrayOf(Generators.fieldGenerator.path(fieldFile.absolutePath))
+                        generatorProperties.tableNames = ApiDoc.tableNames
 
-                        DbScripts.call(dbScriptProperties)
+                        Generators.call(generatorProperties)
                         println("${if (fieldFile.exists()) "更新" else "创建"}$fieldFile")
                     }
 
