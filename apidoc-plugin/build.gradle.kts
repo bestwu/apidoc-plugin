@@ -1,7 +1,7 @@
 import org.gradle.kotlin.dsl.*
 
 plugins {
-    kotlin("jvm") version "1.2.20"
+    kotlin("jvm") version "1.2.21"
     id("cn.bestwu.plugin-publish") version "0.0.17"
 }
 

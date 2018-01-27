@@ -5,8 +5,8 @@ import org.gradle.kotlin.dsl.*
 
 plugins {
     idea
-    kotlin("jvm") version "1.2.20"
-    kotlin("plugin.spring") version "1.2.20"
+    kotlin("jvm") version "1.2.21"
+    kotlin("plugin.spring") version "1.2.21"
     id("org.springframework.boot") version "1.5.9.RELEASE"
     id("cn.bestwu.kotlin-publish") version "0.0.17"
 }
@@ -16,7 +16,7 @@ version = "0.0.1-SNAPSHOT"
 
 
 dependencies {
-    compile("org.jetbrains.kotlin:kotlin-stdlib:1.2.0")
+    compile("org.jetbrains.kotlin:kotlin-stdlib:1.2.21")
 
     //web
     compile("org.springframework.boot:spring-boot-starter-web")
