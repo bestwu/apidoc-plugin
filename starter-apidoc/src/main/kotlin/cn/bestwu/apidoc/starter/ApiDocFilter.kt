@@ -2,7 +2,7 @@ package cn.bestwu.apidoc.starter
 
 import cn.bestwu.apidoc.HtmlGenerator
 import cn.bestwu.apidoc.MDGenerator
-import cn.bestwu.generator.Generators
+import cn.bestwu.generator.dsl.Generators
 import com.beust.klaxon.JsonArray
 import com.beust.klaxon.JsonObject
 import com.beust.klaxon.Parser
@@ -173,7 +173,7 @@ class ApiDocFilter(private var generatorProperties: GeneratorProperties, private
                     //field
                     if (ApiDoc.tableNames.isNotEmpty()) {
                         val fieldFile = File(path, "field/${if (resource.isBlank()) "" else "$resource.json"}")
-                        generatorProperties.generators = arrayOf(Generators.fieldGenerator.path(fieldFile.absolutePath))
+                        generatorProperties.generators = arrayOf(Generators.field.path(fieldFile.absolutePath))
                         generatorProperties.tableNames = ApiDoc.tableNames
 
                         Generators.call(generatorProperties)
