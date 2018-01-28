@@ -134,7 +134,8 @@ object MDGenerator {
             val version = api.version
             if (version is List<*>)
                 version.forEach {
-                    out.println("###### 接口版本$it ######")
+                    out.println("###### 接口版本 ######")
+                    out.println(it)
                     fillDesc(out, api, fields, it)
                 }
             else {
@@ -220,7 +221,7 @@ object MDGenerator {
                 out.println("| ${it.name} | ${it.type} | ${it.desc} | ${it.tempValue} |")
             }
         }
-        if (results != null) {
+        if (results != null && results.toString().isNotBlank()) {
             out.println()
             out.println("###### 响应示例 ######")
             out.println()
