@@ -26,7 +26,7 @@ class ApidocPlugin : Plugin<Project> {
             project.tasks.create("mddoc", MDTask::class.java) {
                 apidocExtension.paths.forEach { path ->
                     val sourcePath = apidocExtension.sourcePath + "/" + path
-                    val inputDir = project.file(sourcePath)!!
+                    val inputDir = project.file(sourcePath)
                     val outputDir = project.file(sourcePath + "/md")
                     it.inputs.files(inputDir.listFiles { file: File ->
                         file != outputDir && file != project.file(sourcePath + "/html")
