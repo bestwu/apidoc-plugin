@@ -1,8 +1,8 @@
 package cn.bestwu.apidoc.starter
 
 import org.springframework.web.method.HandlerMethod
+import org.springframework.web.servlet.ModelAndView
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter
-import java.lang.Exception
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
@@ -11,19 +11,16 @@ import javax.servlet.http.HttpServletResponse
  *
  * @author Peter Wu
  */
-class ApiDocInterceptor(private var apidocProperties: ApidocProperties) : HandlerInterceptorAdapter() {
+class ApiDocHandlerInterceptor(private var apidocProperties: ApidocProperties) : HandlerInterceptorAdapter() {
 
     companion object {
-        val HANDLER_METHOD = ApiDocInterceptor::class.java.name + ".HandlerMethod"
+        val HANDLER_METHOD = ApiDocHandlerInterceptor::class.java.name + ".HandlerMethod"
     }
 
-
-    @Suppress("UNCHECKED_CAST")
-    override fun afterCompletion(request: HttpServletRequest, response: HttpServletResponse, handler: Any, ex: Exception?) {
+    override fun postHandle(request: HttpServletRequest, response: HttpServletResponse, handler: Any, modelAndView: ModelAndView?) {
         if (ApiDoc.enable && handler is HandlerMethod && apidocProperties.handlerTypePrefix.any { handler.beanType.name.startsWith(it) }) {
             request.setAttribute(HANDLER_METHOD, handler)
         }
     }
-
 
 }

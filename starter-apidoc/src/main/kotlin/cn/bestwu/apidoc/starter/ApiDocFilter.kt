@@ -54,7 +54,7 @@ class ApiDocFilter(private var generatorProperties: GeneratorProperties, private
                 return
             }
             if (!isAsyncStarted(request)) {
-                val handler = request.getAttribute(ApiDocInterceptor.HANDLER_METHOD) as HandlerMethod?
+                val handler = request.getAttribute(ApiDocHandlerInterceptor.HANDLER_METHOD) as HandlerMethod?
                 if (handler != null) {
                     println("生成文档相关数据")
 
@@ -173,7 +173,7 @@ class ApiDocFilter(private var generatorProperties: GeneratorProperties, private
                     //field
                     if (ApiDoc.tableNames.isNotEmpty()) {
                         val fieldFile = File(path, "field/${if (resource.isBlank()) "" else "$resource.json"}")
-                        generatorProperties.generators = arrayOf(Generators.field.path(fieldFile.absolutePath))
+                        generatorProperties.generators = arrayOf(Generators.field.apply { this.path = fieldFile.absolutePath })
                         generatorProperties.tableNames = ApiDoc.tableNames
 
                         Generators.call(generatorProperties)

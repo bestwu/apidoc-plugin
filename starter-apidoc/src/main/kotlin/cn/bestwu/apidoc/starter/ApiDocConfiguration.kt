@@ -27,7 +27,7 @@ class ApiDocConfiguration : WebMvcConfigurerAdapter() {
     }
 
     override fun addInterceptors(registry: InterceptorRegistry) {
-        registry.addInterceptor(ApiDocInterceptor(apidocProperties))
+        registry.addInterceptor(ApiDocHandlerInterceptor(apidocProperties))
     }
 
     internal class ApiDocCondition : Condition {
