@@ -62,7 +62,7 @@ class ApiDocFilter(private var generatorProperties: GeneratorProperties, private
                     val methodAnnotation = handler.getMethodAnnotation(RequestMapping::class.java)
 
                     var resource = ""
-                    val name = methodAnnotation.name
+                    var name = methodAnnotation.name
                     val beanType = handler.beanType
                     val classRequestMapping = beanType.getAnnotation(RequestMapping::class.java)
                     if (classRequestMapping != null) {
@@ -105,7 +105,8 @@ class ApiDocFilter(private var generatorProperties: GeneratorProperties, private
 
                     val api = JsonObject()
                     api["method"] = httpMethod
-                    api["name"] = if (ApiDoc.name.isNotBlank()) ApiDoc.name else name
+                    name = if (ApiDoc.name.isNotBlank()) ApiDoc.name else name
+                    api["name"] = name
                     val headers = ServletServerHttpRequest(request).headers
                     if (ApiDoc.needSign)
                         headers.add("sign", "")
