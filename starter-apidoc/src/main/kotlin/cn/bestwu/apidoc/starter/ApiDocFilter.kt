@@ -105,7 +105,7 @@ class ApiDocFilter(private var generatorProperties: GeneratorProperties, private
 
                     val api = JsonObject()
                     api["method"] = httpMethod
-                    api["name"] = name
+                    api["name"] = if (ApiDoc.name.isNotBlank()) ApiDoc.name else name
                     val headers = ServletServerHttpRequest(request).headers
                     if (ApiDoc.needSign)
                         headers.add("sign", "")

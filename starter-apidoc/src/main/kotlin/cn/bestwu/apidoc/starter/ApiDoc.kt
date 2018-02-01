@@ -26,6 +26,10 @@ object ApiDoc {
      * 开发者
      */
     var author: String = ""
+    /**
+     * 接口名称
+     */
+    var name: String = ""
 
     /**
      * 相关数据表名
@@ -40,6 +44,13 @@ object ApiDoc {
      */
     fun author(author: String) {
         ApiDoc.author = author
+    }
+
+    /**
+     * 接口名称
+     */
+    fun name(name: String) {
+        ApiDoc.name = name
     }
 
     /**
