@@ -41,7 +41,7 @@ object HtmlGenerator {
         val projectName = apidocExtension.projectName
         if (readme != null) {
             if (projectName.isNotBlank()) {
-                catalogOut.appendln("# &nbsp;&nbsp;[$projectName](index.html) #")
+                catalogOut.appendln("### &nbsp;&nbsp;[$projectName](index.html) ###")
                 catalogOut.appendln("")
             }
             catalogOut.appendln("- [系统介绍](index.html)")
