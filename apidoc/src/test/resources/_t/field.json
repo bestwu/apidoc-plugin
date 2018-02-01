@@ -21,7 +21,7 @@
     "value": ""
   },
   {
-    "desc": "签名",
+    "desc": "签名 <a href='html/签名算法.html' target='_blank'>签名算法</a>",
     "name": "sign",
     "nullable": false,
     "type": "String",

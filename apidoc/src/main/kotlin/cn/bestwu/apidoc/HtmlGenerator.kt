@@ -2,6 +2,7 @@ package cn.bestwu.apidoc
 
 import org.pegdown.*
 import org.pegdown.ast.AnchorLinkNode
+import org.pegdown.ast.InlineHtmlNode
 import org.pegdown.ast.TableCellNode
 import org.pegdown.ast.TextNode
 import org.pegdown.plugins.PegDownPlugins
@@ -122,6 +123,10 @@ object HtmlGenerator {
                             super.visit(node)
                     }
 
+                    override fun visit(node: InlineHtmlNode) {
+                        super.visit(InlineHtmlNode(node.text.replace("href='html/", "href='")))
+                    }
+
                     override fun visit(node: TableCellNode) {
                         val me = this
                         val tag = if (me.inTableHeader) "th" else "td"
@@ -131,7 +136,7 @@ object HtmlGenerator {
                         me.printer.println().print("<").print(tag).print(" title=\"")
                         var titleText = ""
                         node.children.filter { it is TextNode }.forEach {
-                            titleText += (it as TextNode).text.replace("\"", "&quot;")
+                            titleText += (it as TextNode).text.replace("\"", "&quot;").replace("href='html/", "href='")
                         }
                         me.printer.print(titleText)
                         me.printer.print("\"")
