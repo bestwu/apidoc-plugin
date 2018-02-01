@@ -249,7 +249,7 @@ object MDGenerator {
             results.forEach { (k, v) ->
                 val field = findField(fields, k as String, v)
                 var value = v
-                if (value == null || "" == v) {
+                if ((value == null || "" == v) && field.value != null) {
                     value = field.value
                 }
                 if (value is List<*> || value is MutableMap<*, *>) {
