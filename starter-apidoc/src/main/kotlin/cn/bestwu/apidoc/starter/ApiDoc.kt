@@ -32,6 +32,11 @@ object ApiDoc {
     var name: String = ""
 
     /**
+     * 接口描述
+     */
+    var desc: String = ""
+
+    /**
      * 相关数据表名
      */
     fun tableNames(vararg tableName: String) {
@@ -51,6 +56,13 @@ object ApiDoc {
      */
     fun name(name: String) {
         ApiDoc.name = name
+    }
+
+    /**
+     * 接口描述
+     */
+    fun desc(desc: String) {
+        ApiDoc.desc = desc
     }
 
     /**

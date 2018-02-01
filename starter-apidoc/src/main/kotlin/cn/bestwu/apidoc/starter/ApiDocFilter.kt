@@ -121,7 +121,7 @@ class ApiDocFilter(private var generatorProperties: GeneratorProperties, private
                     api["params"] = params
                     api["resource"] = resource
                     api["url"] = url
-                    api["desc"] = ""
+                    api["desc"] = ApiDoc.desc
                     api["version"] = apidocProperties.version.toList()
                     api["uriVariables"] = uriVariables
 
@@ -245,7 +245,6 @@ class ApiDocFilter(private var generatorProperties: GeneratorProperties, private
         fun hasErrorToSend(): Boolean {
             return this.hasErrorToSend
         }
-
 
         override fun getOutputStream(): ServletOutputStream {
             return traceServletOutputStream
