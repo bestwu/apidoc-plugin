@@ -7,6 +7,7 @@ import com.beust.klaxon.JsonArray
 import com.beust.klaxon.JsonObject
 import com.beust.klaxon.Parser
 import com.fasterxml.jackson.databind.ObjectMapper
+import org.springframework.http.server.ServletServerHttpRequest
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.filter.OncePerRequestFilter
 import org.springframework.web.method.HandlerMethod
@@ -105,8 +106,10 @@ class ApiDocFilter(private var generatorProperties: GeneratorProperties, private
                     val api = JsonObject()
                     api["method"] = httpMethod
                     api["name"] = name
+                    val headers = ServletServerHttpRequest(request).headers
                     if (ApiDoc.needSign)
-                        api["headers"] = mapOf("sign" to "")
+                        headers.add("sign", "")
+                    api["headers"] = headers
 
                     val requires = ApiDoc.requires
                     val parameterMap = request.parameterMap
