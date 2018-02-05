@@ -81,7 +81,18 @@
     } ,
     "resource": "道闸租赁",
     "results": {"data":"","errorcode":"","errormsg":"操作成功","errorno":"0"},
-    "url": "/updateisexpire.php"
+    "url": "/updateisexpire.php",
+    "version":[
+      "1.0",
+      "2.0"
+    ],
+    "2.0":{
+      "desc": "2.0",
+      "params":{
+        "sign":["b7405f776197af4e4b2428742aff1383"]
+      } ,
+      "results": {"data":"","errorcode":"","errormsg":"操作成功","errorno":"0"}
+    }
   } ,
   {
     "method": "POST",

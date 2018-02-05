@@ -12,7 +12,7 @@ version = "0.0.2-SNAPSHOT"
 dependencies {
     compile("org.jetbrains.kotlin:kotlin-stdlib:1.2.21")
     compile ("org.pegdown:pegdown:1.6.0")
-    compile("com.beust:klaxon:0.32")
+    compile("com.fasterxml.jackson.core:jackson-databind:2.9.3")
 
     testCompile("org.jetbrains.kotlin:kotlin-test-junit:1.2.21")
 }

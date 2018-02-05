@@ -1,4 +1,5 @@
 import cn.bestwu.apidoc.ApidocExtension
+import cn.bestwu.apidoc.Field
 import cn.bestwu.apidoc.HtmlGenerator
 import cn.bestwu.apidoc.MDGenerator
 import org.junit.Before
@@ -21,6 +22,20 @@ class Test {
     @Test
     fun generateMd() {
         MDGenerator.call(apidocExtension)
+    }
+
+    @Test
+    fun copy() {
+        val field = Field()
+        field.id="234"
+
+        val copy = field.copy()
+        System.err.println(field.id)
+        System.err.println(copy.id)
+
+        copy.id="12"
+        System.err.println(field.id)
+        System.err.println(copy.id)
     }
 
     @Test

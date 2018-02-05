@@ -1,7 +1,10 @@
 package cn.bestwu.apidoc
 
-import com.beust.klaxon.Parser
-import com.beust.klaxon.renderValue
+import com.fasterxml.jackson.annotation.JsonInclude
+import com.fasterxml.jackson.databind.MapperFeature
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.SerializationFeature
+import com.fasterxml.jackson.databind.type.TypeFactory
 import java.io.File
 import java.io.PrintWriter
 
@@ -16,6 +19,24 @@ object MDGenerator {
     private var apis: List<Api> = emptyList()
     private val apiHost: String
         get() = if (apidocExtension.apiHost.isEmpty()) apidocExtension.defaultHost else apidocExtension.apiHost
+
+    private val objectMapper = ObjectMapper()
+
+    init {
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL)
+        objectMapper.enable(SerializationFeature.WRITE_ENUMS_USING_INDEX)
+        objectMapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS)
+        objectMapper.disable(MapperFeature.DEFAULT_VIEW_INCLUSION)
+    }
+
+    private fun Any.toJsonString(prettyPrint: Boolean = false): String {
+        if (prettyPrint) {
+            objectMapper.enable(SerializationFeature.INDENT_OUTPUT)
+        } else {
+            objectMapper.disable(SerializationFeature.INDENT_OUTPUT)
+        }
+        return objectMapper.writeValueAsString(this)
+    }
 
     @Suppress("UNCHECKED_CAST")
     fun call(apidocExtension: ApidocExtension) {
@@ -32,23 +53,19 @@ object MDGenerator {
                     output.mkdirs()
                 }
 
-                val parser = Parser()
-                val trees = parser.parse(File(input, "tree.json").inputStream()) as List<MutableMap<String, Any?>>
-                val apisMap = parser.parse(File(input, "api.json").inputStream()) as List<MutableMap<String, Any?>>
-                val fieldsMap = parser.parse(File(input, "field.json").inputStream()) as List<MutableMap<String, Any?>>
+                val trees: List<Tree> = File(input, "tree.json").parse(Tree::class.java)
+                apis = File(input, "api.json").parse(Api::class.java)
+                val defaultFields: List<Field> = File(input, "field.json").parse(Field::class.java)
 
-                apis = apisMap.map { Api(it.withDefault { null }) }
 
-                trees.forEachIndexed { i, treeMap ->
-                    val tree = Tree(treeMap)
+                trees.forEachIndexed { i, tree ->
                     val field = File(input, "field/${tree.text}.json")
-                    val tempfields = mutableListOf<MutableMap<String, Any?>>()
-                    tempfields.addAll(fieldsMap)
+                    val tempfields = mutableListOf<Field>()
+                    tempfields.addAll(defaultFields)
                     if (field.exists()) {
-                        tempfields.addAll(parser.parse(field.inputStream()) as List<MutableMap<String, Any?>>)
+                        tempfields.addAll(field.parse(Field::class.java))
                     }
 
-                    val fields = tempfields.map { Field(it) }
                     val j = i + 1
 
                     val treeName = tree.text
@@ -62,12 +79,12 @@ object MDGenerator {
                     if (!file.exists() || MDGenerator.apidocExtension.cover) {
                         println("生成：$file")
                         file.printWriter().use { out ->
-                            generateFile(out, j, tree, fields)
+                            generateFile(out, j, tree, tempfields)
                         }
                     } else if (file.exists() && !MDGenerator.apidocExtension.cover) {
                         println("追加：$file")
                         file.printWriter().use { out ->
-                            generateFile(out, j, tree, fields)
+                            generateFile(out, j, tree, tempfields)
                         }
                     } else {
                         println("$file 已存在")
@@ -79,6 +96,9 @@ object MDGenerator {
 
 
     }
+
+    private fun <T> File.parse(clazz: Class<T>): List<T> =
+            objectMapper.readValue(this, TypeFactory.defaultInstance().constructCollectionType(List::class.java, clazz))
 
 
     /**
@@ -114,12 +134,6 @@ object MDGenerator {
             if (!author.isNullOrBlank()) {
                 out.println("###### 开发者 ######")
                 out.println(author!!.replace("<", "&lt;").replace(">", " &gt;"))
-                out.println()
-            }
-            val desc = api.desc
-            if (!desc.isNullOrBlank()) {
-                out.println("###### 说明 ######")
-                out.println("$desc")
                 out.println()
             }
 
@@ -159,8 +173,11 @@ object MDGenerator {
         var uriVariables = api.uriVariables
         var params = api.params
         var results = api.results
+        var desc = api.desc
         if (!version.isNullOrBlank() && "1.0" != version && api[version!!] != null) {
-            val apiVersion = Api(api[version]!! as MutableMap<String, Any?>)
+            val apiVersion = api[version]!!
+            if (!apiVersion.desc.isNullOrBlank())
+                desc = apiVersion.desc
             if (apiVersion.headers != null)
                 headers = apiVersion.headers
             if (apiVersion.uriVariables != null)
@@ -171,6 +188,11 @@ object MDGenerator {
                 results = apiVersion.results
         }
 
+        if (!desc.isNullOrBlank()) {
+            out.println("###### 说明 ######")
+            out.println("$desc")
+            out.println()
+        }
         val headerFields = getParamFields(fields, headers)
         if (headerFields.isNotEmpty()) {
             out.println()
@@ -439,12 +461,8 @@ object MDGenerator {
             }
         }
         if (origin == null) {
-            origin = Field(mutableMapOf("name" to name))
+            origin = Field()
         }
-        return Field(origin.map.toMutableMap().withDefault { null })
+        return origin.copy()
     }
-}
-
-internal fun Any.toJsonString(prettyPrint: Boolean = false): String {
-    return StringBuilder().also { renderValue(this, it, prettyPrint, false, 0) }.toString()
 }
