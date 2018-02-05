@@ -65,7 +65,8 @@ object HtmlGenerator {
             files.forEach {
                 val fileName = it.name.replace(".md", "")
                 if (apidocExtension.collapsible) {
-                    catalogOut.appendln("- <a class=\"expanded\" onclick=\"onTitleClick(this);\" href=\"javascript:void(0);\"><i class=\"arrow\"></i>${fileName.replace(Regex("^0?(.*)$"), "$1").replace("-", " ")}</a>")
+                    val aClass = if (apidocExtension.expanded) "expanded" else "collapsed"
+                    catalogOut.appendln("- <a class=\"$aClass\" onclick=\"onTitleClick(this);\" href=\"javascript:void(0);\"><i class=\"arrow\"></i>${fileName.replace(Regex("^0?(.*)$"), "$1").replace("-", " ")}</a>")
                 } else {
                     catalogOut.appendln("- [${fileName.replace(Regex("^0?(.*)$"), "$1").replace("-", " ")}]($fileName.html#${getAnchor(fileName).replace(Regex("^0?(.*)$"), "$1")})")
                 }
