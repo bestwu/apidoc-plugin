@@ -462,6 +462,7 @@ object MDGenerator {
         }
         if (origin == null) {
             origin = Field()
+            origin.name = name
         }
         return origin.copy()
     }
