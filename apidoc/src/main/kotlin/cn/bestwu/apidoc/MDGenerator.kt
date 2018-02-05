@@ -204,7 +204,7 @@ object MDGenerator {
             out.println("|名称|类型|是否必填|描述|默认值|示例值|")
             out.println("|---|---|---|---|---|---|")
             paramFields.forEach {
-                out.println("| ${it.name} | ${it.type} | ${it.nullableDesc} | ${it.desc} | ${it.value} | ${it.tempValue} |")
+                out.println("| ${it.name} | ${getType(it)} | ${it.nullableDesc} | ${it.desc} | ${it.value} | ${it.tempValue} |")
             }
         }
         out.println()
@@ -218,7 +218,7 @@ object MDGenerator {
             out.println("|名称|类型|描述|示例值|")
             out.println("|---|---|---|---|")
             resultFields.forEach {
-                out.println("| ${it.name} | ${it.type} | ${it.desc} | ${it.tempValue} |")
+                out.println("| ${it.name} | ${getType(it)} | ${it.desc} | ${it.tempValue} |")
             }
         }
         if (results != null && results.toString().isNotBlank()) {
@@ -230,6 +230,8 @@ object MDGenerator {
             out.println("```")
         }
     }
+
+    private fun getType(it: Field) = it.type?.replace("<", "&lt;")?.replace(">", "&gt;")
 
     /**
      * 转换结果示例
