@@ -16,6 +16,10 @@ open class ApidocExtension(
          */
         var collapsible: Boolean = true,
         /**
+         * 是否默认展开
+         */
+        var expanded: Boolean = true,
+        /**
          * 严格模式字段解析
          */
         var strict: Boolean = true,

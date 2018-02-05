@@ -58,6 +58,13 @@
     },
     {
       "sourceType": "cn.bestwu.apidoc.starter.ApidocProperties",
+      "name": "api.apidoc.expanded",
+      "type": "java.lang.Boolean",
+      "description": "是否默认展开.",
+      "defaultValue": true
+    },
+    {
+      "sourceType": "cn.bestwu.apidoc.starter.ApidocProperties",
       "name": "api.apidoc.cover",
       "defaultValue": true,
       "type": "java.lang.Boolean"

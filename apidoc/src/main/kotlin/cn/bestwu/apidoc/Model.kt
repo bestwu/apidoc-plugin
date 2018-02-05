@@ -25,6 +25,10 @@ data class Field(val map: MutableMap<String, Any?>) : MutableMap<String, Any?> b
     var desc: String? by map
     var nullable: Boolean? by map
     /**
+     * 是否默认展开
+     */
+    var expanded: Boolean? by map
+    /**
      * 是否必填
      */
     val nullableDesc: String

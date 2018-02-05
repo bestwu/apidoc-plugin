@@ -359,7 +359,7 @@ object MDGenerator {
                 fillDefaultField(field)
 
                 flds.add(field)
-                if (value is MutableMap<*, *> && value.size > 0) {
+                if (field.expanded ?: apidocExtension.expanded && value is MutableMap<*, *> && value.size > 0) {
                     flds.addAll(getResultFields(fields, value))
                 }
             }
