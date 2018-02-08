@@ -1,6 +1,7 @@
 package cn.bestwu.apidoc
 
 import com.fasterxml.jackson.annotation.JsonAnySetter
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import java.util.*
 
 
@@ -8,6 +9,7 @@ import java.util.*
  *
  * @author Peter Wu
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class Api(
         var method: String = "",
         var name: String = "",
@@ -28,6 +30,7 @@ data class Api(
     }
 }
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class Field(
         var id: String? = null,
         var name: String = "",
@@ -48,11 +51,13 @@ data class Field(
 
 }
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class Child(
         var text: String = "",
         var leaf: Boolean = true
 )
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class Tree(
         @Suppress("UNCHECKED_CAST")
         var children: List<Child>? = null,
