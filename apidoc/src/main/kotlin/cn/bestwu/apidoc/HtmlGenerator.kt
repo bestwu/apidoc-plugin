@@ -112,7 +112,7 @@ object HtmlGenerator {
 
         override fun markdownToHtml(markdownSource: CharArray?, linkRenderer: LinkRenderer?, verbatimSerializerMap: MutableMap<String, VerbatimSerializer>?, plugins: MutableList<ToHtmlSerializerPlugin>?): String? {
             try {
-                val astRoot = parseMarkdown(markdownSource)
+                val asRoot = parseMarkdown(markdownSource)
                 return object : ToHtmlSerializer(linkRenderer, verbatimSerializerMap, plugins) {
                     private var index = 0
 
@@ -149,7 +149,7 @@ object HtmlGenerator {
 
                         me.currentTableColumn += node.colSpan
                     }
-                }.toHtml(astRoot)
+                }.toHtml(asRoot)
             } catch (ignored: ParsingTimeoutException) {
                 return null
             }
