@@ -198,7 +198,15 @@
       height: 14px;
       margin-right: 4px;
       background-repeat: no-repeat;
-      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAQAAAC1QeVaAAAABGdBTUEAALGPC/xhBQAAAAJiS0dEAP+Hj8y/AAAAB3RJTUUH4gETBRUpm1h9ewAAABBjYU52AAAB1QAAAJ8AAAE5AAAAd8bWB40AAAB0SURBVBjTxc2hDYAwFATQC6kgGJD8DagjqUGRLsAOMFnHYAsWqEAyxiGglIRWc+7+S+4DP0WcuEwTp6kZDu+mpG6HAgBm4FjENXMFoBwOAKDa7OgNDTVl1zQ0HP1m79nI/UNUz9fIH3pzggJPa5IuZpehVE7yZEJPmBmauAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxOC0wMS0xOFQyMToyMTo0MSswODowMIyyT+0AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTgtMDEtMThUMjE6MjE6NDErMDg6MDD97/dRAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAABJRU5ErkJggg==');
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAOCAQAAABedl5ZAAAABGdBTUEAALGPC/xhBQAAAAJiS0dEAP+Hj8y/AAAAB3RJTUUH4gETBRUpm1h9ewAAABBjYU52AAAB1QAAAJ8AAAHIAAAASAXkU10AAACCSURBVBjTY2CgEEjOlzwvyY9VQvO/3n+ZCwhJJhhDiZ+LgZVBSJ/5IEwSLnWkSmoHA5okHPzX8N1u/N8YzVi4pNVziKTcQiQDGRgYGKTKv0kwMDAwCNxZOgXDjcb/jf/b3T7n8J8FrwRcVon/BwMDA/edCamGRxj/YLgPwyiEJKoEAD8oOC9sjnUSAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE4LTAxLTE4VDIxOjIxOjQxKzA4OjAwjLJP7QAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxOC0wMS0xOFQyMToyMTo0MSswODowMP3v91EAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAAElFTkSuQmCC');
+    }
+
+    .collapsed + ul {
+      display: none;
+    }
+
+    .expanded + ul {
+      display: flow;
     }
 
     .expanded .arrow {
@@ -207,7 +215,7 @@
       height: 14px;
       margin-right: 4px;
       background-repeat: no-repeat;
-      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAOCAQAAABedl5ZAAAABGdBTUEAALGPC/xhBQAAAAJiS0dEAP+Hj8y/AAAAB3RJTUUH4gETBRUpm1h9ewAAABBjYU52AAAB1QAAAJ8AAAHIAAAASAXkU10AAACCSURBVBjTY2CgEEjOlzwvyY9VQvO/3n+ZCwhJJhhDiZ+LgZVBSJ/5IEwSLnWkSmoHA5okHPzX8N1u/N8YzVi4pNVziKTcQiQDGRgYGKTKv0kwMDAwCNxZOgXDjcb/jf/b3T7n8J8FrwRcVon/BwMDA/edCamGRxj/YLgPwyiEJKoEAD8oOC9sjnUSAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE4LTAxLTE4VDIxOjIxOjQxKzA4OjAwjLJP7QAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxOC0wMS0xOFQyMToyMTo0MSswODowMP3v91EAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAAElFTkSuQmCC');
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAQAAAC1QeVaAAAABGdBTUEAALGPC/xhBQAAAAJiS0dEAP+Hj8y/AAAAB3RJTUUH4gETBRUpm1h9ewAAABBjYU52AAAB1QAAAJ8AAAE5AAAAd8bWB40AAAB0SURBVBjTxc2hDYAwFATQC6kgGJD8DagjqUGRLsAOMFnHYAsWqEAyxiGglIRWc+7+S+4DP0WcuEwTp6kZDu+mpG6HAgBm4FjENXMFoBwOAKDa7OgNDTVl1zQ0HP1m79nI/UNUz9fIH3pzggJPa5IuZpehVE7yZEJPmBmauAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxOC0wMS0xOFQyMToyMTo0MSswODowMIyyT+0AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTgtMDEtMThUMjE6MjE6NDErMDg6MDD97/dRAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAABJRU5ErkJggg==');
     }
 
     .topAnchor {
@@ -278,11 +286,13 @@
 <div class="content">
   <h3><a href="#1-waybill" name="1-waybill">1 waybill</a></h3>
 <h4><a href="#1-1-测试" name="1-1-测试">1.1 测试</a></h4>
-<h6><a href="#接口地址" name="接口地址">接口地址</a></h6>
+<h6><a href="#0接口地址" name="0接口地址">接口地址</a></h6>
 <p><a href="http://127.0.0.1:8080/waybills/{path}">http://127.0.0.1:8080/waybills/{path}</a></p>
-<h6><a href="#请求方法" name="请求方法">请求方法</a></h6>
+<h6><a href="#1请求方法" name="1请求方法">请求方法</a></h6>
 <p>GET</p>
-<h6><a href="#请求头参数" name="请求头参数">请求头参数</a></h6>
+<h6><a href="#2接口版本" name="2接口版本">接口版本</a></h6>
+<p>1.0</p>
+<h6><a href="#3请求头参数" name="3请求头参数">请求头参数</a></h6>
 <table>
   <thead>
     <tr>
@@ -298,12 +308,12 @@
       <td title="sign ">sign </td>
       <td title="String ">String </td>
       <td title="是 ">是 </td>
-      <td title="接口签名 <a href='html/签名算法.html' target='_blank'>签名算法</a> ">接口签名 <a href='html/签名算法.html' target='_blank'>签名算法</a> </td>
+      <td title="接口签名 <a href='签名算法.html' target='_blank'>签名算法</a> ">接口签名 <a href='签名算法.html' target='_blank'>签名算法</a> </td>
       <td title="- ">- </td>
     </tr>
   </tbody>
 </table>
-<h6><a href="#url参数" name="url参数">URL参数</a></h6>
+<h6><a href="#4url参数" name="4url参数">url参数</a></h6>
 <table>
   <thead>
     <tr>
@@ -322,9 +332,9 @@
     </tr>
   </tbody>
 </table>
-<h6><a href="#请求参数" name="请求参数">请求参数</a></h6>
+<h6><a href="#5请求参数" name="5请求参数">请求参数</a></h6>
 <p>无</p>
-<h6><a href="#响应参数" name="响应参数">响应参数</a></h6>
+<h6><a href="#6响应参数" name="6响应参数">响应参数</a></h6>
 <table>
   <thead>
     <tr>
@@ -367,25 +377,25 @@
     </tr>
     <tr>
       <td title="goodsNo ">goodsNo </td>
-      <td title="String(100) ">String(100) </td>
+      <td title="String ">String </td>
       <td title="货物运单号 ">货物运单号 </td>
       <td title="557646 ">557646 </td>
     </tr>
     <tr>
       <td title="consigneeName ">consigneeName </td>
-      <td title="String(100) ">String(100) </td>
+      <td title="String ">String </td>
       <td title="收货人姓名 ">收货人姓名 </td>
       <td title="赵国柱1 ">赵国柱1 </td>
     </tr>
     <tr>
       <td title="consigneeTel ">consigneeTel </td>
-      <td title="String(100) ">String(100) </td>
+      <td title="String ">String </td>
       <td title="收货人电话 ">收货人电话 </td>
       <td title="18819295194 ">18819295194 </td>
     </tr>
     <tr>
       <td title="consigneeAddress ">consigneeAddress </td>
-      <td title="String(250) ">String(250) </td>
+      <td title="String ">String </td>
       <td title="收货人的地址 ">收货人的地址 </td>
       <td title="东坡区苏祠路13号逸静苑大门向南方向5米 ">东坡区苏祠路13号逸静苑大门向南方向5米 </td>
     </tr>
@@ -409,53 +419,53 @@
     </tr>
   </tbody>
 </table>
-<h6><a href="#响应示例" name="响应示例">响应示例</a></h6>
+<h6><a href="#7响应示例" name="7响应示例">响应示例</a></h6>
 <pre><code class="json">{
-  &quot;size&quot;: 5,
-  &quot;total&quot;: 5,
-  &quot;pages&quot;: 1,
-  &quot;list&quot;: [{
-    &quot;id&quot;: 72,
-    &quot;goodsNo&quot;: &quot;557646&quot;,
-    &quot;consigneeName&quot;: &quot;赵国柱1&quot;,
-    &quot;consigneeTel&quot;: &quot;18819295194&quot;,
-    &quot;consigneeAddress&quot;: &quot;东坡区苏祠路13号逸静苑大门向南方向5米&quot;,
-    &quot;status&quot;: 1,
-    &quot;finished&quot;: false
+  &quot;size&quot; : 5,
+  &quot;total&quot; : 5,
+  &quot;pages&quot; : 1,
+  &quot;list&quot; : [ {
+    &quot;id&quot; : 72,
+    &quot;goodsNo&quot; : &quot;557646&quot;,
+    &quot;consigneeName&quot; : &quot;赵国柱1&quot;,
+    &quot;consigneeTel&quot; : &quot;18819295194&quot;,
+    &quot;consigneeAddress&quot; : &quot;东坡区苏祠路13号逸静苑大门向南方向5米&quot;,
+    &quot;status&quot; : 1,
+    &quot;finished&quot; : false
   }, {
-    &quot;id&quot;: 12,
-    &quot;goodsNo&quot;: &quot;718000872266&quot;,
-    &quot;consigneeName&quot;: &quot;江涛&quot;,
-    &quot;consigneeTel&quot;: &quot;13684030501&quot;,
-    &quot;consigneeAddress&quot;: &quot;碧辉园&quot;,
-    &quot;status&quot;: 1,
-    &quot;finished&quot;: false
+    &quot;id&quot; : 12,
+    &quot;goodsNo&quot; : &quot;718000872266&quot;,
+    &quot;consigneeName&quot; : &quot;江涛&quot;,
+    &quot;consigneeTel&quot; : &quot;13684030501&quot;,
+    &quot;consigneeAddress&quot; : &quot;碧辉园&quot;,
+    &quot;status&quot; : 1,
+    &quot;finished&quot; : false
   }, {
-    &quot;id&quot;: 71,
-    &quot;goodsNo&quot;: &quot;2222&quot;,
-    &quot;consigneeName&quot;: &quot;赵国柱1&quot;,
-    &quot;consigneeTel&quot;: &quot;18819295194&quot;,
-    &quot;consigneeAddress&quot;: &quot;东坡区文安路东二段与永和街交叉口东50米&quot;,
-    &quot;status&quot;: 1,
-    &quot;finished&quot;: false
+    &quot;id&quot; : 71,
+    &quot;goodsNo&quot; : &quot;2222&quot;,
+    &quot;consigneeName&quot; : &quot;赵国柱1&quot;,
+    &quot;consigneeTel&quot; : &quot;18819295194&quot;,
+    &quot;consigneeAddress&quot; : &quot;东坡区文安路东二段与永和街交叉口东50米&quot;,
+    &quot;status&quot; : 1,
+    &quot;finished&quot; : false
   }, {
-    &quot;id&quot;: 13,
-    &quot;goodsNo&quot;: &quot;1234&quot;,
-    &quot;consigneeName&quot;: &quot;江涛&quot;,
-    &quot;consigneeTel&quot;: &quot;13684030501&quot;,
-    &quot;consigneeAddress&quot;: &quot;眉山东站&quot;,
-    &quot;status&quot;: 1,
-    &quot;finished&quot;: true
+    &quot;id&quot; : 13,
+    &quot;goodsNo&quot; : &quot;1234&quot;,
+    &quot;consigneeName&quot; : &quot;江涛&quot;,
+    &quot;consigneeTel&quot; : &quot;13684030501&quot;,
+    &quot;consigneeAddress&quot; : &quot;眉山东站&quot;,
+    &quot;status&quot; : 1,
+    &quot;finished&quot; : true
   }, {
-    &quot;id&quot;: 161,
-    &quot;goodsNo&quot;: &quot;718000872252&quot;,
-    &quot;consigneeName&quot;: &quot;SDF&quot;,
-    &quot;consigneeTel&quot;: &quot;18224060100&quot;,
-    &quot;consigneeAddress&quot;: &quot;湿地&quot;,
-    &quot;status&quot;: 1,
-    &quot;finished&quot;: true
-  }],
-  &quot;page&quot;: 1
+    &quot;id&quot; : 161,
+    &quot;goodsNo&quot; : &quot;718000872252&quot;,
+    &quot;consigneeName&quot; : &quot;SDF&quot;,
+    &quot;consigneeTel&quot; : &quot;18224060100&quot;,
+    &quot;consigneeAddress&quot; : &quot;湿地&quot;,
+    &quot;status&quot; : 1,
+    &quot;finished&quot; : true
+  } ],
+  &quot;page&quot; : 1
 }
 </code></pre>
 <hr/>
@@ -480,10 +490,8 @@
   function onTitleClick(e) {
     if (e.className === "expanded") {
       e.className = "collapsed";
-      e.nextElementSibling.setAttribute("style", "display: none");
     } else {
       e.className = "expanded";
-      e.nextElementSibling.removeAttribute("style");
     }
   }
 </script>

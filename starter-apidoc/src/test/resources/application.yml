@@ -1,10 +1,9 @@
 api:
-  dbscript:
-    url: jdbc:mysql://localhost:3306/logistics?characterEncoding=utf8&useSSL=false
-    username: root
-    password: root
-    db-class: cn.bestwu.dbscript.db.MySqlDb
-    driver-class: com.mysql.jdbc.Driver
+  generators:
+    datasource:
+      url: jdbc:mysql://localhost:3306/logistics?characterEncoding=utf8&useSSL=false
+      username: root
+      password: root
     path: src/test/resources/_t
   apidoc:
     default-host: http://127.0.0.1:8080

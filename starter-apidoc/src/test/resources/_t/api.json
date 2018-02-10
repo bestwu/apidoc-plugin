@@ -2,12 +2,13 @@
   "method": "GET",
   "name": "测试",
   "headers": {
-    "sign": ""
+    "sign": [""]
   },
   "params": {},
   "resource": "waybill",
   "url": "/waybills/{path}",
   "desc": "",
+  "version": ["1.0"],
   "uriVariables": {
     "path": "1"
   },
