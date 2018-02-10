@@ -38,7 +38,6 @@ object MDGenerator {
         return objectMapper.writeValueAsString(this)
     }
 
-    @Suppress("UNCHECKED_CAST")
     fun call(apidocExtension: ApidocExtension) {
         this.apidocExtension = apidocExtension
         apidocExtension.paths.forEach { path ->
@@ -53,9 +52,18 @@ object MDGenerator {
                     output.mkdirs()
                 }
 
-                val trees: List<Tree> = File(input, "tree.json").parse(Tree::class.java)
-                apis = File(input, "api.json").parse(Api::class.java)
-                val defaultFields: List<Field> = File(input, "field.json").parse(Field::class.java)
+                val treeFile = File(input, "tree.json")
+                if (!treeFile.exists())
+                    return
+                val trees: List<Tree> = treeFile.parse(Tree::class.java)
+                val apiFile = File(input, "api.json")
+                if (!apiFile.exists())
+                    return
+                apis = apiFile.parse(Api::class.java)
+                val fieldFile = File(input, "field.json")
+                if (!fieldFile.exists())
+                    return
+                val defaultFields: List<Field> = fieldFile.parse(Field::class.java)
 
 
                 trees.forEachIndexed { i, tree ->
@@ -97,8 +105,7 @@ object MDGenerator {
 
     }
 
-    private fun <T> File.parse(clazz: Class<T>): List<T> =
-            objectMapper.readValue(this, TypeFactory.defaultInstance().constructCollectionType(List::class.java, clazz))
+    private fun <T> File.parse(clazz: Class<T>): List<T> = objectMapper.readValue(this, TypeFactory.defaultInstance().constructCollectionType(List::class.java, clazz))
 
 
     /**
