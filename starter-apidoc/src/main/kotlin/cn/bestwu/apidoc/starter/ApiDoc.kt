@@ -8,7 +8,7 @@ object ApiDoc {
     /**
      * 相关数据表名
      */
-    var tableNames: Array<out String> = arrayOf()
+    var tableNames: Array<String> = arrayOf()
 
     /**
      * 必填参数
@@ -40,7 +40,7 @@ object ApiDoc {
      * 相关数据表名
      */
     fun tableNames(vararg tableName: String) {
-        tableNames = tableName
+        tableNames = tableName.toList().toTypedArray()
         enable = true
     }
 
