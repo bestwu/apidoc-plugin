@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "cn.bestwu"
-version = "0.0.2-SNAPSHOT"
+version = "0.0.2"
 
 dependencies {
     compile("org.jetbrains.kotlin:kotlin-stdlib:1.2.21")

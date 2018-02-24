@@ -12,7 +12,7 @@ plugins {
 }
 
 group = "cn.bestwu"
-version = "0.0.1-SNAPSHOT"
+version = "0.0.1"
 
 
 dependencies {
@@ -22,9 +22,9 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
 
     //util
-    compile("cn.bestwu:common-lang:1.0.5")
+    compile("cn.bestwu:common-lang:1.0.7")
 
-    compile("cn.bestwu:generator:0.0.1-SNAPSHOT")
+    compile("cn.bestwu:generator:0.0.1")
     compile(project(":apidoc"))
 
     compileOnly("org.springframework.boot:spring-boot-configuration-processor")
