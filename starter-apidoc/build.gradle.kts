@@ -24,7 +24,7 @@ dependencies {
     //util
     compile("cn.bestwu:common-lang:1.0.7")
 
-    compile("cn.bestwu:generator:0.0.1")
+    compile("cn.bestwu:generator:0.0.4")
     compile(project(":apidoc"))
 
     compileOnly("org.springframework.boot:spring-boot-configuration-processor")

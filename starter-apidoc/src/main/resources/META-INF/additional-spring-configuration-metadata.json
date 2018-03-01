@@ -102,14 +102,6 @@
           }
         }
       ]
-    },
-    {
-      "name": "api.apidoc.handler-type-prefix",
-      "providers": [
-        {
-          "name": "class-reference"
-        }
-      ]
     }
   ]
 }

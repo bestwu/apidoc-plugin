@@ -18,9 +18,11 @@ class ApiDocHandlerInterceptor(private var apidocProperties: ApidocProperties) :
     }
 
     override fun postHandle(request: HttpServletRequest, response: HttpServletResponse, handler: Any, modelAndView: ModelAndView?) {
-        if (ApiDoc.enable && handler is HandlerMethod && apidocProperties.handlerTypePrefix.any { handler.beanType.name.startsWith(it) }) {
+        if (ApiDoc.enable && handler is HandlerMethod && apidocProperties.handlerTypePrefix.any { handler.beanType.name.packageMatches(it) }) {
             request.setAttribute(HANDLER_METHOD, handler)
         }
     }
 
+    private fun String.packageMatches(regex: String) =
+            matches(Regex("^" + regex.replace(".", "\\.").replace("*", ".+") + ".*$"))
 }
