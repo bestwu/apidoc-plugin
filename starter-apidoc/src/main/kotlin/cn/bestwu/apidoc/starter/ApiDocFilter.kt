@@ -6,22 +6,18 @@ import cn.bestwu.generator.dsl.Generators
 import com.beust.klaxon.JsonArray
 import com.beust.klaxon.JsonObject
 import com.beust.klaxon.Parser
+import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.http.server.ServletServerHttpRequest
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.filter.OncePerRequestFilter
 import org.springframework.web.method.HandlerMethod
 import org.springframework.web.servlet.HandlerMapping
-import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.IOException
-import java.io.PrintWriter
 import javax.servlet.FilterChain
-import javax.servlet.ServletOutputStream
-import javax.servlet.WriteListener
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
-import javax.servlet.http.HttpServletResponseWrapper
 
 /**
  * 请求日志过滤器
@@ -35,6 +31,7 @@ class ApiDocFilter(private var generatorProperties: GeneratorProperties, private
     private var objectMapper: ObjectMapper = ObjectMapper()
 
     init {
+        objectMapper.enable(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS)
         if (generatorProperties.path.isBlank()) {
             generatorProperties.path = "${apidocProperties.sourcePath}/${apidocProperties.paths[0]}"
         }
@@ -47,7 +44,7 @@ class ApiDocFilter(private var generatorProperties: GeneratorProperties, private
 
         if (isFirstRequest) {
 
-            val responseToUse = TraceHttpServletResponseWrapper(response)
+            val responseToUse = TraceErrorHttpServletResponseWrapper(response)
 
             filterChain.doFilter(request, responseToUse)
             if (responseToUse.hasErrorToSend()) {
@@ -192,10 +189,8 @@ class ApiDocFilter(private var generatorProperties: GeneratorProperties, private
     }
 
 
-    internal inner class TraceHttpServletResponseWrapper @Throws(IOException::class)
-    constructor(response: HttpServletResponse) : HttpServletResponseWrapper(response) {
-
-        private val traceServletOutputStream: TraceServletOutputStream
+    internal inner class TraceErrorHttpServletResponseWrapper @Throws(IOException::class)
+    constructor(response: HttpServletResponse) : cn.bestwu.apidoc.starter.TraceHttpServletResponseWrapper(response) {
 
         private var status: Int = 0
 
@@ -203,12 +198,6 @@ class ApiDocFilter(private var generatorProperties: GeneratorProperties, private
 
         private var hasErrorToSend = false
 
-        val responseBody: ByteArray
-            get() = traceServletOutputStream.responseBody
-
-        init {
-            traceServletOutputStream = TraceServletOutputStream(response.outputStream)
-        }
 
         override fun setStatus(sc: Int) {
             this.status = sc
@@ -245,47 +234,6 @@ class ApiDocFilter(private var generatorProperties: GeneratorProperties, private
 
         fun hasErrorToSend(): Boolean {
             return this.hasErrorToSend
-        }
-
-        override fun getOutputStream(): ServletOutputStream {
-            return traceServletOutputStream
-        }
-
-        override fun getWriter(): PrintWriter {
-            return PrintWriter(outputStream)
-        }
-
-        internal inner class TraceServletOutputStream(private val delegate: ServletOutputStream) : ServletOutputStream() {
-            private val byteArrayOutputStream = ByteArrayOutputStream()
-
-            val responseBody: ByteArray
-                get() = byteArrayOutputStream.toByteArray()
-
-            override fun isReady(): Boolean {
-                return this.delegate.isReady
-            }
-
-            override fun setWriteListener(listener: WriteListener) {
-                this.delegate.setWriteListener(listener)
-            }
-
-            @Throws(IOException::class)
-            override fun write(b: Int) {
-                this.delegate.write(b)
-                byteArrayOutputStream.write(b)
-            }
-
-            @Throws(IOException::class)
-            override fun flush() {
-                super.flush()
-                this.delegate.flush()
-            }
-
-            @Throws(IOException::class)
-            override fun close() {
-                super.close()
-                this.delegate.close()
-            }
         }
     }
 
