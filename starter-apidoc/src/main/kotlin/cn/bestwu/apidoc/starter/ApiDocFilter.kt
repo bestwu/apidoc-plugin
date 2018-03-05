@@ -32,6 +32,7 @@ class ApiDocFilter(private var generatorProperties: GeneratorProperties, private
 
     init {
         objectMapper.enable(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS)
+        objectMapper.enable(DeserializationFeature.USE_BIG_INTEGER_FOR_INTS)
         if (generatorProperties.path.isBlank()) {
             generatorProperties.path = "${apidocProperties.sourcePath}/${apidocProperties.paths[0]}"
         }
