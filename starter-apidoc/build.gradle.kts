@@ -36,7 +36,6 @@ dependencies {
     //test
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile("mysql:mysql-connector-java:5.1.45")
-    testCompile("cn.bestwu:test:1.1")
 }
 tasks {
     "compileJava" {
