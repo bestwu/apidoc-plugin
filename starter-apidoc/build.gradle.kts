@@ -3,30 +3,34 @@ import org.gradle.api.tasks.Exec
 import org.gradle.jvm.tasks.Jar
 import org.gradle.kotlin.dsl.*
 
+val kotlinVersion = "1.2.30"
+
 plugins {
     idea
-    kotlin("jvm") version "1.2.21"
-    kotlin("plugin.spring") version "1.2.21"
-    id("org.springframework.boot") version "1.5.9.RELEASE"
-    id("cn.bestwu.kotlin-publish") version "0.0.17"
+    kotlin("jvm") version "1.2.30"
+    kotlin("plugin.spring") version "1.2.30"
+    id("org.springframework.boot") version "2.0.0.RELEASE"
+    id("io.spring.dependency-management") version "1.0.4.RELEASE"
+    id("cn.bestwu.kotlin-publish") version "0.0.18"
 }
 
 group = "cn.bestwu"
-version = "0.0.3"
+version = "0.0.4-SNAPSHOT"
 
 
 dependencies {
-    compile("org.jetbrains.kotlin:kotlin-stdlib:1.2.21")
+    compile("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
 
     //web
     compile("org.springframework.boot:spring-boot-starter-web")
 
     //util
-    compile("cn.bestwu:common-lang:1.0.7")
+    compile("cn.bestwu:common-lang:1.0.8")
 
     compile("cn.bestwu:generator:0.0.4")
     compile(project(":apidoc"))
 
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     compileOnly("org.springframework.boot:spring-boot-configuration-processor")
 
     //test
@@ -37,6 +41,9 @@ dependencies {
 tasks {
     "compileJava" {
         dependsOn("processResources")
+    }
+    "jar"(Jar::class) {
+        enabled = true
     }
 }
 idea {

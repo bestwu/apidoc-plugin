@@ -6,7 +6,7 @@ import org.springframework.context.annotation.*
 import org.springframework.core.type.AnnotatedTypeMetadata
 import org.springframework.util.StringUtils
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
 /**
  * @author Peter Wu
@@ -15,7 +15,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Conditional(ApiDocConfiguration.ApiDocCondition::class)
 @EnableConfigurationProperties(GeneratorProperties::class, ApidocProperties::class)
 @Configuration
-class ApiDocConfiguration : WebMvcConfigurerAdapter() {
+class ApiDocConfiguration : WebMvcConfigurer {
     @Autowired
     private lateinit var generatorProperties: GeneratorProperties
     @Autowired

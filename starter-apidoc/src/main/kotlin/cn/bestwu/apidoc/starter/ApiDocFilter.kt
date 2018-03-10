@@ -60,7 +60,7 @@ class ApiDocFilter(private var generatorProperties: GeneratorProperties, private
                     val methodAnnotation = handler.getMethodAnnotation(RequestMapping::class.java)
 
                     var resource = ""
-                    var name = methodAnnotation.name
+                    var name = methodAnnotation?.name
                     val beanType = handler.beanType
                     val classRequestMapping = beanType.getAnnotation(RequestMapping::class.java)
                     if (classRequestMapping != null) {
@@ -69,13 +69,13 @@ class ApiDocFilter(private var generatorProperties: GeneratorProperties, private
                     if (resource.isBlank() && ApiDoc.tableNames.size == 1) {
                         resource = ApiDoc.tableNames[0]
                     }
-                    if (resource.isBlank()) {
+                    if (resource.isBlank() && name != null) {
                         resource = name
                     }
 
                     val url = request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE) as String
                     var httpMethod = ""
-                    val requestMethods = methodAnnotation.method
+                    val requestMethods = methodAnnotation?.method ?: arrayOf()
                     requestMethods.forEachIndexed { i, requestMethod ->
                         httpMethod += requestMethod
                         if (i < requestMethods.size - 1) {
