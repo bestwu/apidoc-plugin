@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "cn.bestwu.gradle"
-version = "1.2.8"
+version = "1.2.9"
 
 dependencies {
     compile(gradleApi())

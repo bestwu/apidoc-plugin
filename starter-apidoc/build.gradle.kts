@@ -25,9 +25,9 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
 
     //util
-    compile("cn.bestwu:common-lang:1.0.8")
+    compile("cn.bestwu:common-lang:1.1.0-SNAPSHOT")
 
-    compile("cn.bestwu:generator:0.0.4")
+    compile("cn.bestwu:generator:0.0.5")
     compile(project(":apidoc"))
 
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
