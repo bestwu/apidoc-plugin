@@ -2,6 +2,7 @@ import org.apache.tools.ant.taskdefs.condition.Os
 import org.gradle.api.tasks.Exec
 import org.gradle.jvm.tasks.Jar
 import org.gradle.kotlin.dsl.*
+import org.jetbrains.dokka.gradle.DokkaTask
 
 val kotlinVersion = "1.2.30"
 
@@ -11,11 +12,11 @@ plugins {
     kotlin("plugin.spring") version "1.2.30"
     id("org.springframework.boot") version "2.0.0.RELEASE"
     id("io.spring.dependency-management") version "1.0.4.RELEASE"
-    id("cn.bestwu.kotlin-publish") version "0.0.18"
+    id("cn.bestwu.kotlin-publish") version "0.0.19"
 }
 
 group = "cn.bestwu"
-version = "0.0.4-SNAPSHOT"
+version = "0.0.4"
 
 
 dependencies {
@@ -25,7 +26,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
 
     //util
-    compile("cn.bestwu:common-lang:1.1.0-SNAPSHOT")
+    compile("cn.bestwu:common-lang:1.1.0")
 
     compile("cn.bestwu:generator:0.0.5")
     compile(project(":apidoc"))
@@ -43,6 +44,9 @@ tasks {
     }
     "jar"(Jar::class) {
         enabled = true
+    }
+    "dokkaJavadoc"(DokkaTask::class) {
+        noStdlibLink = true
     }
 }
 idea {
