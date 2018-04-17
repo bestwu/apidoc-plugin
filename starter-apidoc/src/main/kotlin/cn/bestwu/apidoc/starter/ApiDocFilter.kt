@@ -38,6 +38,9 @@ class ApiDocFilter(private var generatorProperties: GeneratorProperties, private
         }
     }
 
+    private fun String.packageMatches(regex: String) =
+            matches(Regex("^" + regex.replace(".", "\\.").replace("*", ".+") + ".*$"))
+
     @Suppress("UNCHECKED_CAST")
     override fun doFilterInternal(request: HttpServletRequest, response: HttpServletResponse,
                                   filterChain: FilterChain) {
@@ -54,7 +57,7 @@ class ApiDocFilter(private var generatorProperties: GeneratorProperties, private
             }
             if (!isAsyncStarted(request)) {
                 val handler = request.getAttribute(ApiDocHandlerInterceptor.HANDLER_METHOD) as HandlerMethod?
-                if (handler != null) {
+                if (handler != null && (apidocProperties.handlerTypePrefix.isEmpty() || apidocProperties.handlerTypePrefix.any { handler.beanType.name.packageMatches(it) })) {
                     println("生成文档相关数据")
 
                     val methodAnnotation = handler.getMethodAnnotation(RequestMapping::class.java)
