@@ -27,22 +27,30 @@ class ApidocPlugin : Plugin<Project> {
                 apidocExtension.paths.forEach { path ->
                     val sourcePath = apidocExtension.sourcePath + "/" + path
                     val inputDir = project.file(sourcePath)
-                    val outputDir = project.file(sourcePath + "/md")
-                    it.inputs.files(inputDir.listFiles { file: File ->
-                        file != outputDir && file != project.file(sourcePath + "/html")
-                    })
-                    it.outputs.dir(outputDir)
+                    val outputDir = project.file("$sourcePath/md")
+                    if (inputDir.exists()) {
+                        it.inputs.files(inputDir.listFiles { file: File ->
+                            file != outputDir && file != project.file("$sourcePath/html")
+                        })
+                    }
+                    if (outputDir.exists())
+                        it.outputs.dir(outputDir)
                 }
             }
             project.tasks.create("htmldoc", HtmlTask::class.java) {
                 it.dependsOn("mddoc")
                 apidocExtension.paths.forEach { path ->
                     val sourcePath = apidocExtension.sourcePath + "/" + path
-                    it.inputs.dir(sourcePath + "/md")
-                    it.inputs.files(project.file(sourcePath).listFiles { file: File ->
-                        file.name.endsWith(".md")
-                    })
-                    it.outputs.dir(sourcePath + "/html")
+                    val inputDir = project.file("$sourcePath/md")
+                    val outputDir = project.file("$sourcePath/html")
+                    if (inputDir.exists()) {
+                        it.inputs.dir("$sourcePath/md")
+                        it.inputs.files(project.file(sourcePath).listFiles { file: File ->
+                            file.name.endsWith(".md")
+                        })
+                    }
+                    if (outputDir.exists())
+                        it.outputs.dir(outputDir)
                 }
             }
         }

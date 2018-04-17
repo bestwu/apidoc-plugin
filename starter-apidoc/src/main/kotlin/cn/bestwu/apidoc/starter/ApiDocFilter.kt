@@ -93,6 +93,9 @@ class ApiDocFilter(private var generatorProperties: GeneratorProperties, private
                     val path = generatorProperties.path
                     val trees: JsonArray<JsonObject>
                     val apis: JsonArray<JsonObject>
+                    fixFile(path, "code.json")
+                    fixFile(path, "datastructure.json")
+                    fixFile(path, "field.json")
 
                     //api
                     val apifile = File(path, "api.json")
@@ -186,6 +189,16 @@ class ApiDocFilter(private var generatorProperties: GeneratorProperties, private
                     HtmlGenerator.call(apidocProperties)
                 }
             }
+        }
+    }
+
+    private fun fixFile(path: String, fileName: String) {
+        val file = File(path, fileName)
+        if (!file.exists()) {
+            if (!file.parentFile.exists()) {
+                file.parentFile.mkdirs()
+            }
+            file.writeText(ApiDocFilter::class.java.getResource("/$fileName").readText())
         }
     }
 
