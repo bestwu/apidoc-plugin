@@ -197,6 +197,7 @@ class ApiDocFilter(private var generatorProperties: GeneratorProperties, private
                 file.parentFile.mkdirs()
             }
             file.writeText(ApiDocFilter::class.java.getResource("/$fileName").readText())
+            println("创建$file")
         }
     }
 
