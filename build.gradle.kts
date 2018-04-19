@@ -27,6 +27,8 @@ allprojects {
 }
 subprojects {
 
+    version = "1.2.10"
+
     tasks.withType<JavaCompile> {
         options.encoding = "UTF-8"
     }

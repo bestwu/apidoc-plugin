@@ -61,8 +61,6 @@ object MDGenerator {
                     return
                 apis = apiFile.parse(Api::class.java)
                 val fieldFile = File(input, "field.json")
-                if (!fieldFile.exists())
-                    return
                 val defaultFields: List<Field> = fieldFile.parse(Field::class.java)
 
 
@@ -79,7 +77,7 @@ object MDGenerator {
                     val treeName = tree.text
                     val fileName: String
                     fileName = if (j > -1)
-                        "${if (j < 10) "0" + j else j.toString()}-$treeName"
+                        "${if (j < 10) "0$j" else j.toString()}-$treeName"
                     else
                         treeName
 
@@ -105,7 +103,13 @@ object MDGenerator {
 
     }
 
-    private fun <T> File.parse(clazz: Class<T>): List<T> = objectMapper.readValue(this, TypeFactory.defaultInstance().constructCollectionType(List::class.java, clazz))
+    private fun <T> File.parse(clazz: Class<T>): List<T> {
+        return if (exists()) {
+            objectMapper.readValue(this, TypeFactory.defaultInstance().constructCollectionType(List::class.java, clazz))
+        } else {
+            emptyList()
+        }
+    }
 
 
     /**
