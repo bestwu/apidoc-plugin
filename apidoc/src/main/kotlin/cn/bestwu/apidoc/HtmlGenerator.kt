@@ -26,7 +26,7 @@ object HtmlGenerator {
                 val extraFiles = input.listFiles { file: File ->
                     file.name.endsWith(".md")
                 }
-                call(apidocExtension, File(input, "md"), File(input, "html"), *extraFiles)
+                call(apidocExtension, File(apidocExtension.output + "/" + it, "md"), File(apidocExtension.output + "/" + it, "html"), *extraFiles)
             }
         }
     }

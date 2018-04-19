@@ -5,6 +5,7 @@ import cn.bestwu.gradle.apidoc.tasks.HtmlTask
 import cn.bestwu.gradle.apidoc.tasks.MDTask
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.language.jvm.tasks.ProcessResources
 import java.io.File
 
 /**
@@ -23,15 +24,16 @@ class ApidocPlugin : Plugin<Project> {
             if (apidocExtension.projectName.isBlank()) {
                 apidocExtension.projectName = project.name
             }
+            val docOutputDir = (project.tasks.getByName("processResources") as ProcessResources).destinationDir.absolutePath
+            if (apidocExtension.output == apidocExtension.sourcePath)
+                apidocExtension.output = docOutputDir
             project.tasks.create("mddoc", MDTask::class.java) {
                 apidocExtension.paths.forEach { path ->
                     val sourcePath = apidocExtension.sourcePath + "/" + path
                     val inputDir = project.file(sourcePath)
-                    val outputDir = project.file("$sourcePath/md")
+                    val outputDir = File("$docOutputDir/$path", "$sourcePath/md")
                     if (inputDir.exists()) {
-                        it.inputs.files(inputDir.listFiles { file: File ->
-                            file != outputDir && file != project.file("$sourcePath/html")
-                        })
+                        it.inputs.dir(inputDir)
                     }
                     if (outputDir.exists())
                         it.outputs.dir(outputDir)
@@ -41,13 +43,10 @@ class ApidocPlugin : Plugin<Project> {
                 it.dependsOn("mddoc")
                 apidocExtension.paths.forEach { path ->
                     val sourcePath = apidocExtension.sourcePath + "/" + path
-                    val inputDir = project.file("$sourcePath/md")
-                    val outputDir = project.file("$sourcePath/html")
+                    val inputDir = project.file(sourcePath)
+                    val outputDir = File("$docOutputDir/$path", "$sourcePath/html")
                     if (inputDir.exists()) {
-                        it.inputs.dir("$sourcePath/md")
-                        it.inputs.files(project.file(sourcePath).listFiles { file: File ->
-                            file.name.endsWith(".md")
-                        })
+                        it.inputs.dir(inputDir)
                     }
                     if (outputDir.exists())
                         it.outputs.dir(outputDir)

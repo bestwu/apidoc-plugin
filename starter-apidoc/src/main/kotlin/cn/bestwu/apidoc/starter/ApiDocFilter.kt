@@ -1,7 +1,5 @@
 package cn.bestwu.apidoc.starter
 
-import cn.bestwu.apidoc.HtmlGenerator
-import cn.bestwu.apidoc.MDGenerator
 import cn.bestwu.generator.dsl.Generators
 import com.beust.klaxon.JsonArray
 import com.beust.klaxon.JsonObject
@@ -187,9 +185,6 @@ class ApiDocFilter(private var generatorProperties: GeneratorProperties, private
                         Generators.call(generatorProperties)
                         println("${if (fieldFile.exists()) "更新" else "创建"}$fieldFile")
                     }
-
-                    MDGenerator.call(apidocProperties)
-                    HtmlGenerator.call(apidocProperties)
                 }
             }
         }

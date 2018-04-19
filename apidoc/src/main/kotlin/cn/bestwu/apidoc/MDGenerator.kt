@@ -44,7 +44,7 @@ object MDGenerator {
             val sourcePath = apidocExtension.sourcePath + "/" + path
             val input = File(sourcePath)
             if (input.exists()) {
-                val output = File(input, "md")
+                val output = File(apidocExtension.output + "/" + path, "md")
                 if (apidocExtension.cover) {
                     output.deleteRecursively()
                 }

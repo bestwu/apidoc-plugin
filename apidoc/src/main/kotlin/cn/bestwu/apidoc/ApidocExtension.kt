@@ -23,5 +23,6 @@ open class ApidocExtension(
          * 严格模式字段解析
          */
         var strict: Boolean = true,
-        var sourcePath: String = "src/main/resources"
+        var sourcePath: String = "src/main/resources",
+        var output: String = sourcePath
 )
